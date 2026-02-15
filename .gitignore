@@ -1,0 +1,32 @@
+# .gitignore
+
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+.pnpm-store/
+
+# Environment Variables (CRITICAL)
+.env
+.env.local
+.env.*.local
+
+# Docker & OS
+.DS_Store
+Thumbs.db
+docker-compose.override.yml
+
+# Data & Logs (Don't commit DB data!)
+data/
+logs/
+*.log
+
+# Build Outputs
+dist/
+build/
+.next/
+out/
+
+# IDEs
+.vscode/
+.idea/
