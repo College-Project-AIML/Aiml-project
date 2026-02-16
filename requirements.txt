@@ -6,3 +6,7 @@ python-dotenv==1.0.0
 # AI & Data (For later)
 numpy
 pandas
+
+playwright
+beautifulsoup4
+html2text
