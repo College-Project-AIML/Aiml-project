@@ -1,12 +1,12 @@
-# Database Drivers
-psycopg2-binary==2.9.9
-pymongo==4.6.1
+# Database
+psycopg2-binary>=2.9.9
 python-dotenv==1.0.0
 
-# AI & Data (For later)
-numpy
-pandas
+# API Framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
 
-playwright
+# Data Processing
 beautifulsoup4
 html2text

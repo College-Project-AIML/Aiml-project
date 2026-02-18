@@ -1,56 +1,100 @@
--- Enable UUID extension for secure IDs
+-- ============================================================
+-- Government Schemes Discovery Platform — PostgreSQL Schema
+-- ============================================================
+
+-- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- 1. ENUMS (Standardizing choices)
-CREATE TYPE user_role AS ENUM ('citizen', 'admin', 'ngo');
-CREATE TYPE gender_type AS ENUM ('male', 'female', 'transgender', 'other');
-CREATE TYPE caste_category AS ENUM ('general', 'obc', 'sc', 'st', 'other');
-
--- 2. USERS TABLE (Auth details)
-CREATE TABLE users (
+-- 1. Providers (government bodies / ministries)
+CREATE TABLE IF NOT EXISTS providers (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    full_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    phone VARCHAR(15),
-    password_hash VARCHAR(255) NOT NULL,
-    role user_role DEFAULT 'citizen',
+    name VARCHAR(255) NOT NULL,
+    type VARCHAR(100),
+    website VARCHAR(500),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- 3. PROFILES TABLE (The "AI Context" - Critical for Eligibility)
-CREATE TABLE profiles (
+-- 2. Categories
+CREATE TABLE IF NOT EXISTS categories (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-    
-    -- Demographic Data
-    dob DATE,
-    gender gender_type,
-    caste caste_category,
-    disability_status BOOLEAN DEFAULT FALSE,
-    disability_percentage INT DEFAULT 0,
-    
-    -- Location (For state-specific schemes)
-    state VARCHAR(100),
-    district VARCHAR(100),
-    is_rural BOOLEAN DEFAULT TRUE, -- Rural/Urban focus is key for schemes
-    
-    -- Economic Data
-    annual_income DECIMAL(12, 2) DEFAULT 0,
-    employment_status VARCHAR(100), -- e.g., 'student', 'unemployed', 'farmer'
-    occupation_sector VARCHAR(100), -- e.g., 'agriculture', 'construction'
-    
-    -- Education
-    education_level VARCHAR(100), -- e.g., '10th_pass', 'graduate'
-    
-    UNIQUE(user_id)
+    name VARCHAR(100) NOT NULL UNIQUE,
+    slug VARCHAR(100) UNIQUE,
+    description TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- 4. APPLICATION TRACKING (What have they applied for?)
-CREATE TABLE applications (
+-- 3. Schemes (main table)
+CREATE TABLE IF NOT EXISTS schemes (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id UUID REFERENCES users(id),
-    scheme_id VARCHAR(255) NOT NULL, -- References MongoDB ID
-    status VARCHAR(50) DEFAULT 'applied', -- applied, approved, rejected
-    applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    provider_id UUID REFERENCES providers(id) ON DELETE SET NULL,
+    category_id UUID REFERENCES categories(id) ON DELETE SET NULL,
+    name VARCHAR(500) NOT NULL,
+    description TEXT,
+    eligibility_text TEXT,
+    state_code VARCHAR(10),
+    status VARCHAR(20) DEFAULT 'ACTIVE',
+    source VARCHAR(255),
+    source_type VARCHAR(50),
+    link VARCHAR(1000),
+    tags TEXT[],
+    confidence_score FLOAT DEFAULT 0.0,
+    ingested_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    last_updated TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 4. Eligibility rules (structured criteria per scheme)
+CREATE TABLE IF NOT EXISTS eligibility_rules (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    scheme_id UUID NOT NULL REFERENCES schemes(id) ON DELETE CASCADE,
+    min_age INT,
+    max_age INT,
+    max_income DECIMAL(12, 2),
+    gender VARCHAR(20)[],
+    caste VARCHAR(50)[],
+    states VARCHAR(10)[],
+    education_level VARCHAR(100),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 5. Benefits
+CREATE TABLE IF NOT EXISTS benefits (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    scheme_id UUID NOT NULL REFERENCES schemes(id) ON DELETE CASCADE,
+    benefit_type VARCHAR(100),
+    description TEXT,
+    amount DECIMAL(12, 2),
+    frequency VARCHAR(50),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 6. Documents required
+CREATE TABLE IF NOT EXISTS documents_required (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    scheme_id UUID NOT NULL REFERENCES schemes(id) ON DELETE CASCADE,
+    document_name VARCHAR(255) NOT NULL,
+    is_mandatory BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Indexes for performance
+CREATE INDEX IF NOT EXISTS idx_schemes_name ON schemes(name);
+CREATE INDEX IF NOT EXISTS idx_schemes_category ON schemes(category_id);
+CREATE INDEX IF NOT EXISTS idx_schemes_provider ON schemes(provider_id);
+CREATE INDEX IF NOT EXISTS idx_schemes_state ON schemes(state_code);
+CREATE INDEX IF NOT EXISTS idx_schemes_status ON schemes(status);
+CREATE INDEX IF NOT EXISTS idx_categories_name ON categories(name);
+CREATE INDEX IF NOT EXISTS idx_eligibility_scheme ON eligibility_rules(scheme_id);
+CREATE INDEX IF NOT EXISTS idx_benefits_scheme ON benefits(scheme_id);
+CREATE INDEX IF NOT EXISTS idx_documents_scheme ON documents_required(scheme_id);
+
+-- Full-text search index on schemes
+CREATE INDEX IF NOT EXISTS idx_schemes_fts ON schemes USING GIN (
+    to_tsvector('english', COALESCE(name, '') || ' ' || COALESCE(description, ''))
 );
