@@ -20,10 +20,9 @@ from typing import List, Dict
 
 load_dotenv()
 
-DB_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://admin:securepassword@localhost:5433/aiml_core"
-)
+DB_URL = os.getenv("DATABASE_URL")
+if not DB_URL:
+    raise ValueError('DATABASE_URL is not set')
 
 
 class PostgresLoader:

@@ -10,13 +10,17 @@ Purpose:
 This prevents data pollution from duplicate ingestion runs.
 """
 
+import os
 from difflib import SequenceMatcher
 from typing import List, Dict
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class DedupEngine:
 
-    def __init__(self, similarity_threshold: float = 0.85):
+    def __init__(self, similarity_threshold: float = float(os.getenv('DEDUP_SIMILARITY_THRESHOLD', '0.85'))):
         self.similarity_threshold = similarity_threshold
         self.stats = {
             "total_in": 0,

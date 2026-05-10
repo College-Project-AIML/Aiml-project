@@ -10,3 +10,7 @@ pydantic==2.9.2
 # Data Processing
 beautifulsoup4
 html2text
+alembic
+email-validator
+python-jose[cryptography]
+passlib[bcrypt]
