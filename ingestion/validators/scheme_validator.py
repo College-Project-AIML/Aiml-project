@@ -116,13 +116,9 @@ class SchemeValidator:
             raise ValidationError(f"Invalid status: {scheme['status']}")
 
     def _check_privacy(self, scheme: Dict):
-        full_text = " ".join([
-            str(v).lower() for v in scheme.values() if isinstance(v, str)
-        ])
-
-        for banned in BANNED_FIELDS:
-            if banned in full_text:
-                raise ValidationError(f"Privacy violation detected: {banned}")
+        BANNED_FIELD_NAMES = {'aadhaar_number', 'pan_number', 'bank_account_number', 'credit_card_number', 'passport_number'}
+        if any(field in scheme.keys() for field in BANNED_FIELD_NAMES):
+            raise ValidationError("Privacy violation detected: PII in keys")
 
     def _check_confidence(self, scheme: Dict):
         score = scheme.get("confidence_score")

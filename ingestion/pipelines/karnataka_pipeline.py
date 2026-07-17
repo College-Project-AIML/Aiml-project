@@ -24,9 +24,12 @@ from ingestion.validators.scheme_validator import SchemeValidator, ValidationErr
 from ingestion.dedup.dedup_engine import DedupEngine
 from ingestion.loaders.json_loader import JsonLoader
 from ingestion.loaders.postgres_loader import PostgresLoader
+from dotenv import load_dotenv
 
-OUTPUT_PATH = "data/gov/karnataka/schemes.json"
-DUMP_PATH = "scholarships_api_dump.json"
+load_dotenv()
+
+OUTPUT_PATH = os.getenv("OUTPUT_PATH", "data/gov/karnataka/schemes.json")
+DUMP_PATH = os.getenv("DUMP_PATH", "scholarships_api_dump.json")
 
 
 class KarnatakaPipeline:

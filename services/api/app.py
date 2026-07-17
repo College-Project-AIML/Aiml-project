@@ -5,11 +5,15 @@ Run with:
     uvicorn services.api.app:app --reload --port 8000
 """
 
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
 from services.api.db import init_pool, close_pool
+
+load_dotenv()
 from services.api.routes.schemes import router as schemes_router
 from services.api.routes.search import router as search_router
 from services.api.routes.categories import router as categories_router
@@ -30,9 +34,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS', 'http://localhost:5173').split(',')
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -42,6 +48,8 @@ app.include_router(schemes_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")
 app.include_router(categories_router, prefix="/api/v1")
 app.include_router(eligibility_router, prefix="/api/v1")
+from services.api.routes.auth import router as auth_router
+app.include_router(auth_router, prefix='/api/v1')
 
 
 @app.get("/")
