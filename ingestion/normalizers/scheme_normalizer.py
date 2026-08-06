@@ -138,7 +138,9 @@ class SchemeNormalizer:
                 tags.add(t)
 
         base_tags = set(raw.get("tags", [])) if raw.get("tags") else set()
-        return list(tags.union(base_tags))
+        # Sorted for determinism: a Python set's iteration order varies with the
+        # process hash seed, which would cause false-positive change events.
+        return sorted(tags.union(base_tags))
 
     def _source_confidence(self, source):
         if not source:

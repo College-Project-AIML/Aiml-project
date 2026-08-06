@@ -107,6 +107,18 @@ class PostgresLoader:
         slug = category_name.lower().replace(" ", "_").replace("-", "_")
         cat_id = self._deterministic_uuid(f"category:{category_name}")
 
+        # Reuse an existing category matching by name (exact) or slug — the slug
+        # is UNIQUE, so case variants (e.g. "Scholarship" vs "SCHOLARSHIP")
+        # would otherwise violate the unique constraint during ON CONFLICT.
+        cur.execute(
+            "SELECT id FROM categories WHERE name = %s OR slug = %s LIMIT 1",
+            (category_name, slug),
+        )
+        existing = cur.fetchone()
+        if existing:
+            self._category_cache[category_name] = existing[0]
+            return existing[0]
+
         cur.execute("""
             INSERT INTO categories (id, name, slug)
             VALUES (%s, %s, %s)

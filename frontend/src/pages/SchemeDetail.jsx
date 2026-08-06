@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getScheme } from '../api/api'
+import { timeAgo, formatValue } from '../utils'
 
 const styles = {
   content: {
@@ -164,6 +165,55 @@ const styles = {
     fontWeight: 600,
     textAlign: 'right',
   },
+  changePanel: {
+    background: 'linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%)',
+    border: '1px solid #dbeafe',
+    borderRadius: '10px',
+    padding: '20px 24px',
+  },
+  changeHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: '8px',
+    marginBottom: '14px',
+  },
+  changeTypeBadge: {
+    padding: '3px 10px',
+    borderRadius: '100px',
+    fontSize: '0.72rem',
+    fontWeight: 700,
+    background: '#dbeafe',
+    color: '#1d4ed8',
+  },
+  changeTime: {
+    fontSize: '0.8rem',
+    color: '#64748b',
+  },
+  changeField: {
+    display: 'grid',
+    gridTemplateColumns: '150px 1fr 1fr',
+    gap: '12px',
+    alignItems: 'center',
+    padding: '10px 0',
+    borderBottom: '1px solid #e2e8f0',
+    fontSize: '0.85rem',
+  },
+  changeFieldName: {
+    fontWeight: 600,
+    color: '#475569',
+    textTransform: 'capitalize',
+  },
+  changeOld: {
+    color: '#b91c1c',
+    textDecoration: 'line-through',
+    opacity: 0.8,
+  },
+  changeNew: {
+    color: '#15803d',
+    fontWeight: 600,
+  },
 }
 
 function formatAmount(amount) {
@@ -215,6 +265,9 @@ function SchemeDetail() {
   const rules = scheme.eligibility_rules || []
   const benefits = scheme.benefits || []
   const documents = scheme.documents_required || []
+  const latestUpdate = scheme.latest_update
+  const changedFields = (latestUpdate && latestUpdate.changed_fields) || {}
+  const changeFieldKeys = Object.keys(changedFields)
 
   return (
     <div>
@@ -238,6 +291,28 @@ function SchemeDetail() {
       </div>
 
       <div style={styles.content}>
+        {latestUpdate && changeFieldKeys.length > 0 && (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>🔄 What Changed</h2>
+            <div style={styles.changePanel}>
+              <div style={styles.changeHeader}>
+                <span style={styles.changeTypeBadge}>{latestUpdate.change_type}</span>
+                <span style={styles.changeTime}>Detected {timeAgo(latestUpdate.detected_at)}</span>
+              </div>
+              {changeFieldKeys.map((field) => {
+                const [oldValue, newValue] = changedFields[field] || []
+                return (
+                  <div key={field} style={styles.changeField}>
+                    <span style={styles.changeFieldName}>{formatValue(field)}</span>
+                    <span style={styles.changeOld}>{formatValue(oldValue)}</span>
+                    <span style={styles.changeNew}>→ {formatValue(newValue)}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
         <div style={styles.section}>
           <h2 style={styles.sectionTitle}>📋 Description</h2>
           <div style={styles.card}>

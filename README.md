@@ -299,6 +299,36 @@ This repository is designed for:
 
 ---
 
+## Near-Real-Time Scheme Updates (docs/next.md)
+
+The project includes a live-sync engine that polls government portals, detects
+changes, and surfaces them to users:
+
+- **Connectors** — `ingestion/sources/myscheme/` (configurable internal JSON API,
+  endpoint set via `MYSCHEME_API_URL`) and `ingestion/sources/karnataka_ssp/`
+  (public landing pages only, read-only & polite).
+- **Sync engine** — `ingestion/sync/` (fingerprinting, change detection, APScheduler)
+  orchestrated by `ingestion/pipelines/live_sync_pipeline.py`.
+- **Tables** — `scheme_snapshots` and `scheme_updates` (alembic revision
+  `b2a9f3c1d4e7`).
+- **API & UI** — `GET /api/v1/updates`, a “Recently updated” sort, NEW/UPDATED
+  badges, and a “What changed” panel on scheme detail.
+
+Run one sync pass manually:
+
+```bash
+venv/bin/python -m ingestion.pipelines.live_sync_pipeline
+```
+
+Scheduled runs are opt-in via `LIVE_SYNC_ENABLED=true` (see `.env.example`).
+
+> **Note on migrations:** a fresh DB built from `schemas/postgres.sql` already
+> contains the new tables (the file is mounted as the docker init script), so run
+> `venv/bin/alembic stamp head` after the initial `docker compose up`; use
+> `venv/bin/alembic upgrade head` on an existing DB that predates them.
+
+---
+
 ## License & Usage
 
 This project is for **educational and research purposes only**.

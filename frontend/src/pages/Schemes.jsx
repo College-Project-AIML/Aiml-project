@@ -25,6 +25,29 @@ const styles = {
     color: '#64748b',
     marginBottom: '16px',
   },
+  sortRow: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    gap: '8px',
+    marginBottom: '16px',
+  },
+  sortLabel: {
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    color: '#64748b',
+  },
+  sortSelect: {
+    padding: '8px 12px',
+    borderRadius: '8px',
+    border: '1.5px solid #e2e8f0',
+    background: 'white',
+    color: '#1e293b',
+    fontSize: '0.85rem',
+    fontFamily: 'inherit',
+    cursor: 'pointer',
+    outline: 'none',
+  },
   grid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
@@ -75,6 +98,7 @@ function Schemes() {
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || null)
+  const [sort, setSort] = useState(searchParams.get('sort') === 'recently_updated' ? 'recently_updated' : 'default')
 
   const limit = 12
 
@@ -91,7 +115,12 @@ function Schemes() {
           setSchemes(res.results)
           setTotal(res.total)
         } else {
-          const res = await getSchemes({ page, limit, category: selectedCategory })
+          const res = await getSchemes({
+            page,
+            limit,
+            category: selectedCategory,
+            sort: sort === 'recently_updated' ? 'recently_updated' : undefined,
+          })
           setSchemes(res.schemes)
           setTotal(res.total)
         }
@@ -102,7 +131,7 @@ function Schemes() {
       }
     }
     load()
-  }, [page, selectedCategory, searchQuery])
+  }, [page, selectedCategory, searchQuery, sort])
 
   const handleSearch = (query) => {
     setSearchQuery(query)
@@ -116,6 +145,12 @@ function Schemes() {
     setSearchQuery('')
     setPage(1)
     setSearchParams(catName ? { category: catName } : {})
+  }
+
+  const handleSortChange = (value) => {
+    setSort(value)
+    setPage(1)
+    setSearchParams(value === 'recently_updated' ? { sort: 'recently_updated' } : {})
   }
 
   const totalPages = Math.ceil(total / limit)
@@ -145,6 +180,20 @@ function Schemes() {
               onSelect={handleCategorySelect}
             />
           )}
+        </div>
+
+        <div style={styles.sortRow}>
+          <span style={styles.sortLabel}>Sort:</span>
+          <select
+            style={{ ...styles.sortSelect, opacity: searchQuery ? 0.5 : 1, cursor: searchQuery ? 'not-allowed' : 'pointer' }}
+            value={sort}
+            onChange={(e) => handleSortChange(e.target.value)}
+            disabled={!!searchQuery}
+            title={searchQuery ? 'Clear your search to sort' : 'Sort schemes'}
+          >
+            <option value="default">Default (best match)</option>
+            <option value="recently_updated">Recently updated</option>
+          </select>
         </div>
 
         {searchQuery && (

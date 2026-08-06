@@ -18,12 +18,17 @@ from services.api.routes.schemes import router as schemes_router
 from services.api.routes.search import router as search_router
 from services.api.routes.categories import router as categories_router
 from services.api.routes.eligibility import router as eligibility_router
+from services.api.routes.updates import router as updates_router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_pool()
+    from ingestion.sync.scheduler import scheduler
+    scheduler.start()
     yield
+    from ingestion.sync.scheduler import scheduler
+    scheduler.stop()
     close_pool()
 
 
@@ -48,6 +53,7 @@ app.include_router(schemes_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")
 app.include_router(categories_router, prefix="/api/v1")
 app.include_router(eligibility_router, prefix="/api/v1")
+app.include_router(updates_router, prefix="/api/v1")
 from services.api.routes.auth import router as auth_router
 app.include_router(auth_router, prefix='/api/v1')
 

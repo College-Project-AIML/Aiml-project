@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { timeAgo } from '../utils'
 
 const styles = {
   card: {
@@ -31,6 +32,27 @@ const styles = {
     fontWeight: 600,
     background: '#dcfce7',
     color: '#15803d',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+  },
+  badgeNew: {
+    padding: '3px 10px',
+    borderRadius: '100px',
+    fontSize: '0.72rem',
+    fontWeight: 700,
+    background: '#16a34a',
+    color: 'white',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+    boxShadow: '0 1px 3px rgba(22,163,74,0.4)',
+  },
+  badgeClosed: {
+    padding: '3px 10px',
+    borderRadius: '100px',
+    fontSize: '0.72rem',
+    fontWeight: 600,
+    background: '#fee2e2',
+    color: '#b91c1c',
     whiteSpace: 'nowrap',
     flexShrink: 0,
   },
@@ -88,6 +110,16 @@ const styles = {
 
 function SchemeCard({ scheme }) {
   const stateLabel = scheme.state_code ? scheme.state_code : 'National'
+  const updatedAt = scheme.last_updated
+
+  const headerBadge =
+    scheme.is_new ? (
+      <span style={styles.badgeNew}>NEW</span>
+    ) : scheme.status === 'INACTIVE' ? (
+      <span style={styles.badgeClosed}>{scheme.status}</span>
+    ) : (
+      <span style={styles.badge}>{scheme.status || 'ACTIVE'}</span>
+    )
 
   return (
     <div
@@ -105,7 +137,7 @@ function SchemeCard({ scheme }) {
         <Link to={`/schemes/${scheme.id}`} style={styles.name}>
           {scheme.name}
         </Link>
-        <span style={styles.badge}>{scheme.status || 'ACTIVE'}</span>
+        {headerBadge}
       </div>
 
       <p style={styles.description}>{scheme.description}</p>
@@ -113,6 +145,11 @@ function SchemeCard({ scheme }) {
       <div style={styles.meta}>
         {scheme.category_name && <span style={styles.tag}>{scheme.category_name}</span>}
         <span style={styles.tagTeal}>{stateLabel}</span>
+        {updatedAt && !scheme.is_new && (
+          <span style={{ ...styles.tag, background: '#eff6ff', color: '#1d4ed8' }}>
+            🔄 Updated {timeAgo(updatedAt)}
+          </span>
+        )}
         {scheme.confidence_score && (
           <span style={{ ...styles.tag, background: '#fef3c7', color: '#92400e' }}>
             {Math.round(scheme.confidence_score * 100)}% confidence
