@@ -22,7 +22,14 @@ pool = None
 
 def init_pool():
     global pool
-    pool = psycopg2.pool.SimpleConnectionPool(1, 10, DATABASE_URL)
+    try:
+        pool = psycopg2.pool.SimpleConnectionPool(1, 10, DATABASE_URL)
+    except psycopg2.OperationalError as e:
+        if "@postgres:5432/" in DATABASE_URL:
+            alt_url = DATABASE_URL.replace("@postgres:5432/", "@localhost:5433/")
+            pool = psycopg2.pool.SimpleConnectionPool(1, 10, alt_url)
+        else:
+            raise e
 
 
 def close_pool():

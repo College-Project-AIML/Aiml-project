@@ -83,6 +83,27 @@ CREATE TABLE IF NOT EXISTS documents_required (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- 7. Scheme snapshots (live-sync change detection; docs/next.md §2.1)
+CREATE TABLE IF NOT EXISTS scheme_snapshots (
+    scheme_id UUID PRIMARY KEY REFERENCES schemes(id) ON DELETE CASCADE,
+    fingerprint TEXT NOT NULL,             -- sha256 of normalized content fields
+    snapshot JSONB,                        -- semantic fields for precise diffs
+    fetched_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    miss_count INT DEFAULT 0,
+    source VARCHAR(255) NOT NULL           -- connector key scoping CLOSED detection
+);
+
+-- 8. Scheme updates (the "what's new" feed)
+CREATE TABLE IF NOT EXISTS scheme_updates (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    scheme_id UUID NOT NULL REFERENCES schemes(id) ON DELETE CASCADE,
+    change_type VARCHAR(20) NOT NULL,      -- NEW | UPDATED | CLOSED
+    changed_fields JSONB,                  -- {"deadline": [old, new]} etc.
+    detected_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_scheme_updates_detected ON scheme_updates(detected_at DESC);
+CREATE INDEX IF NOT EXISTS idx_scheme_updates_scheme   ON scheme_updates(scheme_id);
+
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_schemes_name ON schemes(name);
 CREATE INDEX IF NOT EXISTS idx_schemes_category ON schemes(category_id);

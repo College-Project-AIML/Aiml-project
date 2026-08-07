@@ -20,6 +20,8 @@ class SchemeResponse(BaseModel):
     confidence_score: Optional[float] = None
     category_name: Optional[str] = None
     provider_name: Optional[str] = None
+    last_updated: Optional[datetime] = None
+    is_new: bool = False
 
 
 class EligibilityRuleResponse(BaseModel):
@@ -87,4 +89,16 @@ class EligibilityCheckResponse(BaseModel):
 class SearchResponse(BaseModel):
     results: List[SchemeResponse]
     query: str
+    total: int
+
+
+class SchemeUpdateResponse(BaseModel):
+    change_type: str
+    changed_fields: Optional[dict] = None
+    detected_at: Optional[datetime] = None
+    scheme: Optional[SchemeResponse] = None
+
+
+class UpdatesListResponse(BaseModel):
+    updates: List[SchemeUpdateResponse]
     total: int

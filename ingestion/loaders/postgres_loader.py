@@ -11,16 +11,44 @@ Purpose:
 This is the primary persistent storage loader for the ingestion pipeline.
 """
 
+import logging
 import os
+import socket
 import uuid
 import hashlib
 import psycopg2
 from dotenv import load_dotenv
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 load_dotenv()
 
-DB_URL = os.getenv("DATABASE_URL")
+logger = logging.getLogger(__name__)
+
+
+def resolve_database_url() -> Optional[str]:
+    """Return a usable DATABASE_URL, applying the host-side Docker fallback.
+
+    Inside docker-compose the Postgres hostname is ``postgres`` (resolves only
+    on the compose network). From the host machine that name does not resolve,
+    but the container exposes the DB on ``localhost:5433`` — the same fallback
+    ``services/api/db.py`` applies. This keeps manual pipeline runs working
+    from the host without changing .env.
+    """
+    url = os.getenv("DATABASE_URL")
+    if not url:
+        return None
+    if "@postgres:5432/" in url:
+        try:
+            socket.gethostbyname("postgres")
+        except socket.gaierror:
+            url = url.replace("@postgres:5432/", "@localhost:5433/")
+            logger.info(
+                "postgres host not reachable from this machine — using %s", url
+            )
+    return url
+
+
+DB_URL = resolve_database_url()
 if not DB_URL:
     raise ValueError('DATABASE_URL is not set')
 
@@ -106,6 +134,18 @@ class PostgresLoader:
 
         slug = category_name.lower().replace(" ", "_").replace("-", "_")
         cat_id = self._deterministic_uuid(f"category:{category_name}")
+
+        # Reuse an existing category matching by name (exact) or slug — the slug
+        # is UNIQUE, so case variants (e.g. "Scholarship" vs "SCHOLARSHIP")
+        # would otherwise violate the unique constraint during ON CONFLICT.
+        cur.execute(
+            "SELECT id FROM categories WHERE name = %s OR slug = %s LIMIT 1",
+            (category_name, slug),
+        )
+        existing = cur.fetchone()
+        if existing:
+            self._category_cache[category_name] = existing[0]
+            return existing[0]
 
         cur.execute("""
             INSERT INTO categories (id, name, slug)

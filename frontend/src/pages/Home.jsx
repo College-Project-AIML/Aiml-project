@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { getSchemes, getCategories, searchSchemes } from '../api/api'
+import { getSchemes, getCategories, getStats, getUpdates } from '../api/api'
+import { timeAgo } from '../utils'
 import SchemeCard from '../components/SchemeCard'
 import SearchBar from '../components/SearchBar'
 
@@ -99,6 +100,64 @@ const styles = {
     textAlign: 'center',
     marginTop: '32px',
   },
+  updatesList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  },
+  updateRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '14px',
+    background: 'white',
+    border: '1px solid #e2e8f0',
+    borderRadius: '10px',
+    padding: '14px 18px',
+    transition: 'all 0.2s',
+    textDecoration: 'none',
+    color: 'inherit',
+  },
+  updateBadgeNew: {
+    padding: '3px 10px',
+    borderRadius: '100px',
+    fontSize: '0.7rem',
+    fontWeight: 700,
+    background: '#16a34a',
+    color: 'white',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+  },
+  updateBadgeUpdated: {
+    padding: '3px 10px',
+    borderRadius: '100px',
+    fontSize: '0.7rem',
+    fontWeight: 700,
+    background: '#dbeafe',
+    color: '#1d4ed8',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+  },
+  updateBadgeClosed: {
+    padding: '3px 10px',
+    borderRadius: '100px',
+    fontSize: '0.7rem',
+    fontWeight: 700,
+    background: '#fee2e2',
+    color: '#b91c1c',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+  },
+  updateName: {
+    flex: 1,
+    fontWeight: 600,
+    color: '#0f4c81',
+    fontSize: '0.95rem',
+  },
+  updateTime: {
+    fontSize: '0.8rem',
+    color: '#64748b',
+    whiteSpace: 'nowrap',
+  },
 }
 
 const ICONS = {
@@ -116,7 +175,9 @@ function Home() {
   const navigate = useNavigate()
   const [schemes, setSchemes] = useState([])
   const [categories, setCategories] = useState([])
+  const [updates, setUpdates] = useState([])
   const [totalSchemes, setTotalSchemes] = useState(0)
+  const [totalStates, setTotalStates] = useState(0)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -129,6 +190,13 @@ function Home() {
         setSchemes(schemesRes.schemes)
         setTotalSchemes(schemesRes.total)
         setCategories(catsRes)
+        // Stats are an enhancement — a failure must not blank the hero.
+        getStats()
+          .then((s) => {
+            setTotalSchemes(s.total_schemes)
+            setTotalStates(s.total_states)
+          })
+          .catch((err) => console.error('Failed to load stats:', err))
       } catch (err) {
         console.error('Failed to load home data:', err)
       } finally {
@@ -136,6 +204,12 @@ function Home() {
       }
     }
     load()
+  }, [])
+
+  useEffect(() => {
+    getUpdates({ limit: 5 })
+      .then((res) => setUpdates(res.updates || []))
+      .catch(() => setUpdates([]))
   }, [])
 
   const handleSearch = (query) => {
@@ -165,10 +239,8 @@ function Home() {
               <div style={styles.statLabel}>Categories</div>
             </div>
             <div style={styles.stat}>
-              <div style={styles.statNum}>
-                {categories.reduce((sum, c) => sum + (c.scheme_count || 0), 0) > 0 ? '2' : '0'}
-              </div>
-              <div style={styles.statLabel}>States</div>
+              <div style={styles.statNum}>{totalStates}</div>
+              <div style={styles.statLabel}>States / UTs</div>
             </div>
           </div>
         </div>
@@ -199,6 +271,53 @@ function Home() {
           ))}
         </div>
       </div>
+
+      {updates.length > 0 && (
+        <div style={{ ...styles.section, background: 'linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%)', padding: '40px 24px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+              <div>
+                <h2 style={styles.sectionTitle}>🔄 What's New</h2>
+                <p style={styles.sectionSub}>Live changes detected from government portals</p>
+              </div>
+              <Link to="/schemes?sort=recently_updated" className="btn btn-outline" style={{ padding: '8px 16px', fontSize: '0.85rem' }}>
+                Recently Updated →
+              </Link>
+            </div>
+            <div style={styles.updatesList}>
+              {updates.map((u) => {
+                const badge =
+                  u.change_type === 'NEW' ? (
+                    <span style={styles.updateBadgeNew}>NEW</span>
+                  ) : u.change_type === 'CLOSED' ? (
+                    <span style={styles.updateBadgeClosed}>CLOSED</span>
+                  ) : (
+                    <span style={styles.updateBadgeUpdated}>UPDATED</span>
+                  )
+                return (
+                  <Link
+                    key={`${u.scheme?.id || 'scheme'}-${u.detected_at || 'time'}`}
+                    to={`/schemes/${u.scheme?.id}`}
+                    style={styles.updateRow}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)'
+                      e.currentTarget.style.transform = 'translateX(3px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = 'none'
+                      e.currentTarget.style.transform = 'translateX(0)'
+                    }}
+                  >
+                    {badge}
+                    <span style={styles.updateName}>{u.scheme?.name || 'Scheme'}</span>
+                    <span style={styles.updateTime}>{timeAgo(u.detected_at)}</span>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div style={{ ...styles.section, background: '#f1f5f9', padding: '40px 24px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
