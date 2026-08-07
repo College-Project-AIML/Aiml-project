@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { getSchemes, getCategories, getUpdates } from '../api/api'
+import { getSchemes, getCategories, getStats, getUpdates } from '../api/api'
 import { timeAgo } from '../utils'
 import SchemeCard from '../components/SchemeCard'
 import SearchBar from '../components/SearchBar'
@@ -177,6 +177,7 @@ function Home() {
   const [categories, setCategories] = useState([])
   const [updates, setUpdates] = useState([])
   const [totalSchemes, setTotalSchemes] = useState(0)
+  const [totalStates, setTotalStates] = useState(0)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -189,6 +190,13 @@ function Home() {
         setSchemes(schemesRes.schemes)
         setTotalSchemes(schemesRes.total)
         setCategories(catsRes)
+        // Stats are an enhancement — a failure must not blank the hero.
+        getStats()
+          .then((s) => {
+            setTotalSchemes(s.total_schemes)
+            setTotalStates(s.total_states)
+          })
+          .catch((err) => console.error('Failed to load stats:', err))
       } catch (err) {
         console.error('Failed to load home data:', err)
       } finally {
@@ -231,10 +239,8 @@ function Home() {
               <div style={styles.statLabel}>Categories</div>
             </div>
             <div style={styles.stat}>
-              <div style={styles.statNum}>
-                {categories.reduce((sum, c) => sum + (c.scheme_count || 0), 0) > 0 ? '2' : '0'}
-              </div>
-              <div style={styles.statLabel}>States</div>
+              <div style={styles.statNum}>{totalStates}</div>
+              <div style={styles.statLabel}>States / UTs</div>
             </div>
           </div>
         </div>

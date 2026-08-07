@@ -299,6 +299,87 @@ This repository is designed for:
 
 ---
 
+## How to Run the Project (Step-by-Step)
+
+### Option 1: Docker Compose (Full Stack - Recommended)
+
+Run all services (PostgreSQL, FastAPI Backend, React Frontend) in containerized environment:
+
+#### 1. Setup Environment Variables
+```bash
+cp .env.example .env
+```
+
+#### 2. Start Containers
+```bash
+docker compose up --build -d
+```
+
+#### 3. Access Services
+- **Frontend App**: [http://localhost:3000](http://localhost:3000)
+- **FastAPI Documentation**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **PostgreSQL Database**: `localhost:5433` (`aiml_core` database)
+
+#### 4. Stop Containers
+```bash
+docker compose down
+```
+
+---
+
+### Option 2: Local Development Mode
+
+Run database in Docker container while executing Backend API and Frontend natively for development.
+
+> **Note on Python Version:** Requires **Python 3.10 – 3.13**. (Python 3.14+ contains breaking C-API changes for Rust/PyO3 wheels like `pydantic-core`. Use Option 1 Docker Compose if running on Python 3.14).
+
+#### Step 1: Clone Repository & Create Environment File
+```bash
+cp .env.example .env
+```
+
+#### Step 2: Start PostgreSQL Database Container
+```bash
+docker compose up -d postgres
+```
+
+#### Step 3: Setup Python Virtual Environment & Install Backend Dependencies
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+#### Step 4: Run Database Migrations & Seed Data
+```bash
+# Stamp Alembic migration baseline
+venv/bin/alembic stamp head
+
+# Seed initial government schemes dataset
+venv/bin/python -m scripts.seed_schemes
+```
+
+#### Step 5: Start FastAPI Backend API Server
+```bash
+venv/bin/python -m uvicorn services.api.app:app --reload --port 8000
+```
+Backend API will be live at [http://localhost:8000](http://localhost:8000) (Interactive Swagger Docs: [http://localhost:8000/docs](http://localhost:8000/docs)).
+
+#### Step 6: Start Frontend Development Server (New Terminal)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Frontend Web Application will be live at [http://localhost:5173](http://localhost:5173) (or [http://localhost:3000](http://localhost:3000)).
+
+#### Optional: Run Scheme Live Sync Pipeline Manually
+```bash
+venv/bin/python -m ingestion.pipelines.live_sync_pipeline
+```
+
+---
+
 ## Near-Real-Time Scheme Updates (docs/next.md)
 
 The project includes a live-sync engine that polls government portals, detects

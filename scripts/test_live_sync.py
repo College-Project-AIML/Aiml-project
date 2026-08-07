@@ -118,28 +118,104 @@ def test_myscheme_parser():
     print("\n[5] MyScheme parser smoke test")
     from ingestion.sources.myscheme.parser import parse_schemes
 
-    payload = {
+    # Real API shape: search hits carry the payload under `fields`.
+    payload = [
+        {
+            "id": "abc123",
+            "fields": {
+                "schemeName": "Test Central Scheme",
+                "nodalMinistryName": "Ministry of Education",
+                "schemeCategory": ["Education & Learning"],
+                "briefDescription": "Helps students.",
+                "beneficiaryState": ["All"],
+                "slug": "test-central-scheme",
+                "tags": ["merit", "scholarship"],
+                "level": "Central",
+                "schemeCloseDate": "2026-12-31",
+            },
+        },
+        {
+            "id": "def456",
+            "fields": {
+                "schemeName": "Karnataka State Loan Scheme",
+                "schemeCategory": ["Business & Entrepreneurship"],
+                "beneficiaryState": ["Karnataka"],
+                "slug": "ka-state-loan",
+                "level": "State",
+            },
+        },
+    ]
+    records = parse_schemes(payload)
+    check("parsed two records", len(records) == 2)
+    rec = records[0]
+    check("scheme_name mapped", rec["scheme_name"] == "Test Central Scheme")
+    check("slug → link", rec["link"] == "https://www.myscheme.gov.in/schemes/test-central-scheme")
+    check("beneficiaryState All → state india", rec["state"] == "india")
+    check("category mapped Education → scholarship", rec["category"] == "scholarship")
+    check("tags list kept", rec["tags"] == ["merit", "scholarship"])
+    check("extras carried (deadline/level)", rec["raw_extras"]["deadline"] == "2026-12-31" and rec["raw_extras"]["level"] == "Central")
+    check("ministry mapped", rec["ministry"] == "Ministry of Education")
+    rec2 = records[1]
+    check("state name kept lowercase", rec2["state"] == "karnataka")
+    check("category mapped Business → loan", rec2["category"] == "loan")
+
+    # Legacy flat shape must keep working (backward compat).
+    legacy = {
         "data": [
             {
-                "schemeName": "Test Central Scheme",
-                "ministryName": "Ministry of Education",
+                "schemeName": "Legacy Flat Scheme",
+                "ministryName": "Ministry of Finance",
                 "categoryName": "scholarship",
                 "objective": "Helps students.",
                 "eligibilityCriteria": "Income below limit.",
-                "slug": "test-central-scheme",
+                "slug": "legacy-flat-scheme",
                 "keywords": "merit, scholarship",
             }
         ],
         "hasMore": False,
     }
-    records = parse_schemes(payload)
-    check("parsed one record", len(records) == 1)
-    rec = records[0]
-    check("scheme_name mapped", rec["scheme_name"] == "Test Central Scheme")
-    check("slug → link", rec["link"] == "https://www.myscheme.gov.in/schemes/test-central-scheme")
-    check("state defaults to india", rec["state"] == "india")
-    check("tags parsed from string", rec["tags"] == ["merit", "scholarship"])
-    check("extras carried", "eligibilityCriteria" not in rec and "raw_extras" in rec)
+    legacy_records = parse_schemes(legacy)
+    check("legacy flat shape parsed", len(legacy_records) == 1)
+    check("legacy tags parsed from string", legacy_records[0]["tags"] == ["merit", "scholarship"])
+
+
+def test_dedup_scales():
+    print("\n[7] DedupEngine LSH (catalog-scale)")
+    import time
+
+    from ingestion.dedup.dedup_engine import DedupEngine
+
+    # 2,000 synthetic distinct names with diverse words (low pairwise trigram
+    # overlap), so only the appended genuine duplicates should collapse.
+    nouns = ["Scholarship", "Pension", "Yojana", "Grant", "Fellowship", "Loan", "Subsidy", "Aid", "Benefit", "Support"]
+    adjectives = ["National", "State", "Rural", "Urban", "Central", "Special", "Merit", "Financial", "Social", "Technical"]
+    recipients = ["Students", "Farmers", "Women", "Artisans", "Teachers", "Tribal", "Minorities", "Disabled", "Veterans", "Youth"]
+
+    def _name(i):
+        return f"{adjectives[i % 10]} {recipients[(i // 10) % 10]} {nouns[(i // 100) % 10]} Scheme {i:04d}"
+
+    records = [{"name": _name(i), "scheme_id": f"s{i}", "link": f"https://example.gov.in/s{i}"} for i in range(2000)]
+    # Two genuine near-duplicates that must be caught (same name + same link,
+    # new ids) — an exact re-fetch of the same scheme.
+    records.append({"name": records[0]["name"], "scheme_id": "dup0", "link": records[0]["link"]})
+    records.append({"name": records[1]["name"], "scheme_id": "dup1", "link": records[1]["link"]})
+    # A same-name DIFFERENT-link record must NOT be collapsed (distinct scheme).
+    records.append({"name": records[0]["name"], "scheme_id": "other", "link": "https://example.gov.in/other"})
+
+    start = time.monotonic()
+    out = DedupEngine().deduplicate(records)
+    elapsed = time.monotonic() - start
+
+    check("same-name same-link collapsed (2003 → 2001)", len(out) == 2001, detail=f"(got {len(out)})")
+    check(
+        "same-name different-link kept",
+        any(r["scheme_id"] == "other" for r in out),
+    )
+    check(
+        "LSH dedup fast (< 15s for 2k records)",
+        elapsed < 15,
+        detail=f"(took {elapsed:.1f}s)",
+    )
 
 
 def test_ssp_parser():
@@ -172,6 +248,7 @@ if __name__ == "__main__":
     test_two_run_scenario()
     test_myscheme_parser()
     test_ssp_parser()
+    test_dedup_scales()
 
     print(f"\n{'=' * 40}\nResult: {PASS} passed, {FAIL} failed")
     sys.exit(1 if FAIL else 0)

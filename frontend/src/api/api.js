@@ -30,6 +30,11 @@ export async function getCategories() {
   return res.data
 }
 
+export async function getStats() {
+  const res = await API.get('/stats')
+  return res.data
+}
+
 export async function checkEligibility(profile) {
   const res = await API.post('/eligibility-check', profile)
   return res.data

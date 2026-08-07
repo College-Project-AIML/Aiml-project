@@ -34,10 +34,85 @@ CATEGORY_MAP = {
 }
 
 STATE_MAP = {
-    "karnataka": "KA",
+    # All-India markers
     "india": "IN",
-    "national": "IN"
+    "national": "IN",
+    "all india": "IN",
+    "all-india": "IN",
+    "pan india": "IN",
+    "pan-india": "IN",
+    # States
+    "andhra pradesh": "AP",
+    "arunachal pradesh": "AR",
+    "assam": "AS",
+    "bihar": "BR",
+    "chhattisgarh": "CG",
+    "goa": "GA",
+    "gujarat": "GJ",
+    "haryana": "HR",
+    "himachal pradesh": "HP",
+    "jharkhand": "JH",
+    "karnataka": "KA",
+    "kerala": "KL",
+    "madhya pradesh": "MP",
+    "maharashtra": "MH",
+    "manipur": "MN",
+    "meghalaya": "ML",
+    "mizoram": "MZ",
+    "nagaland": "NL",
+    "odisha": "OD",
+    "orissa": "OD",
+    "punjab": "PB",
+    "rajasthan": "RJ",
+    "sikkim": "SK",
+    "tamil nadu": "TN",
+    "tamilnadu": "TN",
+    "telangana": "TG",
+    "tripura": "TR",
+    "uttar pradesh": "UP",
+    "uttarakhand": "UK",
+    "west bengal": "WB",
+    # Union territories
+    "andaman and nicobar islands": "AN",
+    "andaman and nicobar": "AN",
+    "chandigarh": "CH",
+    "dadra & nagar haveli and daman & diu": "DN",
+    "dadra and nagar haveli and daman and diu": "DN",
+    "dadra and nagar haveli": "DN",
+    "daman and diu": "DD",
+    "delhi": "DL",
+    "nct of delhi": "DL",
+    "jammu and kashmir": "JK",
+    "ladakh": "LA",
+    "lakshadweep": "LD",
+    "puducherry": "PY",
+    "pondicherry": "PY",
 }
+
+# Fragments that identify a state regardless of surrounding words, so names
+# like "The Andaman & Nicobar Islands Disability Allowance Scheme" still match.
+STATE_SUBSTRING = [
+    ("andaman", "AN"),
+    ("arunachal", "AR"),
+    ("chhattisgarh", "CG"),
+    ("himachal", "HP"),
+    ("madhya pradesh", "MP"),
+    ("uttar pradesh", "UP"),
+    ("uttarakhand", "UK"),
+    ("tamil nadu", "TN"),
+    ("tamilnadu", "TN"),
+    ("west bengal", "WB"),
+    ("jammu", "JK"),
+    ("kashmir", "JK"),
+    ("dadra", "DN"),
+    ("nagar haveli", "DN"),
+    ("daman", "DD"),
+    ("diu", "DD"),
+    ("lakshadweep", "LD"),
+    ("puducherry", "PY"),
+    ("pondicherry", "PY"),
+    ("chandigarh", "CH"),
+]
 
 MINISTRY_NORMALIZATION = {
     "govt of india": "Government of India",
@@ -103,8 +178,22 @@ class SchemeNormalizer:
     def _normalize_state(self, state):
         if not state:
             return None
-        key = state.lower().strip()
-        return STATE_MAP.get(key, state.upper())
+        key = re.sub(r"\s+", " ", state.lower()).strip()
+        if key in STATE_MAP:
+            return STATE_MAP[key]
+        # Try fragment matching for names wrapped in longer scheme titles.
+        for fragment, code in STATE_SUBSTRING:
+            if fragment in key:
+                return code
+        # Explicit state names should never fall through as a long raw string;
+        # the validator requires 2–3 char codes. Fall back to all-India and
+        # log a warning rather than fail validation.
+        import logging
+
+        logging.getLogger(__name__).warning(
+            "Unrecognized state %r mapped to IN", state
+        )
+        return "IN"
 
     def _normalize_ministry(self, ministry):
         if not ministry:

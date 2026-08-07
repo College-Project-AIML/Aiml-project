@@ -11,16 +11,44 @@ Purpose:
 This is the primary persistent storage loader for the ingestion pipeline.
 """
 
+import logging
 import os
+import socket
 import uuid
 import hashlib
 import psycopg2
 from dotenv import load_dotenv
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 load_dotenv()
 
-DB_URL = os.getenv("DATABASE_URL")
+logger = logging.getLogger(__name__)
+
+
+def resolve_database_url() -> Optional[str]:
+    """Return a usable DATABASE_URL, applying the host-side Docker fallback.
+
+    Inside docker-compose the Postgres hostname is ``postgres`` (resolves only
+    on the compose network). From the host machine that name does not resolve,
+    but the container exposes the DB on ``localhost:5433`` — the same fallback
+    ``services/api/db.py`` applies. This keeps manual pipeline runs working
+    from the host without changing .env.
+    """
+    url = os.getenv("DATABASE_URL")
+    if not url:
+        return None
+    if "@postgres:5432/" in url:
+        try:
+            socket.gethostbyname("postgres")
+        except socket.gaierror:
+            url = url.replace("@postgres:5432/", "@localhost:5433/")
+            logger.info(
+                "postgres host not reachable from this machine — using %s", url
+            )
+    return url
+
+
+DB_URL = resolve_database_url()
 if not DB_URL:
     raise ValueError('DATABASE_URL is not set')
 

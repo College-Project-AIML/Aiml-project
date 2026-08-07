@@ -263,11 +263,19 @@ class LiveSyncPipeline:
     # ---------------------------------------------------------------- helpers
 
     def _connect(self):
+        # Check the env var before importing PostgresLoader — its module-level
+        # DB_URL init raises when DATABASE_URL is unset, so this keeps the
+        # report-only fallback below reachable.
         if not os.getenv("DATABASE_URL"):
+            return None
+        from ingestion.loaders.postgres_loader import resolve_database_url
+
+        url = resolve_database_url()
+        if not url:
             return None
         import psycopg2
 
-        return psycopg2.connect(os.getenv("DATABASE_URL"))
+        return psycopg2.connect(url)
 
     def _write_report(self, report: dict) -> str:
         os.makedirs(SYNC_LOG_DIR, exist_ok=True)
