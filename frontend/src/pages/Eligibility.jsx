@@ -274,7 +274,7 @@ function Eligibility() {
               <>
                 <div style={styles.resultHeader}>
                   <div style={styles.resultTitle}>
-                    🎉 {results.total_matches} Matching Schemes Found
+                    {results.total_matches} Matching Schemes Found
                   </div>
                   <div style={styles.resultSub}>
                     Based on your profile, you may be eligible for these schemes
