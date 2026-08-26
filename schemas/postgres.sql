@@ -104,6 +104,16 @@ CREATE TABLE IF NOT EXISTS scheme_updates (
 CREATE INDEX IF NOT EXISTS idx_scheme_updates_detected ON scheme_updates(detected_at DESC);
 CREATE INDEX IF NOT EXISTS idx_scheme_updates_scheme   ON scheme_updates(scheme_id);
 
+-- 9. FAQs (chatbot semantic search)
+CREATE TABLE IF NOT EXISTS faqs (
+    id         SERIAL PRIMARY KEY,
+    question   TEXT NOT NULL,
+    answer     TEXT NOT NULL,
+    scheme_id  UUID REFERENCES schemes(id) ON DELETE SET NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_faqs_scheme_id ON faqs(scheme_id);
+
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_schemes_name ON schemes(name);
 CREATE INDEX IF NOT EXISTS idx_schemes_category ON schemes(category_id);

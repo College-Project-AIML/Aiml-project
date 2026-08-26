@@ -200,7 +200,7 @@ function Eligibility() {
                   <option value="">Any</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
-                  <option value="transgender">Transgender</option>
+                  <option value="others">Others</option>
                 </select>
               </div>
               <div style={styles.field}>
@@ -247,7 +247,7 @@ function Eligibility() {
               style={{ width: '100%', padding: '12px', fontSize: '1rem' }}
               disabled={loading}
             >
-              {loading ? 'Checking...' : '🎯 Check Eligibility'}
+              {loading ? 'Checking...' : 'Check Eligibility'}
             </button>
 
             <div style={styles.privacy}>

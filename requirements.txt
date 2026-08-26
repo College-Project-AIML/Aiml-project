@@ -17,3 +17,7 @@ alembic
 email-validator
 python-jose[cryptography]
 passlib[bcrypt]
+
+# AI / Chatbot
+sentence-transformers>=2.7.0
+numpy>=1.26.0

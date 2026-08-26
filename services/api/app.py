@@ -58,6 +58,8 @@ app.include_router(updates_router, prefix="/api/v1")
 app.include_router(stats_router, prefix="/api/v1")
 from services.api.routes.auth import router as auth_router
 app.include_router(auth_router, prefix='/api/v1')
+from services.api.routes.chatbot import router as chatbot_router
+app.include_router(chatbot_router, prefix="/api/v1")
 
 
 @app.get("/")

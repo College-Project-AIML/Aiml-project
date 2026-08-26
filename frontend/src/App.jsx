@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Schemes from './pages/Schemes'
 import SchemeDetail from './pages/SchemeDetail'
 import Eligibility from './pages/Eligibility'
+import ChatbotWidget from './components/ChatbotWidget'
 
 function App() {
   const location = useLocation()
@@ -19,7 +20,7 @@ function App() {
         <div className="navbar-inner">
           <Link to="/" className="navbar-brand">
             <span className="brand-icon">🏛</span>
-            GovSchemes
+            Suvidha
           </Link>
           <div className="navbar-links">
             <Link to="/" className={isActive('/')}>Home</Link>
@@ -41,6 +42,7 @@ function App() {
       <footer className="footer">
         Aiml-project — Government Schemes Discovery Platform · Built for learning & portfolio
       </footer>
+      <ChatbotWidget />
     </>
   )
 }
