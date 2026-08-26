@@ -103,7 +103,7 @@ function Schemes() {
   const limit = 12
 
   useEffect(() => {
-    getCategories().then(setCategories).catch(console.error)
+    getCategories().then(cats => setCategories(cats.filter(c => c.name !== 'Training Program'))).catch(console.error)
   }, [])
 
   useEffect(() => {

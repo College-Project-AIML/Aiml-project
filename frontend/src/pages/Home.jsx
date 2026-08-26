@@ -189,7 +189,7 @@ function Home() {
         ])
         setSchemes(schemesRes.schemes)
         setTotalSchemes(schemesRes.total)
-        setCategories(catsRes)
+        setCategories(catsRes.filter(c => c.name !== 'Training Program'))
         // Stats are an enhancement — a failure must not blank the hero.
         getStats()
           .then((s) => {
