@@ -23,7 +23,7 @@ const styles = {
     width: '100%',
   },
   heroInner: {
-    maxWidth: '640px',
+    maxWidth: '760px',
     width: '90%',
     margin: '0 auto',
   },
@@ -38,14 +38,15 @@ const styles = {
     fontFamily: 'system-ui, -apple-system, sans-serif',
   },
   heroTitle: {
-    fontSize: 'clamp(28px, 4vw, 40px)',
+    fontSize: 'clamp(30px, 5vw, 47px)',
     fontWeight: 400,
-    marginBottom: '16px',
-    lineHeight: 1.25,
+    lineHeight: 1.2,
     color: '#1B2A4A',
     fontFamily: "Georgia, 'Lora', 'Playfair Display', serif",
-    maxWidth: '430px',
+    maxWidth: '760px',
     margin: '0 auto 16px auto',
+    whiteSpace: 'nowrap',
+    textAlign: 'center',
   },
   heroSub: {
     color: '#5B5748',
