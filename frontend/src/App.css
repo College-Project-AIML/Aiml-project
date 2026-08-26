@@ -75,13 +75,12 @@ a:hover {
 
 /* Navigation */
 .navbar {
-  background: var(--primary-dark);
-  color: white;
-  padding: 0 24px;
+  background: #1B2A4A;
+  color: #FBF8F1;
+  padding: 0 40px;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow-md);
+  z-index: 1000;
 }
 
 .navbar-inner {
@@ -97,47 +96,78 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 600;
-  font-size: 1.4rem;
-  color: white;
-  letter-spacing: -0.01em;
-  font-family: 'Eczar', serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FBF8F1;
+  font-family: 'Eczar', Georgia, 'Lora', 'Playfair Display', serif;
 }
 
 .navbar-brand:hover {
-  color: white;
+  color: #FBF8F1;
   opacity: 0.9;
 }
 
 .navbar-brand .brand-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--accent);
-  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  background: #D85A30;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  color: #FBF8F1;
+}
+
+.navbar-brand .brand-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .navbar-links {
   display: flex;
-  gap: 8px;
+  gap: 0;
 }
 
 .navbar-links a {
-  color: rgba(255, 255, 255, 0.8);
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s;
+  color: #B5B9C4;
+  padding: 0 16px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid transparent;
+  font-size: 13px;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  text-decoration: none;
+  transition: color 0.1s, border-bottom 0.1s;
 }
 
-.navbar-links a:hover,
+.navbar-links a.active,
+.navbar-links a:hover {
+  color: #FBF8F1;
+}
+
 .navbar-links a.active {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid #D85A30;
+}
+
+.navbar-signin {
+  background: transparent;
+  border: 1px solid #4A5A7A;
+  color: #FBF8F1;
+  font-size: 12px;
+  padding: 7px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  transition: background 0.2s;
+}
+
+.navbar-signin:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Page layout */

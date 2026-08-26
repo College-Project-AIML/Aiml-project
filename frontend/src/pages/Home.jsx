@@ -277,7 +277,7 @@ function Home() {
             Find the scheme you already qualify for
           </h1>
           <p style={styles.heroSub}>
-            Verified scholarship, subsidy, and welfare data pulled straight from central and state government sources.
+            Verified scholarship, subsidy, and welfare information from authorized central and state government sources.
           </p>
 
           <div style={styles.searchBarContainer}>
