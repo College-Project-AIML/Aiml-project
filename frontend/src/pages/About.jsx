@@ -14,7 +14,7 @@ const styles = {
     },
     kicker: {
         color: '#A9642B',
-        fontSize: '11.5px',
+        fontSize: '13px',
         fontWeight: 'normal',
         letterSpacing: '0.12em',
         textTransform: 'uppercase',
@@ -23,7 +23,7 @@ const styles = {
         fontFamily: 'system-ui, -apple-system, sans-serif',
     },
     heroTitle: {
-        fontSize: 'clamp(28px, 4vw, 40px)',
+        fontSize: '38px',
         fontWeight: 400,
         marginBottom: '16px',
         lineHeight: 1.25,
@@ -34,8 +34,8 @@ const styles = {
     },
     heroSub: {
         color: '#5B5748',
-        fontSize: 'clamp(14px, 2.5vw, 15px)',
-        lineHeight: 1.5,
+        fontSize: '17px',
+        lineHeight: 1.7,
         marginBottom: '28px',
         maxWidth: '540px',
         margin: '0 auto',
@@ -51,7 +51,7 @@ const styles = {
         margin: '0 auto',
     },
     h2: {
-        fontSize: '22px',
+        fontSize: '26px',
         fontWeight: 700,
         color: '#1B2A4A',
         marginBottom: '16px',
@@ -59,8 +59,8 @@ const styles = {
     },
     p: {
         color: '#5B5748',
-        fontSize: '15px',
-        lineHeight: 1.6,
+        fontSize: '16px',
+        lineHeight: 1.7,
         fontFamily: 'system-ui, -apple-system, sans-serif',
         marginBottom: '16px',
     },
@@ -100,7 +100,7 @@ const styles = {
     cardText: {
         fontSize: '14px',
         color: '#5B5748',
-        lineHeight: 1.5,
+        lineHeight: 1.7,
         fontFamily: 'system-ui, -apple-system, sans-serif',
     },
     stepsGrid: {
@@ -166,7 +166,7 @@ export default function About() {
                         Government schemes shouldn't be hard to find
                     </h1>
                     <p style={styles.heroSub}>
-                        Our mission is to surface verified scheme data so people don't miss out on benefits they qualify for.
+                        Our mission is to surface verified government schemes so that no one misses out on the vital benefits and financial support they are rightfully entitled to.
                     </p>
                 </div>
             </div>
@@ -175,7 +175,7 @@ export default function About() {
                 <div style={styles.sectionInner}>
                     <h2 style={styles.h2}>What Suvidha Does</h2>
                     <p style={styles.p}>
-                        Suvidha aggregates scholarship, subsidy, welfare, loan, and grant data from central and Karnataka state government sources into one searchable place.
+                        Suvidha seamlessly brings together essential scholarships, subsidies, and welfare grants from central and Karnataka state governments into a single, easily searchable platform.
                     </p>
 
                     <div style={{ height: '40px' }} />
