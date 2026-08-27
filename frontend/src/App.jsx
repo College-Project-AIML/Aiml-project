@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Schemes from './pages/Schemes'
@@ -8,6 +9,12 @@ import ChatbotWidget from './components/ChatbotWidget'
 
 function App() {
   const location = useLocation()
+  const [theme, setTheme] = useState(() => localStorage.getItem('suvidha-theme') || 'light')
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('suvidha-theme', theme)
+  }, [theme])
 
   const isActive = (path) => {
     if (path === '/' && location.pathname === '/') return 'active'
@@ -33,6 +40,16 @@ function App() {
               <Link to="/about" className={isActive('/about')}>About</Link>
             </div>
             <button className="navbar-signin">Sign in</button>
+            <button
+              className="theme-toggle"
+              type="button"
+              onClick={() => setTheme((current) => current === 'light' ? 'dark' : 'light')}
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            >
+              <span aria-hidden="true">{theme === 'light' ? '☾' : '☀'}</span>
+              <span>{theme === 'light' ? 'Dark' : 'Light'}</span>
+            </button>
           </div>
         </div>
       </nav>

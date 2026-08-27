@@ -39,6 +39,30 @@
   --tint-rose: #FFF1F2;
 }
 
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --primary: #93c5fd;
+  --primary-light: #bfdbfe;
+  --primary-dark: #07111f;
+  --accent: #f97345;
+  --accent-light: #fb8b66;
+  --bg: #0f172a;
+  --bg-card: #172033;
+  --text: #e5edf7;
+  --text-secondary: #a9b8cc;
+  --text-light: #8292aa;
+  --border: #344258;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --tint-saffron: #3a241d;
+  --tint-green: #143126;
+  --tint-navy: #202c40;
+  --tint-blue: #163249;
+  --tint-purple: #322347;
+  --tint-yellow: #3a3018;
+  --tint-rose: #3d2029;
+}
+
 body {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg);
@@ -170,6 +194,24 @@ a:hover {
   background: rgba(255, 255, 255, 0.05);
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #4A5A7A;
+  color: #FBF8F1;
+  font-size: 12px;
+  padding: 7px 11px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
 /* Page layout */
 .page {
   min-height: calc(100vh - 64px);
@@ -291,7 +333,7 @@ select {
   padding: 10px 14px;
   border: 1.5px solid var(--border);
   border-radius: 6px;
-  background: white;
+  background: var(--bg-card);
   color: var(--text);
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
@@ -379,4 +421,43 @@ label {
   padding: 20px;
   font-size: 0.85rem;
   margin-top: auto;
+}
+
+:root[data-theme='dark'] .page [style*="background: white"],
+:root[data-theme='dark'] .page [style*="background: rgb(255, 255, 255)"] {
+  background: var(--bg-card) !important;
+}
+
+:root[data-theme='dark'] .page [style*="color: rgb(15, 23, 42)"],
+:root[data-theme='dark'] .page [style*="color: rgb(30, 41, 59)"],
+:root[data-theme='dark'] .page [style*="color: rgb(51, 65, 85)"] {
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .page [style*="color: rgb(100, 116, 139)"],
+:root[data-theme='dark'] .page [style*="color: rgb(71, 85, 105)"] {
+  color: var(--text-secondary) !important;
+}
+
+:root[data-theme='dark'] .chatbot-panel,
+:root[data-theme='dark'] .chatbot-input-row,
+:root[data-theme='dark'] .chatbot-input,
+:root[data-theme='dark'] .chatbot-suggestion-btn {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+:root[data-theme='dark'] .chatbot-msg.bot .chatbot-msg-bubble,
+:root[data-theme='dark'] .chatbot-typing {
+  background: var(--tint-navy);
+  color: var(--text);
+}
+
+@media (max-width: 760px) {
+  .navbar { padding: 0 16px; }
+  .navbar-right { gap: 8px; }
+  .navbar-links a { padding-left: 7px; padding-right: 7px; }
+  .theme-toggle span:last-child { display: none; }
+  .navbar-signin { display: none; }
 }

@@ -81,11 +81,16 @@ def _top_suggestions(cur, n: int = 3) -> list:
 
 @router.get("/chatbot/faqs")
 def list_faqs():
-    """Return all FAQ chip labels for the frontend widget."""
+    """Return FAQ questions and answers for the frontend accordion."""
     with get_db() as cur:
-        cur.execute("SELECT id, question FROM faqs ORDER BY id")
+        cur.execute("SELECT id, question, answer FROM faqs ORDER BY id")
         rows = cur.fetchall()
-    return {"faqs": [{"id": r["id"], "question": r["question"]} for r in rows]}
+    return {
+        "faqs": [
+            {"id": r["id"], "question": r["question"], "answer": r["answer"]}
+            for r in rows
+        ]
+    }
 
 
 @router.post("/chatbot/query", response_model=QueryResponse)

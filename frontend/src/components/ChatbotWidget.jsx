@@ -68,6 +68,7 @@ function UserMessage({ content }) {
 export default function ChatbotWidget() {
     const [open, setOpen] = useState(false)
     const [faqs, setFaqs] = useState([])
+    const [expandedFaq, setExpandedFaq] = useState(null)
     const [messages, setMessages] = useState([])
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
@@ -263,15 +264,20 @@ export default function ChatbotWidget() {
                             <div className="chatbot-faq-label">Common questions</div>
                             <div className="chatbot-chips" style={{ marginTop: 8, marginBottom: 2 }}>
                                 {faqs.slice(0, 8).map((faq) => (
+                                  <div className="chatbot-faq-item" key={faq.id}>
                                     <button
-                                        key={faq.id}
-                                        className="chatbot-chip"
-                                        onClick={() => sendQuery(faq.question)}
+                                        className="chatbot-chip chatbot-faq-question"
+                                        onClick={() => setExpandedFaq((current) => current === faq.id ? null : faq.id)}
+                                        aria-expanded={expandedFaq === faq.id}
                                     >
                                         {faq.question.length > 55
                                             ? faq.question.slice(0, 52) + '…'
                                             : faq.question}
                                     </button>
+                                    {expandedFaq === faq.id && (
+                                        <div className="chatbot-faq-answer">{faq.answer}</div>
+                                    )}
+                                  </div>
                                 ))}
                             </div>
                         </div>

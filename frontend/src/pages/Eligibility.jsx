@@ -3,6 +3,23 @@ import { Link } from 'react-router-dom'
 import { checkEligibility } from '../api/api'
 import SchemeCard from '../components/SchemeCard'
 
+const INDIA_REGIONS = [
+  ['AN', 'Andaman and Nicobar Islands'], ['AP', 'Andhra Pradesh'],
+  ['AR', 'Arunachal Pradesh'], ['AS', 'Assam'], ['BR', 'Bihar'],
+  ['CH', 'Chandigarh'], ['CG', 'Chhattisgarh'],
+  ['DN', 'Dadra and Nagar Haveli and Daman and Diu'], ['DL', 'Delhi'],
+  ['GA', 'Goa'], ['GJ', 'Gujarat'], ['HR', 'Haryana'],
+  ['HP', 'Himachal Pradesh'], ['JK', 'Jammu and Kashmir'],
+  ['JH', 'Jharkhand'], ['KA', 'Karnataka'], ['KL', 'Kerala'],
+  ['LA', 'Ladakh'], ['LD', 'Lakshadweep'], ['MP', 'Madhya Pradesh'],
+  ['MH', 'Maharashtra'], ['MN', 'Manipur'], ['ML', 'Meghalaya'],
+  ['MZ', 'Mizoram'], ['NL', 'Nagaland'], ['OD', 'Odisha'],
+  ['PY', 'Puducherry'], ['PB', 'Punjab'], ['RJ', 'Rajasthan'],
+  ['SK', 'Sikkim'], ['TN', 'Tamil Nadu'], ['TG', 'Telangana'],
+  ['TR', 'Tripura'], ['UP', 'Uttar Pradesh'], ['UK', 'Uttarakhand'],
+  ['WB', 'West Bengal'],
+]
+
 const styles = {
   content: {
     maxWidth: '1200px',
@@ -219,12 +236,9 @@ function Eligibility() {
               <label>State</label>
               <select name="state" value={form.state} onChange={handleChange}>
                 <option value="">Any / All India</option>
-                <option value="KA">Karnataka</option>
-                <option value="MH">Maharashtra</option>
-                <option value="TN">Tamil Nadu</option>
-                <option value="AP">Andhra Pradesh</option>
-                <option value="DL">Delhi</option>
-                <option value="UP">Uttar Pradesh</option>
+                {INDIA_REGIONS.map(([code, name]) => (
+                  <option value={code} key={code}>{name}</option>
+                ))}
               </select>
             </div>
 
