@@ -13,15 +13,17 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '6px',
-    color: 'rgba(255,255,255,0.8)',
+    color: 'rgba(255,255,255,0.65)',
     fontSize: '0.9rem',
     marginBottom: '16px',
+    transition: 'color 0.2s',
   },
   title: {
     fontSize: '2rem',
     fontWeight: 700,
     marginBottom: '12px',
     letterSpacing: '-0.02em',
+    color: '#EEEEF2',
   },
   metaRow: {
     display: 'flex',
@@ -35,32 +37,32 @@ const styles = {
   sectionTitle: {
     fontSize: '1.15rem',
     fontWeight: 700,
-    color: '#0f172a',
+    color: '#EEEEF2',
     marginBottom: '12px',
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
   },
   card: {
-    background: 'white',
-    border: '1px solid #e2e8f0',
+    background: '#141319',
+    border: '0.5px solid rgba(255,255,255,0.08)',
     borderRadius: '10px',
     padding: '24px',
-    boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.4)',
   },
   description: {
     fontSize: '1rem',
     lineHeight: 1.7,
-    color: '#334155',
+    color: '#9A988F',
   },
   eligText: {
     fontSize: '0.95rem',
     lineHeight: 1.7,
-    color: '#475569',
+    color: '#9A988F',
     padding: '16px',
-    background: '#f8fafc',
+    background: '#0F0F14',
     borderRadius: '8px',
-    border: '1px solid #e2e8f0',
+    border: '0.5px solid rgba(255,255,255,0.08)',
   },
   ruleGrid: {
     display: 'grid',
@@ -69,14 +71,14 @@ const styles = {
   },
   ruleItem: {
     padding: '14px',
-    background: '#f0f9ff',
+    background: 'rgba(96,165,250,0.07)',
     borderRadius: '8px',
-    border: '1px solid #bae6fd',
+    border: '0.5px solid rgba(96,165,250,0.18)',
   },
   ruleLabel: {
     fontSize: '0.75rem',
     fontWeight: 600,
-    color: '#64748b',
+    color: '#6B6F7E',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
     marginBottom: '4px',
@@ -84,20 +86,20 @@ const styles = {
   ruleValue: {
     fontSize: '0.95rem',
     fontWeight: 600,
-    color: '#0c4a6e',
+    color: '#93c5fd',
   },
   benefitItem: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '14px 0',
-    borderBottom: '1px solid #f1f5f9',
+    borderBottom: '1px solid rgba(255,255,255,0.06)',
   },
   benefitType: {
     fontSize: '0.8rem',
     fontWeight: 600,
-    color: '#0d9488',
-    background: '#ccfbf1',
+    color: '#5eead4',
+    background: 'rgba(45,212,191,0.1)',
     padding: '2px 8px',
     borderRadius: '4px',
     marginBottom: '4px',
@@ -105,12 +107,12 @@ const styles = {
   },
   benefitDesc: {
     fontSize: '0.9rem',
-    color: '#334155',
+    color: '#9A988F',
   },
   benefitAmount: {
     fontSize: '1.1rem',
     fontWeight: 700,
-    color: '#0f4c81',
+    color: '#EEEEF2',
     whiteSpace: 'nowrap',
   },
   docList: {
@@ -125,10 +127,11 @@ const styles = {
     alignItems: 'center',
     gap: '8px',
     padding: '10px 14px',
-    background: '#f8fafc',
+    background: '#0F0F14',
     borderRadius: '6px',
+    border: '0.5px solid rgba(255,255,255,0.07)',
     fontSize: '0.9rem',
-    color: '#334155',
+    color: '#9A988F',
   },
   tags: {
     display: 'flex',
@@ -143,31 +146,31 @@ const styles = {
     alignItems: 'start',
   },
   infoBox: {
-    background: 'white',
-    border: '1px solid #e2e8f0',
+    background: '#141319',
+    border: '0.5px solid rgba(255,255,255,0.08)',
     borderRadius: '10px',
     padding: '20px',
-    boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.4)',
   },
   infoRow: {
     display: 'flex',
     justifyContent: 'space-between',
     padding: '10px 0',
-    borderBottom: '1px solid #f1f5f9',
+    borderBottom: '1px solid rgba(255,255,255,0.06)',
     fontSize: '0.9rem',
   },
   infoLabel: {
-    color: '#64748b',
+    color: '#6B6F7E',
     fontWeight: 500,
   },
   infoValue: {
-    color: '#1e293b',
+    color: '#EEEEF2',
     fontWeight: 600,
     textAlign: 'right',
   },
   changePanel: {
-    background: 'linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%)',
-    border: '1px solid #dbeafe',
+    background: 'rgba(96,165,250,0.05)',
+    border: '0.5px solid rgba(96,165,250,0.18)',
     borderRadius: '10px',
     padding: '20px 24px',
   },
@@ -184,12 +187,12 @@ const styles = {
     borderRadius: '100px',
     fontSize: '0.72rem',
     fontWeight: 700,
-    background: '#dbeafe',
-    color: '#1d4ed8',
+    background: 'rgba(96,165,250,0.15)',
+    color: '#93c5fd',
   },
   changeTime: {
     fontSize: '0.8rem',
-    color: '#64748b',
+    color: '#6B6F7E',
   },
   changeField: {
     display: 'grid',
@@ -197,21 +200,21 @@ const styles = {
     gap: '12px',
     alignItems: 'center',
     padding: '10px 0',
-    borderBottom: '1px solid #e2e8f0',
+    borderBottom: '1px solid rgba(255,255,255,0.06)',
     fontSize: '0.85rem',
   },
   changeFieldName: {
     fontWeight: 600,
-    color: '#475569',
+    color: '#9A988F',
     textTransform: 'capitalize',
   },
   changeOld: {
-    color: '#b91c1c',
+    color: '#fca5a5',
     textDecoration: 'line-through',
     opacity: 0.8,
   },
   changeNew: {
-    color: '#15803d',
+    color: '#86efac',
     fontWeight: 600,
   },
 }
@@ -326,7 +329,7 @@ function SchemeDetail() {
 
           {rules.length > 0 && (
             <div style={{ marginTop: '16px' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#64748b', marginBottom: '10px' }}>
+              <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#6B6F7E', marginBottom: '10px' }}>
                 Structured Eligibility Criteria
               </div>
               {rules.map((r, i) => (
@@ -384,7 +387,7 @@ function SchemeDetail() {
             <h2 style={styles.sectionTitle}>💰 Benefits</h2>
             <div style={styles.card}>
               {benefits.map((b, i) => (
-                <div key={i} style={{ ...styles.benefitItem, borderBottom: i < benefits.length - 1 ? '1px solid #f1f5f9' : 'none' }}>
+                <div key={i} style={{ ...styles.benefitItem, borderBottom: i < benefits.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
                   <div>
                     <span style={styles.benefitType}>{(b.benefit_type || '').replace(/_/g, ' ')}</span>
                     <div style={styles.benefitDesc}>{b.description}</div>
@@ -392,7 +395,7 @@ function SchemeDetail() {
                   <div style={{ textAlign: 'right' }}>
                     <div style={styles.benefitAmount}>{formatAmount(b.amount)}</div>
                     {b.frequency && (
-                      <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{b.frequency}</div>
+                      <div style={{ fontSize: '0.8rem', color: '#6B6F7E' }}>{b.frequency}</div>
                     )}
                   </div>
                 </div>
@@ -407,12 +410,12 @@ function SchemeDetail() {
             <ul style={styles.docList}>
               {documents.map((d, i) => (
                 <li key={i} style={styles.docItem}>
-                  <span style={{ color: d.is_mandatory ? '#16a34a' : '#94a3b8' }}>
+                  <span style={{ color: d.is_mandatory ? '#4ade80' : '#45485A' }}>
                     {d.is_mandatory ? '●' : '○'}
                   </span>
                   {d.document_name}
                   {!d.is_mandatory && (
-                    <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>(optional)</span>
+                    <span style={{ fontSize: '0.75rem', color: '#45485A' }}>(optional)</span>
                   )}
                 </li>
               ))}
@@ -440,7 +443,7 @@ function SchemeDetail() {
             {scheme.link && (
               <div style={{ ...styles.infoRow, borderBottom: 'none' }}>
                 <span style={styles.infoLabel}>Official Link</span>
-                <a href={scheme.link} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600 }}>
+                <a href={scheme.link} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, color: '#E25822' }}>
                   Visit ↗
                 </a>
               </div>

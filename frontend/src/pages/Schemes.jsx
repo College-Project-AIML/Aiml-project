@@ -22,7 +22,7 @@ const styles = {
   },
   results: {
     fontSize: '0.9rem',
-    color: '#64748b',
+    color: '#6B6F7E',
     marginBottom: '16px',
   },
   sortRow: {
@@ -35,14 +35,14 @@ const styles = {
   sortLabel: {
     fontSize: '0.85rem',
     fontWeight: 600,
-    color: '#64748b',
+    color: '#6B6F7E',
   },
   sortSelect: {
     padding: '8px 12px',
     borderRadius: '8px',
-    border: '1.5px solid #e2e8f0',
-    background: 'white',
-    color: '#1e293b',
+    border: '1.5px solid rgba(255,255,255,0.1)',
+    background: '#141319',
+    color: '#EEEEF2',
     fontSize: '0.85rem',
     fontFamily: 'inherit',
     cursor: 'pointer',
@@ -63,9 +63,9 @@ const styles = {
   pageBtn: {
     padding: '8px 18px',
     borderRadius: '6px',
-    border: '1.5px solid #e2e8f0',
-    background: 'white',
-    color: '#0f4c81',
+    border: '1.5px solid rgba(255,255,255,0.12)',
+    background: '#141319',
+    color: '#EEEEF2',
     fontWeight: 600,
     fontSize: '0.85rem',
     cursor: 'pointer',
@@ -75,9 +75,9 @@ const styles = {
   pageBtnDisabled: {
     padding: '8px 18px',
     borderRadius: '6px',
-    border: '1.5px solid #e2e8f0',
-    background: '#f8fafc',
-    color: '#94a3b8',
+    border: '1.5px solid rgba(255,255,255,0.06)',
+    background: '#0F0F14',
+    color: '#45485A',
     fontWeight: 600,
     fontSize: '0.85rem',
     cursor: 'not-allowed',
@@ -85,7 +85,7 @@ const styles = {
   },
   pageInfo: {
     fontSize: '0.9rem',
-    color: '#64748b',
+    color: '#6B6F7E',
   },
 }
 
@@ -170,7 +170,7 @@ function Schemes() {
             <SearchBar
               onSearch={handleSearch}
               placeholder="Search by name, description..."
-              variant="light"
+              variant="dark"
             />
           </div>
           {categories.length > 0 && (
@@ -205,7 +205,7 @@ function Schemes() {
                 marginLeft: '12px',
                 background: 'none',
                 border: 'none',
-                color: '#0f4c81',
+                color: '#E25822',
                 cursor: 'pointer',
                 fontWeight: 600,
                 fontFamily: 'inherit',

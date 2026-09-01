@@ -3,11 +3,11 @@ import { timeAgo } from '../utils'
 
 const styles = {
   card: {
-    background: 'white',
-    border: '1px solid #e2e8f0',
+    background: '#141319',
+    border: '1px solid rgba(255,255,255,0.08)',
     borderRadius: '10px',
     padding: '24px',
-    boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
     transition: 'all 0.2s',
     display: 'flex',
     flexDirection: 'column',
@@ -22,7 +22,7 @@ const styles = {
   name: {
     fontSize: '1.05rem',
     fontWeight: 600,
-    color: '#0f4c81',
+    color: '#EEEEF2',
     lineHeight: 1.4,
   },
   badge: {
@@ -30,8 +30,8 @@ const styles = {
     borderRadius: '100px',
     fontSize: '0.72rem',
     fontWeight: 600,
-    background: '#dcfce7',
-    color: '#15803d',
+    background: 'rgba(74,222,128,0.14)',
+    color: '#86efac',
     whiteSpace: 'nowrap',
     flexShrink: 0,
   },
@@ -44,21 +44,21 @@ const styles = {
     color: 'white',
     whiteSpace: 'nowrap',
     flexShrink: 0,
-    boxShadow: '0 1px 3px rgba(22,163,74,0.4)',
+    boxShadow: '0 1px 4px rgba(22,163,74,0.35)',
   },
   badgeClosed: {
     padding: '3px 10px',
     borderRadius: '100px',
     fontSize: '0.72rem',
     fontWeight: 600,
-    background: '#fee2e2',
-    color: '#b91c1c',
+    background: 'rgba(220,38,38,0.15)',
+    color: '#fca5a5',
     whiteSpace: 'nowrap',
     flexShrink: 0,
   },
   description: {
     fontSize: '0.9rem',
-    color: '#64748b',
+    color: '#6B6F7E',
     lineHeight: 1.6,
     display: '-webkit-box',
     WebkitLineClamp: 3,
@@ -76,37 +76,38 @@ const styles = {
     borderRadius: '100px',
     fontSize: '0.75rem',
     fontWeight: 500,
-    background: '#e0f2fe',
-    color: '#0369a1',
+    background: 'rgba(96,165,250,0.12)',
+    color: '#93c5fd',
   },
   tagTeal: {
     padding: '3px 10px',
     borderRadius: '100px',
     fontSize: '0.75rem',
     fontWeight: 500,
-    background: '#ccfbf1',
-    color: '#0f766e',
+    background: 'rgba(45,212,191,0.12)',
+    color: '#5eead4',
   },
   footer: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: '12px',
-    borderTop: '1px solid #f1f5f9',
+    borderTop: '1px solid rgba(255,255,255,0.06)',
   },
   source: {
     fontSize: '0.8rem',
-    color: '#94a3b8',
+    color: '#45485A',
   },
   link: {
     fontSize: '0.85rem',
     fontWeight: 600,
-    color: '#0f4c81',
+    color: '#E25822',
     display: 'inline-flex',
     alignItems: 'center',
     gap: '4px',
   },
 }
+
 
 function SchemeCard({ scheme }) {
   const stateLabel = scheme.state_code ? scheme.state_code : 'National'
@@ -125,11 +126,11 @@ function SchemeCard({ scheme }) {
     <div
       style={styles.card}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
+        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.6)'
         e.currentTarget.style.transform = 'translateY(-2px)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)'
+        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.4)'
         e.currentTarget.style.transform = 'translateY(0)'
       }}
     >
@@ -146,12 +147,12 @@ function SchemeCard({ scheme }) {
         {scheme.category_name && <span style={styles.tag}>{scheme.category_name}</span>}
         <span style={styles.tagTeal}>{stateLabel}</span>
         {updatedAt && !scheme.is_new && (
-          <span style={{ ...styles.tag, background: '#eff6ff', color: '#1d4ed8' }}>
+          <span style={{ ...styles.tag, background: 'rgba(96,165,250,0.12)', color: '#93c5fd' }}>
             🔄 Updated {timeAgo(updatedAt)}
           </span>
         )}
         {scheme.confidence_score && (
-          <span style={{ ...styles.tag, background: '#fef3c7', color: '#92400e' }}>
+          <span style={{ ...styles.tag, background: 'rgba(251,191,36,0.12)', color: '#fcd34d' }}>
             {Math.round(scheme.confidence_score * 100)}% confidence
           </span>
         )}
