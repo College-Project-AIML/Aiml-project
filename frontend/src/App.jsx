@@ -22,6 +22,7 @@ function App() {
   const navigate = useNavigate()
   const { user, signOut } = useAuth()
   const [showSignIn, setShowSignIn] = useState(false)
+  const [navScrolled, setNavScrolled] = useState(false)
 
   const isDashboard = location.pathname.startsWith('/dashboard')
 
@@ -37,6 +38,13 @@ function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = 'dark'
     localStorage.removeItem('suvidha-theme')
+  }, [])
+
+  // Transparent navbar — becomes glassy on scroll
+  useEffect(() => {
+    const onScroll = () => setNavScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const isActive = (path) => {
@@ -58,7 +66,7 @@ function App() {
     <>
       {/* ── Global navbar (hidden on /dashboard which has its own sidebar) */}
       {!isDashboard && (
-        <nav className="navbar">
+        <nav className={`navbar${navScrolled ? ' scrolled' : ''}`}>
           <div className="navbar-inner">
             <Link to="/" className="navbar-brand">
               <div className="brand-icon">

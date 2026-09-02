@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 
 // ── Config ───────────────────────────────────────────────────────────────────
-const COUNT = 28           // total nodes
-const HUB_COUNT = 5            // larger "hub" nodes with extra rings
+const COUNT = 45           // total nodes
+const HUB_COUNT = 8            // larger "hub" nodes with extra rings
 const LINK_DIST = 200          // px — draw line if nodes are within this
-const SPEED = 0.22         // px/frame baseline (very slow drift)
+const SPEED = 0.10         // px/frame baseline (very slow drift)
 const FPS_CAP = 30
 
 // Node appearance
