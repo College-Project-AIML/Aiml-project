@@ -220,24 +220,8 @@
 .chatbot-chips {
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    max-height: 190px;
     gap: 7px;
     padding-bottom: 6px;
-    scrollbar-width: thin;
-}
-
-.chatbot-chips::-webkit-scrollbar {
-    height: 4px;
-}
-
-.chatbot-chips::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.chatbot-chips::-webkit-scrollbar-thumb {
-    background: #26304F;
-    border-radius: 4px;
 }
 
 .chatbot-chip {
