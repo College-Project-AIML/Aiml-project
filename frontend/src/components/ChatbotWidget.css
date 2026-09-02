@@ -507,3 +507,29 @@
         bottom: 20px;
     }
 }
+
+.chatbot-answer {
+    max-width: 92%;
+}
+
+.chatbot-answer-line {
+    margin-bottom: 8px;
+}
+
+.chatbot-answer-heading {
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.chatbot-answer-bullet {
+    position: relative;
+    padding-left: 14px;
+    margin: 5px 0;
+}
+
+.chatbot-answer-bullet::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #93B8E8;
+}

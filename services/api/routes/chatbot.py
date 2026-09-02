@@ -15,6 +15,8 @@ from pydantic import BaseModel
 
 from services.api.db import get_db
 from services.api.chatbot.matcher import find_best_match
+from services.api.chatbot.scheme_retriever import find_matching_schemes
+from services.api.chatbot.generator import generate_scheme_answer
 
 router = APIRouter(tags=["Chatbot"])
 
@@ -32,6 +34,16 @@ class QueryResponse(BaseModel):
     similarity: Optional[float] = None
     scheme: Optional[dict] = None
     suggestions: Optional[list] = None
+
+
+class AssistantRequest(BaseModel):
+    question: str
+
+
+class AssistantResponse(BaseModel):
+    answer: str
+    schemes: list[dict]
+    retrieval_count: int
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -122,3 +134,31 @@ def chatbot_query(body: QueryRequest):
             similarity=match["similarity"],
             scheme=scheme,
         )
+
+
+@router.post("/chatbot/assistant", response_model=AssistantResponse)
+def chatbot_assistant(body: AssistantRequest):
+    """
+    RAG + local-Qwen scheme assistant endpoint.
+    Retrieves semantic schemes based on query and generates a grounded response.
+    """
+    question = body.question.strip()
+    if not question:
+        raise HTTPException(status_code=422, detail="question must not be empty")
+
+    with get_db() as cur:
+        schemes = find_matching_schemes(question, cur, limit=5)
+        
+        # Ensure returned scheme IDs are strings for JSON serialization
+        for scheme in schemes:
+            if "id" in scheme and scheme["id"] is not None:
+                scheme["id"] = str(scheme["id"])
+
+        answer = generate_scheme_answer(question, schemes)
+        
+    return AssistantResponse(
+        answer=answer,
+        schemes=schemes,
+        retrieval_count=len(schemes)
+    )
+
