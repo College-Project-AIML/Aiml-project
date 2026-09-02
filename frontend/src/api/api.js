@@ -48,3 +48,16 @@ export async function getUpdates({ changeType, since, limit = 20 } = {}) {
   const res = await API.get('/updates', { params })
   return res.data
 }
+
+export async function getRecommendedSchemes(profile, { limit = 20, category } = {}) {
+  const body = { limit }
+  if (profile?.age) body.age = profile.age
+  if (profile?.income) body.income = profile.income
+  if (profile?.gender) body.gender = profile.gender
+  if (profile?.caste) body.caste = profile.caste
+  if (profile?.state) body.state = profile.state
+  if (profile?.education_level) body.education_level = profile.education_level
+  if (category) body.category = category
+  const res = await API.post('/schemes/recommended', body)
+  return res.data
+}

@@ -1,0 +1,19 @@
+{
+  "accuracy": 1.0,
+  "auc": 1.0,
+  "n_train": 12000.0,
+  "n_test": 3000.0,
+  "feature_importance": {
+    "user_age_norm": 5.447737693786621,
+    "user_income_norm": 5.182792663574219,
+    "age_eligible": 37.552433013916016,
+    "income_eligible": 145.13284301757812,
+    "gender_eligible": 113.61888122558594,
+    "caste_eligible": 246.9958038330078,
+    "state_eligible": 218.70506286621094,
+    "education_eligible": 151.0541229248047,
+    "eligibility_match_ratio": 2697.383056640625,
+    "source_trust": 9.205992698669434,
+    "is_all_india": 89.35669708251953
+  }
+}

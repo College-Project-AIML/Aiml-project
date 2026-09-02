@@ -131,6 +131,33 @@
     line-height: 1.5;
 }
 
+/* ── OAuth divider ──────────────────────────────────────────────────────── */
+.signin-oauth-wrapper {
+    margin-bottom: 20px;
+}
+
+.signin-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.signin-divider::before,
+.signin-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #26304F;
+}
+
+.signin-divider span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #5B6480;
+    white-space: nowrap;
+}
+
 /* ── Avatar preview ──────────────────────────────────────────────────────── */
 .signin-avatar-preview {
     display: flex;

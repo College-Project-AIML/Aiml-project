@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAuth } from '../context/AuthContext'
-import { getStats, getSchemes } from '../api/api'
+import { getStats, getSchemes, getRecommendedSchemes } from '../api/api'
 import '../dashboard.css'
 
 // ── Framer-motion helpers ───────────────────────────────────────────────────
@@ -122,6 +122,8 @@ export default function Dashboard() {
     const [totalSchemes, setTotalSchemes] = useState(null)
     const [featuredSchemes, setFeaturedSchemes] = useState([])
     const [statsLoading, setStatsLoading] = useState(true)
+    const [recommendedSchemes, setRecommendedSchemes] = useState([])
+    const [recommendedLoading, setRecommendedLoading] = useState(false)
 
     // Redirect if not signed in
     useEffect(() => {
@@ -146,6 +148,23 @@ export default function Dashboard() {
         }
         load()
     }, [])
+
+    // Fetch ML-ranked personalized recommendations
+    useEffect(() => {
+        if (!user?.profile) return
+        async function loadRecommended() {
+            setRecommendedLoading(true)
+            try {
+                const res = await getRecommendedSchemes(user.profile, { limit: 10 })
+                setRecommendedSchemes(res.schemes || [])
+            } catch {
+                // silently fail
+            } finally {
+                setRecommendedLoading(false)
+            }
+        }
+        loadRecommended()
+    }, [user?.profile])
 
     if (!user) return null // will redirect
 
@@ -208,6 +227,7 @@ export default function Dashboard() {
 
     // ── No results state ────────────────────────────────────────────────────
     const hasResults = matchCount > 0
+    const hasRecommended = recommendedSchemes.length > 0
     const displaySchemes = hasResults ? matches.slice(0, 5).map(m => m.scheme) : featuredSchemes.slice(0, 5)
 
     return (
@@ -254,7 +274,18 @@ export default function Dashboard() {
                 {/* Sign out */}
                 <button
                     className="db-signout-btn"
-                    onClick={() => { signOut(); navigate('/') }}
+                    onClick={() => { 
+                        signOut()
+                        if (window.location.origin) {
+                            const domain = import.meta.env.VITE_AUTH0_DOMAIN
+                            const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
+                            if (domain && clientId) {
+                                window.location.href = `https://${domain}/v2/logout?client_id=${clientId}&returnTo=${encodeURIComponent(window.location.origin)}`
+                                return
+                            }
+                        }
+                        navigate('/') 
+                    }}
                 >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -425,6 +456,97 @@ export default function Dashboard() {
                         </Link>
                     </RevealSection>
                 </div>
+
+                {/* ML-Personalized Recommendations */}
+                {hasRecommended && (
+                    <RevealSection className="db-panel" style={{ marginBottom: '24px' }}>
+                        <div className="db-panel-header">
+                            <div>
+                                <h2 className="db-panel-title">
+                                    <span style={{ marginRight: '8px' }}>🤖</span>
+                                    Recommended for You
+                                </h2>
+                                <span className="db-panel-sub">
+                                    Personalised by ML · {recommendedSchemes.length} schemes ranked by relevance to your profile
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="db-schemes-list">
+                            {recommendedSchemes.map((scheme, i) => {
+                                const relevancePct = scheme.relevance_score
+                                    ? Math.round(scheme.relevance_score * 100)
+                                    : null
+                                const matchColor =
+                                    relevancePct >= 80 ? '#6B8F71'
+                                    : relevancePct >= 60 ? '#B5643A'
+                                    : relevancePct >= 40 ? '#C49A3C'
+                                    : '#5B6480'
+                                return (
+                                    <motion.div
+                                        key={scheme?.id ?? i}
+                                        className="db-scheme-row"
+                                        whileHover={{ x: 4, backgroundColor: 'rgba(38,48,79,0.5)' }}
+                                        transition={{ duration: 0.15 }}
+                                    >
+                                        <div className="db-scheme-rank">
+                                            <span style={{ fontSize: '14px', fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</span>
+                                        </div>
+                                        <div className="db-scheme-info">
+                                            <div className="db-scheme-name">{scheme?.name || 'Unknown Scheme'}</div>
+                                            <div className="db-scheme-dept">{scheme?.provider_name || scheme?.source || ''}</div>
+                                        </div>
+                                        <div className="db-scheme-meta">
+                                            {scheme?.category_name && (
+                                                <span className="db-scheme-tag" style={{ color: '#B5643A', background: 'rgba(181,100,58,0.12)' }}>
+                                                    {scheme.category_name}
+                                                </span>
+                                            )}
+                                            {scheme?.state_code && (
+                                                <span className="db-scheme-tag" style={{ color: '#5eead4', background: 'rgba(45,212,191,0.12)' }}>
+                                                    {scheme.state_code === 'IN' ? 'All India' : scheme.state_code}
+                                                </span>
+                                            )}
+                                            {relevancePct !== null && (
+                                                <span
+                                                    className="db-scheme-tag"
+                                                    style={{
+                                                        color: matchColor,
+                                                        background: `${matchColor}18`,
+                                                        fontWeight: 700,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '4px',
+                                                    }}
+                                                >
+                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                                                    </svg>
+                                                    {relevancePct}% match
+                                                </span>
+                                            )}
+                                            {scheme?.match_details?.match_ratio != null && (
+                                                <span style={{ fontSize: '11px', color: '#8890A6' }}>
+                                                    {Math.round(scheme.match_details.match_ratio * 100)}% criteria met
+                                                </span>
+                                            )}
+                                            <Link to={`/schemes/${scheme?.id}`} className="db-scheme-view-btn">View →</Link>
+                                        </div>
+                                    </motion.div>
+                                )
+                            })}
+                        </div>
+                    </RevealSection>
+                )}
+
+                {recommendedLoading && (
+                    <RevealSection className="db-panel" style={{ marginBottom: '24px' }}>
+                        <div className="db-panel-empty">
+                            <span className="signin-spinner" style={{ width: '20px', height: '20px', border: '2.5px solid rgba(181,100,58,0.3)', borderTopColor: '#B5643A' }} />
+                            <div style={{ marginTop: '8px', color: '#8890A6', fontSize: '13px' }}>Loading personalised recommendations…</div>
+                        </div>
+                    </RevealSection>
+                )}
 
                 {/* Matched / Featured schemes */}
                 <RevealSection className="db-panel" style={{ marginBottom: '40px' }}>
