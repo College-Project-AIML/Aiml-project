@@ -16,6 +16,8 @@ class SchemeResponse(BaseModel):
     status: Optional[str] = None
     source: Optional[str] = None
     link: Optional[str] = None
+    application_link: Optional[str] = None
+    link_is_direct: bool = False
     tags: Optional[List[str]] = None
     confidence_score: Optional[float] = None
     category_name: Optional[str] = None

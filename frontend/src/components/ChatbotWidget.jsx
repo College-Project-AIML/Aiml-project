@@ -258,33 +258,33 @@ export default function ChatbotWidget() {
                         </button>
                     </div>
 
-                    {/* FAQ chips */}
-                    {faqs.length > 0 && (
-                        <div style={{ padding: '12px 16px 0', flexShrink: 0 }}>
-                            <div className="chatbot-faq-label">Common questions</div>
-                            <div className="chatbot-chips" style={{ marginTop: 8, marginBottom: 2 }}>
-                                {faqs.slice(0, 8).map((faq) => (
-                                  <div className="chatbot-faq-item" key={faq.id}>
-                                    <button
-                                        className="chatbot-chip chatbot-faq-question"
-                                        onClick={() => setExpandedFaq((current) => current === faq.id ? null : faq.id)}
-                                        aria-expanded={expandedFaq === faq.id}
-                                    >
-                                        {faq.question.length > 55
-                                            ? faq.question.slice(0, 52) + '…'
-                                            : faq.question}
-                                    </button>
-                                    {expandedFaq === faq.id && (
-                                        <div className="chatbot-faq-answer">{faq.answer}</div>
-                                    )}
-                                  </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
                     {/* Conversation */}
                     <div className="chatbot-body" ref={bodyRef}>
+                        {/* FAQ chips */}
+                        {faqs.length > 0 && (
+                            <div style={{ flexShrink: 0, paddingBottom: '8px' }}>
+                                <div className="chatbot-faq-label">Common questions</div>
+                                <div className="chatbot-chips" style={{ marginTop: 8, marginBottom: 2 }}>
+                                    {faqs.slice(0, 8).map((faq) => (
+                                        <div className="chatbot-faq-item" key={faq.id}>
+                                            <button
+                                                className="chatbot-chip chatbot-faq-question"
+                                                onClick={() => setExpandedFaq((current) => current === faq.id ? null : faq.id)}
+                                                aria-expanded={expandedFaq === faq.id}
+                                            >
+                                                {faq.question.length > 55
+                                                    ? faq.question.slice(0, 52) + '…'
+                                                    : faq.question}
+                                            </button>
+                                            {expandedFaq === faq.id && (
+                                                <div className="chatbot-faq-answer">{faq.answer}</div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         {messages.map(renderMessage)}
                         {loading && <TypingIndicator />}
                     </div>

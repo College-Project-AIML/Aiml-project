@@ -31,6 +31,7 @@ DIFF_FIELDS = {
     "category",
     "ministry",
     "link",
+    "application_link",
     "state_code",
     "status",
     "confidence_score",

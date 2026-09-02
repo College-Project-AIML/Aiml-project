@@ -342,7 +342,7 @@ def _load_scheme_as_record(cur, scheme_id) -> dict:
     cur.execute(
         """
         SELECT s.name, s.description, s.eligibility_text, s.state_code, s.status,
-               s.link, s.tags, s.confidence_score, c.name AS category,
+               s.link, s.application_link, s.tags, s.confidence_score, c.name AS category,
                p.name AS ministry
         FROM schemes s
         LEFT JOIN categories c ON s.category_id = c.id
@@ -361,10 +361,11 @@ def _load_scheme_as_record(cur, scheme_id) -> dict:
         "state_code": row[3],
         "status": row[4],
         "link": row[5],
-        "tags": row[6] or [],
-        "confidence_score": row[7],
-        "category": row[8],
-        "ministry": row[9],
+        "application_link": row[6],
+        "tags": row[7] or [],
+        "confidence_score": row[8],
+        "category": row[9],
+        "ministry": row[10],
     }
 
 

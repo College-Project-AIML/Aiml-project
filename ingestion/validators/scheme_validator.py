@@ -131,6 +131,7 @@ class SchemeValidator:
             raise ValidationError("Invalid state_code format")
 
     def _check_links(self, scheme: Dict):
-        link = scheme.get("link")
-        if link and not link.startswith("http"):
-            raise ValidationError("Invalid link format")
+        for field in ("link", "application_link"):
+            link = scheme.get(field)
+            if link and not link.startswith(("http://", "https://")):
+                raise ValidationError(f"Invalid {field} format")

@@ -76,11 +76,11 @@ class PostgresLoader:
                     INSERT INTO schemes (
                         id, provider_id, category_id, name, description,
                         eligibility_text, state_code, status, source, source_type,
-                        link, tags, confidence_score, ingested_at, last_updated
+                        link, application_link, tags, confidence_score, ingested_at, last_updated
                     ) VALUES (
                         %s, %s, %s, %s, %s,
                         %s, %s, %s, %s, %s,
-                        %s, %s, %s, %s, %s
+                        %s, %s, %s, %s, %s, %s
                     )
                     ON CONFLICT (id) DO UPDATE SET
                         name = EXCLUDED.name,
@@ -88,6 +88,8 @@ class PostgresLoader:
                         eligibility_text = EXCLUDED.eligibility_text,
                         state_code = EXCLUDED.state_code,
                         status = EXCLUDED.status,
+                        link = EXCLUDED.link,
+                        application_link = EXCLUDED.application_link,
                         tags = EXCLUDED.tags,
                         confidence_score = EXCLUDED.confidence_score,
                         last_updated = EXCLUDED.last_updated,
@@ -104,6 +106,7 @@ class PostgresLoader:
                     record.get("source"),
                     record.get("source_type"),
                     record.get("link"),
+                    record.get("application_link"),
                     record.get("tags", []),
                     record.get("confidence_score", 0.0),
                     record.get("ingested_at"),

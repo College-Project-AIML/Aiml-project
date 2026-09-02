@@ -52,6 +52,7 @@ EXTRAS_VARIANTS = {
     "benefits": ("benefits", "benefit", "assistance", "financialSupport"),
     "documents": ("documents", "documentsRequired", "requiredDocuments"),
     "contact": ("contact", "helpdesk", "helpline"),
+    "application_link": ("applicationUrl", "applyUrl", "applyLink", "registrationUrl"),
 }
 
 # MyScheme's free-form scheme categories → our normalizer's controlled keywords.
@@ -190,6 +191,7 @@ def _to_raw_record(item: Dict) -> Dict:
         "eligibility": _first(item, FIELD_VARIANTS["eligibility"]),
         "state": _normalize_state(_first(item, FIELD_VARIANTS["state"])),
         "link": f"{SCHEME_LINK_BASE}/{slug}" if slug else None,
+        "application_link": extras.get("application_link"),
         "tags": tags,
         "raw_extras": extras,
     }

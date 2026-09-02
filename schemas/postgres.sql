@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS schemes (
     source VARCHAR(255),
     source_type VARCHAR(50),
     link VARCHAR(1000),
+    application_link VARCHAR(1000),
     tags TEXT[],
     confidence_score FLOAT DEFAULT 0.0,
     ingested_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
