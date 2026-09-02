@@ -38,6 +38,7 @@ class SchemeModel:
     description: Optional[str]
     eligibility_text: Optional[str]
     link: Optional[str]
+    application_link: Optional[str] = None
 
     # Intelligence Layer Support
     tags: List[str] = field(default_factory=list)

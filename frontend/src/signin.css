@@ -16,8 +16,8 @@
 .signin-modal {
     position: relative;
     z-index: 2001;
-    background: #182240;
-    border: 1px solid #26304F;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 32px;
     width: 100%;
@@ -55,14 +55,14 @@
 .signin-brand-name {
     font-family: 'Eczar', Georgia, serif;
     font-size: 17px;
-    color: #EDEFF5;
+    color: var(--text);
     letter-spacing: -0.01em;
 }
 
 .signin-close {
     background: transparent;
     border: none;
-    color: #5B6480;
+    color: var(--text-muted);
     cursor: pointer;
     padding: 4px;
     border-radius: 4px;
@@ -72,7 +72,7 @@
 }
 
 .signin-close:hover {
-    color: #EDEFF5;
+    color: var(--text);
 }
 
 /* ── Step indicator ──────────────────────────────────────────────────────── */

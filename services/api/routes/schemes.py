@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
 from services.api.db import get_db
+from services.api.scheme_links import is_direct_scheme_link
 
 router = APIRouter(tags=["Schemes"])
 
@@ -16,6 +17,8 @@ def _scheme_from_row(row):
         "status": row["status"],
         "source": row["source"],
         "link": row["link"],
+        "application_link": row["application_link"],
+        "link_is_direct": is_direct_scheme_link(row["link"]),
         "tags": row["tags"],
         "confidence_score": float(row["confidence_score"]) if row["confidence_score"] else None,
         "category_name": row["category_name"],
@@ -86,7 +89,7 @@ def list_schemes(
 
         cur.execute(f"""
             SELECT s.id, s.name, s.description, s.eligibility_text,
-                   s.state_code, s.status, s.source, s.link,
+                   s.state_code, s.status, s.source, s.link, s.application_link,
                    s.tags, s.confidence_score, s.updated_at,
                    c.name as category_name, p.name as provider_name,
                    EXISTS (
@@ -114,7 +117,7 @@ def get_scheme(scheme_id: str):
     with get_db() as cur:
         cur.execute("""
             SELECT s.id, s.name, s.description, s.eligibility_text,
-                   s.state_code, s.status, s.source, s.link,
+                   s.state_code, s.status, s.source, s.link, s.application_link,
                    s.tags, s.confidence_score, s.updated_at,
                    c.name as category_name, p.name as provider_name,
                    EXISTS (

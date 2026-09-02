@@ -8,6 +8,7 @@ import About from './pages/About'
 import Dashboard from './pages/Dashboard'
 import ChatbotWidget from './components/ChatbotWidget'
 import SignInModal from './components/SignInModal'
+import ThemeToggle from './components/ThemeToggle'
 import { useAuth } from './context/AuthContext'
 
 // ── Protected route — redirects to home if not signed in ────────────────────
@@ -33,12 +34,6 @@ function App() {
       setShowSignIn(true)
     }
   }
-
-  // Lock permanently to dark mode
-  useEffect(() => {
-    document.documentElement.dataset.theme = 'dark'
-    localStorage.removeItem('suvidha-theme')
-  }, [])
 
   // Transparent navbar — becomes glassy on scroll
   useEffect(() => {
@@ -169,6 +164,7 @@ function App() {
       {showSignIn && <SignInModal onClose={() => setShowSignIn(false)} />}
 
       <ChatbotWidget />
+      <ThemeToggle />
     </>
   )
 }

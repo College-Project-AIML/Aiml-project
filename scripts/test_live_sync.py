@@ -117,6 +117,7 @@ def test_two_run_scenario():
 def test_myscheme_parser():
     print("\n[5] MyScheme parser smoke test")
     from ingestion.sources.myscheme.parser import parse_schemes
+    from services.api.scheme_links import is_direct_scheme_link
 
     # Real API shape: search hits carry the payload under `fields`.
     payload = [
@@ -132,6 +133,7 @@ def test_myscheme_parser():
                 "tags": ["merit", "scholarship"],
                 "level": "Central",
                 "schemeCloseDate": "2026-12-31",
+                "applicationUrl": "https://apply.gov.in/test-central-scheme",
             },
         },
         {
@@ -150,6 +152,7 @@ def test_myscheme_parser():
     rec = records[0]
     check("scheme_name mapped", rec["scheme_name"] == "Test Central Scheme")
     check("slug → link", rec["link"] == "https://www.myscheme.gov.in/schemes/test-central-scheme")
+    check("application URL mapped", rec["application_link"] == "https://apply.gov.in/test-central-scheme")
     check("beneficiaryState All → state india", rec["state"] == "india")
     check("category mapped Education → scholarship", rec["category"] == "scholarship")
     check("tags list kept", rec["tags"] == ["merit", "scholarship"])
@@ -158,6 +161,8 @@ def test_myscheme_parser():
     rec2 = records[1]
     check("state name kept lowercase", rec2["state"] == "karnataka")
     check("category mapped Business → loan", rec2["category"] == "loan")
+    check("portal homepage is not direct", not is_direct_scheme_link("https://scholarships.gov.in/"))
+    check("scheme path is direct", is_direct_scheme_link(rec["link"]))
 
     # Legacy flat shape must keep working (backward compat).
     legacy = {

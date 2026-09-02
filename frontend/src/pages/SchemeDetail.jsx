@@ -440,11 +440,18 @@ function SchemeDetail() {
               <span style={styles.infoLabel}>Coverage</span>
               <span style={styles.infoValue}>{scheme.state_code || 'All India'}</span>
             </div>
-            {scheme.link && (
+            {(scheme.application_link || scheme.link) && (
               <div style={{ ...styles.infoRow, borderBottom: 'none' }}>
-                <span style={styles.infoLabel}>Official Link</span>
-                <a href={scheme.link} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, color: '#E25822' }}>
-                  Visit ↗
+                <span style={styles.infoLabel}>
+                  {scheme.application_link ? 'Application' : scheme.link_is_direct ? 'Scheme page' : 'Official portal'}
+                </span>
+                <a
+                  href={scheme.application_link || scheme.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontWeight: 600, color: '#E25822' }}
+                >
+                  {scheme.application_link ? 'Apply now' : scheme.link_is_direct ? 'View scheme' : 'Visit portal'} ↗
                 </a>
               </div>
             )}

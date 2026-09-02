@@ -146,6 +146,7 @@ class SchemeNormalizer:
             "eligibility_text": self._normalize_text(raw.get("eligibility")),
             "state_code": self._normalize_state(raw.get("state")),
             "link": self._normalize_link(raw.get("link")),
+            "application_link": self._normalize_link(raw.get("application_link")),
             "tags": self._generate_tags(raw),
             "confidence_score": self._source_confidence(raw.get("source")),
             "version": "v1",
