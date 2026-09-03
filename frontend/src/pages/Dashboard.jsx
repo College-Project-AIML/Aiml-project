@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext'
 import { getStats, getSchemes, getRecommendedSchemes, getUpdates } from '../api/api'
 import { getApplications, removeApplication, updateApplicationProgress } from '../utils/applicationTracker'
 import { timeAgo } from '../utils'
+import SuvidhaMark from '../components/SuvidhaMark'
 import '../dashboard.css'
 
 // ── Framer-motion helpers ───────────────────────────────────────────────────
@@ -304,11 +305,7 @@ export default function Dashboard() {
             <aside className="db-sidebar">
                 <div className="db-sidebar-logo">
                     <div className="db-sidebar-brand-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M3 21h18" /><path d="M3 10h18" /><path d="M5 6l7-3 7 3" />
-                            <path d="M4 10v11" /><path d="M20 10v11" />
-                            <path d="M8 14v3" /><path d="M12 14v3" /><path d="M16 14v3" />
-                        </svg>
+                        <SuvidhaMark size={34} />
                     </div>
                     <span className="db-sidebar-brand-text">Suvidha</span>
                 </div>

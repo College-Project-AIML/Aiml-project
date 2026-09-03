@@ -118,12 +118,39 @@ a:hover {
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   font-weight: 400;
-  font-size: 23px;
+  font-size: 27px;
   color: #EDEFF5;
   font-family: 'Eczar', Georgia, serif;
   letter-spacing: -0.01em;
+}
+
+.navbar-brand-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+  transform: translateY(3px);
+}
+
+.navbar-brand-name {
+  font: 400 27px 'Eczar', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+.navbar-brand>svg {
+  transform: translateY(4px);
+}
+
+.navbar-brand-subtitle {
+  margin-top: -9px;
+  color: #A9B1C2;
+  font: 700 7px 'DM Sans', sans-serif;
+  letter-spacing: .09em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .navbar-brand:hover {

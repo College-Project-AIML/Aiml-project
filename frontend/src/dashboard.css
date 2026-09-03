@@ -34,12 +34,12 @@
 .db-sidebar-brand-icon {
     width: 34px;
     height: 34px;
-    background: #B5643A;
-    border-radius: 6px;
+    background: transparent;
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: inherit;
     flex-shrink: 0;
 }
 

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { GoogleLogin } from '@react-oauth/google'
 import { useAuth } from '../context/AuthContext'
 import { useAuth0 } from '@auth0/auth0-react'
+import SuvidhaMark from './SuvidhaMark'
 import '../signin.css'
 
 export default function SignInModal({ onClose }) {
@@ -79,11 +80,7 @@ export default function SignInModal({ onClose }) {
                     <div className="signin-modal-header">
                         <div className="signin-brand">
                             <div className="signin-brand-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M3 21h18" /><path d="M3 10h18" /><path d="M5 6l7-3 7 3" />
-                                    <path d="M4 10v11" /><path d="M20 10v11" />
-                                    <path d="M8 14v3" /><path d="M12 14v3" /><path d="M16 14v3" />
-                                </svg>
+                                <SuvidhaMark size={30} />
                             </div>
                             <span className="signin-brand-name">Suvidha</span>
                         </div>
