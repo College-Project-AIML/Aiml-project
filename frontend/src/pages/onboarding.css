@@ -1,0 +1,169 @@
+.onboarding-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: radial-gradient(circle at top right, rgba(181, 100, 58, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at bottom left, rgba(181, 100, 58, 0.05) 0%, transparent 40%);
+}
+
+.onboarding-container {
+    background: rgba(18, 20, 24, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 680px;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.onboarding-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.onboarding-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #fff 0%, #b3c2d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.onboarding-subtitle {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.onboarding-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.onboarding-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.onboarding-name-field {
+    grid-column: 1 / -1;
+}
+
+.onboarding-error {
+    color: #fca5a5;
+    font-size: 0.82rem;
+    margin-left: 0.25rem;
+}
+
+.onboarding-field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-left: 0.25rem;
+}
+
+.onboarding-field input,
+.onboarding-field select {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.875rem 1.25rem;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    appearance: none;
+}
+
+.onboarding-field input:focus,
+.onboarding-field select:focus {
+    outline: none;
+    border-color: #B5643A;
+    box-shadow: 0 0 0 4px rgba(181, 100, 58, 0.15);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.onboarding-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.onboarding-field select option {
+    background: #1e222a;
+    color: #fff;
+}
+
+.onboarding-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.onboarding-btn {
+    background: linear-gradient(135deg, #B5643A 0%, #9e5430 100%);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 8px 16px rgba(181, 100, 58, 0.2);
+}
+
+.onboarding-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(181, 100, 58, 0.3);
+}
+
+.onboarding-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.onboarding-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+}
+
+.onboarding-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+    .onboarding-grid {
+        grid-template-columns: 1fr;
+    }
+    .onboarding-container {
+        padding: 2rem 1.5rem;
+    }
+    .onboarding-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

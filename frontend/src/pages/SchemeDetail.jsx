@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getScheme } from '../api/api'
 import { timeAgo, formatValue } from '../utils'
+import { useAuth } from '../context/AuthContext'
+import { getApplications, trackApplication } from '../utils/applicationTracker'
 
 const styles = {
   content: {
@@ -229,6 +231,8 @@ function SchemeDetail() {
   const [scheme, setScheme] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const { user } = useAuth()
+  const [isTracked, setIsTracked] = useState(false)
 
   useEffect(() => {
     async function load() {
@@ -236,6 +240,10 @@ function SchemeDetail() {
       try {
         const data = await getScheme(id)
         setScheme(data)
+        if (user) {
+          const userKey = user.user_id || user.email
+          setIsTracked(getApplications(userKey).some((application) => application.scheme.id === data.id))
+        }
       } catch (err) {
         setError('Scheme not found')
       } finally {
@@ -243,7 +251,13 @@ function SchemeDetail() {
       }
     }
     load()
-  }, [id])
+  }, [id, user])
+
+  const handleTrackApplication = () => {
+    if (!user) return
+    trackApplication(user.user_id || user.email, scheme)
+    setIsTracked(true)
+  }
 
   if (loading) {
     return (
@@ -290,6 +304,17 @@ function SchemeDetail() {
               </span>
             )}
           </div>
+          {user && (
+            <button
+              type="button"
+              onClick={handleTrackApplication}
+              disabled={isTracked}
+              className="btn btn-primary"
+              style={{ marginTop: '18px', opacity: isTracked ? 0.7 : 1, cursor: isTracked ? 'default' : 'pointer' }}
+            >
+              {isTracked ? '✓ Added to Applications' : 'Track Application'}
+            </button>
+          )}
         </div>
       </div>
 

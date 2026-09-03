@@ -12,11 +12,14 @@ beautifulsoup4
 html2text
 
 requests
+httpx
 apscheduler
 alembic
 email-validator
 python-jose[cryptography]
 passlib[bcrypt]
+xgboost
+scikit-learn
 
 # AI / Chatbot
 sentence-transformers>=2.7.0

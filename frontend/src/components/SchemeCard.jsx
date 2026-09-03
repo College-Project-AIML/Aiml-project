@@ -151,11 +151,20 @@ function SchemeCard({ scheme }) {
             🔄 Updated {timeAgo(updatedAt)}
           </span>
         )}
-        {scheme.confidence_score && (
-          <span style={{ ...styles.tag, background: 'rgba(251,191,36,0.12)', color: '#fcd34d' }}>
-            {Math.round(scheme.confidence_score * 100)}% confidence
-          </span>
-        )}
+        {(scheme.relevance_score || scheme.confidence_score) && (() => {
+          const score = scheme.relevance_score || scheme.confidence_score
+          const pct = Math.round(score * 100)
+          const isRelevance = !!scheme.relevance_score
+          const color = isRelevance
+            ? (pct >= 80 ? '#6B8F71' : pct >= 60 ? '#B5643A' : '#C49A3C')
+            : '#fcd34d'
+          const bg = isRelevance ? `${color}18` : 'rgba(251,191,36,0.12)'
+          return (
+            <span style={{ ...styles.tag, background: bg, color, fontWeight: 600 }}>
+              {isRelevance && '⚡ '}{pct}% {isRelevance ? 'match' : 'confidence'}
+            </span>
+          )
+        })()}
       </div>
 
       <div style={styles.footer}>

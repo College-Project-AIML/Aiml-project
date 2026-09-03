@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
+from pydantic import BaseModel
 from services.api.db import get_db
+from services.api.ml.ranker import rank_schemes
 
 router = APIRouter(tags=["Schemes"])
 
@@ -107,6 +109,112 @@ def list_schemes(
     schemes = [_scheme_from_row(row) for row in rows]
 
     return {"schemes": schemes, "total": total, "page": page, "limit": limit}
+
+
+class RecommendedRequest(BaseModel):
+    age: Optional[int] = None
+    income: Optional[float] = None
+    gender: Optional[str] = None
+    caste: Optional[str] = None
+    state: Optional[str] = None
+    education_level: Optional[str] = None
+    category: Optional[str] = None
+    limit: int = 20
+
+
+@router.post("/schemes/recommended")
+def get_recommended_schemes(req: RecommendedRequest):
+    """
+    Return personalized scheme recommendations ranked by ML relevance score.
+
+    Accepts the user's profile and returns schemes sorted by how well
+    they match, with a `relevance_score` (0–1) and `match_details` for each.
+    """
+    profile = {
+        "age": req.age,
+        "income": req.income,
+        "gender": req.gender,
+        "caste": req.caste,
+        "state": req.state,
+        "education_level": req.education_level,
+    }
+
+    with get_db() as cur:
+        # Fetch active schemes with their eligibility rules
+        conditions = ["s.status = 'ACTIVE'"]
+        params: list = []
+
+        if req.category:
+            conditions.append("c.name ILIKE %s")
+            params.append(f"%{req.category}%")
+
+        where = " AND ".join(conditions)
+
+        cur.execute(f"""
+            SELECT s.id, s.name, s.description, s.eligibility_text,
+                   s.state_code, s.status, s.source, s.link,
+                   s.tags, s.confidence_score,
+                   c.name as category_name, p.name as provider_name
+            FROM schemes s
+            LEFT JOIN categories c ON s.category_id = c.id
+            LEFT JOIN providers p ON s.provider_id = p.id
+            WHERE {where}
+        """, params)
+        scheme_rows = cur.fetchall()
+
+        # Fetch eligibility rules for each scheme
+        scheme_ids = [str(row["id"]) for row in scheme_rows]
+        rules_map = {}
+        if scheme_ids:
+            placeholders = ", ".join(["%s"] * len(scheme_ids))
+            cur.execute(f"""
+                SELECT scheme_id, min_age, max_age, max_income,
+                       gender, caste, states, education_level
+                FROM eligibility_rules
+                WHERE scheme_id IN ({placeholders})
+            """, scheme_ids)
+            for r in cur.fetchall():
+                rules_map[str(r["scheme_id"])] = {
+                    "min_age": r["min_age"],
+                    "max_age": r["max_age"],
+                    "max_income": float(r["max_income"]) if r["max_income"] else None,
+                    "gender": r["gender"],
+                    "caste": r["caste"],
+                    "states": r["states"],
+                    "education_level": r["education_level"],
+                }
+
+    # Build list with rules attached
+    schemes_with_rules = []
+    for row in scheme_rows:
+        sid = str(row["id"])
+        scheme_dict = {
+            "id": sid,
+            "name": row["name"],
+            "description": row["description"],
+            "eligibility_text": row["eligibility_text"],
+            "state_code": row["state_code"],
+            "status": row["status"],
+            "source": row["source"],
+            "link": row["link"],
+            "tags": row["tags"],
+            "confidence_score": float(row["confidence_score"]) if row["confidence_score"] else None,
+            "category_name": row["category_name"],
+            "provider_name": row["provider_name"],
+        }
+        schemes_with_rules.append({
+            "scheme": scheme_dict,
+            "rules": rules_map.get(sid),
+        })
+
+    # Rank by personalized relevance
+    ranked = rank_schemes(profile, schemes_with_rules, limit=req.limit)
+
+    return {
+        "schemes": ranked,
+        "total": len(ranked),
+        "profile_used": {k: v for k, v in profile.items() if v is not None},
+    }
 
 
 @router.get("/schemes/{scheme_id}")

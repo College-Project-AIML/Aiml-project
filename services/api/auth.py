@@ -4,6 +4,7 @@ from passlib.context import CryptContext
 from jose import jwt
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
+import httpx
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
@@ -35,3 +36,38 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> str:
         return user_id
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid token")
+
+
+# ── Google OAuth helpers ─────────────────────────────────────────────────────
+
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "")
+
+async def verify_google_token(credential: str) -> dict:
+    """
+    Verify a Google ID token by calling Google's tokeninfo endpoint.
+    Returns the verified payload with fields like sub, email, name, picture.
+    Raises HTTPException on failure.
+    """
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(
+            "https://oauth2.googleapis.com/tokeninfo",
+            params={"id_token": credential},
+            timeout=10.0,
+        )
+
+    if resp.status_code != 200:
+        raise HTTPException(status_code=401, detail="Invalid Google token")
+
+    payload = resp.json()
+
+    # Validate audience matches our client ID (if configured)
+    if GOOGLE_CLIENT_ID and payload.get("aud") != GOOGLE_CLIENT_ID:
+        raise HTTPException(status_code=401, detail="Token audience mismatch")
+
+    # Check token hasn't expired (tokeninfo returns 200 even for expired;
+    # check the exp claim explicitly)
+    exp = payload.get("exp")
+    if exp and int(exp) < int(datetime.utcnow().timestamp()):
+        raise HTTPException(status_code=401, detail="Google token expired")
+
+    return payload

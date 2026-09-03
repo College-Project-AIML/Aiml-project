@@ -8,13 +8,42 @@ import About from './pages/About'
 import Dashboard from './pages/Dashboard'
 import ChatbotWidget from './components/ChatbotWidget'
 import SignInModal from './components/SignInModal'
+import SuvidhaMark from './components/SuvidhaMark'
+import Onboarding from './pages/Onboarding'
 import { useAuth } from './context/AuthContext'
+import { useAuth0 } from '@auth0/auth0-react'
 
 // ── Protected route — redirects to home if not signed in ────────────────────
 function RequireAuth({ children }) {
   const { user } = useAuth()
   if (!user) return <Navigate to="/" replace />
   return children
+}
+
+// ── Protected route — redirects to onboarding if profile is missing ───────────
+function RequireOnboarding({ children }) {
+  const { user } = useAuth()
+  if (!user) return <Navigate to="/" replace />
+  if (user.profile === null || user.profile === undefined) {
+    return <Navigate to="/onboarding" replace />
+  }
+  return children
+}
+
+// ── Auth0 Callback Handler (only renders if Auth0 is configured) ────────────
+function Auth0CallbackHandler() {
+  const { isAuthenticated, user: auth0User } = useAuth0()
+  const { loginWithAuth0User, user } = useAuth()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isAuthenticated && auth0User && !user) {
+      loginWithAuth0User(auth0User)
+      navigate('/onboarding')
+    }
+  }, [isAuthenticated, auth0User, user, loginWithAuth0User, navigate])
+
+  return null
 }
 
 function App() {
@@ -64,19 +93,17 @@ function App() {
 
   return (
     <>
+      {import.meta.env.VITE_AUTH0_DOMAIN && import.meta.env.VITE_AUTH0_CLIENT_ID && <Auth0CallbackHandler />}
       {/* ── Global navbar (hidden on /dashboard which has its own sidebar) */}
       {!isDashboard && (
         <nav className={`navbar${navScrolled ? ' scrolled' : ''}`}>
           <div className="navbar-inner">
             <Link to="/" className="navbar-brand">
-              <div className="brand-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 21h18" /><path d="M3 10h18" /><path d="M5 6l7-3 7 3" />
-                  <path d="M4 10v11" /><path d="M20 10v11" />
-                  <path d="M8 14v3" /><path d="M12 14v3" /><path d="M16 14v3" />
-                </svg>
-              </div>
-              Suvidha
+              <SuvidhaMark size={44} />
+              <span className="navbar-brand-copy">
+                <span className="navbar-brand-name">Suvidha</span>
+                <span className="navbar-brand-subtitle">Government Scheme Registry</span>
+              </span>
             </Link>
 
             <div className="navbar-right">
@@ -115,7 +142,17 @@ function App() {
                   </Link>
                   <button
                     className="navbar-signin"
-                    onClick={signOut}
+                    onClick={() => {
+                      signOut()
+                      if (window.location.origin) {
+                        const domain = import.meta.env.VITE_AUTH0_DOMAIN
+                        const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
+                        if (domain && clientId) {
+                          window.location.href = `https://${domain}/v2/logout?client_id=${clientId}&returnTo=${encodeURIComponent(window.location.origin)}`
+                          return
+                        }
+                      }
+                    }}
                     style={{ fontSize: '12px' }}
                   >
                     Sign out
@@ -148,11 +185,19 @@ function App() {
           <Route path="/eligibility" element={<Eligibility />} />
           <Route path="/about" element={<About />} />
           <Route
-            path="/dashboard"
+            path="/onboarding"
             element={
               <RequireAuth>
-                <Dashboard />
+                <Onboarding />
               </RequireAuth>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <RequireOnboarding>
+                <Dashboard />
+              </RequireOnboarding>
             }
           />
         </Routes>
