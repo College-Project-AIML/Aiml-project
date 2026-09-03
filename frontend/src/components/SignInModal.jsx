@@ -94,13 +94,12 @@ export default function SignInModal({ onClose }) {
                         </button>
                     </div>
 
-                    <div>
-                        <div style={{ padding: '24px 32px 32px' }}>
-                            <h2 className="signin-title">Welcome to Suvidha</h2>
-                            <p className="signin-subtitle">Choose a secure sign-in method to continue</p>
+                    <div className="signin-content">
+                            <h2 className="signin-title">Welcome back</h2>
+                            <p className="signin-subtitle">Sign in to access your dashboard</p>
 
                             {/* OAuth buttons */}
-                            <div className="signin-oauth-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <div className="signin-oauth-wrapper">
                                 <GoogleLogin
                                     onSuccess={handleGoogleSuccess}
                                     onError={handleGoogleError}
@@ -109,25 +108,11 @@ export default function SignInModal({ onClose }) {
                                     width="100%"
                                     theme="outline"
                                 />
+                                <div className="signin-divider"><span>OR</span></div>
                                 <button
                                     type="button"
                                     onClick={handleAuth0Login}
-                                    style={{
-                                        width: '100%',
-                                        padding: '9px 14px',
-                                        borderRadius: '8px',
-                                        border: '1px solid rgba(255, 255, 255, 0.18)',
-                                        background: 'rgba(255, 255, 255, 0.05)',
-                                        color: '#e2e8f0',
-                                        fontSize: '14px',
-                                        fontWeight: '500',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        gap: '8px',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.2s ease',
-                                    }}
+                                    className="signin-auth0-btn"
                                 >
                                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -137,7 +122,6 @@ export default function SignInModal({ onClose }) {
                             </div>
 
                             {error && <div className="signin-error" style={{ marginTop: '16px' }}>{error}</div>}
-                        </div>
                     </div>
                 </motion.div>
             </motion.div>
