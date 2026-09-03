@@ -3,7 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAuth } from '../context/AuthContext'
-import { getStats, getSchemes, getRecommendedSchemes } from '../api/api'
+import { getStats, getSchemes, getRecommendedSchemes, getUpdates } from '../api/api'
+import { getApplications, removeApplication, updateApplicationProgress } from '../utils/applicationTracker'
+import { timeAgo } from '../utils'
 import '../dashboard.css'
 
 // ── Framer-motion helpers ───────────────────────────────────────────────────
@@ -47,10 +49,6 @@ const SIDEBAR_ITEMS = [
         icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>,
     },
     {
-        id: 'saved', label: 'Saved Schemes',
-        icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg>,
-    },
-    {
         id: 'alerts', label: 'Alerts',
         icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>,
     },
@@ -63,7 +61,7 @@ function CustomTooltip({ active, payload }) {
     return (
         <div style={{ background: '#182240', border: '1px solid #26304F', borderRadius: '8px', padding: '10px 14px', fontSize: '13px', color: '#EDEFF5' }}>
             <div style={{ color: d.color, fontWeight: 700, marginBottom: '2px' }}>{d.name}</div>
-            <div style={{ color: '#8890A6' }}>{d.value} schemes</div>
+            <div style={{ color: '#8890A6' }}>Category in your matches</div>
         </div>
     )
 }
@@ -83,34 +81,28 @@ function buildCriteria(profile) {
     return criteria
 }
 
-// ── Helper: derive donut data from eligibility results ──────────────────────
+// ── Helper: group the user's matches by their scheme category ───────────────
 function buildDonut(matches) {
-    if (!matches || matches.length === 0) return []
-    // Group by reason keywords
-    const excellent = matches.filter(m => m.match_score >= 0.85 || (m.score && m.score >= 0.85)).length
-    const good = matches.filter(m => {
-        const s = m.match_score ?? m.score ?? 0
-        return s >= 0.65 && s < 0.85
-    }).length
-    const moderate = matches.filter(m => {
-        const s = m.match_score ?? m.score ?? 0
-        return s >= 0.4 && s < 0.65
-    }).length
-    const low = matches.length - excellent - good - moderate
+    if (!matches?.length) return []
 
-    // Fallback: if no score field, just split roughly
-    if (excellent === 0 && good === 0 && moderate === 0 && low === matches.length) {
-        const total = matches.length
-        return [
-            { name: 'Matched Schemes', value: total, color: '#B5643A' },
-        ]
+    const categoryCounts = new Map()
+    matches.forEach((match) => {
+        const scheme = match.scheme || match
+        const category = scheme?.category_name?.trim() || 'Other support'
+        categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1)
+    })
+
+    const categories = [...categoryCounts.entries()]
+        .sort(([, firstCount], [, secondCount]) => secondCount - firstCount)
+    const mainCategories = categories.slice(0, 4)
+    const remainingCount = categories.slice(4).reduce((sum, [, count]) => sum + count, 0)
+    const palette = ['#B5643A', '#6B8F71', '#93B8E8', '#C49A3C', '#7667B9']
+    const data = mainCategories.map(([name, value], index) => ({ name, value, color: palette[index] }))
+
+    if (remainingCount > 0) {
+        data.push({ name: 'Other support', value: remainingCount, color: palette[4] })
     }
 
-    const data = []
-    if (excellent > 0) data.push({ name: 'Excellent Match', value: excellent, color: '#6B8F71' })
-    if (good > 0) data.push({ name: 'Good Match', value: good, color: '#B5643A' })
-    if (moderate > 0) data.push({ name: 'Moderate Match', value: moderate, color: '#C49A3C' })
-    if (low > 0) data.push({ name: 'Low Match', value: low, color: '#5B6480' })
     return data
 }
 
@@ -124,6 +116,13 @@ export default function Dashboard() {
     const [statsLoading, setStatsLoading] = useState(true)
     const [recommendedSchemes, setRecommendedSchemes] = useState([])
     const [recommendedLoading, setRecommendedLoading] = useState(false)
+    const [applications, setApplications] = useState([])
+    const [schemeUpdates, setSchemeUpdates] = useState([])
+    const [alertsLoading, setAlertsLoading] = useState(false)
+    const [alertFilter, setAlertFilter] = useState('all')
+    const [readAlertIds, setReadAlertIds] = useState(() => {
+        try { return JSON.parse(localStorage.getItem('suvidha-read-alerts')) || [] } catch { return [] }
+    })
 
     // Redirect if not signed in
     useEffect(() => {
@@ -166,6 +165,26 @@ export default function Dashboard() {
         loadRecommended()
     }, [user?.profile])
 
+    useEffect(() => {
+        if (user) setApplications(getApplications(user.user_id || user.email))
+    }, [user])
+
+    useEffect(() => {
+        if (activeNav !== 'alerts' || !user) return
+        async function loadAlerts() {
+            setAlertsLoading(true)
+            try {
+                const response = await getUpdates({ limit: 50 })
+                setSchemeUpdates(response.updates || [])
+            } catch {
+                setSchemeUpdates([])
+            } finally {
+                setAlertsLoading(false)
+            }
+        }
+        loadAlerts()
+    }, [activeNav, user])
+
     if (!user) return null // will redirect
 
     // ── Derived data from real eligibility results ──────────────────────────
@@ -174,16 +193,65 @@ export default function Dashboard() {
     const matchCount = results?.total_matches ?? matches.length
     const criteria = buildCriteria(user.profile)
     const donutData = buildDonut(matches)
-    const donutTotal = donutData.reduce((s, d) => s + d.value, 0)
-    const overallPct = donutTotal > 0
-        ? Math.round(((donutData.find(d => d.name === 'Excellent Match')?.value || 0) + (donutData.find(d => d.name === 'Good Match')?.value || 0)) / donutTotal * 100)
-        : matchCount > 0 ? 100 : 0
 
     // ── Greeting ────────────────────────────────────────────────────────────
     const hour = new Date().getHours()
     const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
     const firstName = user.name.split(' ')[0]
     const initials = user.name.trim().split(' ').filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('')
+    const profileValues = [
+        { label: 'Full name', value: user.name },
+        { label: 'Age', value: user.profile?.age ? `${user.profile.age} years` : 'Not set' },
+        { label: 'Annual income', value: user.profile?.income ? `₹${Number(user.profile.income).toLocaleString('en-IN')} / year` : 'Not set' },
+        { label: 'Gender', value: user.profile?.gender ? user.profile.gender.charAt(0).toUpperCase() + user.profile.gender.slice(1) : 'Not set' },
+        { label: 'Category', value: user.profile?.caste ? user.profile.caste.toUpperCase() : 'Not set' },
+        { label: 'State', value: user.profile?.state || 'Not set' },
+        { label: 'Education level', value: user.profile?.education_level ? user.profile.education_level.replace(/_/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()) : 'Not set' },
+    ]
+    const progressLabels = {
+        INTERESTED: 'Interested',
+        APPLIED: 'Applied on official portal',
+        SUBMITTED: 'Submitted',
+        APPROVED: 'Approved',
+        REJECTED: 'Rejected',
+    }
+
+    const handleProgressChange = (applicationId, progress) => {
+        updateApplicationProgress(applicationId, progress)
+        setApplications(getApplications(user.user_id || user.email))
+    }
+    const handleCompleteApplication = (applicationId) => {
+        removeApplication(applicationId)
+        setApplications(getApplications(user.user_id || user.email))
+    }
+    const markAlertRead = (alertId) => {
+        const next = [...new Set([...readAlertIds, alertId])]
+        setReadAlertIds(next)
+        localStorage.setItem('suvidha-read-alerts', JSON.stringify(next))
+    }
+    const trackedSchemeIds = new Set(applications.map((application) => application.scheme.id))
+    const applicationAlerts = applications.flatMap((application) => {
+        const alerts = []
+        if (application.progress === 'INTERESTED') {
+            alerts.push({ id: `review-${application.id}`, type: 'application', title: 'Action needed: review your application', text: `Review required documents for ${application.scheme.name}.`, scheme: application.scheme })
+        }
+        if (application.scheme.status === 'INACTIVE') {
+            alerts.push({ id: `inactive-${application.id}`, type: 'application', title: 'Tracked scheme is inactive', text: `${application.scheme.name} is currently marked inactive. Verify availability on the official portal.`, scheme: application.scheme })
+        }
+        return alerts
+    })
+    const updateAlerts = schemeUpdates
+        .filter((update) => trackedSchemeIds.has(update.scheme?.id))
+        .map((update) => ({
+            id: `update-${update.scheme?.id}-${update.detected_at}`,
+            type: 'scheme',
+            title: update.change_type === 'CLOSED' ? 'Scheme closed' : update.change_type === 'NEW' ? 'New scheme update' : 'Tracked scheme updated',
+            text: `${update.scheme?.name || 'A tracked scheme'} was marked ${update.change_type.toLowerCase()}.`,
+            scheme: update.scheme,
+            detectedAt: update.detected_at,
+        }))
+    const allAlerts = [...applicationAlerts, ...updateAlerts]
+    const visibleAlerts = allAlerts.filter((alert) => alertFilter === 'all' || alert.type === alertFilter)
 
     // ── Stat cards built from real data ────────────────────────────────────
     const statCards = [
@@ -254,9 +322,6 @@ export default function Dashboard() {
                         >
                             <span className="db-sidebar-icon">{item.icon}</span>
                             <span className="db-sidebar-label">{item.label}</span>
-                            {item.id === 'matched' && matchCount > 0 && (
-                                <span className="db-sidebar-badge">{matchCount}</span>
-                            )}
                         </button>
                     ))}
                 </nav>
@@ -325,6 +390,172 @@ export default function Dashboard() {
                     </div>
                 </motion.div>
 
+                {activeNav === 'profile' && (
+                    <RevealSection className="db-panel db-profile-panel" style={{ marginBottom: '40px' }}>
+                        <div className="db-panel-header">
+                            <div>
+                                <h2 className="db-panel-title">My Profile</h2>
+                                <span className="db-panel-sub">Details used to personalise your scheme recommendations</span>
+                            </div>
+                            <Link to="/onboarding" className="db-criteria-cta">Update Profile →</Link>
+                        </div>
+                        <div className="db-profile-grid">
+                            {profileValues.map((field) => (
+                                <div className="db-profile-field" key={field.label}>
+                                    <span className="db-profile-label">{field.label}</span>
+                                    <span className={`db-profile-value${field.value === 'Not set' ? ' empty' : ''}`}>{field.value}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </RevealSection>
+                )}
+
+                {activeNav === 'applications' && (
+                    <RevealSection className="db-panel db-applications-panel" style={{ marginBottom: '40px' }}>
+                        <div className="db-panel-header">
+                            <div>
+                                <h2 className="db-panel-title">My Applications</h2>
+                                <span className="db-panel-sub">Schemes you chose to track in Suvidha</span>
+                            </div>
+                        </div>
+                        {applications.length === 0 ? (
+                            <div className="db-panel-empty">
+                                <div className="db-panel-empty-icon">📋</div>
+                                <div>No tracked applications yet.</div>
+                                <Link to="/schemes" className="db-criteria-cta" style={{ marginTop: '12px', display: 'inline-block' }}>Browse Schemes →</Link>
+                            </div>
+                        ) : (
+                            <div className="db-application-list">
+                                {applications.map((application) => {
+                                    const trackedScheme = application.scheme
+                                    const documents = trackedScheme.documents_required || []
+                                    return (
+                                        <div className="db-application-card" key={application.id}>
+                                            <div className="db-application-header">
+                                                <div>
+                                                    <h3 className="db-application-name">{trackedScheme.name}</h3>
+                                                    <div className="db-application-tags">
+                                                        <span className={`db-application-status ${trackedScheme.status === 'ACTIVE' ? 'active' : 'inactive'}`}>{trackedScheme.status || 'UNKNOWN'}</span>
+                                                        {trackedScheme.category_name && <span className="db-scheme-tag">{trackedScheme.category_name}</span>}
+                                                    </div>
+                                                </div>
+                                                <select value={application.progress} onChange={(event) => handleProgressChange(application.id, event.target.value)} className="db-application-progress">
+                                                    {Object.entries(progressLabels).map(([value, label]) => <option value={value} key={value}>{label}</option>)}
+                                                </select>
+                                            </div>
+                                            <div className="db-application-details">
+                                                <div><span>Last date to apply</span><strong>{trackedScheme.application_deadline || 'Not published in our source'}</strong></div>
+                                                <div><span>Required documents</span><strong>{documents.length ? `${documents.length} listed` : 'Not listed'}</strong></div>
+                                            </div>
+                                            {documents.length > 0 && (
+                                                <ul className="db-application-documents">
+                                                    {documents.map((document, index) => <li key={index}>{document.document_name}{!document.is_mandatory ? ' (optional)' : ''}</li>)}
+                                                </ul>
+                                            )}
+                                            <div className="db-application-actions">
+                                                <Link to={`/schemes/${trackedScheme.id}`} className="db-scheme-view-btn">View scheme details →</Link>
+                                                {trackedScheme.link && <a href={trackedScheme.link} target="_blank" rel="noreferrer" className="db-scheme-view-btn">Official portal ↗</a>}
+                                                <button type="button" onClick={() => handleCompleteApplication(application.id)} className="db-scheme-view-btn db-application-complete-btn">Mark done &amp; remove ✓</button>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )}
+                    </RevealSection>
+                )}
+
+                {activeNav === 'alerts' && (
+                    <RevealSection className="db-panel db-alerts-panel" style={{ marginBottom: '40px' }}>
+                        <div className="db-panel-header">
+                            <div>
+                                <h2 className="db-panel-title">Alerts</h2>
+                                <span className="db-panel-sub">Updates and reminders for schemes you are tracking</span>
+                            </div>
+                        </div>
+                        <div className="db-alert-filters">
+                            {[['all', 'All'], ['application', 'Applications'], ['scheme', 'Scheme updates']].map(([value, label]) => (
+                                <button key={value} onClick={() => setAlertFilter(value)} className={`db-alert-filter${alertFilter === value ? ' active' : ''}`}>{label}</button>
+                            ))}
+                        </div>
+                        {alertsLoading ? (
+                            <div className="db-panel-empty">Loading updates…</div>
+                        ) : visibleAlerts.length === 0 ? (
+                            <div className="db-panel-empty">
+                                <div className="db-panel-empty-icon">🔔</div>
+                                <div>No alerts yet.</div>
+                                <div style={{ marginTop: '6px', fontSize: '13px' }}>Track a scheme to receive application reminders and scheme updates.</div>
+                            </div>
+                        ) : (
+                            <div className="db-alert-list">
+                                {visibleAlerts.map((alert) => {
+                                    const isRead = readAlertIds.includes(alert.id)
+                                    return (
+                                        <div className={`db-alert-card${isRead ? ' read' : ''}`} key={alert.id}>
+                                            <div className="db-alert-dot" />
+                                            <div className="db-alert-content">
+                                                <div className="db-alert-title">{alert.title}</div>
+                                                <div className="db-alert-text">{alert.text}</div>
+                                                {alert.detectedAt && <div className="db-alert-time">{timeAgo(alert.detectedAt)}</div>}
+                                                <div className="db-alert-actions">
+                                                    <Link to={`/schemes/${alert.scheme?.id}`} className="db-scheme-view-btn">View scheme →</Link>
+                                                    {!isRead && <button onClick={() => markAlertRead(alert.id)} className="db-alert-read-btn">Mark read</button>}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )}
+                    </RevealSection>
+                )}
+
+                {activeNav === 'matched' && (
+                    <RevealSection className="db-panel db-matched-panel" style={{ marginBottom: '40px' }}>
+                        <div className="db-panel-header">
+                            <div>
+                                <h2 className="db-panel-title">Your Matched Schemes</h2>
+                                <span className="db-panel-sub">
+                                    {matchCount > 0
+                                        ? `${matchCount} schemes matched to your profile — explore the ones that suit you.`
+                                        : 'Complete your profile and run an eligibility check to see your matches.'}
+                                </span>
+                            </div>
+                            {matchCount > 0 && <span className="db-matched-count">{matchCount} matches</span>}
+                        </div>
+                        {matches.length === 0 ? (
+                            <div className="db-panel-empty">
+                                <div className="db-panel-empty-icon">🎯</div>
+                                <div>No matched schemes yet.</div>
+                                <Link to="/eligibility" className="db-criteria-cta" style={{ marginTop: '12px', display: 'inline-block' }}>Check Eligibility →</Link>
+                            </div>
+                        ) : (
+                            <div className="db-matched-grid">
+                                {matches.map((match, index) => {
+                                    const matchedScheme = match.scheme || match
+                                    return (
+                                        <motion.div key={matchedScheme?.id || index} className="db-matched-card" whileHover={{ y: -4 }} transition={{ duration: 0.18 }}>
+                                            <div className="db-matched-card-top">
+                                                <span className="db-matched-rank">#{String(index + 1).padStart(2, '0')}</span>
+                                                <span className={`db-application-status ${matchedScheme?.status === 'ACTIVE' ? 'active' : 'inactive'}`}>{matchedScheme?.status || 'ACTIVE'}</span>
+                                            </div>
+                                            <h3>{matchedScheme?.name || 'Scheme'}</h3>
+                                            <p>{matchedScheme?.description || 'View the full scheme details to learn more.'}</p>
+                                            <div className="db-matched-tags">
+                                                {matchedScheme?.category_name && <span className="db-scheme-tag">{matchedScheme.category_name}</span>}
+                                                <span className="db-scheme-tag">{matchedScheme?.state_code || 'All India'}</span>
+                                            </div>
+                                            {match.match_reason && <div className="db-matched-reason">✓ {match.match_reason}</div>}
+                                            <Link to={`/schemes/${matchedScheme?.id}`} className="db-matched-view">Explore scheme →</Link>
+                                        </motion.div>
+                                    )
+                                })}
+                            </div>
+                        )}
+                    </RevealSection>
+                )}
+
+                {!['profile', 'applications', 'alerts', 'matched'].includes(activeNav) && <>
                 {/* Stat cards */}
                 <motion.div className="db-stat-grid" variants={stagger} initial="hidden" animate="show">
                     {statCards.map((card) => (
@@ -376,8 +607,8 @@ export default function Dashboard() {
                     <RevealSection className="db-panel db-donut-panel">
                         <div className="db-panel-header">
                             <div>
-                                <h2 className="db-panel-title">Match Overview</h2>
-                                <span className="db-panel-sub">Eligibility breakdown by match quality</span>
+                                <h2 className="db-panel-title">Discover Your Benefits</h2>
+                                <span className="db-panel-sub">The support areas most relevant to your profile.</span>
                             </div>
                         </div>
                         {donutData.length > 0 ? (
@@ -394,8 +625,7 @@ export default function Dashboard() {
                                         </PieChart>
                                     </ResponsiveContainer>
                                     <div className="db-donut-center">
-                                        <div className="db-donut-pct">{overallPct}%</div>
-                                        <div className="db-donut-pct-label">eligible</div>
+                                        <div className="db-donut-pct-label">scheme categories</div>
                                     </div>
                                 </div>
                                 <div className="db-donut-legend">
@@ -406,10 +636,6 @@ export default function Dashboard() {
                                             <span className="db-legend-count">{d.value} schemes</span>
                                         </div>
                                     ))}
-                                    <div className="db-legend-total">
-                                        <span>Total matched</span>
-                                        <span style={{ color: '#EDEFF5', fontWeight: 700 }}>{donutTotal} schemes</span>
-                                    </div>
                                 </div>
                             </div>
                         ) : (
@@ -463,7 +689,6 @@ export default function Dashboard() {
                         <div className="db-panel-header">
                             <div>
                                 <h2 className="db-panel-title">
-                                    <span style={{ marginRight: '8px' }}>🤖</span>
                                     Recommended for You
                                 </h2>
                                 <span className="db-panel-sub">
@@ -609,6 +834,7 @@ export default function Dashboard() {
                         </div>
                     )}
                 </RevealSection>
+                </>}
 
             </main>
         </div>

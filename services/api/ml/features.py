@@ -96,6 +96,7 @@ def extract_features(
         features["caste_eligible"] = 1.0
         features["education_eligible"] = 1.0
         features["has_any_rule"] = 1.0 if has_state_restriction else 0.0
+        features["matched_rule_coverage"] = (1.0 / 6.0) if has_state_restriction and features["state_eligible"] > 0.5 else 0.0
         features["eligibility_match_ratio"] = features["state_eligible"]
     else:
         # ── Age ─────────────────────────────────────────────────────────────
@@ -165,6 +166,16 @@ def extract_features(
         ])
         features["eligibility_match_ratio"] = passed / max(applicable, 1)
         features["has_any_rule"] = 1.0 if applicable > 0 else 0.0
+        # Prefer schemes that are specifically relevant to this profile over
+        # unrestricted schemes which happen to be open to everyone.
+        features["matched_rule_coverage"] = sum([
+            has_age and features["age_eligible"] > 0.5,
+            has_income and features["income_eligible"] > 0.5,
+            has_gender and features["gender_eligible"] > 0.5,
+            has_caste and features["caste_eligible"] > 0.5,
+            has_state_restriction and features["state_eligible"] > 0.5,
+            has_edu and features["education_eligible"] > 0.5,
+        ]) / 6.0
 
     # ── Scheme metadata features ────────────────────────────────────────────
     source = (scheme.get("source") or "").lower()
@@ -198,6 +209,7 @@ FEATURE_NAMES = [
     "education_eligible",
     "eligibility_match_ratio",
     "has_any_rule",
+    "matched_rule_coverage",
     "source_trust",
     "is_all_india",
 ]

@@ -27,14 +27,15 @@ from services.api.ml.features import FEATURE_NAMES
 # These weights were designed to make eligibility the dominant factor,
 # with state/caste match as strong secondary signals.
 HEURISTIC_WEIGHTS = {
-    "eligibility_match_ratio": 0.35,   # Most important: how many rules the user passes
-    "state_eligible":           0.20,   # State match is critical for state-specific schemes
-    "caste_eligible":           0.15,   # Category match matters for reserved schemes
-    "income_eligible":          0.10,   # Income threshold
-    "age_eligible":             0.08,   # Age range
-    "education_eligible":       0.07,   # Education requirement
-    "gender_eligible":          0.03,   # Gender (less commonly restricted)
-    "source_trust":             0.02,   # Source credibility (minor boost for gov.in)
+    "eligibility_match_ratio": 0.30,   # Most important: how many rules the user passes
+    "matched_rule_coverage":    0.25,   # Boost schemes with rules that specifically fit this user
+    "state_eligible":           0.15,   # State match is critical for state-specific schemes
+    "caste_eligible":           0.12,   # Category match matters for reserved schemes
+    "income_eligible":          0.08,   # Income threshold
+    "age_eligible":             0.05,   # Age range
+    "education_eligible":       0.03,   # Education requirement
+    "gender_eligible":          0.01,   # Gender (less commonly restricted)
+    "source_trust":             0.01,   # Source credibility (minor boost for gov.in)
 
     # Penalty terms (negative weights for disqualifying mismatches)
     # Applied as: if feature == 0 and it's a hard rule, apply penalty

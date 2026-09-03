@@ -7,26 +7,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 import '../signin.css'
 
 export default function SignInModal({ onClose }) {
-    const { signIn, loginWithGoogle } = useAuth()
+    const { loginWithGoogle } = useAuth()
     const navigate = useNavigate()
     
     // Auth0 hook (will throw if Auth0Provider is not wrapping the app, but we only call it if env vars exist)
     const { loginWithRedirect } = useAuth0() || {}
 
-    const [name, setName] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (!name.trim()) { setError('Please enter your name'); return }
-        setError('')
-        
-        // Manual sign in with name
-        signIn({ name: name.trim(), profile: null, eligibilityResults: null })
-        onClose()
-        navigate('/onboarding')
-    }
 
     // Handle Google OAuth success
     const handleGoogleSuccess = async (credentialResponse) => {
@@ -64,14 +52,6 @@ export default function SignInModal({ onClose }) {
             setError('Auth0 sign-in error. Please check your Auth0 settings.')
         }
     }
-
-    const initials = name
-        .trim()
-        .split(' ')
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((w) => w[0].toUpperCase())
-        .join('')
 
     return (
         <AnimatePresence>
@@ -114,10 +94,10 @@ export default function SignInModal({ onClose }) {
                         </button>
                     </div>
 
-                    <form onSubmit={handleSubmit} noValidate>
+                    <div>
                         <div style={{ padding: '24px 32px 32px' }}>
                             <h2 className="signin-title">Welcome to Suvidha</h2>
-                            <p className="signin-subtitle">Enter your name to personalise your dashboard</p>
+                            <p className="signin-subtitle">Choose a secure sign-in method to continue</p>
 
                             {/* OAuth buttons */}
                             <div className="signin-oauth-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -156,47 +136,9 @@ export default function SignInModal({ onClose }) {
                                 </button>
                             </div>
 
-                            <div className="signin-divider">
-                                <span>or continue with name</span>
-                            </div>
-
-                            {/* Avatar preview */}
-                            {name.trim() && (
-                                <motion.div
-                                    className="signin-avatar-preview"
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <div className="signin-avatar">{initials || '?'}</div>
-                                    <span className="signin-avatar-name">{name.trim()}</span>
-                                </motion.div>
-                            )}
-
-                            <div className="signin-field">
-                                <label htmlFor="signin-name">Your full name</label>
-                                <input
-                                    id="signin-name"
-                                    type="text"
-                                    value={name}
-                                    onChange={(e) => { setName(e.target.value); setError('') }}
-                                    placeholder="e.g. Priya Nair"
-                                    autoFocus
-                                    autoComplete="name"
-                                />
-                                {error && <div className="signin-error">{error}</div>}
-                            </div>
-
-                            <button type="submit" className="signin-btn-primary" disabled={loading}>
-                                Continue
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </button>
-
-                            <p className="signin-note">No password required · Profile stays on your device</p>
+                            {error && <div className="signin-error" style={{ marginTop: '16px' }}>{error}</div>}
                         </div>
-                    </form>
+                    </div>
                 </motion.div>
             </motion.div>
         </AnimatePresence>

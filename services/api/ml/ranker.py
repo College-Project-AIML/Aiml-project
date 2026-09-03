@@ -20,7 +20,7 @@ from services.api.ml.scorer import score
 def rank_schemes(
     profile: dict,
     schemes_with_rules: list[dict],
-    limit: int = 20,
+    limit: Optional[int] = 20,
 ) -> list[dict]:
     """
     Rank a list of schemes by personalized relevance to the user.
@@ -60,9 +60,9 @@ def rank_schemes(
         })
 
     # Sort by relevance descending, then by source trust as tiebreaker
-    scored.sort(key=lambda s: (s["relevance_score"], s.get("confidence_score", 0)), reverse=True)
+    scored.sort(key=lambda s: (s["relevance_score"], float(s.get("confidence_score") or 0)), reverse=True)
 
-    return scored[:limit]
+    return scored if limit is None else scored[:limit]
 
 
 def _build_match_details(features: dict[str, float], rules: Optional[dict]) -> dict:

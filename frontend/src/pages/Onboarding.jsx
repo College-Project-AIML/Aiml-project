@@ -20,6 +20,8 @@ const INDIA_REGIONS = [
 export default function Onboarding() {
     const { user, updateProfileAndEligibility } = useAuth()
     const navigate = useNavigate()
+    const [displayName, setDisplayName] = useState(user?.name?.includes('@') ? '' : user?.name || '')
+    const [nameError, setNameError] = useState('')
     
     const [profile, setProfile] = useState({
         age: user?.profile?.age || '',
@@ -36,6 +38,10 @@ export default function Onboarding() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!displayName.trim()) {
+            setNameError('Please enter the name you would like us to use.')
+            return
+        }
         setLoading(true)
         
         try {
@@ -54,7 +60,7 @@ export default function Onboarding() {
                 console.error("Failed to check eligibility during onboarding", err)
             }
 
-            updateProfileAndEligibility(cleanProfile, eligibilityResults)
+            updateProfileAndEligibility(cleanProfile, eligibilityResults, displayName)
             navigate('/dashboard')
         } finally {
             setLoading(false)
@@ -95,6 +101,22 @@ export default function Onboarding() {
                         transition={{ delay: 0.3 }}
                     >
                         <div className="onboarding-grid">
+                            <div className="onboarding-field onboarding-name-field">
+                                <label htmlFor="ob-name">Your name</label>
+                                <input
+                                    id="ob-name"
+                                    type="text"
+                                    value={displayName}
+                                    onChange={(e) => {
+                                        setDisplayName(e.target.value)
+                                        setNameError('')
+                                    }}
+                                    placeholder="e.g. Priya Nair"
+                                    autoComplete="name"
+                                    required
+                                />
+                                {nameError && <span className="onboarding-error">{nameError}</span>}
+                            </div>
                             <div className="onboarding-field">
                                 <label htmlFor="ob-age">Age</label>
                                 <input id="ob-age" type="number" name="age" value={profile.age}

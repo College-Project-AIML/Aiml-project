@@ -55,6 +55,16 @@
     gap: 0.5rem;
 }
 
+.onboarding-name-field {
+    grid-column: 1 / -1;
+}
+
+.onboarding-error {
+    color: #fca5a5;
+    font-size: 0.82rem;
+    margin-left: 0.25rem;
+}
+
 .onboarding-field label {
     font-size: 0.9rem;
     font-weight: 600;

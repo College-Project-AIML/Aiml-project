@@ -36,8 +36,14 @@ export function AuthProvider({ children }) {
         setUser(updated)
     }
 
-    const updateProfileAndEligibility = (profile, eligibilityResults) => {
-        const updated = { ...user, profile, eligibilityResults }
+    const updateProfileAndEligibility = (profile, eligibilityResults, displayName = user?.name) => {
+        const updated = { ...user, name: displayName?.trim() || user?.name, profile, eligibilityResults }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
+        setUser(updated)
+    }
+
+    const updateDisplayName = (name) => {
+        const updated = { ...user, name: name.trim() }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
         setUser(updated)
     }
@@ -95,7 +101,7 @@ export function AuthProvider({ children }) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, token, signIn, signOut, updateEligibility, updateProfileAndEligibility, loginWithGoogle, loginWithAuth0User }}>
+        <AuthContext.Provider value={{ user, token, signIn, signOut, updateEligibility, updateProfileAndEligibility, updateDisplayName, loginWithGoogle, loginWithAuth0User }}>
             {children}
         </AuthContext.Provider>
     )

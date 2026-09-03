@@ -10,6 +10,9 @@ from services.api.ml.ranker import rank_schemes
 
 router = APIRouter(tags=["Eligibility"])
 
+MAX_ELIGIBILITY_RESULTS = 200
+MIN_RELEVANCE_SCORE = 0.78
+
 
 @router.post("/eligibility-check")
 def check_eligibility(req: EligibilityCheckRequest):
@@ -40,7 +43,20 @@ def check_eligibility(req: EligibilityCheckRequest):
         params.extend([st, st])
 
     if req.education_level:
-        conditions.append("(e.education_level IS NULL OR e.education_level = %s)")
+        # A graduate can also meet a scheme's lower education requirement
+        # (for example 10th pass), rather than matching only an identical label.
+        conditions.append("""(e.education_level IS NULL OR
+            CASE e.education_level
+                WHEN '7th_pass' THEN 1 WHEN '8th_pass' THEN 2
+                WHEN '10th_pass' THEN 3 WHEN '12th_pass' THEN 4
+                WHEN 'graduate' THEN 5 WHEN 'post_graduate' THEN 6
+                ELSE 99
+            END <= CASE %s
+                WHEN '7th_pass' THEN 1 WHEN '8th_pass' THEN 2
+                WHEN '10th_pass' THEN 3 WHEN '12th_pass' THEN 4
+                WHEN 'graduate' THEN 5 WHEN 'post_graduate' THEN 6
+                ELSE 0
+            END)""")
         params.append(req.education_level)
 
     where = " AND ".join(conditions) if conditions else "TRUE"
@@ -56,8 +72,6 @@ def check_eligibility(req: EligibilityCheckRequest):
             LEFT JOIN providers p ON s.provider_id = p.id
             LEFT JOIN eligibility_rules e ON e.scheme_id = s.id
             WHERE s.status = 'ACTIVE' AND ({where})
-            ORDER BY s.confidence_score DESC NULLS LAST
-            LIMIT 50
         """, params)
         rows = cur.fetchall()
 
@@ -117,8 +131,12 @@ def check_eligibility(req: EligibilityCheckRequest):
             "rules": rules_map.get(sid),
         })
 
-    # Rank by personalized ML relevance score
-    ranked = rank_schemes(profile, schemes_with_rules, limit=50)
+    # Rank every eligible active scheme before selecting strong matches.
+    # This returns a variable number of results based on the profile, capped
+    # only to keep the response and UI usable with a large scheme database.
+    ranked = rank_schemes(profile, schemes_with_rules, limit=None)
+    ranked = [item for item in ranked if item["relevance_score"] >= MIN_RELEVANCE_SCORE]
+    ranked = ranked[:MAX_ELIGIBILITY_RESULTS]
 
     # Build response with match reasons
     matches = []
