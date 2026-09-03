@@ -48,9 +48,26 @@ function SchemeCard({ scheme }) {
 // ── Message types ──────────────────────────────────────────────────────────
 
 function BotMessage({ content }) {
+    const lines = content.split('\n').filter((line) => line.trim())
+
     return (
         <div className="chatbot-msg bot">
-            <div className="chatbot-msg-bubble">{content}</div>
+            <div className="chatbot-msg-bubble chatbot-answer">
+                {lines.map((line, index) => {
+                    const bullet = line.match(/^\s*[•*-]\s+(.+)$/)
+                    const heading = !bullet && line.trim().endsWith(':')
+
+                    if (bullet) {
+                        return <div className="chatbot-answer-bullet" key={index}>{bullet[1]}</div>
+                    }
+
+                    return (
+                        <div className={heading ? 'chatbot-answer-heading' : 'chatbot-answer-line'} key={index}>
+                            {line.replace(/\*\*/g, '')}
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
@@ -68,7 +85,6 @@ function UserMessage({ content }) {
 export default function ChatbotWidget() {
     const [open, setOpen] = useState(false)
     const [faqs, setFaqs] = useState([])
-    const [expandedFaq, setExpandedFaq] = useState(null)
     const [messages, setMessages] = useState([])
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
@@ -112,56 +128,42 @@ export default function ChatbotWidget() {
         setLoading(true)
 
         try {
-            const res = await fetch(`${API}/api/v1/chatbot/query`, {
+            const res = await fetch(`${API}/api/v1/chatbot/assistant`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ question }),
             })
+
+            if (!res.ok) {
+                throw new Error('API Error')
+            }
+
             const data = await res.json()
 
-            if (data.matched) {
-                const botMsgs = []
+            const botMsgs = []
 
-                if (data.answer) {
-                    botMsgs.push({ id: Date.now() + 1, type: 'bot', text: data.answer })
-                }
-
-                if (data.scheme) {
-                    botMsgs.push({
-                        id: Date.now() + 2,
-                        type: 'bot-scheme',
-                        scheme: data.scheme,
-                    })
-                }
-
-                if (botMsgs.length === 0) {
-                    botMsgs.push({
-                        id: Date.now() + 1,
-                        type: 'bot',
-                        text: 'I found a match but no details are available. Try browsing the Schemes page.',
-                    })
-                }
-
-                setMessages((prev) => [...prev, ...botMsgs])
-            } else {
-                const suggestions = data.suggestions || []
-                setMessages((prev) => [
-                    ...prev,
-                    {
-                        id: Date.now() + 1,
-                        type: 'bot-no-match',
-                        text: "I couldn't find a strong match for that question. Here are some things you can ask:",
-                        suggestions,
-                    },
-                ])
+            if (data.answer) {
+                botMsgs.push({ id: Date.now() + 1, type: 'bot', text: data.answer })
             }
+
+            if (data.schemes && Array.isArray(data.schemes)) {
+                data.schemes.slice(0, 3).forEach((scheme, i) => {
+                    botMsgs.push({
+                        id: Date.now() + 2 + i,
+                        type: 'bot-scheme',
+                        scheme: scheme,
+                    })
+                })
+            }
+
+            setMessages((prev) => [...prev, ...botMsgs])
         } catch {
             setMessages((prev) => [
                 ...prev,
                 {
                     id: Date.now() + 1,
                     type: 'bot',
-                    text: '⚠️ Something went wrong. Please try again.',
+                    text: '⚠️ I could not process that question. Please try again.',
                 },
             ])
         } finally {
@@ -258,33 +260,29 @@ export default function ChatbotWidget() {
                         </button>
                     </div>
 
-                    {/* FAQ chips */}
-                    {faqs.length > 0 && (
-                        <div style={{ padding: '12px 16px 0', flexShrink: 0 }}>
-                            <div className="chatbot-faq-label">Common questions</div>
-                            <div className="chatbot-chips" style={{ marginTop: 8, marginBottom: 2 }}>
-                                {faqs.slice(0, 8).map((faq) => (
-                                  <div className="chatbot-faq-item" key={faq.id}>
-                                    <button
-                                        className="chatbot-chip chatbot-faq-question"
-                                        onClick={() => setExpandedFaq((current) => current === faq.id ? null : faq.id)}
-                                        aria-expanded={expandedFaq === faq.id}
-                                    >
-                                        {faq.question.length > 55
-                                            ? faq.question.slice(0, 52) + '…'
-                                            : faq.question}
-                                    </button>
-                                    {expandedFaq === faq.id && (
-                                        <div className="chatbot-faq-answer">{faq.answer}</div>
-                                    )}
-                                  </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
                     {/* Conversation */}
                     <div className="chatbot-body" ref={bodyRef}>
+                        {/* FAQ chips */}
+                        {faqs.length > 0 && (
+                            <div style={{ flexShrink: 0, marginBottom: '8px' }}>
+                                <div className="chatbot-faq-label">Common questions</div>
+                                <div className="chatbot-chips" style={{ marginTop: 8, marginBottom: 2, maxHeight: 'none', overflowY: 'visible' }}>
+                                    {faqs.slice(0, 4).map((faq) => (
+                                        <button
+                                            className="chatbot-chip chatbot-faq-question"
+                                            key={faq.id}
+                                            onClick={() => sendQuery(faq.question)}
+                                            disabled={loading}
+                                        >
+                                            {faq.question.length > 55
+                                                ? faq.question.slice(0, 52) + '…'
+                                                : faq.question}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         {messages.map(renderMessage)}
                         {loading && <TypingIndicator />}
                     </div>

@@ -20,6 +20,40 @@ const styles = {
   searchRow: {
     maxWidth: '600px',
   },
+  statusFilters: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '8px',
+  },
+  statusLabel: {
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    color: '#6B6F7E',
+    marginRight: '4px',
+  },
+  statusButton: {
+    padding: '6px 14px',
+    borderRadius: '100px',
+    fontSize: '0.85rem',
+    fontWeight: 500,
+    border: '1.5px solid rgba(255,255,255,0.1)',
+    background: '#141319',
+    color: '#9A988F',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  },
+  statusButtonActive: {
+    padding: '6px 14px',
+    borderRadius: '100px',
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    border: '1.5px solid #E25822',
+    background: 'rgba(226,88,34,0.15)',
+    color: '#E25822',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  },
   results: {
     fontSize: '0.9rem',
     color: '#6B6F7E',
@@ -99,6 +133,7 @@ function Schemes() {
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || null)
   const [sort, setSort] = useState(searchParams.get('sort') === 'recently_updated' ? 'recently_updated' : 'default')
+  const [status, setStatus] = useState(['ACTIVE', 'INACTIVE'].includes(searchParams.get('status')) ? searchParams.get('status') : '')
 
   const limit = 12
 
@@ -119,6 +154,7 @@ function Schemes() {
             page,
             limit,
             category: selectedCategory,
+            status: status || undefined,
             sort: sort === 'recently_updated' ? 'recently_updated' : undefined,
           })
           setSchemes(res.schemes)
@@ -131,7 +167,20 @@ function Schemes() {
       }
     }
     load()
-  }, [page, selectedCategory, searchQuery, sort])
+  }, [page, selectedCategory, searchQuery, sort, status])
+
+  const updateStatusParam = (nextStatus) => {
+    const params = new URLSearchParams(searchParams)
+    if (nextStatus) params.set('status', nextStatus)
+    else params.delete('status')
+    setSearchParams(params)
+  }
+
+  const handleStatusChange = (nextStatus) => {
+    setStatus(nextStatus)
+    setPage(1)
+    updateStatusParam(nextStatus)
+  }
 
   const handleSearch = (query) => {
     setSearchQuery(query)
@@ -180,6 +229,23 @@ function Schemes() {
               onSelect={handleCategorySelect}
             />
           )}
+          <div style={styles.statusFilters}>
+            <span style={styles.statusLabel}>Status:</span>
+            {[
+              { value: '', label: 'All' },
+              { value: 'ACTIVE', label: 'Active' },
+              { value: 'INACTIVE', label: 'Inactive' },
+            ].map((option) => (
+              <button
+                key={option.value || 'all'}
+                type="button"
+                style={status === option.value ? styles.statusButtonActive : styles.statusButton}
+                onClick={() => handleStatusChange(option.value)}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div style={styles.sortRow}>

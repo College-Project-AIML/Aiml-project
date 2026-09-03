@@ -53,7 +53,7 @@ def list_schemes(
     limit: int = Query(20, ge=1, le=100),
     category: Optional[str] = None,
     state: Optional[str] = None,
-    status: Optional[str] = Query("ACTIVE"),
+    status: Optional[str] = Query(None),
     sort: Optional[str] = Query(None, description="recently_updated to order by last sync"),
 ):
     offset = (page - 1) * limit
