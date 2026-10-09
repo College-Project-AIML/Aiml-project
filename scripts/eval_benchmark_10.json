@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "query": "Is there a scholarship for SC students after 10th class?",
+        "expected_scheme_names": [
+            "Post-Matric Scholarship for SC Students"
+        ],
+        "expected_scheme_ids": [
+            "a64dd729-2aca-57bb-bbbb-1193345d5261"
+        ]
+    },
+    {
+        "id": 2,
+        "query": "Post-matric scholarship for Scheduled Tribe students after 10th class",
+        "expected_scheme_names": [
+            "Post-Matric Scholarship for ST Students"
+        ],
+        "expected_scheme_ids": [
+            "43c40fcc-777e-5219-8458-01356ffca3a3"
+        ]
+    },
+    {
+        "id": 3,
+        "query": "Prime Minister Scholarship Scheme for wards of ex-servicemen",
+        "expected_scheme_names": [
+            "Prime Minister's Scholarship Scheme (PMSS)"
+        ],
+        "expected_scheme_ids": [
+            "12cb867a-2e26-51dd-b2c3-cab1dae38524"
+        ]
+    },
+    {
+        "id": 4,
+        "query": "I scored in the top 1% in my board exams and want to study science?",
+        "expected_scheme_names": [
+            "INSPIRE Scholarship for Higher Education"
+        ],
+        "expected_scheme_ids": [
+            "de099f63-aaad-53c6-a94b-48ee8019358f"
+        ]
+    },
+    {
+        "id": 5,
+        "query": "Fellowship for minority community students doing PhD?",
+        "expected_scheme_names": [
+            "Maulana Azad National Fellowship for Minorities"
+        ],
+        "expected_scheme_ids": [
+            "bb6a3196-39a4-5e76-8b48-6536770dc087"
+        ]
+    },
+    {
+        "id": 6,
+        "query": "Pradhan Mantri Kaushal Vikas Yojana free skill training and certification",
+        "expected_scheme_names": [
+            "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)"
+        ],
+        "expected_scheme_ids": [
+            "ff93f73d-f2d4-5e5b-8d66-99a5ba8a9581"
+        ]
+    },
+    {
+        "id": 7,
+        "query": "State-level scholarship for SC/ST students in Karnataka colleges?",
+        "expected_scheme_names": [
+            "Karnataka Vidyasiri Scholarship for SC/ST"
+        ],
+        "expected_scheme_ids": [
+            "46998430-e1c5-5691-b1be-263e9017dd97"
+        ]
+    },
+    {
+        "id": 8,
+        "query": "Government scheme for girl child born in a BPL family in Karnataka?",
+        "expected_scheme_names": [
+            "Karnataka Bhagyalakshmi Scheme"
+        ],
+        "expected_scheme_ids": [
+            "b96e8fe8-4e69-57a6-b073-ded842963cf4"
+        ]
+    },
+    {
+        "id": 9,
+        "query": "Interest-free education loan for minority students in Karnataka?",
+        "expected_scheme_names": [
+            "Karnataka Arivu Educational Loan for Minorities"
+        ],
+        "expected_scheme_ids": [
+            "0db701c6-6346-5330-915c-a280ab1443f7"
+        ]
+    },
+    {
+        "id": 10,
+        "query": "Monthly stipend for SC/ST researchers doing PhD in Karnataka?",
+        "expected_scheme_names": [
+            "Karnataka PhD Fellowship for SC/ST Researchers"
+        ],
+        "expected_scheme_ids": [
+            "0b5ec9ae-2c57-5c9a-bbfc-416af6143a60"
+        ]
+    }
+]

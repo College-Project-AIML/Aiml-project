@@ -350,68 +350,48 @@ function SchemeDetail() {
 
         <div style={styles.section}>
           <h2 style={styles.sectionTitle}>✅ Eligibility</h2>
-          <div style={styles.eligText}>{scheme.eligibility_text}</div>
+          <div style={styles.eligText}>{scheme.eligibility_text || 'Eligibility details not specified.'}</div>
 
-          {rules.length > 0 && (
-            <div style={{ marginTop: '16px' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#6B6F7E', marginBottom: '10px' }}>
-                Structured Eligibility Criteria
-              </div>
-              {rules.map((r, i) => (
-                <div key={i} style={styles.ruleGrid}>
-                  {r.min_age != null && (
-                    <div style={styles.ruleItem}>
-                      <div style={styles.ruleLabel}>Min Age</div>
-                      <div style={styles.ruleValue}>{r.min_age} years</div>
-                    </div>
-                  )}
-                  {r.max_age != null && (
-                    <div style={styles.ruleItem}>
-                      <div style={styles.ruleLabel}>Max Age</div>
-                      <div style={styles.ruleValue}>{r.max_age} years</div>
-                    </div>
-                  )}
-                  {r.max_income != null && (
-                    <div style={styles.ruleItem}>
-                      <div style={styles.ruleLabel}>Max Income</div>
-                      <div style={styles.ruleValue}>{formatAmount(r.max_income)}/yr</div>
-                    </div>
-                  )}
-                  {r.gender && r.gender.length > 0 && (
-                    <div style={styles.ruleItem}>
-                      <div style={styles.ruleLabel}>Gender</div>
-                      <div style={styles.ruleValue}>{r.gender.join(', ')}</div>
-                    </div>
-                  )}
-                  {r.caste && r.caste.length > 0 && (
-                    <div style={styles.ruleItem}>
-                      <div style={styles.ruleLabel}>Category</div>
-                      <div style={styles.ruleValue}>{r.caste.join(', ')}</div>
-                    </div>
-                  )}
-                  {r.states && r.states.length > 0 && (
-                    <div style={styles.ruleItem}>
-                      <div style={styles.ruleLabel}>States</div>
-                      <div style={styles.ruleValue}>{r.states.join(', ')}</div>
-                    </div>
-                  )}
-                  {r.education_level && (
-                    <div style={styles.ruleItem}>
-                      <div style={styles.ruleLabel}>Education</div>
-                      <div style={styles.ruleValue}>{r.education_level.replace(/_/g, ' ')}</div>
-                    </div>
-                  )}
-                </div>
-              ))}
+          <div style={{ marginTop: '16px' }}>
+            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#6B6F7E', marginBottom: '10px' }}>
+              Structured Eligibility Criteria
             </div>
-          )}
+            {(rules.length > 0 ? rules : [{}]).map((r, i) => (
+              <div key={i} style={styles.ruleGrid}>
+                <div style={styles.ruleItem}>
+                  <div style={styles.ruleLabel}>Min Age</div>
+                  <div style={styles.ruleValue}>{r.min_age != null ? `${r.min_age} years` : 'N/A'}</div>
+                </div>
+                <div style={styles.ruleItem}>
+                  <div style={styles.ruleLabel}>Max Age</div>
+                  <div style={styles.ruleValue}>{r.max_age != null ? `${r.max_age} years` : 'N/A'}</div>
+                </div>
+                <div style={styles.ruleItem}>
+                  <div style={styles.ruleLabel}>Max Income</div>
+                  <div style={styles.ruleValue}>{r.max_income != null ? `${formatAmount(r.max_income)}/yr` : 'N/A'}</div>
+                </div>
+                <div style={styles.ruleItem}>
+                  <div style={styles.ruleLabel}>Gender</div>
+                  <div style={styles.ruleValue}>{r.gender && r.gender.length > 0 ? r.gender.join(', ') : 'N/A'}</div>
+                </div>
+                <div style={styles.ruleItem}>
+                  <div style={styles.ruleLabel}>Category</div>
+                  <div style={styles.ruleValue}>{r.caste && r.caste.length > 0 ? r.caste.join(', ') : 'N/A'}</div>
+                </div>
+                <div style={styles.ruleItem}>
+                  <div style={styles.ruleLabel}>Education</div>
+                  <div style={styles.ruleValue}>{r.education_level ? r.education_level.replace(/_/g, ' ') : 'N/A'}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {benefits.length > 0 && (
-          <div style={styles.section}>
-            <h2 style={styles.sectionTitle}>💰 Benefits</h2>
-            <div style={styles.card}>
-              {benefits.map((b, i) => (
+        <div style={styles.section}>
+          <h2 style={styles.sectionTitle}>💰 Benefits</h2>
+          <div style={styles.card}>
+            {benefits.length > 0 ? (
+              benefits.map((b, i) => (
                 <div key={i} style={{ ...styles.benefitItem, borderBottom: i < benefits.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
                   <div>
                     <span style={styles.benefitType}>{(b.benefit_type || '').replace(/_/g, ' ')}</span>
@@ -424,14 +404,16 @@ function SchemeDetail() {
                     )}
                   </div>
                 </div>
-              ))}
-            </div>
+              ))
+            ) : (
+              <p style={{ ...styles.description, margin: 0 }}>Benefits details not specified.</p>
+            )}
           </div>
-        )}
+        </div>
 
-        {documents.length > 0 && (
-          <div style={styles.section}>
-            <h2 style={styles.sectionTitle}>📄 Required Documents</h2>
+        <div style={styles.section}>
+          <h2 style={styles.sectionTitle}>📄 Required Documents</h2>
+          {documents.length > 0 ? (
             <ul style={styles.docList}>
               {documents.map((d, i) => (
                 <li key={i} style={styles.docItem}>
@@ -445,8 +427,12 @@ function SchemeDetail() {
                 </li>
               ))}
             </ul>
-          </div>
-        )}
+          ) : (
+            <div style={styles.card}>
+              <p style={{ ...styles.description, margin: 0 }}>Required documents not specified.</p>
+            </div>
+          )}
+        </div>
 
         <div style={styles.section}>
           <h2 style={styles.sectionTitle}>ℹ️ Additional Information</h2>
