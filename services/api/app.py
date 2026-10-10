@@ -6,12 +6,33 @@ Run with:
 """
 
 import os
+import logging
+import threading
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 from services.api.db import init_pool, close_pool
+
+logger = logging.getLogger(__name__)
+
+
+def _warm_chatbot_models():
+    """Warm local chatbot dependencies off the API startup path."""
+    try:
+        from services.api.chatbot.scheme_retriever import warm_scheme_retriever
+        warm_scheme_retriever()
+        logger.info("Scheme assistant embedding model and index warmed")
+    except Exception:
+        logger.exception("Could not warm scheme assistant embeddings")
+
+    try:
+        from services.api.chatbot.generator import warm_generator
+        warm_generator()
+        logger.info("Scheme assistant Ollama model warmed")
+    except Exception:
+        logger.exception("Could not warm scheme assistant Ollama model")
 
 load_dotenv()
 from services.api.routes.schemes import router as schemes_router
@@ -25,6 +46,11 @@ from services.api.routes.stats import router as stats_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_pool()
+    threading.Thread(
+        target=_warm_chatbot_models,
+        name="chatbot-model-warmup",
+        daemon=True,
+    ).start()
     from ingestion.sync.scheduler import scheduler
     scheduler.start()
     yield

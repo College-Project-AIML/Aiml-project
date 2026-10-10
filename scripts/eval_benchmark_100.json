@@ -1,0 +1,1002 @@
+[
+  {
+    "id": 1,
+    "query": "Tell me about the Construction of NABARD-Funded Minor Irrigation Projects - Uttarakhand scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Construction of NABARD-Funded Minor Irrigation Projects - Uttarakhand"
+    ],
+    "expected_scheme_ids": [
+      "e90672b8-148f-dc8d-360c-6c9cac44efa9"
+    ]
+  },
+  {
+    "id": 2,
+    "query": "Tell me about the Financial Assistance to Commercial Tiatr Troupes/Directors/Producers for Stage Setting scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Financial Assistance to Commercial Tiatr Troupes/Directors/Producers for Stage Setting"
+    ],
+    "expected_scheme_ids": [
+      "1f0aacf8-b53e-e070-e5c1-47ff5190cdff"
+    ]
+  },
+  {
+    "id": 3,
+    "query": "Tell me about the Pre-Matric Scholarship for OBC, EBC and DNT Students - DNH & DD scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Pre-Matric Scholarship for OBC, EBC and DNT Students - DNH & DD"
+    ],
+    "expected_scheme_ids": [
+      "942c408b-b9ba-cd71-c348-494fc1fbb475"
+    ]
+  },
+  {
+    "id": 4,
+    "query": "Tell me about the Uniform Assistance for Economically Backward Class Students Studying in Class 1st to 8th scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Uniform Assistance for Economically Backward Class Students Studying in Class 1st to 8th"
+    ],
+    "expected_scheme_ids": [
+      "375e43bf-a090-eed3-b250-902191749bdc"
+    ]
+  },
+  {
+    "id": 5,
+    "query": "Tell me about the Modular Employable Skills scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Modular Employable Skills"
+    ],
+    "expected_scheme_ids": [
+      "cf62710c-f581-5476-1dc0-4fdea24d6aba"
+    ]
+  },
+  {
+    "id": 6,
+    "query": "Tell me about the Mukhya Mantri Agricultural Mechanization Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Mukhya Mantri Agricultural Mechanization Scheme"
+    ],
+    "expected_scheme_ids": [
+      "301c973d-ce1c-9c86-8c06-c84cb0397331"
+    ]
+  },
+  {
+    "id": 7,
+    "query": "Tell me about the Ex-gratia Payment for the Construction Workers scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Ex-gratia Payment for the Construction Workers"
+    ],
+    "expected_scheme_ids": [
+      "3457886c-4083-cfc9-1606-260b8acc53ea"
+    ]
+  },
+  {
+    "id": 8,
+    "query": "Tell me about the Prime Minister’s Rural Development Fellows Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Prime Minister’s Rural Development Fellows Scheme"
+    ],
+    "expected_scheme_ids": [
+      "51dc44f2-2dd4-a898-3068-d3e35ce8aeda"
+    ]
+  },
+  {
+    "id": 9,
+    "query": "Tell me about the Vidyasiri food And Accommodation Scholarship Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Vidyasiri food And Accommodation Scholarship Scheme"
+    ],
+    "expected_scheme_ids": [
+      "2860acfc-556d-6b65-60cd-1dfa9215a5e2"
+    ]
+  },
+  {
+    "id": 10,
+    "query": "Tell me about the Indira Gandhi National Disabled Pension Scheme (Madhya Pradesh) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Indira Gandhi National Disabled Pension Scheme (Madhya Pradesh)"
+    ],
+    "expected_scheme_ids": [
+      "a34c7376-365c-4ff2-32a6-fd41f40b401e"
+    ]
+  },
+  {
+    "id": 11,
+    "query": "Tell me about the Financial Assistance for Medical Treatment of Journalists scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Financial Assistance for Medical Treatment of Journalists"
+    ],
+    "expected_scheme_ids": [
+      "4c511801-0405-33ce-b3e8-9025701652b5"
+    ]
+  },
+  {
+    "id": 12,
+    "query": "Tell me about the Financial Assistance To Gad-Hanjis scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Financial Assistance To Gad-Hanjis"
+    ],
+    "expected_scheme_ids": [
+      "f0d3342c-8ef4-3b2a-7c2a-ffe8a950ba4e"
+    ]
+  },
+  {
+    "id": 13,
+    "query": "Tell me about the NSP - OTR generation scheme and its eligibility.",
+    "expected_scheme_names": [
+      "NSP - OTR generation"
+    ],
+    "expected_scheme_ids": [
+      "a677e5fa-2472-cfd6-fd6a-b40b71abbcaf"
+    ]
+  },
+  {
+    "id": 14,
+    "query": "Tell me about the Capital Investment Subsidy Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Capital Investment Subsidy Scheme"
+    ],
+    "expected_scheme_ids": [
+      "93db3fc8-d5ee-04e5-b19d-b66d56a9b6eb"
+    ]
+  },
+  {
+    "id": 15,
+    "query": "Tell me about the Indira Gandhi National Old Age Pension Scheme -Tamil Nadu scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Indira Gandhi National Old Age Pension Scheme -Tamil Nadu"
+    ],
+    "expected_scheme_ids": [
+      "0540d5ef-bc6d-4947-c7b6-ffbbc5f6772a"
+    ]
+  },
+  {
+    "id": 16,
+    "query": "Tell me about the NEC Stipend And Book Grant Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "NEC Stipend And Book Grant Scheme"
+    ],
+    "expected_scheme_ids": [
+      "528b92b2-800e-690a-99b9-6d5694d3a52e"
+    ]
+  },
+  {
+    "id": 17,
+    "query": "Tell me about the National Career Service Centers For SC/STs (erstwhile Coaching-cum-Guidance Centre for SC/STs) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "National Career Service Centers For SC/STs (erstwhile Coaching-cum-Guidance Centre for SC/STs)"
+    ],
+    "expected_scheme_ids": [
+      "fe053b3c-5926-f080-0c2e-c670169feb20"
+    ]
+  },
+  {
+    "id": 18,
+    "query": "Tell me about the Cash Amount for Encouraging Scheduled Tribe Sportsperson Students scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Cash Amount for Encouraging Scheduled Tribe Sportsperson Students"
+    ],
+    "expected_scheme_ids": [
+      "73c87588-cc98-323d-1d4c-4a5c2cf318eb"
+    ]
+  },
+  {
+    "id": 19,
+    "query": "Tell me about the \"Subsidy for Cultivation of Fodder Crops\" Component of the \"Crop Production Technology\" Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "\"Subsidy for Cultivation of Fodder Crops\" Component of the \"Crop Production Technology\" Scheme"
+    ],
+    "expected_scheme_ids": [
+      "1b0218ea-6de9-283e-c17e-654913ed0360"
+    ]
+  },
+  {
+    "id": 20,
+    "query": "Tell me about the Indira Gandhi National Old Age Pension Scheme- Bihar scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Indira Gandhi National Old Age Pension Scheme- Bihar"
+    ],
+    "expected_scheme_ids": [
+      "4fca4249-7ca9-dcda-ab37-591366adb5a6"
+    ]
+  },
+  {
+    "id": 21,
+    "query": "Tell me about the Braille Watches by Welfare of Differently Abled Persons Department scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Braille Watches by Welfare of Differently Abled Persons Department"
+    ],
+    "expected_scheme_ids": [
+      "6d12dd84-4743-5941-2c56-9ccdfa43069e"
+    ]
+  },
+  {
+    "id": 22,
+    "query": "Tell me about the Grant of Financial Assistance to Differently Abled Person scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Grant of Financial Assistance to Differently Abled Person"
+    ],
+    "expected_scheme_ids": [
+      "47c37a95-dcc2-a6b8-9f69-88ce834f2a34"
+    ]
+  },
+  {
+    "id": 23,
+    "query": "Tell me about the Atma Nirbhar Matsya Palan Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Atma Nirbhar Matsya Palan Yojana"
+    ],
+    "expected_scheme_ids": [
+      "a3ee4952-1615-bb83-512b-d223e95a0cd3"
+    ]
+  },
+  {
+    "id": 24,
+    "query": "Tell me about the Compensation for Livestock Loss Caused by Wild Animals scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Compensation for Livestock Loss Caused by Wild Animals"
+    ],
+    "expected_scheme_ids": [
+      "7bd06c99-dbc2-e4a0-80f0-dbc9dda40161"
+    ]
+  },
+  {
+    "id": 25,
+    "query": "Tell me about the Vishesh Yogyajan Chhatravriti Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Vishesh Yogyajan Chhatravriti Yojana"
+    ],
+    "expected_scheme_ids": [
+      "89ade7c5-9270-1d46-9332-8d17fa94c270"
+    ]
+  },
+  {
+    "id": 26,
+    "query": "Tell me about the Homes For Intellectually Impaired Persons scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Homes For Intellectually Impaired Persons"
+    ],
+    "expected_scheme_ids": [
+      "27447694-cf25-6658-4b3f-3f3e0bde7b61"
+    ]
+  },
+  {
+    "id": 27,
+    "query": "Tell me about the Educational Loan Scheme (GBCDC) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Educational Loan Scheme (GBCDC)"
+    ],
+    "expected_scheme_ids": [
+      "abd51296-5de2-68a9-d66b-98ab6fe6a2a0"
+    ]
+  },
+  {
+    "id": 28,
+    "query": "Tell me about the Mukhyamatri Rojgaar Srijan Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Mukhyamatri Rojgaar Srijan Yojana"
+    ],
+    "expected_scheme_ids": [
+      "5f162a29-9b44-15d6-095f-cf6e3bc8d9d2"
+    ]
+  },
+  {
+    "id": 29,
+    "query": "Tell me about the PM SETU (Pradhan Mantri Skilling and Employability Transformation through Upgraded ITIs) – Component II: Capacity Augmentation of Five National Skill Training Institutes (NSTIs) and Setting up of Five National Centres of Excellence for Skilling scheme and its eligibility.",
+    "expected_scheme_names": [
+      "PM SETU (Pradhan Mantri Skilling and Employability Transformation through Upgraded ITIs) – Component II: Capacity Augmentation of Five National Skill Training Institutes (NSTIs) and Setting up of Five National Centres of Excellence for Skilling"
+    ],
+    "expected_scheme_ids": [
+      "66190ea6-3790-9fd4-8c84-48b341952463"
+    ]
+  },
+  {
+    "id": 30,
+    "query": "Tell me about the Pradhan Mantri Shram Yogi Maan-dhan scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Pradhan Mantri Shram Yogi Maan-dhan"
+    ],
+    "expected_scheme_ids": [
+      "f7be9445-3ec6-f67a-3469-ebadf43c8320"
+    ]
+  },
+  {
+    "id": 31,
+    "query": "Tell me about the Pradhan Mantri Krishi Sinchayee Yojana - Har Khet Ko Pani (Surface Scheme) Uttarakhand scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Pradhan Mantri Krishi Sinchayee Yojana - Har Khet Ko Pani (Surface Scheme) Uttarakhand"
+    ],
+    "expected_scheme_ids": [
+      "e8ad9554-687e-48ce-3722-195e2eb0102b"
+    ]
+  },
+  {
+    "id": 32,
+    "query": "Tell me about the Kisan Credit Card Scheme for Fisheries- Chief Minister Fishermen Prosperity Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Kisan Credit Card Scheme for Fisheries- Chief Minister Fishermen Prosperity Scheme"
+    ],
+    "expected_scheme_ids": [
+      "10dfaf97-d96e-03ea-7962-3f945b4f6ca6"
+    ]
+  },
+  {
+    "id": 33,
+    "query": "Tell me about the Micro Nutrient Spray scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Micro Nutrient Spray"
+    ],
+    "expected_scheme_ids": [
+      "00daa5e3-cc3a-48cc-1cf2-58dca0fa55bb"
+    ]
+  },
+  {
+    "id": 34,
+    "query": "Tell me about the 'Rent Subsidy for Sales Emporia Established by Handicrafts / Micro & Small Industries Emporium' under 'Marketing And Publicity' scheme and its eligibility.",
+    "expected_scheme_names": [
+      "'Rent Subsidy for Sales Emporia Established by Handicrafts / Micro & Small Industries Emporium' under 'Marketing And Publicity'"
+    ],
+    "expected_scheme_ids": [
+      "4d8265b2-d05e-ecb3-ae18-ec5d2b6bf001"
+    ]
+  },
+  {
+    "id": 35,
+    "query": "Tell me about the Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance for Saving in Consumption of Energy and Water scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance for Saving in Consumption of Energy and Water"
+    ],
+    "expected_scheme_ids": [
+      "fab99857-8a6d-52e9-0bba-0ae2aa88ce8e"
+    ]
+  },
+  {
+    "id": 36,
+    "query": "Tell me about the Post Metric Scholarship (Denotified, Nomadic and Semi-Nomadic) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Post Metric Scholarship (Denotified, Nomadic and Semi-Nomadic)"
+    ],
+    "expected_scheme_ids": [
+      "87c78ca3-73bf-3c71-60be-9d18ea993914"
+    ]
+  },
+  {
+    "id": 37,
+    "query": "Tell me about the Documentation And Research Assistantship Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Documentation And Research Assistantship Scheme"
+    ],
+    "expected_scheme_ids": [
+      "b35ef9f1-4abe-8d0a-45e2-cbe03397499e"
+    ]
+  },
+  {
+    "id": 38,
+    "query": "Tell me about the Scheme for assistance for Start Ups/ Innovation: Seed Support scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Scheme for assistance for Start Ups/ Innovation: Seed Support"
+    ],
+    "expected_scheme_ids": [
+      "a1aab754-a410-1abe-fe4f-550319ef0037"
+    ]
+  },
+  {
+    "id": 39,
+    "query": "Tell me about the Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Patent Registration /Trade Mark Registration scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Patent Registration /Trade Mark Registration"
+    ],
+    "expected_scheme_ids": [
+      "597a606b-140b-24c7-014b-56659eac4512"
+    ]
+  },
+  {
+    "id": 40,
+    "query": "Tell me about the Pay & Play Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Pay & Play Scheme"
+    ],
+    "expected_scheme_ids": [
+      "2bf38a93-b01d-7daf-0431-6a741684509b"
+    ]
+  },
+  {
+    "id": 41,
+    "query": "Tell me about the Financial Assistance To Women And Girl Acid Attack Victims scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Financial Assistance To Women And Girl Acid Attack Victims"
+    ],
+    "expected_scheme_ids": [
+      "67b3f858-2c8e-0a51-bf65-939307310edb"
+    ]
+  },
+  {
+    "id": 42,
+    "query": "Tell me about the District Plan: Inter-Village Road Construction Scheme on Contributory Basis scheme and its eligibility.",
+    "expected_scheme_names": [
+      "District Plan: Inter-Village Road Construction Scheme on Contributory Basis"
+    ],
+    "expected_scheme_ids": [
+      "9bd2c694-c1a6-e508-e581-2c25a2eaa23a"
+    ]
+  },
+  {
+    "id": 43,
+    "query": "Tell me about the Karnataka Devaraj Urs Backward Classes Scholarship scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Karnataka Devaraj Urs Backward Classes Scholarship"
+    ],
+    "expected_scheme_ids": [
+      "7722ec1f-ea55-5e75-8dd7-044aa145516b"
+    ]
+  },
+  {
+    "id": 44,
+    "query": "Tell me about the Production Linked Incentive (PLI) Scheme (PLI 1.2) for Specialty Steel scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Production Linked Incentive (PLI) Scheme (PLI 1.2) for Specialty Steel"
+    ],
+    "expected_scheme_ids": [
+      "f59f0c4a-b63a-0e4f-16da-6b2ec3dce10a"
+    ]
+  },
+  {
+    "id": 45,
+    "query": "Tell me about the The West Bengal Incentive Scheme: Additional Incentive for Adventure Tour Operators scheme and its eligibility.",
+    "expected_scheme_names": [
+      "The West Bengal Incentive Scheme: Additional Incentive for Adventure Tour Operators"
+    ],
+    "expected_scheme_ids": [
+      "9c7e04e7-8cdc-a095-4768-302807266fea"
+    ]
+  },
+  {
+    "id": 46,
+    "query": "Tell me about the Mahatama Gandhi Bunkar Bima Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Mahatama Gandhi Bunkar Bima Yojana"
+    ],
+    "expected_scheme_ids": [
+      "3667f25f-426d-6878-af18-972b061936e1"
+    ]
+  },
+  {
+    "id": 47,
+    "query": "Tell me about the Miscarriage Benefit scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Miscarriage Benefit"
+    ],
+    "expected_scheme_ids": [
+      "20116262-24ae-634b-aa2e-c06698f8721c"
+    ]
+  },
+  {
+    "id": 48,
+    "query": "Tell me about the Interest Free Loan (CBOCWWB) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Interest Free Loan (CBOCWWB)"
+    ],
+    "expected_scheme_ids": [
+      "0f0f0123-3770-abe1-7217-513793215321"
+    ]
+  },
+  {
+    "id": 49,
+    "query": "Tell me about the Adventure Training for Youth scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Adventure Training for Youth"
+    ],
+    "expected_scheme_ids": [
+      "00661dd9-576c-65d6-b0cb-258911b11ad9"
+    ]
+  },
+  {
+    "id": 50,
+    "query": "Tell me about the Ganga Swarupa Pension Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Ganga Swarupa Pension Scheme"
+    ],
+    "expected_scheme_ids": [
+      "f7ada8d1-f98f-cebf-3b91-962ea848df88"
+    ]
+  },
+  {
+    "id": 51,
+    "query": "Tell me about the Cash Prize to Players and their Coaches for Winning Medals in National and International Competitions scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Cash Prize to Players and their Coaches for Winning Medals in National and International Competitions"
+    ],
+    "expected_scheme_ids": [
+      "20cf9887-d26f-dbc5-2c84-85126c2998c9"
+    ]
+  },
+  {
+    "id": 52,
+    "query": "Tell me about the Quality Test Report - Centre for Aromatic Plants scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Quality Test Report - Centre for Aromatic Plants"
+    ],
+    "expected_scheme_ids": [
+      "38abe5c2-8105-7dd5-a5e6-7cbec7f99bb6"
+    ]
+  },
+  {
+    "id": 53,
+    "query": "Tell me about the Vidyakiranam Scheme-Educational Assistance To Children Of Disabled Parents scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Vidyakiranam Scheme-Educational Assistance To Children Of Disabled Parents"
+    ],
+    "expected_scheme_ids": [
+      "81bfa799-26a6-b33e-0406-aa087a3d67fb"
+    ]
+  },
+  {
+    "id": 54,
+    "query": "Tell me about the Banglashree for Micro, Small and Medium Enterprises: Power Subsidy (PS) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Banglashree for Micro, Small and Medium Enterprises: Power Subsidy (PS)"
+    ],
+    "expected_scheme_ids": [
+      "96eeea8c-609b-e649-a56e-21530e04e1a7"
+    ]
+  },
+  {
+    "id": 55,
+    "query": "Tell me about the Awasiya Vidyala Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Awasiya Vidyala Yojana"
+    ],
+    "expected_scheme_ids": [
+      "60c32ce0-86d4-a3b6-fd28-bff7277f8a05"
+    ]
+  },
+  {
+    "id": 56,
+    "query": "Tell me about the Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Registering Housing Complexes scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Registering Housing Complexes"
+    ],
+    "expected_scheme_ids": [
+      "7000affb-7ca8-87be-0b5a-a6dcb669d84b"
+    ]
+  },
+  {
+    "id": 57,
+    "query": "Tell me about the Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: Turmeric boiler ( nos) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: Turmeric boiler ( nos)"
+    ],
+    "expected_scheme_ids": [
+      "0a50fc79-0b85-5001-5cb4-5f62cc88a3f2"
+    ]
+  },
+  {
+    "id": 58,
+    "query": "Tell me about the Shramyogi Cycle Subsidy Scheme- Gujarat Labour Welfare Board scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Shramyogi Cycle Subsidy Scheme- Gujarat Labour Welfare Board"
+    ],
+    "expected_scheme_ids": [
+      "c3b6da81-f85d-9afe-19c0-1390f135d709"
+    ]
+  },
+  {
+    "id": 59,
+    "query": "Tell me about the Post Matric Merit Scholarship scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Post Matric Merit Scholarship"
+    ],
+    "expected_scheme_ids": [
+      "9cea6e31-e70f-a1e2-305b-5d45e8d53ca0"
+    ]
+  },
+  {
+    "id": 60,
+    "query": "Tell me about the Vikaas-Day Care Scheme For Person with Disability Children scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Vikaas-Day Care Scheme For Person with Disability Children"
+    ],
+    "expected_scheme_ids": [
+      "7efe96c6-b738-1468-c067-5e27b1433166"
+    ]
+  },
+  {
+    "id": 61,
+    "query": "Tell me about the Monsanto Scholarship (M.Sc. Agriculture Science and Agriculture Biotechnology) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Monsanto Scholarship (M.Sc. Agriculture Science and Agriculture Biotechnology)"
+    ],
+    "expected_scheme_ids": [
+      "778d8b92-ed12-d437-5736-6f49238527b1"
+    ]
+  },
+  {
+    "id": 62,
+    "query": "Tell me about the Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance to Special Entrepreneurship Degree Approach Training with 360 Promoters/ with Mentoring Support and Sustenance Allowance for Entrepreneurs scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance to Special Entrepreneurship Degree Approach Training with 360 Promoters/ with Mentoring Support and Sustenance Allowance for Entrepreneurs"
+    ],
+    "expected_scheme_ids": [
+      "90dafee1-48b6-2c65-d930-4e36d06e5594"
+    ]
+  },
+  {
+    "id": 63,
+    "query": "Tell me about the Government Institute for the Mentally Retarded - Tamil Nadu scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Government Institute for the Mentally Retarded - Tamil Nadu"
+    ],
+    "expected_scheme_ids": [
+      "0b1930d2-f517-8f1c-ceb7-70785a658899"
+    ]
+  },
+  {
+    "id": 64,
+    "query": "Tell me about the Mukhyamantri Samajik Samrasta Antarjatiya Vivah Shagun Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Mukhyamantri Samajik Samrasta Antarjatiya Vivah Shagun Yojana"
+    ],
+    "expected_scheme_ids": [
+      "71ab552c-e07f-b05d-6507-47d4f68e567d"
+    ]
+  },
+  {
+    "id": 65,
+    "query": "Tell me about the Tripura Lynching/Mob Violence Victim Compensation Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Tripura Lynching/Mob Violence Victim Compensation Scheme"
+    ],
+    "expected_scheme_ids": [
+      "bf865648-c0fc-cee0-6ae3-a8fff5f132a6"
+    ]
+  },
+  {
+    "id": 66,
+    "query": "Tell me about the Strengthening Skills, Arts and Employment through ITIs scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Strengthening Skills, Arts and Employment through ITIs"
+    ],
+    "expected_scheme_ids": [
+      "b7f24937-adfd-d4b3-7384-2aa1087e5097"
+    ]
+  },
+  {
+    "id": 67,
+    "query": "Tell me about the Sarna /Jahersthan/Hadgadi & Masna Protection and Development Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Sarna /Jahersthan/Hadgadi & Masna Protection and Development Scheme"
+    ],
+    "expected_scheme_ids": [
+      "cd6eb8bd-4c4c-0ff8-c7f6-92883f964e39"
+    ]
+  },
+  {
+    "id": 68,
+    "query": "Tell me about the Mukhya Mantri Gyandeep Yojna scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Mukhya Mantri Gyandeep Yojna"
+    ],
+    "expected_scheme_ids": [
+      "cb510e34-534d-0449-3a6a-d0064a66dc4b"
+    ]
+  },
+  {
+    "id": 69,
+    "query": "Tell me about the Cluster Mei Bagwani Ki Yojana-II scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Cluster Mei Bagwani Ki Yojana-II"
+    ],
+    "expected_scheme_ids": [
+      "1cdedea2-6259-16e3-75f4-bb877c507353"
+    ]
+  },
+  {
+    "id": 70,
+    "query": "Tell me about the Refund of Subscriptions for the Construction Workers scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Refund of Subscriptions for the Construction Workers"
+    ],
+    "expected_scheme_ids": [
+      "6a4eb554-38a0-41c7-4813-835bd8d2560c"
+    ]
+  },
+  {
+    "id": 71,
+    "query": "Tell me about the House of Himalayas scheme and its eligibility.",
+    "expected_scheme_names": [
+      "House of Himalayas"
+    ],
+    "expected_scheme_ids": [
+      "80ac3075-009b-2bd6-c771-45b37cee5c1d"
+    ]
+  },
+  {
+    "id": 72,
+    "query": "Tell me about the Small Business (GBCDC) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Small Business (GBCDC)"
+    ],
+    "expected_scheme_ids": [
+      "f024338e-28f4-6617-d684-6d33014eade5"
+    ]
+  },
+  {
+    "id": 73,
+    "query": "Tell me about the Chief Minister's State Disability Pension Scheme - Sikkim scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Chief Minister's State Disability Pension Scheme - Sikkim"
+    ],
+    "expected_scheme_ids": [
+      "412596f0-ad06-e2a0-0535-63f17bd7b037"
+    ]
+  },
+  {
+    "id": 74,
+    "query": "Tell me about the Scholarship for Chhattisgarh Students Studying Outside the State scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Scholarship for Chhattisgarh Students Studying Outside the State"
+    ],
+    "expected_scheme_ids": [
+      "23c6c8c1-f95c-b1cb-6cab-9c0ac61d6c0a"
+    ]
+  },
+  {
+    "id": 75,
+    "query": "Tell me about the Safai Karmakaar Putr/Putri Cycle sahayata yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Safai Karmakaar Putr/Putri Cycle sahayata yojana"
+    ],
+    "expected_scheme_ids": [
+      "d493ee2b-b52c-cc87-5eab-472065e823cb"
+    ]
+  },
+  {
+    "id": 76,
+    "query": "Tell me about the Fellowship Scheme for M.Phil & Ph.D for Scheduled Caste Students (Maharaja Sayajirao Gayakvad Scholarship) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Fellowship Scheme for M.Phil & Ph.D for Scheduled Caste Students (Maharaja Sayajirao Gayakvad Scholarship)"
+    ],
+    "expected_scheme_ids": [
+      "16db921e-13cb-e941-6a1b-e1c1562550a5"
+    ]
+  },
+  {
+    "id": 77,
+    "query": "Tell me about the Aravanaippu Illam scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Aravanaippu Illam"
+    ],
+    "expected_scheme_ids": [
+      "79822fbb-5625-edd2-1ac4-d82ebc1c83ca"
+    ]
+  },
+  {
+    "id": 78,
+    "query": "Tell me about the Yatra Anudan scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Yatra Anudan"
+    ],
+    "expected_scheme_ids": [
+      "b1f39515-3ba1-3494-2e92-7abc94fa7002"
+    ]
+  },
+  {
+    "id": 79,
+    "query": "Tell me about the AICTE-PROFESSIONAL DEVELOPMENT SCHEME scheme and its eligibility.",
+    "expected_scheme_names": [
+      "AICTE-PROFESSIONAL DEVELOPMENT SCHEME"
+    ],
+    "expected_scheme_ids": [
+      "f3bf83d7-9912-43a3-acec-b0a32cc819c9"
+    ]
+  },
+  {
+    "id": 80,
+    "query": "Tell me about the AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Degree) scheme and its eligibility.",
+    "expected_scheme_names": [
+      "AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Degree)"
+    ],
+    "expected_scheme_ids": [
+      "c0459f3e-fa3b-2286-6394-d7fb33a6dcab"
+    ]
+  },
+  {
+    "id": 81,
+    "query": "Tell me about the \"Grant To Handicrafts Societies\" Component of the \"Development of Handicrafts\" Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "\"Grant To Handicrafts Societies\" Component of the \"Development of Handicrafts\" Scheme"
+    ],
+    "expected_scheme_ids": [
+      "800932b1-742c-1ec7-2d8b-552e26a5ece9"
+    ]
+  },
+  {
+    "id": 82,
+    "query": "Tell me about the Indira Gandhi National Widow Pension Scheme- Chhattisgarh scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Indira Gandhi National Widow Pension Scheme- Chhattisgarh"
+    ],
+    "expected_scheme_ids": [
+      "d3e5e6b4-d1c0-694f-6c33-b5ba6742d31b"
+    ]
+  },
+  {
+    "id": 83,
+    "query": "Tell me about the Flexible Memorandum of Understanding (Flexi-MoU) Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Flexible Memorandum of Understanding (Flexi-MoU) Scheme"
+    ],
+    "expected_scheme_ids": [
+      "9c28251b-9c32-895b-e127-cf98b83cdad8"
+    ]
+  },
+  {
+    "id": 84,
+    "query": "Tell me about the Welfare Services for Women scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Welfare Services for Women"
+    ],
+    "expected_scheme_ids": [
+      "a9b1cc9d-0618-3864-54a3-eff75c096c62"
+    ]
+  },
+  {
+    "id": 85,
+    "query": "Tell me about the Boneej Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Boneej Scheme"
+    ],
+    "expected_scheme_ids": [
+      "4b327420-dd14-c046-0613-c779ebd7c2e3"
+    ]
+  },
+  {
+    "id": 86,
+    "query": "Tell me about the Financial Assistance for Girl Child Attend Her Age of 18 scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Financial Assistance for Girl Child Attend Her Age of 18"
+    ],
+    "expected_scheme_ids": [
+      "b85461a9-8014-352e-d7b7-4aa31b0b6163"
+    ]
+  },
+  {
+    "id": 87,
+    "query": "Tell me about the Awareness Programme on Child/Human Trafficking, Family Planning, Legal Awareness, Health etc. scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Awareness Programme on Child/Human Trafficking, Family Planning, Legal Awareness, Health etc."
+    ],
+    "expected_scheme_ids": [
+      "f79f3785-ca5a-4c80-4c1a-ddc5cb29022b"
+    ]
+  },
+  {
+    "id": 88,
+    "query": "Tell me about the Scheme For Award Of Senior/Junior Fellowships To Outstanding Persons In The Fields Of Culture scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Scheme For Award Of Senior/Junior Fellowships To Outstanding Persons In The Fields Of Culture"
+    ],
+    "expected_scheme_ids": [
+      "a8328154-ad99-51d4-294f-8d192794cc0d"
+    ]
+  },
+  {
+    "id": 89,
+    "query": "Tell me about the Mukhyamantri Gyansetu Merit Scholarship Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Mukhyamantri Gyansetu Merit Scholarship Yojana"
+    ],
+    "expected_scheme_ids": [
+      "46f937d9-297a-b846-979e-de1d8e32a236"
+    ]
+  },
+  {
+    "id": 90,
+    "query": "Tell me about the Assistance for Installation of Sprinkler / Drip Micro Irrigation Systems scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Assistance for Installation of Sprinkler / Drip Micro Irrigation Systems"
+    ],
+    "expected_scheme_ids": [
+      "21b82588-3633-b794-c512-634dd8150113"
+    ]
+  },
+  {
+    "id": 91,
+    "query": "Tell me about the Primary Cooperative Agriculture and Rural Development Bank: For Power Tiller scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Primary Cooperative Agriculture and Rural Development Bank: For Power Tiller"
+    ],
+    "expected_scheme_ids": [
+      "31c74505-29b6-659c-4c11-209c8016142b"
+    ]
+  },
+  {
+    "id": 92,
+    "query": "Tell me about the Coffee Development Programme in North Eastern Region: Quality Upgradation / Certification: Drying Yards scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Coffee Development Programme in North Eastern Region: Quality Upgradation / Certification: Drying Yards"
+    ],
+    "expected_scheme_ids": [
+      "14635166-87ce-346e-2093-c43cab7a5015"
+    ]
+  },
+  {
+    "id": 93,
+    "query": "Tell me about the Dr. Ambedkar Medhavi Chhatravriti Yojna to Other Backward Classes Students scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Dr. Ambedkar Medhavi Chhatravriti Yojna to Other Backward Classes Students"
+    ],
+    "expected_scheme_ids": [
+      "466b8eb9-014c-8b74-2cf2-238de6f6a042"
+    ]
+  },
+  {
+    "id": 94,
+    "query": "Tell me about the Dr. Bhimrao Ambedkar Kamdhenu Yojana scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Dr. Bhimrao Ambedkar Kamdhenu Yojana"
+    ],
+    "expected_scheme_ids": [
+      "99acc84b-e1da-26e8-c483-cc73506bf76d"
+    ]
+  },
+  {
+    "id": 95,
+    "query": "Tell me about the Craftsman Training Scheme - Maharashtra scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Craftsman Training Scheme - Maharashtra"
+    ],
+    "expected_scheme_ids": [
+      "1ddd46ea-d8d6-851a-8fca-e8d19aab4f8e"
+    ]
+  },
+  {
+    "id": 96,
+    "query": "Tell me about the High Altitude Guide Course scheme and its eligibility.",
+    "expected_scheme_names": [
+      "High Altitude Guide Course"
+    ],
+    "expected_scheme_ids": [
+      "9e3855d9-2cce-a231-bf52-121eb34ced56"
+    ]
+  },
+  {
+    "id": 97,
+    "query": "Tell me about the The West Bengal Incentive Scheme: Waiver of Electricity Duty scheme and its eligibility.",
+    "expected_scheme_names": [
+      "The West Bengal Incentive Scheme: Waiver of Electricity Duty"
+    ],
+    "expected_scheme_ids": [
+      "d4584bcc-6ba2-ec2e-9a1f-c00d4955b534"
+    ]
+  },
+  {
+    "id": 98,
+    "query": "Tell me about the Krshak Prashikshan Tatha Bhraman Karyakram scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Krshak Prashikshan Tatha Bhraman Karyakram"
+    ],
+    "expected_scheme_ids": [
+      "36a477db-ebd5-3892-3c44-8051fa689bc0"
+    ]
+  },
+  {
+    "id": 99,
+    "query": "Tell me about the Registration & Stamp Duty Subsidy Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Registration & Stamp Duty Subsidy Scheme"
+    ],
+    "expected_scheme_ids": [
+      "20de4140-2b61-6578-7245-ee3199a4f470"
+    ]
+  },
+  {
+    "id": 100,
+    "query": "Tell me about the Goa Mediclaim Scheme scheme and its eligibility.",
+    "expected_scheme_names": [
+      "Goa Mediclaim Scheme"
+    ],
+    "expected_scheme_ids": [
+      "253bfd27-63eb-8a2c-aa16-1d0cade20c71"
+    ]
+  }
+]

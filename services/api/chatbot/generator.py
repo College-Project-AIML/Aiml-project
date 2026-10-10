@@ -5,10 +5,11 @@ generator.py - Generates grounded chatbot answers using a local Ollama model.
 from __future__ import annotations
 
 import requests
+import os
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "qwen2.5:1.5b"
-TIMEOUT_SECONDS = 60
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
+MODEL_NAME = os.getenv("OLLAMA_MODEL", "qwen2.5:1.5b")
+TIMEOUT_SECONDS = int(os.getenv("OLLAMA_TIMEOUT_SECONDS", "60"))
 
 PROMPT_TEMPLATE = """You are a helpful and strictly factual Indian Government Schemes Assistant. 
 You must answer the User Query based ONLY on the Provided Context. 
@@ -83,7 +84,7 @@ def generate_scheme_answer(query: str, schemes: list[dict]) -> str:
         "keep_alive": "30m",
         "options": {
             "temperature": 0.2,
-            "num_predict": 180,
+            "num_predict": 120,
             "num_ctx": 2048
         }
     }
@@ -98,3 +99,19 @@ def generate_scheme_answer(query: str, schemes: list[dict]) -> str:
     except requests.exceptions.RequestException:
         return ("I'm currently unable to generate a response because the local AI model "
                 "is unavailable or timed out. Please try again later.")
+
+
+def warm_generator() -> None:
+    """Ask Ollama to load and retain the model before the first user query."""
+    response = requests.post(
+        OLLAMA_URL,
+        json={
+            "model": MODEL_NAME,
+            "prompt": " ",
+            "stream": False,
+            "keep_alive": "30m",
+            "options": {"num_predict": 1, "num_ctx": 256},
+        },
+        timeout=TIMEOUT_SECONDS,
+    )
+    response.raise_for_status()

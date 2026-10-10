@@ -156,11 +156,11 @@ def print_report(evaluation: dict):
     
     hit_rate_pct = metrics["hit_rate"] * 100
     if hit_rate_pct >= 90:
-        print(f"  RESULT: {hit_rate_pct:.1f}% accuracy - EXCELLENT!")
+        print(f"  RESULT: {hit_rate_pct:.1f}% hit rate@{metrics['limit']} - EXCELLENT!")
     elif hit_rate_pct >= 70:
-        print(f"  RESULT: {hit_rate_pct:.1f}% accuracy - GOOD")
+        print(f"  RESULT: {hit_rate_pct:.1f}% hit rate@{metrics['limit']} - GOOD")
     else:
-        print(f"  RESULT: {hit_rate_pct:.1f}% accuracy - NEEDS IMPROVEMENT")
+        print(f"  RESULT: {hit_rate_pct:.1f}% hit rate@{metrics['limit']} - NEEDS IMPROVEMENT")
     
     print("=" * 70)
     print()
@@ -207,7 +207,10 @@ def main():
     print_report(evaluation)
     
     # Save results to JSON
-    output_path = benchmark_path.parent / "eval_results_10.json"
+    result_stem = benchmark_path.stem.replace("eval_benchmark", "eval_results", 1)
+    if result_stem == benchmark_path.stem:
+        result_stem = f"{benchmark_path.stem}_results"
+    output_path = benchmark_path.with_name(f"{result_stem}.json")
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(evaluation, f, indent=2, ensure_ascii=False)
     print(f"Detailed results saved to: {output_path}")

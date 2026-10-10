@@ -147,7 +147,9 @@ def chatbot_assistant(body: AssistantRequest):
         raise HTTPException(status_code=422, detail="question must not be empty")
 
     with get_db() as cur:
-        schemes = find_matching_schemes(question, cur, limit=5)
+        # The generator uses at most three schemes; avoid embedding/sorting and
+        # fetching two results that will never reach the prompt or response.
+        schemes = find_matching_schemes(question, cur, limit=3)
         
         # Ensure returned scheme IDs are strings for JSON serialization
         for scheme in schemes:

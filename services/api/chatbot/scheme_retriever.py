@@ -21,6 +21,18 @@ _index_cache: dict = {}
 INDEX_PATH = "data/scheme_embedding_index.npz"
 
 
+def warm_scheme_retriever() -> None:
+    """Load the embedding index and sentence model before the first query."""
+    if not _index_cache and os.path.exists(INDEX_PATH):
+        with np.load(INDEX_PATH) as data:
+            _index_cache["embeddings"] = data["embeddings"]
+            _index_cache["scheme_ids"] = data["scheme_ids"]
+
+    # Trigger the lazy sentence-transformer load and its first inference.
+    from services.api.chatbot.embeddings import encode
+    encode(["scheme assistant warmup"])
+
+
 def _build_searchable_text(row: dict) -> str:
     """Build searchable text representation of a scheme."""
     parts = []

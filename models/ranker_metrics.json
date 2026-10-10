@@ -1,19 +1,20 @@
 {
   "accuracy": 1.0,
-  "auc": 1.0,
-  "n_train": 12000.0,
-  "n_test": 3000.0,
+  "auc": 0.9999999999999999,
+  "n_train": 8000.0,
+  "n_test": 2000.0,
   "feature_importance": {
-    "user_age_norm": 5.447737693786621,
-    "user_income_norm": 5.182792663574219,
-    "age_eligible": 37.552433013916016,
-    "income_eligible": 145.13284301757812,
-    "gender_eligible": 113.61888122558594,
-    "caste_eligible": 246.9958038330078,
-    "state_eligible": 218.70506286621094,
-    "education_eligible": 151.0541229248047,
-    "eligibility_match_ratio": 2697.383056640625,
-    "source_trust": 9.205992698669434,
-    "is_all_india": 89.35669708251953
+    "user_age_norm": 7.475305080413818,
+    "user_income_norm": 80.30897521972656,
+    "user_edu_norm": 29.430158615112305,
+    "age_eligible": 26.331104278564453,
+    "income_eligible": 96.98455810546875,
+    "gender_eligible": 149.458251953125,
+    "caste_eligible": 131.56063842773438,
+    "state_eligible": 30.386871337890625,
+    "education_eligible": 82.92778015136719,
+    "eligibility_match_ratio": 3064.33837890625,
+    "matched_rule_coverage": 913.2470703125,
+    "source_trust": 9.311562538146973
   }
 }

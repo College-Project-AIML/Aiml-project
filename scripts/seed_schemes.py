@@ -24,19 +24,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DB_CONFIG = {
-    "dbname": os.getenv("POSTGRES_DB"),
-    "user": os.getenv("POSTGRES_USER"),
-    "password": os.getenv("POSTGRES_PASSWORD"),
-    "host": os.getenv("POSTGRES_HOST"),
-    "port": os.getenv("POSTGRES_PORT"),
+    "dbname": os.getenv("POSTGRES_DB", "aiml_core"),
+    "user": os.getenv("POSTGRES_USER", "admin"),
+    "password": os.getenv("POSTGRES_PASSWORD", "securepassword"),
+    "host": os.getenv("POSTGRES_HOST", "localhost"),
+    "port": os.getenv("POSTGRES_PORT", "5433"),
 }
 
-if not DB_CONFIG["password"]:
-    raise ValueError('POSTGRES_PASSWORD is not set')
-
 DATABASE_URL = os.getenv("DATABASE_URL")
-if not DATABASE_URL:
-    raise ValueError('DATABASE_URL is not set')
 
 
 def get_conn():

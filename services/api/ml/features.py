@@ -156,13 +156,17 @@ def extract_features(
 
         # ── Aggregate ───────────────────────────────────────────────────────
         applicable = sum([has_age, has_income, has_gender, has_caste, has_state_restriction, has_edu])
+        # Only count criteria that actually apply to this scheme. Counting
+        # unrestricted criteria as passes made the ratio exceed 1.0 (for
+        # example, one applicable rule plus five unrestricted fields), which
+        # pushed many scores to the same maximum.
         passed = sum([
-            features["age_eligible"] > 0.5,
-            features["income_eligible"] > 0.5,
-            features["gender_eligible"] > 0.5,
-            features["caste_eligible"] > 0.5,
-            features["state_eligible"] > 0.5,
-            features["education_eligible"] > 0.5,
+            has_age and features["age_eligible"] > 0.5,
+            has_income and features["income_eligible"] > 0.5,
+            has_gender and features["gender_eligible"] > 0.5,
+            has_caste and features["caste_eligible"] > 0.5,
+            has_state_restriction and features["state_eligible"] > 0.5,
+            has_edu and features["education_eligible"] > 0.5,
         ])
         features["eligibility_match_ratio"] = passed / max(applicable, 1)
         features["has_any_rule"] = 1.0 if applicable > 0 else 0.0

@@ -689,7 +689,7 @@ export default function Dashboard() {
                                     Recommended for You
                                 </h2>
                                 <span className="db-panel-sub">
-                                    Personalised by ML · {recommendedSchemes.length} schemes ranked by relevance to your profile
+                                    Ranked by model relevance · {recommendedSchemes.length} schemes matched to your profile
                                 </span>
                             </div>
                         </div>

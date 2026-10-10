@@ -125,6 +125,29 @@ CREATE INDEX IF NOT EXISTS idx_eligibility_scheme ON eligibility_rules(scheme_id
 CREATE INDEX IF NOT EXISTS idx_benefits_scheme ON benefits(scheme_id);
 CREATE INDEX IF NOT EXISTS idx_documents_scheme ON documents_required(scheme_id);
 
+-- 10. Users (authentication and saved profile)
+-- Kept in sync with the Alembic users and OAuth revisions so a fresh
+-- bootstrap can be stamped at the merged migration head.
+CREATE TABLE IF NOT EXISTS users (
+    user_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name VARCHAR(200) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255),
+    age INT,
+    income NUMERIC(12, 2),
+    gender VARCHAR(20),
+    caste VARCHAR(50),
+    education VARCHAR(100),
+    state VARCHAR(50),
+    role VARCHAR(20) DEFAULT 'user',
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    oauth_provider VARCHAR(20),
+    oauth_id VARCHAR(255),
+    avatar_url VARCHAR(500)
+);
+CREATE INDEX IF NOT EXISTS ix_users_oauth ON users(oauth_provider, oauth_id);
+
 -- Full-text search index on schemes
 CREATE INDEX IF NOT EXISTS idx_schemes_fts ON schemes USING GIN (
     to_tsvector('english', COALESCE(name, '') || ' ' || COALESCE(description, ''))

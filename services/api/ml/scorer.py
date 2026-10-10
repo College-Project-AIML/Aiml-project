@@ -2,14 +2,9 @@
 scorer.py — Personalized relevance scoring for government schemes.
 
 Two modes:
-1. HEURISTIC (default, no training data needed):
-   Weighted linear combination of features.  Weights are hand-tuned to
-   prioritise eligibility match ratio and state/caste fit.
-
-2. ML (future, when training data is available):
-   XGBoost or LightGBM model trained on user-scheme interaction data
-   (clicks, applications, dwell time).  The model file is loaded once
-   at startup.
+1. ML (default when a model artifact is present):
+   XGBoost or LightGBM model trained on user-scheme feature examples.
+2. HEURISTIC fallback when no supported model can be loaded.
 
 Both modes accept the same feature dict from features.py and return a
 score in [0, 1].
@@ -54,18 +49,13 @@ def score_heuristic(features: dict[str, float]) -> float:
 
     Returns a float in [0, 1] where 1 = perfect match.
     """
-    score = 0.0
-
-    for feat_name, weight in HEURISTIC_WEIGHTS.items():
-        feat_val = features.get(feat_name, 0.0)
-        score += weight * feat_val
-
-    # Apply hard-qualification penalties
-    for rule_name in _HARD_RULES:
-        if features.get(rule_name, 1.0) < 0.5:
-            score -= _HARD_FAIL_PENALTY
-
-    # Clamp to [0, 1]
+    # Relevance is primarily an eligibility fit measure. The earlier weighted
+    # sum gave unrestricted fields full points, making unrelated profiles
+    # look like near-perfect matches. These two features are normalized over
+    # applicable rules, so failures and specific matches affect the result.
+    match_ratio = features.get("eligibility_match_ratio", 0.0)
+    rule_coverage = features.get("matched_rule_coverage", 0.0)
+    score = (0.80 * match_ratio) + (0.20 * rule_coverage)
     return max(0.0, min(1.0, score))
 
 
@@ -79,10 +69,7 @@ def _load_ml_model():
     """Attempt to load a trained model from disk."""
     global _model, _model_type
 
-    model_path = os.getenv("RANKER_MODEL_PATH", "")
-
-    if not model_path:
-        return
+    model_path = os.getenv("RANKER_MODEL_PATH", "models/ranker.json")
 
     # Resolve relative paths from the project root
     if not os.path.isabs(model_path):
@@ -145,9 +132,10 @@ def score_ml(features: dict[str, float]) -> Optional[float]:
     else:
         raw = float(_model.predict(x)[0])
 
-    # Sigmoid to squash into [0, 1] if model outputs raw logit
+    # Convert raw margins/logits to probabilities, if necessary.
     if raw < 0 or raw > 1:
-        raw = 1.0 / (1.0 + raw.__class__(-raw) if hasattr(raw, '__class__') else 1.0 / (1.0 + __import__('math').exp(-raw)))
+        import math
+        raw = 1.0 / (1.0 + math.exp(-max(-709.0, min(709.0, raw))))
 
     return max(0.0, min(1.0, raw))
 

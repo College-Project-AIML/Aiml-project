@@ -1,0 +1,5315 @@
+{
+  "metrics": {
+    "total_queries": 100,
+    "threshold": 0.35,
+    "limit": 5,
+    "precision_at_k": 0.2,
+    "recall_at_k": 1.0,
+    "mrr": 0.9708,
+    "hit_rate": 1.0,
+    "hits": 100,
+    "misses": 0
+  },
+  "results": [
+    {
+      "query_id": 1,
+      "query": "Tell me about the Construction of NABARD-Funded Minor Irrigation Projects - Uttarakhand scheme and its eligibility.",
+      "expected_names": [
+        "Construction of NABARD-Funded Minor Irrigation Projects - Uttarakhand"
+      ],
+      "expected_ids": [
+        "e90672b8-148f-dc8d-360c-6c9cac44efa9"
+      ],
+      "retrieved": [
+        {
+          "id": "e90672b8-148f-dc8d-360c-6c9cac44efa9",
+          "name": "Construction of NABARD-Funded Minor Irrigation Projects - Uttarakhand",
+          "similarity": 0.9019
+        },
+        {
+          "id": "91e37399-2266-ceb7-a630-0792ae042d5d",
+          "name": "Pradhan Mantri Krishi Sinchayee Yojana - Har Khet Ko Pani (Groundwater Irrigation Scheme) Uttarakhand",
+          "similarity": 0.6585
+        },
+        {
+          "id": "59f2c2de-8c0f-ba8c-89c7-e1d7dc753a38",
+          "name": "Construction of Minor Irrigation Projects for Scheduled Caste Beneficiaries",
+          "similarity": 0.6499
+        },
+        {
+          "id": "f3b86508-7511-a364-7982-8c92b2fcd295",
+          "name": "Tubewell Installation /Pond Construction",
+          "similarity": 0.6434
+        },
+        {
+          "id": "91e646a5-f38f-1e77-ed38-f478caa3f2b3",
+          "name": "Sub-Mission on Agricultural Mechanization - Uttarakhand",
+          "similarity": 0.6354
+        }
+      ],
+      "retrieved_ids": [
+        "e90672b8-148f-dc8d-360c-6c9cac44efa9",
+        "91e37399-2266-ceb7-a630-0792ae042d5d",
+        "59f2c2de-8c0f-ba8c-89c7-e1d7dc753a38",
+        "f3b86508-7511-a364-7982-8c92b2fcd295",
+        "91e646a5-f38f-1e77-ed38-f478caa3f2b3"
+      ],
+      "relevant_retrieved": [
+        "e90672b8-148f-dc8d-360c-6c9cac44efa9"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 2,
+      "query": "Tell me about the Financial Assistance to Commercial Tiatr Troupes/Directors/Producers for Stage Setting scheme and its eligibility.",
+      "expected_names": [
+        "Financial Assistance to Commercial Tiatr Troupes/Directors/Producers for Stage Setting"
+      ],
+      "expected_ids": [
+        "1f0aacf8-b53e-e070-e5c1-47ff5190cdff"
+      ],
+      "retrieved": [
+        {
+          "id": "1f0aacf8-b53e-e070-e5c1-47ff5190cdff",
+          "name": "Financial Assistance to Commercial Tiatr Troupes/Directors/Producers for Stage Setting",
+          "similarity": 0.8633
+        },
+        {
+          "id": "79e3cfdc-dbe0-5291-37c9-644ebc0a2c56",
+          "name": "Financial Assistance to Dramatic Troupes participating in Kala Academy’s Annual Tiatr Competition",
+          "similarity": 0.7335
+        },
+        {
+          "id": "b98d755d-df3c-9b4d-b962-38642aacf506",
+          "name": "Financial Assistance for encouraging production of Traditional Khell-Tiatr",
+          "similarity": 0.7258
+        },
+        {
+          "id": "3f783a46-4c97-f648-1a05-13dce60e715b",
+          "name": "Financial Assistance to Troupes Going to Mumbai/Poona and Other Parts of the Country & Vice Versa",
+          "similarity": 0.7096
+        },
+        {
+          "id": "3f359a07-a309-e09c-9659-610b392c4e76",
+          "name": "Raising the Standard of Tiatr",
+          "similarity": 0.6692
+        }
+      ],
+      "retrieved_ids": [
+        "1f0aacf8-b53e-e070-e5c1-47ff5190cdff",
+        "79e3cfdc-dbe0-5291-37c9-644ebc0a2c56",
+        "b98d755d-df3c-9b4d-b962-38642aacf506",
+        "3f783a46-4c97-f648-1a05-13dce60e715b",
+        "3f359a07-a309-e09c-9659-610b392c4e76"
+      ],
+      "relevant_retrieved": [
+        "1f0aacf8-b53e-e070-e5c1-47ff5190cdff"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 3,
+      "query": "Tell me about the Pre-Matric Scholarship for OBC, EBC and DNT Students - DNH & DD scheme and its eligibility.",
+      "expected_names": [
+        "Pre-Matric Scholarship for OBC, EBC and DNT Students - DNH & DD"
+      ],
+      "expected_ids": [
+        "942c408b-b9ba-cd71-c348-494fc1fbb475"
+      ],
+      "retrieved": [
+        {
+          "id": "942c408b-b9ba-cd71-c348-494fc1fbb475",
+          "name": "Pre-Matric Scholarship for OBC, EBC and DNT Students - DNH & DD",
+          "similarity": 0.8757
+        },
+        {
+          "id": "508a0725-6732-f63f-2a13-d772b973a39b",
+          "name": "Post-Matric Scholarship for OBC, EBC and DNT Students - DNH & DD",
+          "similarity": 0.7916
+        },
+        {
+          "id": "f4359904-280a-9c0b-b87b-92b21c3f1618",
+          "name": "Pre Matric Scholarship for SC students- DNH & DD",
+          "similarity": 0.7907
+        },
+        {
+          "id": "74274bcb-f959-b3ab-ae9e-88d95a98d85c",
+          "name": "Pre-Matric Scholarship Scheme for OBC Students-Delhi",
+          "similarity": 0.7744
+        },
+        {
+          "id": "e1b76a71-ad9e-bff2-6262-dd778b74b417",
+          "name": "Centrally Sponsored Scheme of Post-Matric Scholarship for OBC, EBC and DNT Students for studying in India",
+          "similarity": 0.7656
+        }
+      ],
+      "retrieved_ids": [
+        "942c408b-b9ba-cd71-c348-494fc1fbb475",
+        "508a0725-6732-f63f-2a13-d772b973a39b",
+        "f4359904-280a-9c0b-b87b-92b21c3f1618",
+        "74274bcb-f959-b3ab-ae9e-88d95a98d85c",
+        "e1b76a71-ad9e-bff2-6262-dd778b74b417"
+      ],
+      "relevant_retrieved": [
+        "942c408b-b9ba-cd71-c348-494fc1fbb475"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 4,
+      "query": "Tell me about the Uniform Assistance for Economically Backward Class Students Studying in Class 1st to 8th scheme and its eligibility.",
+      "expected_names": [
+        "Uniform Assistance for Economically Backward Class Students Studying in Class 1st to 8th"
+      ],
+      "expected_ids": [
+        "375e43bf-a090-eed3-b250-902191749bdc"
+      ],
+      "retrieved": [
+        {
+          "id": "375e43bf-a090-eed3-b250-902191749bdc",
+          "name": "Uniform Assistance for Economically Backward Class Students Studying in Class 1st to 8th",
+          "similarity": 0.8204
+        },
+        {
+          "id": "95d88fb3-29cc-b7bd-1a35-cdcb7f2c44d9",
+          "name": "Uniform Assistance for Other Backward Classes (Minority) Students Studying in Standard 1st to 8th",
+          "similarity": 0.7732
+        },
+        {
+          "id": "fbbe72ee-225f-cc8e-b437-a0935ab15d20",
+          "name": "Uniform Assistance for Socially and Educationally Backward Class Students Studying Standard 1st to 8th",
+          "similarity": 0.7654
+        },
+        {
+          "id": "9c614497-3574-8ebb-8319-ea508efafde5",
+          "name": "Subsidy for School Uniforms to the Students",
+          "similarity": 0.7075
+        },
+        {
+          "id": "a3688652-d539-28c0-144c-23cc6ea19831",
+          "name": "Free Uniforms for Students",
+          "similarity": 0.6924
+        }
+      ],
+      "retrieved_ids": [
+        "375e43bf-a090-eed3-b250-902191749bdc",
+        "95d88fb3-29cc-b7bd-1a35-cdcb7f2c44d9",
+        "fbbe72ee-225f-cc8e-b437-a0935ab15d20",
+        "9c614497-3574-8ebb-8319-ea508efafde5",
+        "a3688652-d539-28c0-144c-23cc6ea19831"
+      ],
+      "relevant_retrieved": [
+        "375e43bf-a090-eed3-b250-902191749bdc"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 5,
+      "query": "Tell me about the Modular Employable Skills scheme and its eligibility.",
+      "expected_names": [
+        "Modular Employable Skills"
+      ],
+      "expected_ids": [
+        "cf62710c-f581-5476-1dc0-4fdea24d6aba"
+      ],
+      "retrieved": [
+        {
+          "id": "cf62710c-f581-5476-1dc0-4fdea24d6aba",
+          "name": "Modular Employable Skills",
+          "similarity": 0.6931
+        },
+        {
+          "id": "882f1cbc-87fc-2505-bf48-4112cf8ae34c",
+          "name": "\"Advance / High Skill Training\" Component of the \"Development of Industries\" Scheme",
+          "similarity": 0.684
+        },
+        {
+          "id": "10c02341-1632-8c3a-878c-6f67d2b6aebf",
+          "name": "Skill Development Scheme (PBAOCWWB)",
+          "similarity": 0.6346
+        },
+        {
+          "id": "edb101e3-87ad-7576-f616-51c281d47003",
+          "name": "Advanced Vocational Training Scheme",
+          "similarity": 0.6266
+        },
+        {
+          "id": "b7ca094f-06c1-ae55-9fa6-34d5dfdd1c4d",
+          "name": "Scheme for Enhancement of Technical Competence and Manpower: Scheme of Financial Assistance for Skill Development to MSME Sector",
+          "similarity": 0.6068
+        }
+      ],
+      "retrieved_ids": [
+        "cf62710c-f581-5476-1dc0-4fdea24d6aba",
+        "882f1cbc-87fc-2505-bf48-4112cf8ae34c",
+        "10c02341-1632-8c3a-878c-6f67d2b6aebf",
+        "edb101e3-87ad-7576-f616-51c281d47003",
+        "b7ca094f-06c1-ae55-9fa6-34d5dfdd1c4d"
+      ],
+      "relevant_retrieved": [
+        "cf62710c-f581-5476-1dc0-4fdea24d6aba"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 6,
+      "query": "Tell me about the Mukhya Mantri Agricultural Mechanization Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Mukhya Mantri Agricultural Mechanization Scheme"
+      ],
+      "expected_ids": [
+        "301c973d-ce1c-9c86-8c06-c84cb0397331"
+      ],
+      "retrieved": [
+        {
+          "id": "301c973d-ce1c-9c86-8c06-c84cb0397331",
+          "name": "Mukhya Mantri Agricultural Mechanization Scheme",
+          "similarity": 0.8433
+        },
+        {
+          "id": "91e646a5-f38f-1e77-ed38-f478caa3f2b3",
+          "name": "Sub-Mission on Agricultural Mechanization - Uttarakhand",
+          "similarity": 0.7509
+        },
+        {
+          "id": "cc4cf48d-9672-1365-f592-3c0cf104b58b",
+          "name": "Mukhya Mantri Krishi Sa Sajuli Yozana - Assam",
+          "similarity": 0.7132
+        },
+        {
+          "id": "567fc5df-236a-e7d5-3a4e-3e5ec8bb0924",
+          "name": "Mukhya Mantri Krishak Samriddhi Yojana",
+          "similarity": 0.6916
+        },
+        {
+          "id": "8d3d3818-e712-193c-24e1-d9c99b790c81",
+          "name": "Sub-Mission on Agricultural Mechanization (SMAM) for Custom Hiring Centres / Big Farmers - Uttarakhand",
+          "similarity": 0.6656
+        }
+      ],
+      "retrieved_ids": [
+        "301c973d-ce1c-9c86-8c06-c84cb0397331",
+        "91e646a5-f38f-1e77-ed38-f478caa3f2b3",
+        "cc4cf48d-9672-1365-f592-3c0cf104b58b",
+        "567fc5df-236a-e7d5-3a4e-3e5ec8bb0924",
+        "8d3d3818-e712-193c-24e1-d9c99b790c81"
+      ],
+      "relevant_retrieved": [
+        "301c973d-ce1c-9c86-8c06-c84cb0397331"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 7,
+      "query": "Tell me about the Ex-gratia Payment for the Construction Workers scheme and its eligibility.",
+      "expected_names": [
+        "Ex-gratia Payment for the Construction Workers"
+      ],
+      "expected_ids": [
+        "3457886c-4083-cfc9-1606-260b8acc53ea"
+      ],
+      "retrieved": [
+        {
+          "id": "3457886c-4083-cfc9-1606-260b8acc53ea",
+          "name": "Ex-gratia Payment for the Construction Workers",
+          "similarity": 0.7291
+        },
+        {
+          "id": "65520460-c164-c923-8a7b-fb8e149dd6c0",
+          "name": "Burial and Ex-gratia Payment Scheme in Case of Death of Unregistered Laborer During Work at Construction Site",
+          "similarity": 0.6422
+        },
+        {
+          "id": "a2b5bada-a1f3-4877-2018-3bb15a99b7ac",
+          "name": "Ex-gratia Scheme: Disability Compensation (P.B.O.C.W.W.B)",
+          "similarity": 0.6111
+        },
+        {
+          "id": "deff8738-8b18-31ef-8568-bfa05a75fff1",
+          "name": "Assistance Scheme For Reimbursement For Expenditure On Visa By Construction Workers For Employment Abroad",
+          "similarity": 0.6037
+        },
+        {
+          "id": "a95cca67-2876-cc9a-056b-3491febb614b",
+          "name": "Antyodaya Gruha Yojana: Incentive to Beneficiaries",
+          "similarity": 0.5967
+        }
+      ],
+      "retrieved_ids": [
+        "3457886c-4083-cfc9-1606-260b8acc53ea",
+        "65520460-c164-c923-8a7b-fb8e149dd6c0",
+        "a2b5bada-a1f3-4877-2018-3bb15a99b7ac",
+        "deff8738-8b18-31ef-8568-bfa05a75fff1",
+        "a95cca67-2876-cc9a-056b-3491febb614b"
+      ],
+      "relevant_retrieved": [
+        "3457886c-4083-cfc9-1606-260b8acc53ea"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 8,
+      "query": "Tell me about the Prime Minister’s Rural Development Fellows Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Prime Minister’s Rural Development Fellows Scheme"
+      ],
+      "expected_ids": [
+        "51dc44f2-2dd4-a898-3068-d3e35ce8aeda"
+      ],
+      "retrieved": [
+        {
+          "id": "51dc44f2-2dd4-a898-3068-d3e35ce8aeda",
+          "name": "Prime Minister’s Rural Development Fellows Scheme",
+          "similarity": 0.7531
+        },
+        {
+          "id": "78cd056d-086c-43b3-bf37-98f0c738e847",
+          "name": "Prime Minister's Scholarship Scheme",
+          "similarity": 0.6672
+        },
+        {
+          "id": "3c059c73-753c-991c-184a-1c5436c1379d",
+          "name": "Chief Ministers Special Rural Development Fund (CMSRDF)",
+          "similarity": 0.641
+        },
+        {
+          "id": "e5c7a19e-b6e5-3842-195a-0b54acc2f8d9",
+          "name": "Chief Minister Higher Education Scholarship Scheme",
+          "similarity": 0.6347
+        },
+        {
+          "id": "72bab537-7ef1-5c19-d899-18e6db074b77",
+          "name": "Basic Agriculture Training Centre Scheme",
+          "similarity": 0.6155
+        }
+      ],
+      "retrieved_ids": [
+        "51dc44f2-2dd4-a898-3068-d3e35ce8aeda",
+        "78cd056d-086c-43b3-bf37-98f0c738e847",
+        "3c059c73-753c-991c-184a-1c5436c1379d",
+        "e5c7a19e-b6e5-3842-195a-0b54acc2f8d9",
+        "72bab537-7ef1-5c19-d899-18e6db074b77"
+      ],
+      "relevant_retrieved": [
+        "51dc44f2-2dd4-a898-3068-d3e35ce8aeda"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 9,
+      "query": "Tell me about the Vidyasiri food And Accommodation Scholarship Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Vidyasiri food And Accommodation Scholarship Scheme"
+      ],
+      "expected_ids": [
+        "2860acfc-556d-6b65-60cd-1dfa9215a5e2"
+      ],
+      "retrieved": [
+        {
+          "id": "2860acfc-556d-6b65-60cd-1dfa9215a5e2",
+          "name": "Vidyasiri food And Accommodation Scholarship Scheme",
+          "similarity": 0.8277
+        },
+        {
+          "id": "ed30ec9d-37d3-13f6-8ff7-e2d1389e8cb9",
+          "name": "Vidyasiri Scholarship (Karnataka)",
+          "similarity": 0.6704
+        },
+        {
+          "id": "262306d4-65fe-3583-a974-bd30ccb0c97b",
+          "name": "Mukhya Mantri Vidyarthi Kalyan Yojana",
+          "similarity": 0.664
+        },
+        {
+          "id": "4accd735-fc20-2256-ab21-c5992c30423b",
+          "name": "Vidya Scheme",
+          "similarity": 0.6509
+        },
+        {
+          "id": "f681c5c3-298e-b600-1589-17b16b49eb08",
+          "name": "Mukhyamantri Vidyarthi Pratibha Yojna",
+          "similarity": 0.6475
+        }
+      ],
+      "retrieved_ids": [
+        "2860acfc-556d-6b65-60cd-1dfa9215a5e2",
+        "ed30ec9d-37d3-13f6-8ff7-e2d1389e8cb9",
+        "262306d4-65fe-3583-a974-bd30ccb0c97b",
+        "4accd735-fc20-2256-ab21-c5992c30423b",
+        "f681c5c3-298e-b600-1589-17b16b49eb08"
+      ],
+      "relevant_retrieved": [
+        "2860acfc-556d-6b65-60cd-1dfa9215a5e2"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 10,
+      "query": "Tell me about the Indira Gandhi National Disabled Pension Scheme (Madhya Pradesh) scheme and its eligibility.",
+      "expected_names": [
+        "Indira Gandhi National Disabled Pension Scheme (Madhya Pradesh)"
+      ],
+      "expected_ids": [
+        "a34c7376-365c-4ff2-32a6-fd41f40b401e"
+      ],
+      "retrieved": [
+        {
+          "id": "a34c7376-365c-4ff2-32a6-fd41f40b401e",
+          "name": "Indira Gandhi National Disabled Pension Scheme (Madhya Pradesh)",
+          "similarity": 0.8397
+        },
+        {
+          "id": "89313690-c5a8-b29f-a28c-904e6ae3c683",
+          "name": "Indira Gandhi National Special Ability Pension",
+          "similarity": 0.8162
+        },
+        {
+          "id": "b367c47b-8e5b-c588-aa7e-1d46cc0b41c0",
+          "name": "Indira Gandhi National Disability Pension Scheme-Himachal Pradesh",
+          "similarity": 0.8055
+        },
+        {
+          "id": "2f739a14-4d83-c6d5-0e0c-dc74951d435e",
+          "name": "Indira Gandhi National Widow Pension Scheme-Madhya Pradesh",
+          "similarity": 0.7974
+        },
+        {
+          "id": "943fd883-8ea5-08e5-d60c-fea161c035e1",
+          "name": "Indira Gandhi National Disability Pension Scheme (Maharashtra)",
+          "similarity": 0.7931
+        }
+      ],
+      "retrieved_ids": [
+        "a34c7376-365c-4ff2-32a6-fd41f40b401e",
+        "89313690-c5a8-b29f-a28c-904e6ae3c683",
+        "b367c47b-8e5b-c588-aa7e-1d46cc0b41c0",
+        "2f739a14-4d83-c6d5-0e0c-dc74951d435e",
+        "943fd883-8ea5-08e5-d60c-fea161c035e1"
+      ],
+      "relevant_retrieved": [
+        "a34c7376-365c-4ff2-32a6-fd41f40b401e"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 11,
+      "query": "Tell me about the Financial Assistance for Medical Treatment of Journalists scheme and its eligibility.",
+      "expected_names": [
+        "Financial Assistance for Medical Treatment of Journalists"
+      ],
+      "expected_ids": [
+        "4c511801-0405-33ce-b3e8-9025701652b5"
+      ],
+      "retrieved": [
+        {
+          "id": "4c511801-0405-33ce-b3e8-9025701652b5",
+          "name": "Financial Assistance for Medical Treatment of Journalists",
+          "similarity": 0.7562
+        },
+        {
+          "id": "acc0a7ed-d66c-5f32-8ff0-180c6d1827cf",
+          "name": "Journalist's Medical Welfare Scheme - Assam",
+          "similarity": 0.7336
+        },
+        {
+          "id": "6b1059f0-7e50-8a08-ca31-dd16e7586656",
+          "name": "Financial Assistance Scheme for Journalists and Litterateurs - Rajasthan",
+          "similarity": 0.6821
+        },
+        {
+          "id": "fd131885-4fc9-ebdd-74ad-d8c33efe7b71",
+          "name": "Journalists’ Family Benefit Fund",
+          "similarity": 0.64
+        },
+        {
+          "id": "6792e7e6-c4ce-1c98-acc9-5bb7d08816b7",
+          "name": "Scheme for Grant of Pension Benefits to Journalists",
+          "similarity": 0.6021
+        }
+      ],
+      "retrieved_ids": [
+        "4c511801-0405-33ce-b3e8-9025701652b5",
+        "acc0a7ed-d66c-5f32-8ff0-180c6d1827cf",
+        "6b1059f0-7e50-8a08-ca31-dd16e7586656",
+        "fd131885-4fc9-ebdd-74ad-d8c33efe7b71",
+        "6792e7e6-c4ce-1c98-acc9-5bb7d08816b7"
+      ],
+      "relevant_retrieved": [
+        "4c511801-0405-33ce-b3e8-9025701652b5"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 12,
+      "query": "Tell me about the Financial Assistance To Gad-Hanjis scheme and its eligibility.",
+      "expected_names": [
+        "Financial Assistance To Gad-Hanjis"
+      ],
+      "expected_ids": [
+        "f0d3342c-8ef4-3b2a-7c2a-ffe8a950ba4e"
+      ],
+      "retrieved": [
+        {
+          "id": "f0d3342c-8ef4-3b2a-7c2a-ffe8a950ba4e",
+          "name": "Financial Assistance To Gad-Hanjis",
+          "similarity": 0.6598
+        },
+        {
+          "id": "ae2038d9-e97f-e266-8033-272daeab8947",
+          "name": "Scheme for Persons with Benchmark Disability Requiring High Support",
+          "similarity": 0.6245
+        },
+        {
+          "id": "71ca11f9-9ee5-9424-89c3-b3fc95858dc6",
+          "name": "Financial Assistance Scheme for Purchase of Agricultural Land to Scheduled Caste Farmers",
+          "similarity": 0.6221
+        },
+        {
+          "id": "eecbdb35-9559-c3ae-0bbb-aeb2e059a886",
+          "name": "Bankable Scheme",
+          "similarity": 0.6134
+        },
+        {
+          "id": "4048faf0-7bf1-d22f-2336-e88d7903946b",
+          "name": "Higher Education Assistance Scheme",
+          "similarity": 0.6118
+        }
+      ],
+      "retrieved_ids": [
+        "f0d3342c-8ef4-3b2a-7c2a-ffe8a950ba4e",
+        "ae2038d9-e97f-e266-8033-272daeab8947",
+        "71ca11f9-9ee5-9424-89c3-b3fc95858dc6",
+        "eecbdb35-9559-c3ae-0bbb-aeb2e059a886",
+        "4048faf0-7bf1-d22f-2336-e88d7903946b"
+      ],
+      "relevant_retrieved": [
+        "f0d3342c-8ef4-3b2a-7c2a-ffe8a950ba4e"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 13,
+      "query": "Tell me about the NSP - OTR generation scheme and its eligibility.",
+      "expected_names": [
+        "NSP - OTR generation"
+      ],
+      "expected_ids": [
+        "a677e5fa-2472-cfd6-fd6a-b40b71abbcaf"
+      ],
+      "retrieved": [
+        {
+          "id": "a677e5fa-2472-cfd6-fd6a-b40b71abbcaf",
+          "name": "NSP - OTR generation",
+          "similarity": 0.7026
+        },
+        {
+          "id": "13da5439-b706-d760-0456-2c83eaea3043",
+          "name": "Nirman Shramik Pension Yojana (NSPY) (O.B.O.C.W.W.B)",
+          "similarity": 0.4767
+        },
+        {
+          "id": "37431c90-f435-c4cd-a689-a8b515505a16",
+          "name": "Mukhyamantri Chhaatrvrtti Yojana",
+          "similarity": 0.4752
+        },
+        {
+          "id": "05e505a7-ac26-6360-321a-16507b9f5e35",
+          "name": "Scholarship/Merit Scholarship Schools SC/ST/OBC/Min (Studying in College/Technical/ Professional Institutions)",
+          "similarity": 0.4746
+        },
+        {
+          "id": "942c408b-b9ba-cd71-c348-494fc1fbb475",
+          "name": "Pre-Matric Scholarship for OBC, EBC and DNT Students - DNH & DD",
+          "similarity": 0.4669
+        }
+      ],
+      "retrieved_ids": [
+        "a677e5fa-2472-cfd6-fd6a-b40b71abbcaf",
+        "13da5439-b706-d760-0456-2c83eaea3043",
+        "37431c90-f435-c4cd-a689-a8b515505a16",
+        "05e505a7-ac26-6360-321a-16507b9f5e35",
+        "942c408b-b9ba-cd71-c348-494fc1fbb475"
+      ],
+      "relevant_retrieved": [
+        "a677e5fa-2472-cfd6-fd6a-b40b71abbcaf"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 14,
+      "query": "Tell me about the Capital Investment Subsidy Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Capital Investment Subsidy Scheme"
+      ],
+      "expected_ids": [
+        "93db3fc8-d5ee-04e5-b19d-b66d56a9b6eb"
+      ],
+      "retrieved": [
+        {
+          "id": "93db3fc8-d5ee-04e5-b19d-b66d56a9b6eb",
+          "name": "Capital Investment Subsidy Scheme",
+          "similarity": 0.7147
+        },
+        {
+          "id": "1dac7583-4c69-b778-eb06-d27b21a144ea",
+          "name": "25% Capital Investment Subsidy Scheme",
+          "similarity": 0.7088
+        },
+        {
+          "id": "4c3d8810-72d2-d02c-7373-2b87b037015c",
+          "name": "Investment Promotion Scheme (IPS) for MSME Sector: Assistance of Fixed Capital Investment Subsidy",
+          "similarity": 0.682
+        },
+        {
+          "id": "6380dd26-36e3-72fe-4cfc-ba6b2cf7a5e0",
+          "name": "Capital Investment Subsidy for Creation of Infrastructure",
+          "similarity": 0.6688
+        },
+        {
+          "id": "36df9a46-0457-6206-896d-77477f7019ca",
+          "name": "Capital Investment Subsidy for Establishment of New Resort and Wellness Centre",
+          "similarity": 0.6593
+        }
+      ],
+      "retrieved_ids": [
+        "93db3fc8-d5ee-04e5-b19d-b66d56a9b6eb",
+        "1dac7583-4c69-b778-eb06-d27b21a144ea",
+        "4c3d8810-72d2-d02c-7373-2b87b037015c",
+        "6380dd26-36e3-72fe-4cfc-ba6b2cf7a5e0",
+        "36df9a46-0457-6206-896d-77477f7019ca"
+      ],
+      "relevant_retrieved": [
+        "93db3fc8-d5ee-04e5-b19d-b66d56a9b6eb"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 15,
+      "query": "Tell me about the Indira Gandhi National Old Age Pension Scheme -Tamil Nadu scheme and its eligibility.",
+      "expected_names": [
+        "Indira Gandhi National Old Age Pension Scheme -Tamil Nadu"
+      ],
+      "expected_ids": [
+        "0540d5ef-bc6d-4947-c7b6-ffbbc5f6772a"
+      ],
+      "retrieved": [
+        {
+          "id": "0540d5ef-bc6d-4947-c7b6-ffbbc5f6772a",
+          "name": "Indira Gandhi National Old Age Pension Scheme -Tamil Nadu",
+          "similarity": 0.8252
+        },
+        {
+          "id": "61a643f7-6d9f-71fd-68c9-ca3a8bb035ab",
+          "name": "Indira Gandhi National Widow Pension Scheme - Tamil Nadu",
+          "similarity": 0.7998
+        },
+        {
+          "id": "d972d757-1371-77d1-14ed-8560585c7444",
+          "name": "Indira Gandhi National Old Age Pension Scheme (Maharashtra)",
+          "similarity": 0.7975
+        },
+        {
+          "id": "a0445aa7-0f54-80d5-2c40-ee7504e9fdec",
+          "name": "Indira Gandhi National Disability Pension Scheme - Tamil Nadu",
+          "similarity": 0.7939
+        },
+        {
+          "id": "4fca4249-7ca9-dcda-ab37-591366adb5a6",
+          "name": "Indira Gandhi National Old Age Pension Scheme- Bihar",
+          "similarity": 0.792
+        }
+      ],
+      "retrieved_ids": [
+        "0540d5ef-bc6d-4947-c7b6-ffbbc5f6772a",
+        "61a643f7-6d9f-71fd-68c9-ca3a8bb035ab",
+        "d972d757-1371-77d1-14ed-8560585c7444",
+        "a0445aa7-0f54-80d5-2c40-ee7504e9fdec",
+        "4fca4249-7ca9-dcda-ab37-591366adb5a6"
+      ],
+      "relevant_retrieved": [
+        "0540d5ef-bc6d-4947-c7b6-ffbbc5f6772a"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 16,
+      "query": "Tell me about the NEC Stipend And Book Grant Scheme scheme and its eligibility.",
+      "expected_names": [
+        "NEC Stipend And Book Grant Scheme"
+      ],
+      "expected_ids": [
+        "528b92b2-800e-690a-99b9-6d5694d3a52e"
+      ],
+      "retrieved": [
+        {
+          "id": "528b92b2-800e-690a-99b9-6d5694d3a52e",
+          "name": "NEC Stipend And Book Grant Scheme",
+          "similarity": 0.7048
+        },
+        {
+          "id": "47c901f4-3c5f-6248-bbd3-3c4a61927e3b",
+          "name": "Stipend to Educated Unemployed",
+          "similarity": 0.6631
+        },
+        {
+          "id": "ef4f3a7d-b920-079b-decf-6c4ac126fb78",
+          "name": "Grant of Stipends to the Physically Handicapped Students",
+          "similarity": 0.6175
+        },
+        {
+          "id": "db7ad500-672f-d3da-f181-0a10df573627",
+          "name": "Arunachal Pradesh State Stipend Scheme",
+          "similarity": 0.616
+        },
+        {
+          "id": "af08130e-0661-fba4-126c-1212adeef2d8",
+          "name": "Grant of Stipend to Junior Advocates Scheme",
+          "similarity": 0.6155
+        }
+      ],
+      "retrieved_ids": [
+        "528b92b2-800e-690a-99b9-6d5694d3a52e",
+        "47c901f4-3c5f-6248-bbd3-3c4a61927e3b",
+        "ef4f3a7d-b920-079b-decf-6c4ac126fb78",
+        "db7ad500-672f-d3da-f181-0a10df573627",
+        "af08130e-0661-fba4-126c-1212adeef2d8"
+      ],
+      "relevant_retrieved": [
+        "528b92b2-800e-690a-99b9-6d5694d3a52e"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 17,
+      "query": "Tell me about the National Career Service Centers For SC/STs (erstwhile Coaching-cum-Guidance Centre for SC/STs) scheme and its eligibility.",
+      "expected_names": [
+        "National Career Service Centers For SC/STs (erstwhile Coaching-cum-Guidance Centre for SC/STs)"
+      ],
+      "expected_ids": [
+        "fe053b3c-5926-f080-0c2e-c670169feb20"
+      ],
+      "retrieved": [
+        {
+          "id": "fe053b3c-5926-f080-0c2e-c670169feb20",
+          "name": "National Career Service Centers For SC/STs (erstwhile Coaching-cum-Guidance Centre for SC/STs)",
+          "similarity": 0.8104
+        },
+        {
+          "id": "216f6954-a7a1-5e23-a43a-5b1f3e495524",
+          "name": "Post-Graduate Scholarships for Professional Courses for SC/ST Candidates",
+          "similarity": 0.5392
+        },
+        {
+          "id": "50fdd7d1-90f8-0b83-86fc-e0b7d4cb4a9c",
+          "name": "Scheme Of Coaching & Allied For Scheduled Castes",
+          "similarity": 0.5346
+        },
+        {
+          "id": "05e505a7-ac26-6360-321a-16507b9f5e35",
+          "name": "Scholarship/Merit Scholarship Schools SC/ST/OBC/Min (Studying in College/Technical/ Professional Institutions)",
+          "similarity": 0.5259
+        },
+        {
+          "id": "230f8648-388e-4294-4829-bd93e48991f9",
+          "name": "Certification Program for Goan IT Professionals",
+          "similarity": 0.5177
+        }
+      ],
+      "retrieved_ids": [
+        "fe053b3c-5926-f080-0c2e-c670169feb20",
+        "216f6954-a7a1-5e23-a43a-5b1f3e495524",
+        "50fdd7d1-90f8-0b83-86fc-e0b7d4cb4a9c",
+        "05e505a7-ac26-6360-321a-16507b9f5e35",
+        "230f8648-388e-4294-4829-bd93e48991f9"
+      ],
+      "relevant_retrieved": [
+        "fe053b3c-5926-f080-0c2e-c670169feb20"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 18,
+      "query": "Tell me about the Cash Amount for Encouraging Scheduled Tribe Sportsperson Students scheme and its eligibility.",
+      "expected_names": [
+        "Cash Amount for Encouraging Scheduled Tribe Sportsperson Students"
+      ],
+      "expected_ids": [
+        "73c87588-cc98-323d-1d4c-4a5c2cf318eb"
+      ],
+      "retrieved": [
+        {
+          "id": "73c87588-cc98-323d-1d4c-4a5c2cf318eb",
+          "name": "Cash Amount for Encouraging Scheduled Tribe Sportsperson Students",
+          "similarity": 0.7742
+        },
+        {
+          "id": "5e55847a-666e-0c69-f127-05fb1cf80fb9",
+          "name": "Pre-Matric Scholarship For Scheduled Tribe Students Studying In Classes 9th & 10th",
+          "similarity": 0.6252
+        },
+        {
+          "id": "6d119931-ea12-8c4c-a099-ddde438dd814",
+          "name": "Loan For Commercial Pilot Training",
+          "similarity": 0.6172
+        },
+        {
+          "id": "00ff9160-22c4-8be6-e73c-61c4276e576e",
+          "name": "Food Bill Assistance for Medical & Engineering Students of Nomadic Tribes & Denotified Tribes",
+          "similarity": 0.6004
+        },
+        {
+          "id": "36c19cbd-0c60-b7dc-fe5c-d5ad711eb972",
+          "name": "Operation of Sports Hostels",
+          "similarity": 0.5926
+        }
+      ],
+      "retrieved_ids": [
+        "73c87588-cc98-323d-1d4c-4a5c2cf318eb",
+        "5e55847a-666e-0c69-f127-05fb1cf80fb9",
+        "6d119931-ea12-8c4c-a099-ddde438dd814",
+        "00ff9160-22c4-8be6-e73c-61c4276e576e",
+        "36c19cbd-0c60-b7dc-fe5c-d5ad711eb972"
+      ],
+      "relevant_retrieved": [
+        "73c87588-cc98-323d-1d4c-4a5c2cf318eb"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 19,
+      "query": "Tell me about the \"Subsidy for Cultivation of Fodder Crops\" Component of the \"Crop Production Technology\" Scheme scheme and its eligibility.",
+      "expected_names": [
+        "\"Subsidy for Cultivation of Fodder Crops\" Component of the \"Crop Production Technology\" Scheme"
+      ],
+      "expected_ids": [
+        "1b0218ea-6de9-283e-c17e-654913ed0360"
+      ],
+      "retrieved": [
+        {
+          "id": "1b0218ea-6de9-283e-c17e-654913ed0360",
+          "name": "\"Subsidy for Cultivation of Fodder Crops\" Component of the \"Crop Production Technology\" Scheme",
+          "similarity": 0.7753
+        },
+        {
+          "id": "50ffa0a7-cdc9-5c89-1df7-b6ce9bd799f9",
+          "name": "Winter Cropping & Development of Cultivable Land Scheme",
+          "similarity": 0.7108
+        },
+        {
+          "id": "e9a262b1-a4b7-3989-2b6d-6de2c0faf7a5",
+          "name": "Scheme to Encourage Farmers to Add Value to Crops",
+          "similarity": 0.6939
+        },
+        {
+          "id": "dd0308d4-4dd8-fb9f-2a97-cb93690ab981",
+          "name": "Supply of Fodder Minikit",
+          "similarity": 0.6892
+        },
+        {
+          "id": "461ac6b3-2cbd-2d01-a0e5-5e295e5503e0",
+          "name": "Fasal Pradarshan",
+          "similarity": 0.6861
+        }
+      ],
+      "retrieved_ids": [
+        "1b0218ea-6de9-283e-c17e-654913ed0360",
+        "50ffa0a7-cdc9-5c89-1df7-b6ce9bd799f9",
+        "e9a262b1-a4b7-3989-2b6d-6de2c0faf7a5",
+        "dd0308d4-4dd8-fb9f-2a97-cb93690ab981",
+        "461ac6b3-2cbd-2d01-a0e5-5e295e5503e0"
+      ],
+      "relevant_retrieved": [
+        "1b0218ea-6de9-283e-c17e-654913ed0360"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 20,
+      "query": "Tell me about the Indira Gandhi National Old Age Pension Scheme- Bihar scheme and its eligibility.",
+      "expected_names": [
+        "Indira Gandhi National Old Age Pension Scheme- Bihar"
+      ],
+      "expected_ids": [
+        "4fca4249-7ca9-dcda-ab37-591366adb5a6"
+      ],
+      "retrieved": [
+        {
+          "id": "4fca4249-7ca9-dcda-ab37-591366adb5a6",
+          "name": "Indira Gandhi National Old Age Pension Scheme- Bihar",
+          "similarity": 0.8205
+        },
+        {
+          "id": "d972d757-1371-77d1-14ed-8560585c7444",
+          "name": "Indira Gandhi National Old Age Pension Scheme (Maharashtra)",
+          "similarity": 0.8048
+        },
+        {
+          "id": "6b0826bd-e3b3-8312-865b-6d193bcc7dc7",
+          "name": "Indira Gandhi National Old Age Pension Scheme (Himachal Pradesh)",
+          "similarity": 0.782
+        },
+        {
+          "id": "a3ad8221-4d25-145f-4f61-8df25da10168",
+          "name": "Indira Gandhi National Old Age Pension Scheme - Sikkim",
+          "similarity": 0.7781
+        },
+        {
+          "id": "9c252c62-d75b-f219-1504-178fa7835878",
+          "name": "Indira Gandhi National Widow Pension Scheme- Bihar",
+          "similarity": 0.7778
+        }
+      ],
+      "retrieved_ids": [
+        "4fca4249-7ca9-dcda-ab37-591366adb5a6",
+        "d972d757-1371-77d1-14ed-8560585c7444",
+        "6b0826bd-e3b3-8312-865b-6d193bcc7dc7",
+        "a3ad8221-4d25-145f-4f61-8df25da10168",
+        "9c252c62-d75b-f219-1504-178fa7835878"
+      ],
+      "relevant_retrieved": [
+        "4fca4249-7ca9-dcda-ab37-591366adb5a6"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 21,
+      "query": "Tell me about the Braille Watches by Welfare of Differently Abled Persons Department scheme and its eligibility.",
+      "expected_names": [
+        "Braille Watches by Welfare of Differently Abled Persons Department"
+      ],
+      "expected_ids": [
+        "6d12dd84-4743-5941-2c56-9ccdfa43069e"
+      ],
+      "retrieved": [
+        {
+          "id": "6d12dd84-4743-5941-2c56-9ccdfa43069e",
+          "name": "Braille Watches by Welfare of Differently Abled Persons Department",
+          "similarity": 0.8397
+        },
+        {
+          "id": "5b6463df-0377-63de-abbf-8cd26df564ca",
+          "name": "Braille Equipment Provision",
+          "similarity": 0.7222
+        },
+        {
+          "id": "60e88c91-951d-fcd1-2800-39f23aa6d043",
+          "name": "Readers Allowance to Visually Impaired Persons",
+          "similarity": 0.6605
+        },
+        {
+          "id": "8c10066f-eff9-b889-3f23-2d7ee8d224e8",
+          "name": "Provision of Special Assistance for Development of Low-Cost Educational Materials (SIPDA)",
+          "similarity": 0.6256
+        },
+        {
+          "id": "fe0a9822-5834-17d5-6f2d-f9a361f083b2",
+          "name": "Goggles by Welfare of Differently Abled Persons Department",
+          "similarity": 0.6211
+        }
+      ],
+      "retrieved_ids": [
+        "6d12dd84-4743-5941-2c56-9ccdfa43069e",
+        "5b6463df-0377-63de-abbf-8cd26df564ca",
+        "60e88c91-951d-fcd1-2800-39f23aa6d043",
+        "8c10066f-eff9-b889-3f23-2d7ee8d224e8",
+        "fe0a9822-5834-17d5-6f2d-f9a361f083b2"
+      ],
+      "relevant_retrieved": [
+        "6d12dd84-4743-5941-2c56-9ccdfa43069e"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 22,
+      "query": "Tell me about the Grant of Financial Assistance to Differently Abled Person scheme and its eligibility.",
+      "expected_names": [
+        "Grant of Financial Assistance to Differently Abled Person"
+      ],
+      "expected_ids": [
+        "47c37a95-dcc2-a6b8-9f69-88ce834f2a34"
+      ],
+      "retrieved": [
+        {
+          "id": "47c37a95-dcc2-a6b8-9f69-88ce834f2a34",
+          "name": "Grant of Financial Assistance to Differently Abled Person",
+          "similarity": 0.7222
+        },
+        {
+          "id": "e0d0007d-fe8b-2c73-cfc0-4d9c46cadd3a",
+          "name": "Scholarships to Students with Disabilities Scheme",
+          "similarity": 0.6965
+        },
+        {
+          "id": "9f6239af-cd62-0de4-c421-ff044343227e",
+          "name": "Scheme of Personal Assistance Allowance to Differently Abled Persons with High Support Need",
+          "similarity": 0.6913
+        },
+        {
+          "id": "03f2935a-7f23-d5f3-8484-4a75bdcfc440",
+          "name": "Scheme to Provide Financial Assistance to Registered Organizations/Government Organization/Non-Government Organizations/Institutions for Running Residential Facilities/Half Way Homes for Persons with Disabilities",
+          "similarity": 0.6895
+        },
+        {
+          "id": "ae2038d9-e97f-e266-8033-272daeab8947",
+          "name": "Scheme for Persons with Benchmark Disability Requiring High Support",
+          "similarity": 0.6877
+        }
+      ],
+      "retrieved_ids": [
+        "47c37a95-dcc2-a6b8-9f69-88ce834f2a34",
+        "e0d0007d-fe8b-2c73-cfc0-4d9c46cadd3a",
+        "9f6239af-cd62-0de4-c421-ff044343227e",
+        "03f2935a-7f23-d5f3-8484-4a75bdcfc440",
+        "ae2038d9-e97f-e266-8033-272daeab8947"
+      ],
+      "relevant_retrieved": [
+        "47c37a95-dcc2-a6b8-9f69-88ce834f2a34"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 23,
+      "query": "Tell me about the Atma Nirbhar Matsya Palan Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Atma Nirbhar Matsya Palan Yojana"
+      ],
+      "expected_ids": [
+        "a3ee4952-1615-bb83-512b-d223e95a0cd3"
+      ],
+      "retrieved": [
+        {
+          "id": "d93b368a-71b8-c450-a7ea-f362677da03a",
+          "name": "Atma Nirbhar Pashu Palan Yojana",
+          "similarity": 0.7265
+        },
+        {
+          "id": "565a82fa-878a-eccd-69d3-ccd1cbbc930f",
+          "name": "Atma Nirbhar Bagwani Yojana",
+          "similarity": 0.7155
+        },
+        {
+          "id": "b99b38a2-7f39-f921-9076-6a0e63e67255",
+          "name": "Atma Nirbhar Krishi Yojana",
+          "similarity": 0.6821
+        },
+        {
+          "id": "a3ee4952-1615-bb83-512b-d223e95a0cd3",
+          "name": "Atma Nirbhar Matsya Palan Yojana",
+          "similarity": 0.6637
+        },
+        {
+          "id": "78ecfc1d-817b-c18f-487f-89b78cda5286",
+          "name": "Mukhya mantri Krishak Udyami Yojana",
+          "similarity": 0.6623
+        }
+      ],
+      "retrieved_ids": [
+        "d93b368a-71b8-c450-a7ea-f362677da03a",
+        "565a82fa-878a-eccd-69d3-ccd1cbbc930f",
+        "b99b38a2-7f39-f921-9076-6a0e63e67255",
+        "a3ee4952-1615-bb83-512b-d223e95a0cd3",
+        "78ecfc1d-817b-c18f-487f-89b78cda5286"
+      ],
+      "relevant_retrieved": [
+        "a3ee4952-1615-bb83-512b-d223e95a0cd3"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.25,
+      "rank_of_first": 4,
+      "is_hit": true
+    },
+    {
+      "query_id": 24,
+      "query": "Tell me about the Compensation for Livestock Loss Caused by Wild Animals scheme and its eligibility.",
+      "expected_names": [
+        "Compensation for Livestock Loss Caused by Wild Animals"
+      ],
+      "expected_ids": [
+        "7bd06c99-dbc2-e4a0-80f0-dbc9dda40161"
+      ],
+      "retrieved": [
+        {
+          "id": "7bd06c99-dbc2-e4a0-80f0-dbc9dda40161",
+          "name": "Compensation for Livestock Loss Caused by Wild Animals",
+          "similarity": 0.8599
+        },
+        {
+          "id": "56908edf-0498-d1ad-dcf2-9c1dd74b9ad1",
+          "name": "Compensation for Loss of Life and Property Caused by Wild Animals in and around Forest Areas: Assistance for Loss of Cattle Due to Wild Animal Attacks",
+          "similarity": 0.7898
+        },
+        {
+          "id": "0d757b8c-2950-7658-9e1f-577bc5185934",
+          "name": "Compensation for Human Death or Injury Caused by Wild Animals",
+          "similarity": 0.7727
+        },
+        {
+          "id": "682edbf0-193c-1b05-b207-6b989d7bd4e0",
+          "name": "Compensation for Loss of Life and Property Caused by Wild Animals in and around Forest Areas: Assistance for Crop Losses Due to Wild Animal Attacks",
+          "similarity": 0.7689
+        },
+        {
+          "id": "c240747a-152a-0b5b-46b9-c64e9496e641",
+          "name": "Compensation for Loss of Life and Property Caused by Wild Animals in and around Forest Areas: Assistance in case of Death/Injury/Disability due to Wild Animal Attack",
+          "similarity": 0.7192
+        }
+      ],
+      "retrieved_ids": [
+        "7bd06c99-dbc2-e4a0-80f0-dbc9dda40161",
+        "56908edf-0498-d1ad-dcf2-9c1dd74b9ad1",
+        "0d757b8c-2950-7658-9e1f-577bc5185934",
+        "682edbf0-193c-1b05-b207-6b989d7bd4e0",
+        "c240747a-152a-0b5b-46b9-c64e9496e641"
+      ],
+      "relevant_retrieved": [
+        "7bd06c99-dbc2-e4a0-80f0-dbc9dda40161"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 25,
+      "query": "Tell me about the Vishesh Yogyajan Chhatravriti Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Vishesh Yogyajan Chhatravriti Yojana"
+      ],
+      "expected_ids": [
+        "89ade7c5-9270-1d46-9332-8d17fa94c270"
+      ],
+      "retrieved": [
+        {
+          "id": "89ade7c5-9270-1d46-9332-8d17fa94c270",
+          "name": "Vishesh Yogyajan Chhatravriti Yojana",
+          "similarity": 0.7378
+        },
+        {
+          "id": "1a7ec33e-75ac-8c3b-cb5a-a40a431050e5",
+          "name": "Vishesh Yogyajan Palanhar Yojana",
+          "similarity": 0.7196
+        },
+        {
+          "id": "979530fe-cf52-d8ee-ec45-08c4900fb0ec",
+          "name": "Vishesh Yogyajan Sukhad Dampatya Jeevan Yojana",
+          "similarity": 0.6997
+        },
+        {
+          "id": "32acd209-49ef-c31d-86d6-645626ae890e",
+          "name": "Mukhyamantri Vishesh Yogyajan Swaraozgar Yojana",
+          "similarity": 0.6783
+        },
+        {
+          "id": "00ac72ba-bd3e-b478-84f3-ce9bffefef1c",
+          "name": "Mahtari Vandan Yojana",
+          "similarity": 0.6451
+        }
+      ],
+      "retrieved_ids": [
+        "89ade7c5-9270-1d46-9332-8d17fa94c270",
+        "1a7ec33e-75ac-8c3b-cb5a-a40a431050e5",
+        "979530fe-cf52-d8ee-ec45-08c4900fb0ec",
+        "32acd209-49ef-c31d-86d6-645626ae890e",
+        "00ac72ba-bd3e-b478-84f3-ce9bffefef1c"
+      ],
+      "relevant_retrieved": [
+        "89ade7c5-9270-1d46-9332-8d17fa94c270"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 26,
+      "query": "Tell me about the Homes For Intellectually Impaired Persons scheme and its eligibility.",
+      "expected_names": [
+        "Homes For Intellectually Impaired Persons"
+      ],
+      "expected_ids": [
+        "27447694-cf25-6658-4b3f-3f3e0bde7b61"
+      ],
+      "retrieved": [
+        {
+          "id": "27447694-cf25-6658-4b3f-3f3e0bde7b61",
+          "name": "Homes For Intellectually Impaired Persons",
+          "similarity": 0.79
+        },
+        {
+          "id": "98153d98-8d17-69eb-e1eb-06fb2549bed1",
+          "name": "Home for Visually Challenged Person",
+          "similarity": 0.5967
+        },
+        {
+          "id": "ca02bd3b-d1a9-4e24-aa2f-2f9adbae3e8a",
+          "name": "Home for Mentally Challenged Children",
+          "similarity": 0.5955
+        },
+        {
+          "id": "cf98458b-bb3d-834f-fdd9-13d0b45357e5",
+          "name": "Awas Sahayta Yojana for 100% Hearing and Visually Impaired Disabled Students in Special Trades of Industrial Training Institutes",
+          "similarity": 0.5567
+        },
+        {
+          "id": "03f2935a-7f23-d5f3-8484-4a75bdcfc440",
+          "name": "Scheme to Provide Financial Assistance to Registered Organizations/Government Organization/Non-Government Organizations/Institutions for Running Residential Facilities/Half Way Homes for Persons with Disabilities",
+          "similarity": 0.5521
+        }
+      ],
+      "retrieved_ids": [
+        "27447694-cf25-6658-4b3f-3f3e0bde7b61",
+        "98153d98-8d17-69eb-e1eb-06fb2549bed1",
+        "ca02bd3b-d1a9-4e24-aa2f-2f9adbae3e8a",
+        "cf98458b-bb3d-834f-fdd9-13d0b45357e5",
+        "03f2935a-7f23-d5f3-8484-4a75bdcfc440"
+      ],
+      "relevant_retrieved": [
+        "27447694-cf25-6658-4b3f-3f3e0bde7b61"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 27,
+      "query": "Tell me about the Educational Loan Scheme (GBCDC) scheme and its eligibility.",
+      "expected_names": [
+        "Educational Loan Scheme (GBCDC)"
+      ],
+      "expected_ids": [
+        "abd51296-5de2-68a9-d66b-98ab6fe6a2a0"
+      ],
+      "retrieved": [
+        {
+          "id": "abd51296-5de2-68a9-d66b-98ab6fe6a2a0",
+          "name": "Educational Loan Scheme (GBCDC)",
+          "similarity": 0.8577
+        },
+        {
+          "id": "3e7e1016-69f6-f87e-fd0d-7da3aa96abf0",
+          "name": "Educational Loan Scheme (GMFDC)",
+          "similarity": 0.7284
+        },
+        {
+          "id": "3eca7a69-4b50-7639-5e02-182ee55477b6",
+          "name": "Parivahan Scheme (GBCDC)",
+          "similarity": 0.705
+        },
+        {
+          "id": "041df813-b9aa-1051-ba89-56132c7eeb54",
+          "name": "Education Loan Scheme",
+          "similarity": 0.6911
+        },
+        {
+          "id": "c6df95f3-14ca-f17d-7560-20bec2319b6d",
+          "name": "Education Loan Scheme under NSFDC- Haryana",
+          "similarity": 0.6882
+        }
+      ],
+      "retrieved_ids": [
+        "abd51296-5de2-68a9-d66b-98ab6fe6a2a0",
+        "3e7e1016-69f6-f87e-fd0d-7da3aa96abf0",
+        "3eca7a69-4b50-7639-5e02-182ee55477b6",
+        "041df813-b9aa-1051-ba89-56132c7eeb54",
+        "c6df95f3-14ca-f17d-7560-20bec2319b6d"
+      ],
+      "relevant_retrieved": [
+        "abd51296-5de2-68a9-d66b-98ab6fe6a2a0"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 28,
+      "query": "Tell me about the Mukhyamatri Rojgaar Srijan Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Mukhyamatri Rojgaar Srijan Yojana"
+      ],
+      "expected_ids": [
+        "5f162a29-9b44-15d6-095f-cf6e3bc8d9d2"
+      ],
+      "retrieved": [
+        {
+          "id": "5f162a29-9b44-15d6-095f-cf6e3bc8d9d2",
+          "name": "Mukhyamatri Rojgaar Srijan Yojana",
+          "similarity": 0.7481
+        },
+        {
+          "id": "32acd209-49ef-c31d-86d6-645626ae890e",
+          "name": "Mukhyamantri Vishesh Yogyajan Swaraozgar Yojana",
+          "similarity": 0.748
+        },
+        {
+          "id": "46dfd174-0a4e-8163-0471-0c8538dadd05",
+          "name": "Mukhyamantri Alpsankhyak Rozgar Rinn Yojana",
+          "similarity": 0.7278
+        },
+        {
+          "id": "a44cd5ce-4df4-6ca4-ac7c-057741bf6751",
+          "name": "Mukhyamantri Rajshri Yojana",
+          "similarity": 0.7211
+        },
+        {
+          "id": "2779c4c0-8f73-d4f5-c512-63a715c4e3ed",
+          "name": "Mukhyamantri Kanyadaan Yojana",
+          "similarity": 0.7206
+        }
+      ],
+      "retrieved_ids": [
+        "5f162a29-9b44-15d6-095f-cf6e3bc8d9d2",
+        "32acd209-49ef-c31d-86d6-645626ae890e",
+        "46dfd174-0a4e-8163-0471-0c8538dadd05",
+        "a44cd5ce-4df4-6ca4-ac7c-057741bf6751",
+        "2779c4c0-8f73-d4f5-c512-63a715c4e3ed"
+      ],
+      "relevant_retrieved": [
+        "5f162a29-9b44-15d6-095f-cf6e3bc8d9d2"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 29,
+      "query": "Tell me about the PM SETU (Pradhan Mantri Skilling and Employability Transformation through Upgraded ITIs) – Component II: Capacity Augmentation of Five National Skill Training Institutes (NSTIs) and Setting up of Five National Centres of Excellence for Skilling scheme and its eligibility.",
+      "expected_names": [
+        "PM SETU (Pradhan Mantri Skilling and Employability Transformation through Upgraded ITIs) – Component II: Capacity Augmentation of Five National Skill Training Institutes (NSTIs) and Setting up of Five National Centres of Excellence for Skilling"
+      ],
+      "expected_ids": [
+        "66190ea6-3790-9fd4-8c84-48b341952463"
+      ],
+      "retrieved": [
+        {
+          "id": "66190ea6-3790-9fd4-8c84-48b341952463",
+          "name": "PM SETU (Pradhan Mantri Skilling and Employability Transformation through Upgraded ITIs) – Component II: Capacity Augmentation of Five National Skill Training Institutes (NSTIs) and Setting up of Five National Centres of Excellence for Skilling",
+          "similarity": 0.8698
+        },
+        {
+          "id": "a4f6d19b-3446-596a-57cd-3213cfc18e2d",
+          "name": "Pradhan Mantri Skilling and Employability Transformation through Upgraded ITIs (PM‑SETU) : Component I",
+          "similarity": 0.8186
+        },
+        {
+          "id": "882f1cbc-87fc-2505-bf48-4112cf8ae34c",
+          "name": "\"Advance / High Skill Training\" Component of the \"Development of Industries\" Scheme",
+          "similarity": 0.5287
+        },
+        {
+          "id": "c17797ad-de26-3d06-ef22-12f1bb82986d",
+          "name": "Scheme for Enhancement of Technical Competence and Manpower: Scheme of Financial Assistance for Setting-up of Specialized Skill Development Centers at Industry",
+          "similarity": 0.5274
+        },
+        {
+          "id": "1be4b413-f0cb-dadc-c0e9-fcb26b633212",
+          "name": "Scheme for Enhancement of Technical Competence and Manpower: Skill Up-gradation Centers (SUCs)",
+          "similarity": 0.5262
+        }
+      ],
+      "retrieved_ids": [
+        "66190ea6-3790-9fd4-8c84-48b341952463",
+        "a4f6d19b-3446-596a-57cd-3213cfc18e2d",
+        "882f1cbc-87fc-2505-bf48-4112cf8ae34c",
+        "c17797ad-de26-3d06-ef22-12f1bb82986d",
+        "1be4b413-f0cb-dadc-c0e9-fcb26b633212"
+      ],
+      "relevant_retrieved": [
+        "66190ea6-3790-9fd4-8c84-48b341952463"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 30,
+      "query": "Tell me about the Pradhan Mantri Shram Yogi Maan-dhan scheme and its eligibility.",
+      "expected_names": [
+        "Pradhan Mantri Shram Yogi Maan-dhan"
+      ],
+      "expected_ids": [
+        "f7be9445-3ec6-f67a-3469-ebadf43c8320"
+      ],
+      "retrieved": [
+        {
+          "id": "f7be9445-3ec6-f67a-3469-ebadf43c8320",
+          "name": "Pradhan Mantri Shram Yogi Maan-dhan",
+          "similarity": 0.7679
+        },
+        {
+          "id": "9da88689-2eb3-8f93-838b-e44a1e15b6c9",
+          "name": "Pradhan Mantri Kisan Maandhan Yojana",
+          "similarity": 0.6581
+        },
+        {
+          "id": "41c05336-accc-b310-4ffc-03b6371ec359",
+          "name": "Pradhan Mantri Matru Vandana Yojana",
+          "similarity": 0.6431
+        },
+        {
+          "id": "779c762d-3ec9-c92b-4134-179b888d1706",
+          "name": "Pradhan Mantri Adi Adarsh Gram Yojana (PMAAGY)",
+          "similarity": 0.6396
+        },
+        {
+          "id": "1a42d68b-aa2c-ae60-4606-25b6eae67b4b",
+          "name": "Pradhan Mantri Uchchatar Shiksha Protsahan Yojana: Central Sector Interest Subsidy Scheme",
+          "similarity": 0.6389
+        }
+      ],
+      "retrieved_ids": [
+        "f7be9445-3ec6-f67a-3469-ebadf43c8320",
+        "9da88689-2eb3-8f93-838b-e44a1e15b6c9",
+        "41c05336-accc-b310-4ffc-03b6371ec359",
+        "779c762d-3ec9-c92b-4134-179b888d1706",
+        "1a42d68b-aa2c-ae60-4606-25b6eae67b4b"
+      ],
+      "relevant_retrieved": [
+        "f7be9445-3ec6-f67a-3469-ebadf43c8320"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 31,
+      "query": "Tell me about the Pradhan Mantri Krishi Sinchayee Yojana - Har Khet Ko Pani (Surface Scheme) Uttarakhand scheme and its eligibility.",
+      "expected_names": [
+        "Pradhan Mantri Krishi Sinchayee Yojana - Har Khet Ko Pani (Surface Scheme) Uttarakhand"
+      ],
+      "expected_ids": [
+        "e8ad9554-687e-48ce-3722-195e2eb0102b"
+      ],
+      "retrieved": [
+        {
+          "id": "e8ad9554-687e-48ce-3722-195e2eb0102b",
+          "name": "Pradhan Mantri Krishi Sinchayee Yojana - Har Khet Ko Pani (Surface Scheme) Uttarakhand",
+          "similarity": 0.8049
+        },
+        {
+          "id": "91e37399-2266-ceb7-a630-0792ae042d5d",
+          "name": "Pradhan Mantri Krishi Sinchayee Yojana - Har Khet Ko Pani (Groundwater Irrigation Scheme) Uttarakhand",
+          "similarity": 0.7457
+        },
+        {
+          "id": "a5da846f-007e-c51a-b20a-e39d32624a31",
+          "name": "Pradhan Mantri Uchchatar Shiksha Protsahan Yojana - Special Scholarship Scheme for Jammu & Kashmir and Ladakh",
+          "similarity": 0.6665
+        },
+        {
+          "id": "ac7b270d-acb0-8339-fea1-665dfdb84e38",
+          "name": "Mukhyamantri Vas Sthal Kray Sahayata Yojana",
+          "similarity": 0.6589
+        },
+        {
+          "id": "eb1d36bc-5757-03a5-d37c-60023ec0db5e",
+          "name": "Pradhan Mantri Matsya Sampada Yojana - Uttarakhand",
+          "similarity": 0.6492
+        }
+      ],
+      "retrieved_ids": [
+        "e8ad9554-687e-48ce-3722-195e2eb0102b",
+        "91e37399-2266-ceb7-a630-0792ae042d5d",
+        "a5da846f-007e-c51a-b20a-e39d32624a31",
+        "ac7b270d-acb0-8339-fea1-665dfdb84e38",
+        "eb1d36bc-5757-03a5-d37c-60023ec0db5e"
+      ],
+      "relevant_retrieved": [
+        "e8ad9554-687e-48ce-3722-195e2eb0102b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 32,
+      "query": "Tell me about the Kisan Credit Card Scheme for Fisheries- Chief Minister Fishermen Prosperity Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Kisan Credit Card Scheme for Fisheries- Chief Minister Fishermen Prosperity Scheme"
+      ],
+      "expected_ids": [
+        "10dfaf97-d96e-03ea-7962-3f945b4f6ca6"
+      ],
+      "retrieved": [
+        {
+          "id": "10dfaf97-d96e-03ea-7962-3f945b4f6ca6",
+          "name": "Kisan Credit Card Scheme for Fisheries- Chief Minister Fishermen Prosperity Scheme",
+          "similarity": 0.8857
+        },
+        {
+          "id": "30e62cba-7313-1cf6-8bae-6592dc27d2c0",
+          "name": "To Provide Interest Subvention to Fishermen of the State at the Rate of 4% to the Beneficiaries Kishan Credit Card",
+          "similarity": 0.7575
+        },
+        {
+          "id": "3d8f43aa-3778-c6c8-1e09-7ed8cbbd1772",
+          "name": "Kisan Credit Card",
+          "similarity": 0.7336
+        },
+        {
+          "id": "acadbbef-9ab2-1119-932b-8ee11b981098",
+          "name": "Kisan Credit Card (Pashupalan)",
+          "similarity": 0.7214
+        },
+        {
+          "id": "a3ee4952-1615-bb83-512b-d223e95a0cd3",
+          "name": "Atma Nirbhar Matsya Palan Yojana",
+          "similarity": 0.6744
+        }
+      ],
+      "retrieved_ids": [
+        "10dfaf97-d96e-03ea-7962-3f945b4f6ca6",
+        "30e62cba-7313-1cf6-8bae-6592dc27d2c0",
+        "3d8f43aa-3778-c6c8-1e09-7ed8cbbd1772",
+        "acadbbef-9ab2-1119-932b-8ee11b981098",
+        "a3ee4952-1615-bb83-512b-d223e95a0cd3"
+      ],
+      "relevant_retrieved": [
+        "10dfaf97-d96e-03ea-7962-3f945b4f6ca6"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 33,
+      "query": "Tell me about the Micro Nutrient Spray scheme and its eligibility.",
+      "expected_names": [
+        "Micro Nutrient Spray"
+      ],
+      "expected_ids": [
+        "00daa5e3-cc3a-48cc-1cf2-58dca0fa55bb"
+      ],
+      "retrieved": [
+        {
+          "id": "00daa5e3-cc3a-48cc-1cf2-58dca0fa55bb",
+          "name": "Micro Nutrient Spray",
+          "similarity": 0.833
+        },
+        {
+          "id": "65d114b1-af5f-7aef-ebcf-cb57caaa2c28",
+          "name": "Development of Manures & Fertilizers: Assistance for use of Micronutrients",
+          "similarity": 0.5345
+        },
+        {
+          "id": "9b56ba34-0a33-6944-b844-72037e49fbc8",
+          "name": "Soil Health Card Scheme - Uttarakhand",
+          "similarity": 0.5026
+        },
+        {
+          "id": "4a82ea3f-2d21-7522-431e-2352990c5dcd",
+          "name": "Development of Manures & Fertilizers: Assistance for use of Soil Conditioner",
+          "similarity": 0.4952
+        },
+        {
+          "id": "21b82588-3633-b794-c512-634dd8150113",
+          "name": "Assistance for Installation of Sprinkler / Drip Micro Irrigation Systems",
+          "similarity": 0.4939
+        }
+      ],
+      "retrieved_ids": [
+        "00daa5e3-cc3a-48cc-1cf2-58dca0fa55bb",
+        "65d114b1-af5f-7aef-ebcf-cb57caaa2c28",
+        "9b56ba34-0a33-6944-b844-72037e49fbc8",
+        "4a82ea3f-2d21-7522-431e-2352990c5dcd",
+        "21b82588-3633-b794-c512-634dd8150113"
+      ],
+      "relevant_retrieved": [
+        "00daa5e3-cc3a-48cc-1cf2-58dca0fa55bb"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 34,
+      "query": "Tell me about the 'Rent Subsidy for Sales Emporia Established by Handicrafts / Micro & Small Industries Emporium' under 'Marketing And Publicity' scheme and its eligibility.",
+      "expected_names": [
+        "'Rent Subsidy for Sales Emporia Established by Handicrafts / Micro & Small Industries Emporium' under 'Marketing And Publicity'"
+      ],
+      "expected_ids": [
+        "4d8265b2-d05e-ecb3-ae18-ec5d2b6bf001"
+      ],
+      "retrieved": [
+        {
+          "id": "4d8265b2-d05e-ecb3-ae18-ec5d2b6bf001",
+          "name": "'Rent Subsidy for Sales Emporia Established by Handicrafts / Micro & Small Industries Emporium' under 'Marketing And Publicity'",
+          "similarity": 0.7501
+        },
+        {
+          "id": "037bd82b-b519-b74a-bb07-b0fef08ada6e",
+          "name": "Sales Rebate under 'Marketing And Publicity'",
+          "similarity": 0.6209
+        },
+        {
+          "id": "f84e22fe-917f-424d-af53-4bb140e3ed34",
+          "name": "'Financial Assistance for Setting Up of Sales Emporia by Industrial Associations, Handicrafts Societies and Recognized Institutions' under 'Marketing And Publicity'",
+          "similarity": 0.5798
+        },
+        {
+          "id": "19792808-1e50-53a9-4008-731aae77d741",
+          "name": "\"Rent Subsidy\" under \"Motivation of Entrepreneurs to Start Industries and Fiscal Assistance to Industries\"",
+          "similarity": 0.5586
+        },
+        {
+          "id": "bdeb8a28-9489-deba-035b-f985ae7a6899",
+          "name": "\"Marketing Incentive\" under the \"Handloom Marketing Assistance\" Component of the National Handloom Development Programme",
+          "similarity": 0.5494
+        }
+      ],
+      "retrieved_ids": [
+        "4d8265b2-d05e-ecb3-ae18-ec5d2b6bf001",
+        "037bd82b-b519-b74a-bb07-b0fef08ada6e",
+        "f84e22fe-917f-424d-af53-4bb140e3ed34",
+        "19792808-1e50-53a9-4008-731aae77d741",
+        "bdeb8a28-9489-deba-035b-f985ae7a6899"
+      ],
+      "relevant_retrieved": [
+        "4d8265b2-d05e-ecb3-ae18-ec5d2b6bf001"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 35,
+      "query": "Tell me about the Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance for Saving in Consumption of Energy and Water scheme and its eligibility.",
+      "expected_names": [
+        "Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance for Saving in Consumption of Energy and Water"
+      ],
+      "expected_ids": [
+        "fab99857-8a6d-52e9-0bba-0ae2aa88ce8e"
+      ],
+      "retrieved": [
+        {
+          "id": "fab99857-8a6d-52e9-0bba-0ae2aa88ce8e",
+          "name": "Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance for Saving in Consumption of Energy and Water",
+          "similarity": 0.8623
+        },
+        {
+          "id": "ab658459-e2c1-3e22-8649-19b11f95ecd0",
+          "name": "Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance in Implementation of Information and Communication Technology",
+          "similarity": 0.7831
+        },
+        {
+          "id": "4f133bae-eed8-96fc-2473-c325e1121f8c",
+          "name": "Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance for Power Connection Charges",
+          "similarity": 0.7695
+        },
+        {
+          "id": "5a88a7fb-ea39-e261-da40-daa581b3d3e2",
+          "name": "Aatmanirbhar Gujarat Scheme for assistance to MSMEs: EPF Reimbursement to MSMEs",
+          "similarity": 0.7628
+        },
+        {
+          "id": "ab19d2e9-896f-4cb1-8e21-dc1d5bc05a99",
+          "name": "Aatmanirbhar Gujarat Scheme for assistance to MSMEs: Assistance for Technology Acquisition",
+          "similarity": 0.7572
+        }
+      ],
+      "retrieved_ids": [
+        "fab99857-8a6d-52e9-0bba-0ae2aa88ce8e",
+        "ab658459-e2c1-3e22-8649-19b11f95ecd0",
+        "4f133bae-eed8-96fc-2473-c325e1121f8c",
+        "5a88a7fb-ea39-e261-da40-daa581b3d3e2",
+        "ab19d2e9-896f-4cb1-8e21-dc1d5bc05a99"
+      ],
+      "relevant_retrieved": [
+        "fab99857-8a6d-52e9-0bba-0ae2aa88ce8e"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 36,
+      "query": "Tell me about the Post Metric Scholarship (Denotified, Nomadic and Semi-Nomadic) scheme and its eligibility.",
+      "expected_names": [
+        "Post Metric Scholarship (Denotified, Nomadic and Semi-Nomadic)"
+      ],
+      "expected_ids": [
+        "87c78ca3-73bf-3c71-60be-9d18ea993914"
+      ],
+      "retrieved": [
+        {
+          "id": "87c78ca3-73bf-3c71-60be-9d18ea993914",
+          "name": "Post Metric Scholarship (Denotified, Nomadic and Semi-Nomadic)",
+          "similarity": 0.7482
+        },
+        {
+          "id": "b78707c7-649c-4966-b1b9-f6313e81b760",
+          "name": "State Scholarship for Class 6th to 10th (Denotified, Nomadic and Semi-Nomadic )",
+          "similarity": 0.6968
+        },
+        {
+          "id": "2d0434e3-da18-1b14-d910-8eeaefe3dcbe",
+          "name": "Post Metric Scholarship For OBC Students",
+          "similarity": 0.6182
+        },
+        {
+          "id": "ebaab921-08ea-8ae4-8376-ebf9beb354d6",
+          "name": "National Overseas Scholarship For Scheduled Caste Etc. Candidates",
+          "similarity": 0.5955
+        },
+        {
+          "id": "fad5bb66-9839-bb3f-7d04-f9b6583985ef",
+          "name": "Post Metric Scholarship - Madhya Pradesh",
+          "similarity": 0.5849
+        }
+      ],
+      "retrieved_ids": [
+        "87c78ca3-73bf-3c71-60be-9d18ea993914",
+        "b78707c7-649c-4966-b1b9-f6313e81b760",
+        "2d0434e3-da18-1b14-d910-8eeaefe3dcbe",
+        "ebaab921-08ea-8ae4-8376-ebf9beb354d6",
+        "fad5bb66-9839-bb3f-7d04-f9b6583985ef"
+      ],
+      "relevant_retrieved": [
+        "87c78ca3-73bf-3c71-60be-9d18ea993914"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 37,
+      "query": "Tell me about the Documentation And Research Assistantship Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Documentation And Research Assistantship Scheme"
+      ],
+      "expected_ids": [
+        "b35ef9f1-4abe-8d0a-45e2-cbe03397499e"
+      ],
+      "retrieved": [
+        {
+          "id": "dbb400fa-b6a9-8d4c-6d73-a815a741677b",
+          "name": "Research Assistantship",
+          "similarity": 0.6631
+        },
+        {
+          "id": "b35ef9f1-4abe-8d0a-45e2-cbe03397499e",
+          "name": "Documentation And Research Assistantship Scheme",
+          "similarity": 0.5815
+        },
+        {
+          "id": "ba51b6a5-05ac-ce08-2cae-e4644669d128",
+          "name": "Educational Study Scheme",
+          "similarity": 0.5809
+        },
+        {
+          "id": "38ad16b0-8f93-16c2-c523-6b011ec004bf",
+          "name": "Overseas Educational Loan Scheme",
+          "similarity": 0.5637
+        },
+        {
+          "id": "9aa47c96-bf37-d804-32cc-15cee8acd254",
+          "name": "Educational Assistance for Government Recognised Diploma Courses",
+          "similarity": 0.5616
+        }
+      ],
+      "retrieved_ids": [
+        "dbb400fa-b6a9-8d4c-6d73-a815a741677b",
+        "b35ef9f1-4abe-8d0a-45e2-cbe03397499e",
+        "ba51b6a5-05ac-ce08-2cae-e4644669d128",
+        "38ad16b0-8f93-16c2-c523-6b011ec004bf",
+        "9aa47c96-bf37-d804-32cc-15cee8acd254"
+      ],
+      "relevant_retrieved": [
+        "b35ef9f1-4abe-8d0a-45e2-cbe03397499e"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "rank_of_first": 2,
+      "is_hit": true
+    },
+    {
+      "query_id": 38,
+      "query": "Tell me about the Scheme for assistance for Start Ups/ Innovation: Seed Support scheme and its eligibility.",
+      "expected_names": [
+        "Scheme for assistance for Start Ups/ Innovation: Seed Support"
+      ],
+      "expected_ids": [
+        "a1aab754-a410-1abe-fe4f-550319ef0037"
+      ],
+      "retrieved": [
+        {
+          "id": "a1aab754-a410-1abe-fe4f-550319ef0037",
+          "name": "Scheme for assistance for Start Ups/ Innovation: Seed Support",
+          "similarity": 0.8163
+        },
+        {
+          "id": "d58454b7-59da-9149-4466-5a5603d756a1",
+          "name": "Scheme For Assistance For Start Ups/ Innovation",
+          "similarity": 0.7376
+        },
+        {
+          "id": "a21f63ff-7c36-713b-69ac-a9ae4b5eabab",
+          "name": "Scheme for assistance for Start Ups/ Innovation: Pre- Series A Funding",
+          "similarity": 0.719
+        },
+        {
+          "id": "b885baf3-87e2-2c52-34c8-d170f85e2e07",
+          "name": "Startup India Seed Fund Scheme- For Incubators",
+          "similarity": 0.7072
+        },
+        {
+          "id": "fefb5889-f12b-0048-2dfa-81818d4a48ba",
+          "name": "Scheme for assistance for Start Ups/ Innovation: Interest Subsidy",
+          "similarity": 0.7055
+        }
+      ],
+      "retrieved_ids": [
+        "a1aab754-a410-1abe-fe4f-550319ef0037",
+        "d58454b7-59da-9149-4466-5a5603d756a1",
+        "a21f63ff-7c36-713b-69ac-a9ae4b5eabab",
+        "b885baf3-87e2-2c52-34c8-d170f85e2e07",
+        "fefb5889-f12b-0048-2dfa-81818d4a48ba"
+      ],
+      "relevant_retrieved": [
+        "a1aab754-a410-1abe-fe4f-550319ef0037"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 39,
+      "query": "Tell me about the Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Patent Registration /Trade Mark Registration scheme and its eligibility.",
+      "expected_names": [
+        "Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Patent Registration /Trade Mark Registration"
+      ],
+      "expected_ids": [
+        "597a606b-140b-24c7-014b-56659eac4512"
+      ],
+      "retrieved": [
+        {
+          "id": "597a606b-140b-24c7-014b-56659eac4512",
+          "name": "Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Patent Registration /Trade Mark Registration",
+          "similarity": 0.8973
+        },
+        {
+          "id": "5761de60-eb63-2571-ef4b-b1bdcbff7f9b",
+          "name": "Investment Promotion Scheme (IPS) for MSME Sector: Awards For MSMEs",
+          "similarity": 0.7896
+        },
+        {
+          "id": "bd675cd4-db74-5f93-ef01-d55a4e2724a7",
+          "name": "Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Participation In Industrial Exhibitions Abroad",
+          "similarity": 0.7839
+        },
+        {
+          "id": "8ea0b77e-851d-ba24-019c-156b90560c52",
+          "name": "Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Quality Certification",
+          "similarity": 0.7759
+        },
+        {
+          "id": "4cd25031-b072-de61-38b4-d8484b7758f1",
+          "name": "Investment Promotion Scheme (IPS) for MSME Sector: Assistance For Zed Certification",
+          "similarity": 0.7624
+        }
+      ],
+      "retrieved_ids": [
+        "597a606b-140b-24c7-014b-56659eac4512",
+        "5761de60-eb63-2571-ef4b-b1bdcbff7f9b",
+        "bd675cd4-db74-5f93-ef01-d55a4e2724a7",
+        "8ea0b77e-851d-ba24-019c-156b90560c52",
+        "4cd25031-b072-de61-38b4-d8484b7758f1"
+      ],
+      "relevant_retrieved": [
+        "597a606b-140b-24c7-014b-56659eac4512"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 40,
+      "query": "Tell me about the Pay & Play Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Pay & Play Scheme"
+      ],
+      "expected_ids": [
+        "2bf38a93-b01d-7daf-0431-6a741684509b"
+      ],
+      "retrieved": [
+        {
+          "id": "2bf38a93-b01d-7daf-0431-6a741684509b",
+          "name": "Pay & Play Scheme",
+          "similarity": 0.6872
+        },
+        {
+          "id": "9efffc5f-1660-7e5f-7750-4aad6ed1350b",
+          "name": "\"Employment Incentive\" under \"Motivation of Entrepreneurs to Start Industries and Fiscal Assistance to Industries - Various Incentives\"",
+          "similarity": 0.5574
+        },
+        {
+          "id": "f30c9195-3ae4-d5ec-c0ac-2e9332759202",
+          "name": "Integrated Scholarship Scheme",
+          "similarity": 0.5512
+        },
+        {
+          "id": "e0d0007d-fe8b-2c73-cfc0-4d9c46cadd3a",
+          "name": "Scholarships to Students with Disabilities Scheme",
+          "similarity": 0.5233
+        },
+        {
+          "id": "67e68bd3-8975-c5ec-5c8f-9b3b36504a52",
+          "name": "Salary Reimbursement Scheme",
+          "similarity": 0.5202
+        }
+      ],
+      "retrieved_ids": [
+        "2bf38a93-b01d-7daf-0431-6a741684509b",
+        "9efffc5f-1660-7e5f-7750-4aad6ed1350b",
+        "f30c9195-3ae4-d5ec-c0ac-2e9332759202",
+        "e0d0007d-fe8b-2c73-cfc0-4d9c46cadd3a",
+        "67e68bd3-8975-c5ec-5c8f-9b3b36504a52"
+      ],
+      "relevant_retrieved": [
+        "2bf38a93-b01d-7daf-0431-6a741684509b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 41,
+      "query": "Tell me about the Financial Assistance To Women And Girl Acid Attack Victims scheme and its eligibility.",
+      "expected_names": [
+        "Financial Assistance To Women And Girl Acid Attack Victims"
+      ],
+      "expected_ids": [
+        "67b3f858-2c8e-0a51-bf65-939307310edb"
+      ],
+      "retrieved": [
+        {
+          "id": "a4e80a2a-7c69-0dcd-cb4e-d7f42ed234bb",
+          "name": "Scheme for Relief and Rehabilitation of Women Acid Victims",
+          "similarity": 0.7838
+        },
+        {
+          "id": "598d8002-b4bc-82ff-2377-4ba234c46f59",
+          "name": "The Punjab Financial Assistance to Acid Victims Scheme",
+          "similarity": 0.7729
+        },
+        {
+          "id": "67b3f858-2c8e-0a51-bf65-939307310edb",
+          "name": "Financial Assistance To Women And Girl Acid Attack Victims",
+          "similarity": 0.7506
+        },
+        {
+          "id": "44d1ff70-bba7-6199-5d12-f0daba7a6220",
+          "name": "Uttarakhand Compensation Scheme for Women Victims/Survivors of Sexual Offences and Other Crimes, 2020",
+          "similarity": 0.6568
+        },
+        {
+          "id": "a9b1cc9d-0618-3864-54a3-eff75c096c62",
+          "name": "Welfare Services for Women",
+          "similarity": 0.6511
+        }
+      ],
+      "retrieved_ids": [
+        "a4e80a2a-7c69-0dcd-cb4e-d7f42ed234bb",
+        "598d8002-b4bc-82ff-2377-4ba234c46f59",
+        "67b3f858-2c8e-0a51-bf65-939307310edb",
+        "44d1ff70-bba7-6199-5d12-f0daba7a6220",
+        "a9b1cc9d-0618-3864-54a3-eff75c096c62"
+      ],
+      "relevant_retrieved": [
+        "67b3f858-2c8e-0a51-bf65-939307310edb"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.3333,
+      "rank_of_first": 3,
+      "is_hit": true
+    },
+    {
+      "query_id": 42,
+      "query": "Tell me about the District Plan: Inter-Village Road Construction Scheme on Contributory Basis scheme and its eligibility.",
+      "expected_names": [
+        "District Plan: Inter-Village Road Construction Scheme on Contributory Basis"
+      ],
+      "expected_ids": [
+        "9bd2c694-c1a6-e508-e581-2c25a2eaa23a"
+      ],
+      "retrieved": [
+        {
+          "id": "9bd2c694-c1a6-e508-e581-2c25a2eaa23a",
+          "name": "District Plan: Inter-Village Road Construction Scheme on Contributory Basis",
+          "similarity": 0.737
+        },
+        {
+          "id": "9b7fce6e-7814-4353-e697-c0c6bc4082e5",
+          "name": "Providing Model Maps for Residential Construction",
+          "similarity": 0.5577
+        },
+        {
+          "id": "e18048a5-5404-0a4d-b1d7-1dcd97a37562",
+          "name": "Pradhan Mantri Awas Yojana – Urban: Individual House Construction Component - Beneficiary Led Construction (BLC) Uttarakhand",
+          "similarity": 0.5476
+        },
+        {
+          "id": "a97eb499-5eaf-0ed4-569f-69c55b1edba0",
+          "name": "Scheduled Caste Sub Plan (SCSP): Electrification of Wells of Scheduled Caste Farmers",
+          "similarity": 0.5433
+        },
+        {
+          "id": "779c762d-3ec9-c92b-4134-179b888d1706",
+          "name": "Pradhan Mantri Adi Adarsh Gram Yojana (PMAAGY)",
+          "similarity": 0.5424
+        }
+      ],
+      "retrieved_ids": [
+        "9bd2c694-c1a6-e508-e581-2c25a2eaa23a",
+        "9b7fce6e-7814-4353-e697-c0c6bc4082e5",
+        "e18048a5-5404-0a4d-b1d7-1dcd97a37562",
+        "a97eb499-5eaf-0ed4-569f-69c55b1edba0",
+        "779c762d-3ec9-c92b-4134-179b888d1706"
+      ],
+      "relevant_retrieved": [
+        "9bd2c694-c1a6-e508-e581-2c25a2eaa23a"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 43,
+      "query": "Tell me about the Karnataka Devaraj Urs Backward Classes Scholarship scheme and its eligibility.",
+      "expected_names": [
+        "Karnataka Devaraj Urs Backward Classes Scholarship"
+      ],
+      "expected_ids": [
+        "7722ec1f-ea55-5e75-8dd7-044aa145516b"
+      ],
+      "retrieved": [
+        {
+          "id": "7722ec1f-ea55-5e75-8dd7-044aa145516b",
+          "name": "Karnataka Devaraj Urs Backward Classes Scholarship",
+          "similarity": 0.8838
+        },
+        {
+          "id": "a5714e80-d79f-56e5-76e5-ddcbe65d4e10",
+          "name": "State Government Backward Class Scholarship (Class 6 to 10)",
+          "similarity": 0.7592
+        },
+        {
+          "id": "f6c9f1ff-7393-11c3-501a-bd4736cca749",
+          "name": "Post-Matric Scholarship Scheme-Bihar",
+          "similarity": 0.7308
+        },
+        {
+          "id": "b1b81fd0-a10a-ae4d-f08c-0592124ad2d9",
+          "name": "Haryana State Merit Scholarship Scheme",
+          "similarity": 0.7196
+        },
+        {
+          "id": "d02b04bb-9bcc-0679-6614-750278d992c1",
+          "name": "Backward Classes Foreign Study Scholarship Scheme",
+          "similarity": 0.7172
+        }
+      ],
+      "retrieved_ids": [
+        "7722ec1f-ea55-5e75-8dd7-044aa145516b",
+        "a5714e80-d79f-56e5-76e5-ddcbe65d4e10",
+        "f6c9f1ff-7393-11c3-501a-bd4736cca749",
+        "b1b81fd0-a10a-ae4d-f08c-0592124ad2d9",
+        "d02b04bb-9bcc-0679-6614-750278d992c1"
+      ],
+      "relevant_retrieved": [
+        "7722ec1f-ea55-5e75-8dd7-044aa145516b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 44,
+      "query": "Tell me about the Production Linked Incentive (PLI) Scheme (PLI 1.2) for Specialty Steel scheme and its eligibility.",
+      "expected_names": [
+        "Production Linked Incentive (PLI) Scheme (PLI 1.2) for Specialty Steel"
+      ],
+      "expected_ids": [
+        "f59f0c4a-b63a-0e4f-16da-6b2ec3dce10a"
+      ],
+      "retrieved": [
+        {
+          "id": "f59f0c4a-b63a-0e4f-16da-6b2ec3dce10a",
+          "name": "Production Linked Incentive (PLI) Scheme (PLI 1.2) for Specialty Steel",
+          "similarity": 0.8915
+        },
+        {
+          "id": "0f9b82a3-1e2b-e435-b321-6577a9a5c991",
+          "name": "Production Linked Incentive Scheme (PLI) For Promoting Telecom & Networking Products Manufacturing In India",
+          "similarity": 0.7237
+        },
+        {
+          "id": "2b6be5be-6a93-775f-7804-feb0caddae4c",
+          "name": "Production Linked Incentive (PLI) Scheme for Textiles Part-1",
+          "similarity": 0.7061
+        },
+        {
+          "id": "5eb2dbc3-25f3-2955-4709-64ed4d8d4bfb",
+          "name": "Production Linked Incentive (PLI) Scheme for Textiles Part 2",
+          "similarity": 0.6987
+        },
+        {
+          "id": "6106a4c5-49f2-3bfe-43bf-c27e2d107661",
+          "name": "The Operation of Production Linked Incentive Scheme (PLI) for Large Scale Electronics Manufacturing",
+          "similarity": 0.6881
+        }
+      ],
+      "retrieved_ids": [
+        "f59f0c4a-b63a-0e4f-16da-6b2ec3dce10a",
+        "0f9b82a3-1e2b-e435-b321-6577a9a5c991",
+        "2b6be5be-6a93-775f-7804-feb0caddae4c",
+        "5eb2dbc3-25f3-2955-4709-64ed4d8d4bfb",
+        "6106a4c5-49f2-3bfe-43bf-c27e2d107661"
+      ],
+      "relevant_retrieved": [
+        "f59f0c4a-b63a-0e4f-16da-6b2ec3dce10a"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 45,
+      "query": "Tell me about the The West Bengal Incentive Scheme: Additional Incentive for Adventure Tour Operators scheme and its eligibility.",
+      "expected_names": [
+        "The West Bengal Incentive Scheme: Additional Incentive for Adventure Tour Operators"
+      ],
+      "expected_ids": [
+        "9c7e04e7-8cdc-a095-4768-302807266fea"
+      ],
+      "retrieved": [
+        {
+          "id": "9c7e04e7-8cdc-a095-4768-302807266fea",
+          "name": "The West Bengal Incentive Scheme: Additional Incentive for Adventure Tour Operators",
+          "similarity": 0.841
+        },
+        {
+          "id": "25827712-01f8-6a3c-3bb3-8c6ca50ce979",
+          "name": "The West Bengal Incentive Scheme: Reimbursement of Stamp Duty and Registration Fee",
+          "similarity": 0.7364
+        },
+        {
+          "id": "16dcb2fd-49d0-2834-2492-3c22257c3681",
+          "name": "The West Bengal Incentive Scheme: Additional Incentive on Generation of Employment",
+          "similarity": 0.7353
+        },
+        {
+          "id": "d4584bcc-6ba2-ec2e-9a1f-c00d4955b534",
+          "name": "The West Bengal Incentive Scheme: Waiver of Electricity Duty",
+          "similarity": 0.7309
+        },
+        {
+          "id": "d81fcce2-359a-40d8-806c-afd51af04b6f",
+          "name": "The West Bengal Incentive Scheme: Tourism Promotion Assistance in lieu of Interest Subsidy",
+          "similarity": 0.7133
+        }
+      ],
+      "retrieved_ids": [
+        "9c7e04e7-8cdc-a095-4768-302807266fea",
+        "25827712-01f8-6a3c-3bb3-8c6ca50ce979",
+        "16dcb2fd-49d0-2834-2492-3c22257c3681",
+        "d4584bcc-6ba2-ec2e-9a1f-c00d4955b534",
+        "d81fcce2-359a-40d8-806c-afd51af04b6f"
+      ],
+      "relevant_retrieved": [
+        "9c7e04e7-8cdc-a095-4768-302807266fea"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 46,
+      "query": "Tell me about the Mahatama Gandhi Bunkar Bima Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Mahatama Gandhi Bunkar Bima Yojana"
+      ],
+      "expected_ids": [
+        "3667f25f-426d-6878-af18-972b061936e1"
+      ],
+      "retrieved": [
+        {
+          "id": "3667f25f-426d-6878-af18-972b061936e1",
+          "name": "Mahatama Gandhi Bunkar Bima Yojana",
+          "similarity": 0.7481
+        },
+        {
+          "id": "964c0aeb-e692-5448-c23f-e4161fe5dc54",
+          "name": "Aam Aadmi Bima Yojana (Maharashtra)",
+          "similarity": 0.6902
+        },
+        {
+          "id": "3829c145-bfe9-d068-70b3-66c4d8657de4",
+          "name": "Indira Mahila Shakti Udyam Protsahan Yojana",
+          "similarity": 0.6758
+        },
+        {
+          "id": "b918bac8-77f4-90af-4aac-367b837f0512",
+          "name": "Pashu Bima Yojana",
+          "similarity": 0.6712
+        },
+        {
+          "id": "9efd5ff6-ccb0-9d99-740d-410a58d05d96",
+          "name": "Mukhyamantri Yuva Udyami Yojana",
+          "similarity": 0.6687
+        }
+      ],
+      "retrieved_ids": [
+        "3667f25f-426d-6878-af18-972b061936e1",
+        "964c0aeb-e692-5448-c23f-e4161fe5dc54",
+        "3829c145-bfe9-d068-70b3-66c4d8657de4",
+        "b918bac8-77f4-90af-4aac-367b837f0512",
+        "9efd5ff6-ccb0-9d99-740d-410a58d05d96"
+      ],
+      "relevant_retrieved": [
+        "3667f25f-426d-6878-af18-972b061936e1"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 47,
+      "query": "Tell me about the Miscarriage Benefit scheme and its eligibility.",
+      "expected_names": [
+        "Miscarriage Benefit"
+      ],
+      "expected_ids": [
+        "20116262-24ae-634b-aa2e-c06698f8721c"
+      ],
+      "retrieved": [
+        {
+          "id": "20116262-24ae-634b-aa2e-c06698f8721c",
+          "name": "Miscarriage Benefit",
+          "similarity": 0.7669
+        },
+        {
+          "id": "9abccdea-55d5-56be-8e48-456aff0b96f9",
+          "name": "Assistance for Delivery of a Child or the Miscarriage of Pregnancy or the Termination of Pregnancy",
+          "similarity": 0.661
+        },
+        {
+          "id": "4e53c308-5bce-3867-df16-a549a5878255",
+          "name": "Assistance For Delivery / Miscarriage Of Pregnancy / Termination Of Pregnancy To Female Differently Abled Person",
+          "similarity": 0.645
+        },
+        {
+          "id": "9663b746-292c-274d-ec40-0762625d49e4",
+          "name": "Financial Assistance for Miscarriage for the Construction Workers",
+          "similarity": 0.6268
+        },
+        {
+          "id": "75d26c24-cdb1-41ac-1e04-04f79ddd8e73",
+          "name": "Family Planning Indemnity Scheme",
+          "similarity": 0.5785
+        }
+      ],
+      "retrieved_ids": [
+        "20116262-24ae-634b-aa2e-c06698f8721c",
+        "9abccdea-55d5-56be-8e48-456aff0b96f9",
+        "4e53c308-5bce-3867-df16-a549a5878255",
+        "9663b746-292c-274d-ec40-0762625d49e4",
+        "75d26c24-cdb1-41ac-1e04-04f79ddd8e73"
+      ],
+      "relevant_retrieved": [
+        "20116262-24ae-634b-aa2e-c06698f8721c"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 48,
+      "query": "Tell me about the Interest Free Loan (CBOCWWB) scheme and its eligibility.",
+      "expected_names": [
+        "Interest Free Loan (CBOCWWB)"
+      ],
+      "expected_ids": [
+        "0f0f0123-3770-abe1-7217-513793215321"
+      ],
+      "retrieved": [
+        {
+          "id": "0f0f0123-3770-abe1-7217-513793215321",
+          "name": "Interest Free Loan (CBOCWWB)",
+          "similarity": 0.7275
+        },
+        {
+          "id": "4d1b84e1-a5a9-89bf-fac2-8ceaebcc7159",
+          "name": "Assistance for Purchase of House (HBOCWWB)",
+          "similarity": 0.6824
+        },
+        {
+          "id": "72138f36-f158-ddd7-f930-bc4e54b7cdb9",
+          "name": "Financial Assistance for Purchase or Construction of House (UKBOCWWB)",
+          "similarity": 0.6695
+        },
+        {
+          "id": "ffd6bad3-cc47-b27f-15a1-49914ab3eaab",
+          "name": "Financial Assistance as Interest Subsidy on Home Loan",
+          "similarity": 0.6267
+        },
+        {
+          "id": "f5333c9d-9259-4bad-e09e-636ec540da62",
+          "name": "Grant for Purchase of Bicycle (BBOCWWB)",
+          "similarity": 0.616
+        }
+      ],
+      "retrieved_ids": [
+        "0f0f0123-3770-abe1-7217-513793215321",
+        "4d1b84e1-a5a9-89bf-fac2-8ceaebcc7159",
+        "72138f36-f158-ddd7-f930-bc4e54b7cdb9",
+        "ffd6bad3-cc47-b27f-15a1-49914ab3eaab",
+        "f5333c9d-9259-4bad-e09e-636ec540da62"
+      ],
+      "relevant_retrieved": [
+        "0f0f0123-3770-abe1-7217-513793215321"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 49,
+      "query": "Tell me about the Adventure Training for Youth scheme and its eligibility.",
+      "expected_names": [
+        "Adventure Training for Youth"
+      ],
+      "expected_ids": [
+        "00661dd9-576c-65d6-b0cb-258911b11ad9"
+      ],
+      "retrieved": [
+        {
+          "id": "00661dd9-576c-65d6-b0cb-258911b11ad9",
+          "name": "Adventure Training for Youth",
+          "similarity": 0.7518
+        },
+        {
+          "id": "c4cebefb-4517-1360-4609-ed0dc7c6b1be",
+          "name": "Financial Assistance for Preparation of Training Camp and Participation in Land, Mountain & Sea Adventure Sports Competitions",
+          "similarity": 0.671
+        },
+        {
+          "id": "11bb03b7-9191-6b09-084b-05881d13d219",
+          "name": "Youth Art Training Fellowship Scheme",
+          "similarity": 0.6355
+        },
+        {
+          "id": "09866266-a343-1c7d-8592-a1722fc9fe01",
+          "name": "Rock Climbing Adventure Training Course",
+          "similarity": 0.5986
+        },
+        {
+          "id": "2805f59c-3dbd-d592-2a69-86efc71a6162",
+          "name": "Rafting Course & Internship",
+          "similarity": 0.5853
+        }
+      ],
+      "retrieved_ids": [
+        "00661dd9-576c-65d6-b0cb-258911b11ad9",
+        "c4cebefb-4517-1360-4609-ed0dc7c6b1be",
+        "11bb03b7-9191-6b09-084b-05881d13d219",
+        "09866266-a343-1c7d-8592-a1722fc9fe01",
+        "2805f59c-3dbd-d592-2a69-86efc71a6162"
+      ],
+      "relevant_retrieved": [
+        "00661dd9-576c-65d6-b0cb-258911b11ad9"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 50,
+      "query": "Tell me about the Ganga Swarupa Pension Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Ganga Swarupa Pension Scheme"
+      ],
+      "expected_ids": [
+        "f7ada8d1-f98f-cebf-3b91-962ea848df88"
+      ],
+      "retrieved": [
+        {
+          "id": "f7ada8d1-f98f-cebf-3b91-962ea848df88",
+          "name": "Ganga Swarupa Pension Scheme",
+          "similarity": 0.8114
+        },
+        {
+          "id": "29357dd5-020b-9a38-29e9-5bebe81e1991",
+          "name": "Ganga Swarupa Punah Lagna Arthik Sahay Scheme",
+          "similarity": 0.7309
+        },
+        {
+          "id": "24b0c24e-488b-16f1-fc71-1ade68dc682d",
+          "name": "Teelu Rauteli Pension Scheme",
+          "similarity": 0.6831
+        },
+        {
+          "id": "80db0658-30b2-09c0-9395-77b68bec1129",
+          "name": "Farmer Pension Scheme",
+          "similarity": 0.6817
+        },
+        {
+          "id": "690db55e-cf26-c6ab-72ad-1e71298d5973",
+          "name": "Bihar Disability Pension Scheme",
+          "similarity": 0.677
+        }
+      ],
+      "retrieved_ids": [
+        "f7ada8d1-f98f-cebf-3b91-962ea848df88",
+        "29357dd5-020b-9a38-29e9-5bebe81e1991",
+        "24b0c24e-488b-16f1-fc71-1ade68dc682d",
+        "80db0658-30b2-09c0-9395-77b68bec1129",
+        "690db55e-cf26-c6ab-72ad-1e71298d5973"
+      ],
+      "relevant_retrieved": [
+        "f7ada8d1-f98f-cebf-3b91-962ea848df88"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 51,
+      "query": "Tell me about the Cash Prize to Players and their Coaches for Winning Medals in National and International Competitions scheme and its eligibility.",
+      "expected_names": [
+        "Cash Prize to Players and their Coaches for Winning Medals in National and International Competitions"
+      ],
+      "expected_ids": [
+        "20cf9887-d26f-dbc5-2c84-85126c2998c9"
+      ],
+      "retrieved": [
+        {
+          "id": "20cf9887-d26f-dbc5-2c84-85126c2998c9",
+          "name": "Cash Prize to Players and their Coaches for Winning Medals in National and International Competitions",
+          "similarity": 0.8114
+        },
+        {
+          "id": "ca6d3903-3bdb-7667-fc09-f9b1ec56bbb9",
+          "name": "Scheme of Cash Incentive to Medal Winners in International Sports Events and their Coaches",
+          "similarity": 0.7273
+        },
+        {
+          "id": "2f5d99c7-a933-a284-f578-71547a05bbfc",
+          "name": "Scheme for Providing Incentives to Coaches of Athletes who have Won Competitions at the National and International Levels",
+          "similarity": 0.7145
+        },
+        {
+          "id": "cb4412b2-d681-2d84-bd39-d19adb7d0cef",
+          "name": "Jharkhand Sports Excellence Cash Award Scheme to Players",
+          "similarity": 0.6707
+        },
+        {
+          "id": "96191cf6-2105-1bd4-1055-67144b10f45b",
+          "name": "Jharkhand Sports Excellence Cash Award Scheme to Coaches",
+          "similarity": 0.6704
+        }
+      ],
+      "retrieved_ids": [
+        "20cf9887-d26f-dbc5-2c84-85126c2998c9",
+        "ca6d3903-3bdb-7667-fc09-f9b1ec56bbb9",
+        "2f5d99c7-a933-a284-f578-71547a05bbfc",
+        "cb4412b2-d681-2d84-bd39-d19adb7d0cef",
+        "96191cf6-2105-1bd4-1055-67144b10f45b"
+      ],
+      "relevant_retrieved": [
+        "20cf9887-d26f-dbc5-2c84-85126c2998c9"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 52,
+      "query": "Tell me about the Quality Test Report - Centre for Aromatic Plants scheme and its eligibility.",
+      "expected_names": [
+        "Quality Test Report - Centre for Aromatic Plants"
+      ],
+      "expected_ids": [
+        "38abe5c2-8105-7dd5-a5e6-7cbec7f99bb6"
+      ],
+      "retrieved": [
+        {
+          "id": "38abe5c2-8105-7dd5-a5e6-7cbec7f99bb6",
+          "name": "Quality Test Report - Centre for Aromatic Plants",
+          "similarity": 0.8599
+        },
+        {
+          "id": "e35a58a3-d817-d44d-2252-2baa73f73fa5",
+          "name": "Aromatic Awareness Programme - Centre for Aromatic Plants",
+          "similarity": 0.7351
+        },
+        {
+          "id": "f3bb783c-4c67-4c07-bf93-2d33dda8727d",
+          "name": "Aromatic Plants Cultivation - Centre for Aromatic Plants",
+          "similarity": 0.6892
+        },
+        {
+          "id": "d5124ced-0e7f-2809-2938-c82735ce8fd2",
+          "name": "Minimum Support Price for Aromatic Oils/Products - Centre for Aromatic Plants",
+          "similarity": 0.6511
+        },
+        {
+          "id": "d0fef8f3-3670-2e1c-f44b-d232e0183ee2",
+          "name": "Grant Scheme for Cultivation of Aromatic Plants - Centre for Aromatic Plants",
+          "similarity": 0.6441
+        }
+      ],
+      "retrieved_ids": [
+        "38abe5c2-8105-7dd5-a5e6-7cbec7f99bb6",
+        "e35a58a3-d817-d44d-2252-2baa73f73fa5",
+        "f3bb783c-4c67-4c07-bf93-2d33dda8727d",
+        "d5124ced-0e7f-2809-2938-c82735ce8fd2",
+        "d0fef8f3-3670-2e1c-f44b-d232e0183ee2"
+      ],
+      "relevant_retrieved": [
+        "38abe5c2-8105-7dd5-a5e6-7cbec7f99bb6"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 53,
+      "query": "Tell me about the Vidyakiranam Scheme-Educational Assistance To Children Of Disabled Parents scheme and its eligibility.",
+      "expected_names": [
+        "Vidyakiranam Scheme-Educational Assistance To Children Of Disabled Parents"
+      ],
+      "expected_ids": [
+        "81bfa799-26a6-b33e-0406-aa087a3d67fb"
+      ],
+      "retrieved": [
+        {
+          "id": "81bfa799-26a6-b33e-0406-aa087a3d67fb",
+          "name": "Vidyakiranam Scheme-Educational Assistance To Children Of Disabled Parents",
+          "similarity": 0.8731
+        },
+        {
+          "id": "4accd735-fc20-2256-ab21-c5992c30423b",
+          "name": "Vidya Scheme",
+          "similarity": 0.7149
+        },
+        {
+          "id": "a91c1767-44e6-e456-4edc-c9801642de57",
+          "name": "Financial Assistance To Non-School Going Disabled Children Scheme",
+          "similarity": 0.7052
+        },
+        {
+          "id": "afd0edcf-02dc-0235-bf04-bb1bd85984f5",
+          "name": "Mai Bhago Vidya Scheme",
+          "similarity": 0.6614
+        },
+        {
+          "id": "43e74d21-7abc-14f7-ca52-2470a76a54a2",
+          "name": "Divyang Shiksha Protsahan Yojana",
+          "similarity": 0.653
+        }
+      ],
+      "retrieved_ids": [
+        "81bfa799-26a6-b33e-0406-aa087a3d67fb",
+        "4accd735-fc20-2256-ab21-c5992c30423b",
+        "a91c1767-44e6-e456-4edc-c9801642de57",
+        "afd0edcf-02dc-0235-bf04-bb1bd85984f5",
+        "43e74d21-7abc-14f7-ca52-2470a76a54a2"
+      ],
+      "relevant_retrieved": [
+        "81bfa799-26a6-b33e-0406-aa087a3d67fb"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 54,
+      "query": "Tell me about the Banglashree for Micro, Small and Medium Enterprises: Power Subsidy (PS) scheme and its eligibility.",
+      "expected_names": [
+        "Banglashree for Micro, Small and Medium Enterprises: Power Subsidy (PS)"
+      ],
+      "expected_ids": [
+        "96eeea8c-609b-e649-a56e-21530e04e1a7"
+      ],
+      "retrieved": [
+        {
+          "id": "96eeea8c-609b-e649-a56e-21530e04e1a7",
+          "name": "Banglashree for Micro, Small and Medium Enterprises: Power Subsidy (PS)",
+          "similarity": 0.8477
+        },
+        {
+          "id": "3d2df61b-3b78-54e7-c22c-133ed3118051",
+          "name": "Banglashree for Micro, Small and Medium Enterprises: Subsidy for Energy Efficiency (EES)",
+          "similarity": 0.7337
+        },
+        {
+          "id": "8c1636c2-5b8b-dbfb-f9ac-39bc3b6720f9",
+          "name": "Banglashree for Micro, Small and Medium Enterprises: State Capital Investment Subsidy (CIS)",
+          "similarity": 0.7048
+        },
+        {
+          "id": "07b55809-9b7f-2ed1-e081-47612d60be28",
+          "name": "Banglashree for Micro, Small and Medium Enterprises: Interest Subsidy on Term Loan (IS)",
+          "similarity": 0.6879
+        },
+        {
+          "id": "4b3775b3-aa2a-9ae1-c018-f070e2356e06",
+          "name": "Banglashree for Micro, Small and Medium Enterprises: Subsidy for State Goods and Services Tax (SGST)",
+          "similarity": 0.6874
+        }
+      ],
+      "retrieved_ids": [
+        "96eeea8c-609b-e649-a56e-21530e04e1a7",
+        "3d2df61b-3b78-54e7-c22c-133ed3118051",
+        "8c1636c2-5b8b-dbfb-f9ac-39bc3b6720f9",
+        "07b55809-9b7f-2ed1-e081-47612d60be28",
+        "4b3775b3-aa2a-9ae1-c018-f070e2356e06"
+      ],
+      "relevant_retrieved": [
+        "96eeea8c-609b-e649-a56e-21530e04e1a7"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 55,
+      "query": "Tell me about the Awasiya Vidyala Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Awasiya Vidyala Yojana"
+      ],
+      "expected_ids": [
+        "60c32ce0-86d4-a3b6-fd28-bff7277f8a05"
+      ],
+      "retrieved": [
+        {
+          "id": "60c32ce0-86d4-a3b6-fd28-bff7277f8a05",
+          "name": "Awasiya Vidyala Yojana",
+          "similarity": 0.6919
+        },
+        {
+          "id": "3829c145-bfe9-d068-70b3-66c4d8657de4",
+          "name": "Indira Mahila Shakti Udyam Protsahan Yojana",
+          "similarity": 0.6463
+        },
+        {
+          "id": "4accd735-fc20-2256-ab21-c5992c30423b",
+          "name": "Vidya Scheme",
+          "similarity": 0.6384
+        },
+        {
+          "id": "c16c2514-132b-49f9-7680-14d3b1e1db98",
+          "name": "Vidhyadeep Yojana",
+          "similarity": 0.6342
+        },
+        {
+          "id": "f4f88957-fc7c-08d0-9127-a0648cfa8bbc",
+          "name": "Atal Awasiya Vidyala Yojana",
+          "similarity": 0.6306
+        }
+      ],
+      "retrieved_ids": [
+        "60c32ce0-86d4-a3b6-fd28-bff7277f8a05",
+        "3829c145-bfe9-d068-70b3-66c4d8657de4",
+        "4accd735-fc20-2256-ab21-c5992c30423b",
+        "c16c2514-132b-49f9-7680-14d3b1e1db98",
+        "f4f88957-fc7c-08d0-9127-a0648cfa8bbc"
+      ],
+      "relevant_retrieved": [
+        "60c32ce0-86d4-a3b6-fd28-bff7277f8a05"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 56,
+      "query": "Tell me about the Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Registering Housing Complexes scheme and its eligibility.",
+      "expected_names": [
+        "Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Registering Housing Complexes"
+      ],
+      "expected_ids": [
+        "7000affb-7ca8-87be-0b5a-a6dcb669d84b"
+      ],
+      "retrieved": [
+        {
+          "id": "7000affb-7ca8-87be-0b5a-a6dcb669d84b",
+          "name": "Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Registering Housing Complexes",
+          "similarity": 0.9169
+        },
+        {
+          "id": "522aa17d-13c9-a68b-23a0-108779a55bca",
+          "name": "Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Rent Subsidy",
+          "similarity": 0.8623
+        },
+        {
+          "id": "fdac5471-f762-1902-4225-a77ada72c7f1",
+          "name": "Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Government Affordable Rental Housing Development Support",
+          "similarity": 0.8609
+        },
+        {
+          "id": "f16aeb06-ac09-65c2-942f-d402ec63ccad",
+          "name": "Scheme for Promotion of Affordable Rental Smart Housing (SPARSH 2.0): Construction and Redevelopment Incentives",
+          "similarity": 0.8379
+        },
+        {
+          "id": "8c362925-9bcb-e082-d848-8d024c66bbc7",
+          "name": "Rental Housing Scheme",
+          "similarity": 0.6458
+        }
+      ],
+      "retrieved_ids": [
+        "7000affb-7ca8-87be-0b5a-a6dcb669d84b",
+        "522aa17d-13c9-a68b-23a0-108779a55bca",
+        "fdac5471-f762-1902-4225-a77ada72c7f1",
+        "f16aeb06-ac09-65c2-942f-d402ec63ccad",
+        "8c362925-9bcb-e082-d848-8d024c66bbc7"
+      ],
+      "relevant_retrieved": [
+        "7000affb-7ca8-87be-0b5a-a6dcb669d84b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 57,
+      "query": "Tell me about the Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: Turmeric boiler ( nos) scheme and its eligibility.",
+      "expected_names": [
+        "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: Turmeric boiler ( nos)"
+      ],
+      "expected_ids": [
+        "0a50fc79-0b85-5001-5cb4-5f62cc88a3f2"
+      ],
+      "retrieved": [
+        {
+          "id": "0a50fc79-0b85-5001-5cb4-5f62cc88a3f2",
+          "name": "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: Turmeric boiler ( nos)",
+          "similarity": 0.9125
+        },
+        {
+          "id": "68d6f1aa-3e24-d0ea-5080-83a3c498fe2f",
+          "name": "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: Polisher for Small Cardamom, Large Cardamom, Turmeric, etc (nos)",
+          "similarity": 0.8133
+        },
+        {
+          "id": "3fff3a2b-4d3a-5e14-f4bc-0242e932c1a5",
+          "name": "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: Seed spice thresher (nos)",
+          "similarity": 0.81
+        },
+        {
+          "id": "f17bcc90-4950-32f4-0e1b-3a4b1ab6aeb1",
+          "name": "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Post-Harvest Improvement: ICCD for Small Cardamom (nos) (Improved Cardamom Curing Devices)",
+          "similarity": 0.804
+        },
+        {
+          "id": "3f6939ed-4146-881b-2100-81af41429dad",
+          "name": "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: Reintroduced subcomponents:Supply of Silpaulin Sheets (nos)",
+          "similarity": 0.7702
+        }
+      ],
+      "retrieved_ids": [
+        "0a50fc79-0b85-5001-5cb4-5f62cc88a3f2",
+        "68d6f1aa-3e24-d0ea-5080-83a3c498fe2f",
+        "3fff3a2b-4d3a-5e14-f4bc-0242e932c1a5",
+        "f17bcc90-4950-32f4-0e1b-3a4b1ab6aeb1",
+        "3f6939ed-4146-881b-2100-81af41429dad"
+      ],
+      "relevant_retrieved": [
+        "0a50fc79-0b85-5001-5cb4-5f62cc88a3f2"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 58,
+      "query": "Tell me about the Shramyogi Cycle Subsidy Scheme- Gujarat Labour Welfare Board scheme and its eligibility.",
+      "expected_names": [
+        "Shramyogi Cycle Subsidy Scheme- Gujarat Labour Welfare Board"
+      ],
+      "expected_ids": [
+        "c3b6da81-f85d-9afe-19c0-1390f135d709"
+      ],
+      "retrieved": [
+        {
+          "id": "c3b6da81-f85d-9afe-19c0-1390f135d709",
+          "name": "Shramyogi Cycle Subsidy Scheme- Gujarat Labour Welfare Board",
+          "similarity": 0.8477
+        },
+        {
+          "id": "1a6cb4cf-4dc9-b864-5f5a-b9a3784a2c68",
+          "name": "Shramyogi Home Town Scheme- Gujarat Labour Welfare Board",
+          "similarity": 0.7575
+        },
+        {
+          "id": "1ed476e9-70d9-2414-1a34-7bbf194eb40d",
+          "name": "Labour Accident benefit Scheme- Gujarat Labour Welfare Board",
+          "similarity": 0.7429
+        },
+        {
+          "id": "417794b1-9b83-d997-dbbc-77ebe595482f",
+          "name": "Full Medical Checkup Assistance Scheme- Gujarat Labour Welfare Board",
+          "similarity": 0.7029
+        },
+        {
+          "id": "815fcf18-0a5d-7a6a-dea9-a0bcc4874480",
+          "name": "Home Loan Interest Subsidy Scheme- Gujarat Labour Welfare Board",
+          "similarity": 0.691
+        }
+      ],
+      "retrieved_ids": [
+        "c3b6da81-f85d-9afe-19c0-1390f135d709",
+        "1a6cb4cf-4dc9-b864-5f5a-b9a3784a2c68",
+        "1ed476e9-70d9-2414-1a34-7bbf194eb40d",
+        "417794b1-9b83-d997-dbbc-77ebe595482f",
+        "815fcf18-0a5d-7a6a-dea9-a0bcc4874480"
+      ],
+      "relevant_retrieved": [
+        "c3b6da81-f85d-9afe-19c0-1390f135d709"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 59,
+      "query": "Tell me about the Post Matric Merit Scholarship scheme and its eligibility.",
+      "expected_names": [
+        "Post Matric Merit Scholarship"
+      ],
+      "expected_ids": [
+        "9cea6e31-e70f-a1e2-305b-5d45e8d53ca0"
+      ],
+      "retrieved": [
+        {
+          "id": "9cea6e31-e70f-a1e2-305b-5d45e8d53ca0",
+          "name": "Post Matric Merit Scholarship",
+          "similarity": 0.7786
+        },
+        {
+          "id": "06fe6479-5473-cdd5-b896-7ac66613e560",
+          "name": "Post Matric and Top Class Scholarship",
+          "similarity": 0.7493
+        },
+        {
+          "id": "f6c9f1ff-7393-11c3-501a-bd4736cca749",
+          "name": "Post-Matric Scholarship Scheme-Bihar",
+          "similarity": 0.7426
+        },
+        {
+          "id": "68a402e1-f0ba-deeb-e0a2-0610933dc027",
+          "name": "Scheme of Post Matric Scholarship to Lower Income Group Student for Studies in India",
+          "similarity": 0.7334
+        },
+        {
+          "id": "8f28c4a2-2837-6e19-328a-bc24e098ca58",
+          "name": "Post Matric Scholarship For Scheduled Caste",
+          "similarity": 0.7333
+        }
+      ],
+      "retrieved_ids": [
+        "9cea6e31-e70f-a1e2-305b-5d45e8d53ca0",
+        "06fe6479-5473-cdd5-b896-7ac66613e560",
+        "f6c9f1ff-7393-11c3-501a-bd4736cca749",
+        "68a402e1-f0ba-deeb-e0a2-0610933dc027",
+        "8f28c4a2-2837-6e19-328a-bc24e098ca58"
+      ],
+      "relevant_retrieved": [
+        "9cea6e31-e70f-a1e2-305b-5d45e8d53ca0"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 60,
+      "query": "Tell me about the Vikaas-Day Care Scheme For Person with Disability Children scheme and its eligibility.",
+      "expected_names": [
+        "Vikaas-Day Care Scheme For Person with Disability Children"
+      ],
+      "expected_ids": [
+        "7efe96c6-b738-1468-c067-5e27b1433166"
+      ],
+      "retrieved": [
+        {
+          "id": "7efe96c6-b738-1468-c067-5e27b1433166",
+          "name": "Vikaas-Day Care Scheme For Person with Disability Children",
+          "similarity": 0.8622
+        },
+        {
+          "id": "81bfa799-26a6-b33e-0406-aa087a3d67fb",
+          "name": "Vidyakiranam Scheme-Educational Assistance To Children Of Disabled Parents",
+          "similarity": 0.6509
+        },
+        {
+          "id": "a74acaca-fb7e-20dc-2a19-4e22aa2ab836",
+          "name": "Mission Vatsalya (Child Protection Services and Child Welfare Services)",
+          "similarity": 0.6166
+        },
+        {
+          "id": "0f06b78e-308e-6742-1dc9-49ef1efa9385",
+          "name": "Disha - Early Intervention and School Readiness Scheme",
+          "similarity": 0.5929
+        },
+        {
+          "id": "7b133ed9-e05c-6faf-13c7-63db126fbc53",
+          "name": "Financial Assistance for the Treatment of Blind, Disabled, Deaf, Dumb, or Mentally Challenged Ex-Servicemen and their Dependents (Wife and Children)",
+          "similarity": 0.59
+        }
+      ],
+      "retrieved_ids": [
+        "7efe96c6-b738-1468-c067-5e27b1433166",
+        "81bfa799-26a6-b33e-0406-aa087a3d67fb",
+        "a74acaca-fb7e-20dc-2a19-4e22aa2ab836",
+        "0f06b78e-308e-6742-1dc9-49ef1efa9385",
+        "7b133ed9-e05c-6faf-13c7-63db126fbc53"
+      ],
+      "relevant_retrieved": [
+        "7efe96c6-b738-1468-c067-5e27b1433166"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 61,
+      "query": "Tell me about the Monsanto Scholarship (M.Sc. Agriculture Science and Agriculture Biotechnology) scheme and its eligibility.",
+      "expected_names": [
+        "Monsanto Scholarship (M.Sc. Agriculture Science and Agriculture Biotechnology)"
+      ],
+      "expected_ids": [
+        "778d8b92-ed12-d437-5736-6f49238527b1"
+      ],
+      "retrieved": [
+        {
+          "id": "778d8b92-ed12-d437-5736-6f49238527b1",
+          "name": "Monsanto Scholarship (M.Sc. Agriculture Science and Agriculture Biotechnology)",
+          "similarity": 0.8576
+        },
+        {
+          "id": "06383020-c85d-77af-10e2-98632d02475d",
+          "name": "State Agriculture Scholarship for B.Sc. & M.Sc. Agriculture",
+          "similarity": 0.7063
+        },
+        {
+          "id": "fe4ee11d-8ea2-4ccb-1b60-e054ceb39a75",
+          "name": "Agriculture Academic Studies Scheme",
+          "similarity": 0.6649
+        },
+        {
+          "id": "4315444b-3a25-85ff-a292-38edf9bba2e2",
+          "name": "Dr. S.K. Mukherjee Scholarship for B.Sc. Agriculture Students (2nd & 3rd Year)",
+          "similarity": 0.6542
+        },
+        {
+          "id": "e95caeea-7437-d854-923d-0a99d3351f93",
+          "name": "Smt. Uma Gupta Fellowship for M.Sc. Agriculture (Genetics & Plant Breeding) Students",
+          "similarity": 0.6298
+        }
+      ],
+      "retrieved_ids": [
+        "778d8b92-ed12-d437-5736-6f49238527b1",
+        "06383020-c85d-77af-10e2-98632d02475d",
+        "fe4ee11d-8ea2-4ccb-1b60-e054ceb39a75",
+        "4315444b-3a25-85ff-a292-38edf9bba2e2",
+        "e95caeea-7437-d854-923d-0a99d3351f93"
+      ],
+      "relevant_retrieved": [
+        "778d8b92-ed12-d437-5736-6f49238527b1"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 62,
+      "query": "Tell me about the Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance to Special Entrepreneurship Degree Approach Training with 360 Promoters/ with Mentoring Support and Sustenance Allowance for Entrepreneurs scheme and its eligibility.",
+      "expected_names": [
+        "Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance to Special Entrepreneurship Degree Approach Training with 360 Promoters/ with Mentoring Support and Sustenance Allowance for Entrepreneurs"
+      ],
+      "expected_ids": [
+        "90dafee1-48b6-2c65-d930-4e36d06e5594"
+      ],
+      "retrieved": [
+        {
+          "id": "90dafee1-48b6-2c65-d930-4e36d06e5594",
+          "name": "Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance to Special Entrepreneurship Degree Approach Training with 360 Promoters/ with Mentoring Support and Sustenance Allowance for Entrepreneurs",
+          "similarity": 0.861
+        },
+        {
+          "id": "e3d4c5af-d61b-9b8f-3538-69f47d029c1c",
+          "name": "Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance of Capital Investment Subsidy",
+          "similarity": 0.7827
+        },
+        {
+          "id": "957f2f0d-a2ce-f6a3-8785-640be6f27d9c",
+          "name": "Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance for Interest Subsidy (Manufacturing Sector)",
+          "similarity": 0.7796
+        },
+        {
+          "id": "8ac593f6-85ea-9aef-2b08-8260dca2ed69",
+          "name": "Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance for Quality Certification",
+          "similarity": 0.777
+        },
+        {
+          "id": "a2b386fa-3f6e-6878-da23-778467957f2f",
+          "name": "Dr.Babasaheb Ambedkar Udyog Uday Yojana: Assistance for Interest Subsidy (Service Sector)",
+          "similarity": 0.7729
+        }
+      ],
+      "retrieved_ids": [
+        "90dafee1-48b6-2c65-d930-4e36d06e5594",
+        "e3d4c5af-d61b-9b8f-3538-69f47d029c1c",
+        "957f2f0d-a2ce-f6a3-8785-640be6f27d9c",
+        "8ac593f6-85ea-9aef-2b08-8260dca2ed69",
+        "a2b386fa-3f6e-6878-da23-778467957f2f"
+      ],
+      "relevant_retrieved": [
+        "90dafee1-48b6-2c65-d930-4e36d06e5594"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 63,
+      "query": "Tell me about the Government Institute for the Mentally Retarded - Tamil Nadu scheme and its eligibility.",
+      "expected_names": [
+        "Government Institute for the Mentally Retarded - Tamil Nadu"
+      ],
+      "expected_ids": [
+        "0b1930d2-f517-8f1c-ceb7-70785a658899"
+      ],
+      "retrieved": [
+        {
+          "id": "0b1930d2-f517-8f1c-ceb7-70785a658899",
+          "name": "Government Institute for the Mentally Retarded - Tamil Nadu",
+          "similarity": 0.8376
+        },
+        {
+          "id": "cfcdc271-555e-4316-5813-e1fdbc11ec5e",
+          "name": "Swasraya Scheme For Parents/Mothers Of Physically Handicapped/Mentally Retarded Persons",
+          "similarity": 0.6212
+        },
+        {
+          "id": "a0445aa7-0f54-80d5-2c40-ee7504e9fdec",
+          "name": "Indira Gandhi National Disability Pension Scheme - Tamil Nadu",
+          "similarity": 0.6038
+        },
+        {
+          "id": "b008ce5c-6451-197d-e09f-7cee429e6ceb",
+          "name": "Mentally Retarded Children Benefit Scheme (HPBOCWWB)",
+          "similarity": 0.6029
+        },
+        {
+          "id": "b55e7a62-d56e-63a1-4df3-7bfc16f4dbe8",
+          "name": "Special Education - Tamil Nadu",
+          "similarity": 0.6013
+        }
+      ],
+      "retrieved_ids": [
+        "0b1930d2-f517-8f1c-ceb7-70785a658899",
+        "cfcdc271-555e-4316-5813-e1fdbc11ec5e",
+        "a0445aa7-0f54-80d5-2c40-ee7504e9fdec",
+        "b008ce5c-6451-197d-e09f-7cee429e6ceb",
+        "b55e7a62-d56e-63a1-4df3-7bfc16f4dbe8"
+      ],
+      "relevant_retrieved": [
+        "0b1930d2-f517-8f1c-ceb7-70785a658899"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 64,
+      "query": "Tell me about the Mukhyamantri Samajik Samrasta Antarjatiya Vivah Shagun Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Mukhyamantri Samajik Samrasta Antarjatiya Vivah Shagun Yojana"
+      ],
+      "expected_ids": [
+        "71ab552c-e07f-b05d-6507-47d4f68e567d"
+      ],
+      "retrieved": [
+        {
+          "id": "71ab552c-e07f-b05d-6507-47d4f68e567d",
+          "name": "Mukhyamantri Samajik Samrasta Antarjatiya Vivah Shagun Yojana",
+          "similarity": 0.7925
+        },
+        {
+          "id": "839835fc-4a41-bcff-3a80-ff8fd4faff64",
+          "name": "Mukhyamantri Samuhik Vivah Yojana",
+          "similarity": 0.7303
+        },
+        {
+          "id": "baeeba13-13d0-17f0-9f1e-4778fb742a34",
+          "name": "Mukh‍yamantri Janakal‍yaan (Sambal 2.0) Yojana (Asangathit Karmakaar Man‍da)",
+          "similarity": 0.692
+        },
+        {
+          "id": "d922ecc1-a57b-8183-854a-2b2b5cef260c",
+          "name": "Mukhyamantri Matsya Sampada Yojana",
+          "similarity": 0.6915
+        },
+        {
+          "id": "32acd209-49ef-c31d-86d6-645626ae890e",
+          "name": "Mukhyamantri Vishesh Yogyajan Swaraozgar Yojana",
+          "similarity": 0.6906
+        }
+      ],
+      "retrieved_ids": [
+        "71ab552c-e07f-b05d-6507-47d4f68e567d",
+        "839835fc-4a41-bcff-3a80-ff8fd4faff64",
+        "baeeba13-13d0-17f0-9f1e-4778fb742a34",
+        "d922ecc1-a57b-8183-854a-2b2b5cef260c",
+        "32acd209-49ef-c31d-86d6-645626ae890e"
+      ],
+      "relevant_retrieved": [
+        "71ab552c-e07f-b05d-6507-47d4f68e567d"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 65,
+      "query": "Tell me about the Tripura Lynching/Mob Violence Victim Compensation Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Tripura Lynching/Mob Violence Victim Compensation Scheme"
+      ],
+      "expected_ids": [
+        "bf865648-c0fc-cee0-6ae3-a8fff5f132a6"
+      ],
+      "retrieved": [
+        {
+          "id": "bf865648-c0fc-cee0-6ae3-a8fff5f132a6",
+          "name": "Tripura Lynching/Mob Violence Victim Compensation Scheme",
+          "similarity": 0.8289
+        },
+        {
+          "id": "44d1ff70-bba7-6199-5d12-f0daba7a6220",
+          "name": "Uttarakhand Compensation Scheme for Women Victims/Survivors of Sexual Offences and Other Crimes, 2020",
+          "similarity": 0.6179
+        },
+        {
+          "id": "67110b17-4931-d3d1-8953-028dbe213149",
+          "name": "Scheme for Financial Assistance in Case of Death",
+          "similarity": 0.6054
+        },
+        {
+          "id": "b0516a85-fe4a-683b-e80a-eb5812d71f80",
+          "name": "The Meghalaya Victim Compensation Scheme, 2022",
+          "similarity": 0.6033
+        },
+        {
+          "id": "c0457780-868e-0b88-f237-8057c415c44a",
+          "name": "Madhya Pradesh Crime Victim Compensation Scheme",
+          "similarity": 0.5845
+        }
+      ],
+      "retrieved_ids": [
+        "bf865648-c0fc-cee0-6ae3-a8fff5f132a6",
+        "44d1ff70-bba7-6199-5d12-f0daba7a6220",
+        "67110b17-4931-d3d1-8953-028dbe213149",
+        "b0516a85-fe4a-683b-e80a-eb5812d71f80",
+        "c0457780-868e-0b88-f237-8057c415c44a"
+      ],
+      "relevant_retrieved": [
+        "bf865648-c0fc-cee0-6ae3-a8fff5f132a6"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 66,
+      "query": "Tell me about the Strengthening Skills, Arts and Employment through ITIs scheme and its eligibility.",
+      "expected_names": [
+        "Strengthening Skills, Arts and Employment through ITIs"
+      ],
+      "expected_ids": [
+        "b7f24937-adfd-d4b3-7384-2aa1087e5097"
+      ],
+      "retrieved": [
+        {
+          "id": "b7f24937-adfd-d4b3-7384-2aa1087e5097",
+          "name": "Strengthening Skills, Arts and Employment through ITIs",
+          "similarity": 0.7085
+        },
+        {
+          "id": "a4f6d19b-3446-596a-57cd-3213cfc18e2d",
+          "name": "Pradhan Mantri Skilling and Employability Transformation through Upgraded ITIs (PM‑SETU) : Component I",
+          "similarity": 0.6751
+        },
+        {
+          "id": "882f1cbc-87fc-2505-bf48-4112cf8ae34c",
+          "name": "\"Advance / High Skill Training\" Component of the \"Development of Industries\" Scheme",
+          "similarity": 0.64
+        },
+        {
+          "id": "f49ec68d-72f3-4150-02b7-7f649b9b85ab",
+          "name": "Technical Education Scholarship Scheme for ITI Level",
+          "similarity": 0.6219
+        },
+        {
+          "id": "4449ff19-33b9-3820-12f2-83135704a2e5",
+          "name": "Scheme for ‘Skill Development in ESDM for Digital India’",
+          "similarity": 0.6031
+        }
+      ],
+      "retrieved_ids": [
+        "b7f24937-adfd-d4b3-7384-2aa1087e5097",
+        "a4f6d19b-3446-596a-57cd-3213cfc18e2d",
+        "882f1cbc-87fc-2505-bf48-4112cf8ae34c",
+        "f49ec68d-72f3-4150-02b7-7f649b9b85ab",
+        "4449ff19-33b9-3820-12f2-83135704a2e5"
+      ],
+      "relevant_retrieved": [
+        "b7f24937-adfd-d4b3-7384-2aa1087e5097"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 67,
+      "query": "Tell me about the Sarna /Jahersthan/Hadgadi & Masna Protection and Development Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Sarna /Jahersthan/Hadgadi & Masna Protection and Development Scheme"
+      ],
+      "expected_ids": [
+        "cd6eb8bd-4c4c-0ff8-c7f6-92883f964e39"
+      ],
+      "retrieved": [
+        {
+          "id": "cd6eb8bd-4c4c-0ff8-c7f6-92883f964e39",
+          "name": "Sarna /Jahersthan/Hadgadi & Masna Protection and Development Scheme",
+          "similarity": 0.7917
+        },
+        {
+          "id": "95a20f80-3f22-1093-8515-00db34748638",
+          "name": "Sarvajan Pension Yojana",
+          "similarity": 0.5836
+        },
+        {
+          "id": "d7301a0c-6b84-41bc-1678-90ee7a0d95bb",
+          "name": "Jharkhand Nirman Karmakar Mrityu/Durghatana Sahayata Yojana",
+          "similarity": 0.563
+        },
+        {
+          "id": "b56c0fde-9049-0714-5baf-2792cdb6f4f0",
+          "name": "Karma Veer Dadasaheb Gaikwad Sabalikaran & Swabhiman Yojana",
+          "similarity": 0.547
+        },
+        {
+          "id": "a45ce7ed-b073-82f3-d861-f4de99bbef6f",
+          "name": "Mukhyamantri Krishi Utpadan Sanrakshan Yojana",
+          "similarity": 0.5467
+        }
+      ],
+      "retrieved_ids": [
+        "cd6eb8bd-4c4c-0ff8-c7f6-92883f964e39",
+        "95a20f80-3f22-1093-8515-00db34748638",
+        "d7301a0c-6b84-41bc-1678-90ee7a0d95bb",
+        "b56c0fde-9049-0714-5baf-2792cdb6f4f0",
+        "a45ce7ed-b073-82f3-d861-f4de99bbef6f"
+      ],
+      "relevant_retrieved": [
+        "cd6eb8bd-4c4c-0ff8-c7f6-92883f964e39"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 68,
+      "query": "Tell me about the Mukhya Mantri Gyandeep Yojna scheme and its eligibility.",
+      "expected_names": [
+        "Mukhya Mantri Gyandeep Yojna"
+      ],
+      "expected_ids": [
+        "cb510e34-534d-0449-3a6a-d0064a66dc4b"
+      ],
+      "retrieved": [
+        {
+          "id": "34e775e3-839a-0174-3d53-a7b9d02219c7",
+          "name": "Mukhiya Mantri Protsahan Yojna",
+          "similarity": 0.7471
+        },
+        {
+          "id": "cb510e34-534d-0449-3a6a-d0064a66dc4b",
+          "name": "Mukhya Mantri Gyandeep Yojna",
+          "similarity": 0.7278
+        },
+        {
+          "id": "4845f965-10f8-a6dd-60cb-7489f857172a",
+          "name": "Mukhya Mantri Shahri Ajeevika Guarantee Yojna",
+          "similarity": 0.6838
+        },
+        {
+          "id": "f681c5c3-298e-b600-1589-17b16b49eb08",
+          "name": "Mukhyamantri Vidyarthi Pratibha Yojna",
+          "similarity": 0.6513
+        },
+        {
+          "id": "dd079884-1726-664e-c9e5-073f605aa036",
+          "name": "Mukhyamantri Vridhjan Pension Yojna",
+          "similarity": 0.6341
+        }
+      ],
+      "retrieved_ids": [
+        "34e775e3-839a-0174-3d53-a7b9d02219c7",
+        "cb510e34-534d-0449-3a6a-d0064a66dc4b",
+        "4845f965-10f8-a6dd-60cb-7489f857172a",
+        "f681c5c3-298e-b600-1589-17b16b49eb08",
+        "dd079884-1726-664e-c9e5-073f605aa036"
+      ],
+      "relevant_retrieved": [
+        "cb510e34-534d-0449-3a6a-d0064a66dc4b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "rank_of_first": 2,
+      "is_hit": true
+    },
+    {
+      "query_id": 69,
+      "query": "Tell me about the Cluster Mei Bagwani Ki Yojana-II scheme and its eligibility.",
+      "expected_names": [
+        "Cluster Mei Bagwani Ki Yojana-II"
+      ],
+      "expected_ids": [
+        "1cdedea2-6259-16e3-75f4-bb877c507353"
+      ],
+      "retrieved": [
+        {
+          "id": "1cdedea2-6259-16e3-75f4-bb877c507353",
+          "name": "Cluster Mei Bagwani Ki Yojana-II",
+          "similarity": 0.7113
+        },
+        {
+          "id": "bb62e867-a384-1a02-1eb3-3b68fe08fd97",
+          "name": "Cluster Mei Bagwani Ki Yojana",
+          "similarity": 0.6912
+        },
+        {
+          "id": "78172546-bde9-f1f4-ccf6-ea6a64b4a915",
+          "name": "Mahila Kisan Yojana",
+          "similarity": 0.6405
+        },
+        {
+          "id": "608aa4d2-4f52-410b-8721-0db9c2fb0693",
+          "name": "Kunwar Bai Nu Mameru Yojana",
+          "similarity": 0.6237
+        },
+        {
+          "id": "f091a09d-c1d8-ece3-7ced-ce5467f8301c",
+          "name": "Kunwar Bai Nu Mameru Yojana Gujarat",
+          "similarity": 0.6212
+        }
+      ],
+      "retrieved_ids": [
+        "1cdedea2-6259-16e3-75f4-bb877c507353",
+        "bb62e867-a384-1a02-1eb3-3b68fe08fd97",
+        "78172546-bde9-f1f4-ccf6-ea6a64b4a915",
+        "608aa4d2-4f52-410b-8721-0db9c2fb0693",
+        "f091a09d-c1d8-ece3-7ced-ce5467f8301c"
+      ],
+      "relevant_retrieved": [
+        "1cdedea2-6259-16e3-75f4-bb877c507353"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 70,
+      "query": "Tell me about the Refund of Subscriptions for the Construction Workers scheme and its eligibility.",
+      "expected_names": [
+        "Refund of Subscriptions for the Construction Workers"
+      ],
+      "expected_ids": [
+        "6a4eb554-38a0-41c7-4813-835bd8d2560c"
+      ],
+      "retrieved": [
+        {
+          "id": "6a4eb554-38a0-41c7-4813-835bd8d2560c",
+          "name": "Refund of Subscriptions for the Construction Workers",
+          "similarity": 0.726
+        },
+        {
+          "id": "eff585c0-8818-36d1-28c5-bad6e44321c0",
+          "name": "Refund of Contribution Scheme (PBAOCWWB)",
+          "similarity": 0.545
+        },
+        {
+          "id": "34cf0981-36ca-14df-c00d-a3ffe01546e7",
+          "name": "Reimbursement of the MS-CIT Course",
+          "similarity": 0.5292
+        },
+        {
+          "id": "4d1b84e1-a5a9-89bf-fac2-8ceaebcc7159",
+          "name": "Assistance for Purchase of House (HBOCWWB)",
+          "similarity": 0.52
+        },
+        {
+          "id": "9f3e7ba9-5ebf-6872-f247-91d543c17204",
+          "name": "Scheme for Relief to the Un-registered Workers",
+          "similarity": 0.5192
+        }
+      ],
+      "retrieved_ids": [
+        "6a4eb554-38a0-41c7-4813-835bd8d2560c",
+        "eff585c0-8818-36d1-28c5-bad6e44321c0",
+        "34cf0981-36ca-14df-c00d-a3ffe01546e7",
+        "4d1b84e1-a5a9-89bf-fac2-8ceaebcc7159",
+        "9f3e7ba9-5ebf-6872-f247-91d543c17204"
+      ],
+      "relevant_retrieved": [
+        "6a4eb554-38a0-41c7-4813-835bd8d2560c"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 71,
+      "query": "Tell me about the House of Himalayas scheme and its eligibility.",
+      "expected_names": [
+        "House of Himalayas"
+      ],
+      "expected_ids": [
+        "80ac3075-009b-2bd6-c771-45b37cee5c1d"
+      ],
+      "retrieved": [
+        {
+          "id": "e18048a5-5404-0a4d-b1d7-1dcd97a37562",
+          "name": "Pradhan Mantri Awas Yojana – Urban: Individual House Construction Component - Beneficiary Led Construction (BLC) Uttarakhand",
+          "similarity": 0.5697
+        },
+        {
+          "id": "80ac3075-009b-2bd6-c771-45b37cee5c1d",
+          "name": "House of Himalayas",
+          "similarity": 0.5669
+        },
+        {
+          "id": "a29fb162-0c42-1401-7ad0-e0b7f0843dbc",
+          "name": "Pradhan Mantri Awaas Yojana - Gramin, Uttarakhand",
+          "similarity": 0.56
+        },
+        {
+          "id": "ac7b270d-acb0-8339-fea1-665dfdb84e38",
+          "name": "Mukhyamantri Vas Sthal Kray Sahayata Yojana",
+          "similarity": 0.5561
+        },
+        {
+          "id": "18a33be6-709c-032a-8933-9140050b606f",
+          "name": "Uttarakhand@25 Adarsh Champawat",
+          "similarity": 0.5488
+        }
+      ],
+      "retrieved_ids": [
+        "e18048a5-5404-0a4d-b1d7-1dcd97a37562",
+        "80ac3075-009b-2bd6-c771-45b37cee5c1d",
+        "a29fb162-0c42-1401-7ad0-e0b7f0843dbc",
+        "ac7b270d-acb0-8339-fea1-665dfdb84e38",
+        "18a33be6-709c-032a-8933-9140050b606f"
+      ],
+      "relevant_retrieved": [
+        "80ac3075-009b-2bd6-c771-45b37cee5c1d"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "rank_of_first": 2,
+      "is_hit": true
+    },
+    {
+      "query_id": 72,
+      "query": "Tell me about the Small Business (GBCDC) scheme and its eligibility.",
+      "expected_names": [
+        "Small Business (GBCDC)"
+      ],
+      "expected_ids": [
+        "f024338e-28f4-6617-d684-6d33014eade5"
+      ],
+      "retrieved": [
+        {
+          "id": "f024338e-28f4-6617-d684-6d33014eade5",
+          "name": "Small Business (GBCDC)",
+          "similarity": 0.7856
+        },
+        {
+          "id": "3eca7a69-4b50-7639-5e02-182ee55477b6",
+          "name": "Parivahan Scheme (GBCDC)",
+          "similarity": 0.685
+        },
+        {
+          "id": "34894185-123a-f13f-8f13-2256c35f8464",
+          "name": "Micro Finance (GBCDC)",
+          "similarity": 0.6667
+        },
+        {
+          "id": "445ce13f-52f6-1985-ce56-dbc1ec70e4d5",
+          "name": "Micro Finance Scheme (GNDTDC)",
+          "similarity": 0.6074
+        },
+        {
+          "id": "abd51296-5de2-68a9-d66b-98ab6fe6a2a0",
+          "name": "Educational Loan Scheme (GBCDC)",
+          "similarity": 0.5999
+        }
+      ],
+      "retrieved_ids": [
+        "f024338e-28f4-6617-d684-6d33014eade5",
+        "3eca7a69-4b50-7639-5e02-182ee55477b6",
+        "34894185-123a-f13f-8f13-2256c35f8464",
+        "445ce13f-52f6-1985-ce56-dbc1ec70e4d5",
+        "abd51296-5de2-68a9-d66b-98ab6fe6a2a0"
+      ],
+      "relevant_retrieved": [
+        "f024338e-28f4-6617-d684-6d33014eade5"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 73,
+      "query": "Tell me about the Chief Minister's State Disability Pension Scheme - Sikkim scheme and its eligibility.",
+      "expected_names": [
+        "Chief Minister's State Disability Pension Scheme - Sikkim"
+      ],
+      "expected_ids": [
+        "412596f0-ad06-e2a0-0535-63f17bd7b037"
+      ],
+      "retrieved": [
+        {
+          "id": "412596f0-ad06-e2a0-0535-63f17bd7b037",
+          "name": "Chief Minister's State Disability Pension Scheme - Sikkim",
+          "similarity": 0.8401
+        },
+        {
+          "id": "5cbec9a0-a26c-6664-c5cd-db8a882e4c0f",
+          "name": "Indira Gandhi National Disability Pension Scheme - Sikkim",
+          "similarity": 0.7466
+        },
+        {
+          "id": "1b16dada-097c-3a30-0de9-bc75f1955485",
+          "name": "Sikkim Unmarried Women Pension Scheme",
+          "similarity": 0.7303
+        },
+        {
+          "id": "9bc3475c-b3ff-c76b-126c-49595cc5e83c",
+          "name": "National Family Benefit Scheme - Sikkim",
+          "similarity": 0.6703
+        },
+        {
+          "id": "4e0774fc-a137-0865-a6c8-ba247fa852c1",
+          "name": "Sikkim Grant of Scholarship to Students with Disabilities Scheme",
+          "similarity": 0.6673
+        }
+      ],
+      "retrieved_ids": [
+        "412596f0-ad06-e2a0-0535-63f17bd7b037",
+        "5cbec9a0-a26c-6664-c5cd-db8a882e4c0f",
+        "1b16dada-097c-3a30-0de9-bc75f1955485",
+        "9bc3475c-b3ff-c76b-126c-49595cc5e83c",
+        "4e0774fc-a137-0865-a6c8-ba247fa852c1"
+      ],
+      "relevant_retrieved": [
+        "412596f0-ad06-e2a0-0535-63f17bd7b037"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 74,
+      "query": "Tell me about the Scholarship for Chhattisgarh Students Studying Outside the State scheme and its eligibility.",
+      "expected_names": [
+        "Scholarship for Chhattisgarh Students Studying Outside the State"
+      ],
+      "expected_ids": [
+        "23c6c8c1-f95c-b1cb-6cab-9c0ac61d6c0a"
+      ],
+      "retrieved": [
+        {
+          "id": "23c6c8c1-f95c-b1cb-6cab-9c0ac61d6c0a",
+          "name": "Scholarship for Chhattisgarh Students Studying Outside the State",
+          "similarity": 0.8787
+        },
+        {
+          "id": "fdb793aa-9849-2455-87c1-108026531428",
+          "name": "Scholarship for C.G. Domicile Students Pursuing Engineering Courses Outside Chhattisgarh State",
+          "similarity": 0.7745
+        },
+        {
+          "id": "43668e08-3bbb-fe09-88e6-14a12fc5e1b3",
+          "name": "Merit Scholarship: Engineering University",
+          "similarity": 0.7679
+        },
+        {
+          "id": "8c7b8b6c-737a-4cc9-5c44-2d772ff4399c",
+          "name": "Merit Scholarship: Polytechnic Institutions",
+          "similarity": 0.7478
+        },
+        {
+          "id": "b1b81fd0-a10a-ae4d-f08c-0592124ad2d9",
+          "name": "Haryana State Merit Scholarship Scheme",
+          "similarity": 0.7357
+        }
+      ],
+      "retrieved_ids": [
+        "23c6c8c1-f95c-b1cb-6cab-9c0ac61d6c0a",
+        "fdb793aa-9849-2455-87c1-108026531428",
+        "43668e08-3bbb-fe09-88e6-14a12fc5e1b3",
+        "8c7b8b6c-737a-4cc9-5c44-2d772ff4399c",
+        "b1b81fd0-a10a-ae4d-f08c-0592124ad2d9"
+      ],
+      "relevant_retrieved": [
+        "23c6c8c1-f95c-b1cb-6cab-9c0ac61d6c0a"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 75,
+      "query": "Tell me about the Safai Karmakaar Putr/Putri Cycle sahayata yojana scheme and its eligibility.",
+      "expected_names": [
+        "Safai Karmakaar Putr/Putri Cycle sahayata yojana"
+      ],
+      "expected_ids": [
+        "d493ee2b-b52c-cc87-5eab-472065e823cb"
+      ],
+      "retrieved": [
+        {
+          "id": "d493ee2b-b52c-cc87-5eab-472065e823cb",
+          "name": "Safai Karmakaar Putr/Putri Cycle sahayata yojana",
+          "similarity": 0.8395
+        },
+        {
+          "id": "b775ae28-d890-1682-ba1e-3b73be57bb73",
+          "name": "Safai Karmakar Prasuti Sahayata Yojana",
+          "similarity": 0.6991
+        },
+        {
+          "id": "d1a16fe5-bf8c-1708-dfc1-61f702b4d08f",
+          "name": "Mukhyamantri Asangathit Karmakar Cycle Sahayata Yojana",
+          "similarity": 0.6979
+        },
+        {
+          "id": "f195ee30-30d3-080d-c789-814565b42704",
+          "name": "Cycle Sahayata Yojana",
+          "similarity": 0.6878
+        },
+        {
+          "id": "70e3f1c9-19e6-4b08-9f6b-51252fb99e4c",
+          "name": "Safai Karmakar Hetu Aavashyak Upakaran Sahayata Yojana ​",
+          "similarity": 0.6862
+        }
+      ],
+      "retrieved_ids": [
+        "d493ee2b-b52c-cc87-5eab-472065e823cb",
+        "b775ae28-d890-1682-ba1e-3b73be57bb73",
+        "d1a16fe5-bf8c-1708-dfc1-61f702b4d08f",
+        "f195ee30-30d3-080d-c789-814565b42704",
+        "70e3f1c9-19e6-4b08-9f6b-51252fb99e4c"
+      ],
+      "relevant_retrieved": [
+        "d493ee2b-b52c-cc87-5eab-472065e823cb"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 76,
+      "query": "Tell me about the Fellowship Scheme for M.Phil & Ph.D for Scheduled Caste Students (Maharaja Sayajirao Gayakvad Scholarship) scheme and its eligibility.",
+      "expected_names": [
+        "Fellowship Scheme for M.Phil & Ph.D for Scheduled Caste Students (Maharaja Sayajirao Gayakvad Scholarship)"
+      ],
+      "expected_ids": [
+        "16db921e-13cb-e941-6a1b-e1c1562550a5"
+      ],
+      "retrieved": [
+        {
+          "id": "16db921e-13cb-e941-6a1b-e1c1562550a5",
+          "name": "Fellowship Scheme for M.Phil & Ph.D for Scheduled Caste Students (Maharaja Sayajirao Gayakvad Scholarship)",
+          "similarity": 0.9255
+        },
+        {
+          "id": "51ada566-f3a9-0a4f-be21-027bb3ec7ce8",
+          "name": "Central Sector Scheme of National Fellowship for Providing Fellowship to Scheduled Caste Students to Pursue M.Phil. & PhD",
+          "similarity": 0.784
+        },
+        {
+          "id": "c88b1b95-4929-9cce-eb52-cad1a9e267a2",
+          "name": "Ambedkar Fellowship Scheme",
+          "similarity": 0.7591
+        },
+        {
+          "id": "f82b15c9-80bd-5508-6f17-a665f8aab776",
+          "name": "Fellowship Scholarship Scheme",
+          "similarity": 0.7082
+        },
+        {
+          "id": "314ebf0f-4839-670e-620a-799e6f43089a",
+          "name": "Rajiv Gandhi National Fellowship For Scheduled Caste Candidates",
+          "similarity": 0.7079
+        }
+      ],
+      "retrieved_ids": [
+        "16db921e-13cb-e941-6a1b-e1c1562550a5",
+        "51ada566-f3a9-0a4f-be21-027bb3ec7ce8",
+        "c88b1b95-4929-9cce-eb52-cad1a9e267a2",
+        "f82b15c9-80bd-5508-6f17-a665f8aab776",
+        "314ebf0f-4839-670e-620a-799e6f43089a"
+      ],
+      "relevant_retrieved": [
+        "16db921e-13cb-e941-6a1b-e1c1562550a5"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 77,
+      "query": "Tell me about the Aravanaippu Illam scheme and its eligibility.",
+      "expected_names": [
+        "Aravanaippu Illam"
+      ],
+      "expected_ids": [
+        "79822fbb-5625-edd2-1ac4-d82ebc1c83ca"
+      ],
+      "retrieved": [
+        {
+          "id": "79822fbb-5625-edd2-1ac4-d82ebc1c83ca",
+          "name": "Aravanaippu Illam",
+          "similarity": 0.7122
+        },
+        {
+          "id": "11146e3a-56e5-ec50-51b1-9f9939cbf173",
+          "name": "ARAVANAIPPU",
+          "similarity": 0.5983
+        },
+        {
+          "id": "f05dd92e-904f-ddda-d4dc-c657c8600cf4",
+          "name": "Assam Arogya Nidhi Scheme",
+          "similarity": 0.5321
+        },
+        {
+          "id": "25cf85a0-c383-6686-245a-389fc6ff78b8",
+          "name": "Mukhyamantri Atyant Pichhda Varg Medhavriti Yojana",
+          "similarity": 0.5306
+        },
+        {
+          "id": "eaf0d869-892a-5e77-3ac8-d2ec38c388da",
+          "name": "Mukhyamantri Alpasankhyak Medhwi Balika Protsahan Yojana",
+          "similarity": 0.5148
+        }
+      ],
+      "retrieved_ids": [
+        "79822fbb-5625-edd2-1ac4-d82ebc1c83ca",
+        "11146e3a-56e5-ec50-51b1-9f9939cbf173",
+        "f05dd92e-904f-ddda-d4dc-c657c8600cf4",
+        "25cf85a0-c383-6686-245a-389fc6ff78b8",
+        "eaf0d869-892a-5e77-3ac8-d2ec38c388da"
+      ],
+      "relevant_retrieved": [
+        "79822fbb-5625-edd2-1ac4-d82ebc1c83ca"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 78,
+      "query": "Tell me about the Yatra Anudan scheme and its eligibility.",
+      "expected_names": [
+        "Yatra Anudan"
+      ],
+      "expected_ids": [
+        "b1f39515-3ba1-3494-2e92-7abc94fa7002"
+      ],
+      "retrieved": [
+        {
+          "id": "b1f39515-3ba1-3494-2e92-7abc94fa7002",
+          "name": "Yatra Anudan",
+          "similarity": 0.6004
+        },
+        {
+          "id": "3c9e49e4-1e36-c926-c1d2-886573793735",
+          "name": "Aahar Anudan Yojana",
+          "similarity": 0.5788
+        },
+        {
+          "id": "5bd80e82-139d-68be-c2ed-8a2e4cc985e5",
+          "name": "Dr. B.R. Ambedkar’s Yatra Scheme to visit the places connected with Dr. B.R. Ambedkar’s life in India",
+          "similarity": 0.5686
+        },
+        {
+          "id": "b50d32e1-e635-b563-c419-bdb1461c1636",
+          "name": "Kailash Darshan Yatra",
+          "similarity": 0.5615
+        },
+        {
+          "id": "ddf0a913-9c7f-8362-b0e0-710996972604",
+          "name": "Sindhu Dharshan Yatra Scheme 2016",
+          "similarity": 0.5531
+        }
+      ],
+      "retrieved_ids": [
+        "b1f39515-3ba1-3494-2e92-7abc94fa7002",
+        "3c9e49e4-1e36-c926-c1d2-886573793735",
+        "5bd80e82-139d-68be-c2ed-8a2e4cc985e5",
+        "b50d32e1-e635-b563-c419-bdb1461c1636",
+        "ddf0a913-9c7f-8362-b0e0-710996972604"
+      ],
+      "relevant_retrieved": [
+        "b1f39515-3ba1-3494-2e92-7abc94fa7002"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 79,
+      "query": "Tell me about the AICTE-PROFESSIONAL DEVELOPMENT SCHEME scheme and its eligibility.",
+      "expected_names": [
+        "AICTE-PROFESSIONAL DEVELOPMENT SCHEME"
+      ],
+      "expected_ids": [
+        "f3bf83d7-9912-43a3-acec-b0a32cc819c9"
+      ],
+      "retrieved": [
+        {
+          "id": "f3bf83d7-9912-43a3-acec-b0a32cc819c9",
+          "name": "AICTE-PROFESSIONAL DEVELOPMENT SCHEME",
+          "similarity": 0.7748
+        },
+        {
+          "id": "55a09ad5-7f50-c783-8365-558ce0aebab2",
+          "name": "AlCTE - Distinguished Professional Scheme",
+          "similarity": 0.665
+        },
+        {
+          "id": "8aa66532-7b6f-f7c2-7318-c578cf460fca",
+          "name": "AICTE-ISTE INDUCTION/REFRESHER PROGRAMME SCHEME",
+          "similarity": 0.6542
+        },
+        {
+          "id": "485957f6-6d27-1576-6f25-05b90bf8cbec",
+          "name": "AICTE SHORT TERM TRAINING PROGRAMME-SFURTI SCHEME",
+          "similarity": 0.6455
+        },
+        {
+          "id": "d8dae049-f463-4114-f8cc-b7b89e19248a",
+          "name": "AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Diploma)",
+          "similarity": 0.6363
+        }
+      ],
+      "retrieved_ids": [
+        "f3bf83d7-9912-43a3-acec-b0a32cc819c9",
+        "55a09ad5-7f50-c783-8365-558ce0aebab2",
+        "8aa66532-7b6f-f7c2-7318-c578cf460fca",
+        "485957f6-6d27-1576-6f25-05b90bf8cbec",
+        "d8dae049-f463-4114-f8cc-b7b89e19248a"
+      ],
+      "relevant_retrieved": [
+        "f3bf83d7-9912-43a3-acec-b0a32cc819c9"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 80,
+      "query": "Tell me about the AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Degree) scheme and its eligibility.",
+      "expected_names": [
+        "AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Degree)"
+      ],
+      "expected_ids": [
+        "c0459f3e-fa3b-2286-6394-d7fb33a6dcab"
+      ],
+      "retrieved": [
+        {
+          "id": "c0459f3e-fa3b-2286-6394-d7fb33a6dcab",
+          "name": "AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Degree)",
+          "similarity": 0.8836
+        },
+        {
+          "id": "d8dae049-f463-4114-f8cc-b7b89e19248a",
+          "name": "AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Diploma)",
+          "similarity": 0.877
+        },
+        {
+          "id": "e849d744-e74d-b2b7-28f9-8d06cb1546ef",
+          "name": "Saksham Scholarship",
+          "similarity": 0.7451
+        },
+        {
+          "id": "418e4bb5-3fd7-3fb5-84c7-b626edcf0152",
+          "name": "Post Graduate Scholarship Scheme for GATE/GPAT Qualified Students-AICTE",
+          "similarity": 0.7047
+        },
+        {
+          "id": "27ff9bac-fe37-bf23-1b92-4355b8a01a98",
+          "name": "Lakshadweep Scholarship Scheme",
+          "similarity": 0.696
+        }
+      ],
+      "retrieved_ids": [
+        "c0459f3e-fa3b-2286-6394-d7fb33a6dcab",
+        "d8dae049-f463-4114-f8cc-b7b89e19248a",
+        "e849d744-e74d-b2b7-28f9-8d06cb1546ef",
+        "418e4bb5-3fd7-3fb5-84c7-b626edcf0152",
+        "27ff9bac-fe37-bf23-1b92-4355b8a01a98"
+      ],
+      "relevant_retrieved": [
+        "c0459f3e-fa3b-2286-6394-d7fb33a6dcab"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 81,
+      "query": "Tell me about the \"Grant To Handicrafts Societies\" Component of the \"Development of Handicrafts\" Scheme scheme and its eligibility.",
+      "expected_names": [
+        "\"Grant To Handicrafts Societies\" Component of the \"Development of Handicrafts\" Scheme"
+      ],
+      "expected_ids": [
+        "800932b1-742c-1ec7-2d8b-552e26a5ece9"
+      ],
+      "retrieved": [
+        {
+          "id": "800932b1-742c-1ec7-2d8b-552e26a5ece9",
+          "name": "\"Grant To Handicrafts Societies\" Component of the \"Development of Handicrafts\" Scheme",
+          "similarity": 0.7266
+        },
+        {
+          "id": "977cab98-4d57-6957-e653-12ea4eb1d09c",
+          "name": "National Handicrafts Development Programme: Direct Benefit to Artisans - Supports to Artisans in Indigent Circumstances",
+          "similarity": 0.7151
+        },
+        {
+          "id": "0756ad4b-d1b8-827a-e8db-2b6ed9582119",
+          "name": "Tool Kit Grant for Traditional Handicrafts Experts",
+          "similarity": 0.671
+        },
+        {
+          "id": "7cd581fe-9ebf-6bbe-4558-e075d5c35ce6",
+          "name": "Assistance Scheme for Handicraft Artisans",
+          "similarity": 0.6662
+        },
+        {
+          "id": "10494dd5-91e3-eb50-b7aa-0804b467c70c",
+          "name": "National Handicrafts Development Programme: Research & Development Scheme",
+          "similarity": 0.6476
+        }
+      ],
+      "retrieved_ids": [
+        "800932b1-742c-1ec7-2d8b-552e26a5ece9",
+        "977cab98-4d57-6957-e653-12ea4eb1d09c",
+        "0756ad4b-d1b8-827a-e8db-2b6ed9582119",
+        "7cd581fe-9ebf-6bbe-4558-e075d5c35ce6",
+        "10494dd5-91e3-eb50-b7aa-0804b467c70c"
+      ],
+      "relevant_retrieved": [
+        "800932b1-742c-1ec7-2d8b-552e26a5ece9"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 82,
+      "query": "Tell me about the Indira Gandhi National Widow Pension Scheme- Chhattisgarh scheme and its eligibility.",
+      "expected_names": [
+        "Indira Gandhi National Widow Pension Scheme- Chhattisgarh"
+      ],
+      "expected_ids": [
+        "d3e5e6b4-d1c0-694f-6c33-b5ba6742d31b"
+      ],
+      "retrieved": [
+        {
+          "id": "d3e5e6b4-d1c0-694f-6c33-b5ba6742d31b",
+          "name": "Indira Gandhi National Widow Pension Scheme- Chhattisgarh",
+          "similarity": 0.8365
+        },
+        {
+          "id": "815a7958-ff74-b90d-f612-3e6ffc4c815d",
+          "name": "Indira Gandhi National Widow Pension Scheme-Himachal Pradesh",
+          "similarity": 0.8138
+        },
+        {
+          "id": "4bc1b6df-1955-cb51-e055-a581839d757e",
+          "name": "Indira Gandhi National Widow Pension Scheme (Maharashtra)",
+          "similarity": 0.8073
+        },
+        {
+          "id": "9c252c62-d75b-f219-1504-178fa7835878",
+          "name": "Indira Gandhi National Widow Pension Scheme- Bihar",
+          "similarity": 0.7949
+        },
+        {
+          "id": "2f739a14-4d83-c6d5-0e0c-dc74951d435e",
+          "name": "Indira Gandhi National Widow Pension Scheme-Madhya Pradesh",
+          "similarity": 0.7916
+        }
+      ],
+      "retrieved_ids": [
+        "d3e5e6b4-d1c0-694f-6c33-b5ba6742d31b",
+        "815a7958-ff74-b90d-f612-3e6ffc4c815d",
+        "4bc1b6df-1955-cb51-e055-a581839d757e",
+        "9c252c62-d75b-f219-1504-178fa7835878",
+        "2f739a14-4d83-c6d5-0e0c-dc74951d435e"
+      ],
+      "relevant_retrieved": [
+        "d3e5e6b4-d1c0-694f-6c33-b5ba6742d31b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 83,
+      "query": "Tell me about the Flexible Memorandum of Understanding (Flexi-MoU) Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Flexible Memorandum of Understanding (Flexi-MoU) Scheme"
+      ],
+      "expected_ids": [
+        "9c28251b-9c32-895b-e127-cf98b83cdad8"
+      ],
+      "retrieved": [
+        {
+          "id": "9c28251b-9c32-895b-e127-cf98b83cdad8",
+          "name": "Flexible Memorandum of Understanding (Flexi-MoU) Scheme",
+          "similarity": 0.7948
+        },
+        {
+          "id": "fe148e71-753e-fcf0-6836-3a2c29e7e01f",
+          "name": "Financial Support Scheme",
+          "similarity": 0.5206
+        },
+        {
+          "id": "2d2fd8eb-879d-05c1-00e2-055c979c659e",
+          "name": "Scheme For Waiver Of Loans To Handloom And Powerloom Sector",
+          "similarity": 0.5205
+        },
+        {
+          "id": "cfde18ef-66ab-9088-1676-d94106c0af5e",
+          "name": "Cash Benefit Scheme Scheme (PBAOCWWB)",
+          "similarity": 0.517
+        },
+        {
+          "id": "38ad16b0-8f93-16c2-c523-6b011ec004bf",
+          "name": "Overseas Educational Loan Scheme",
+          "similarity": 0.517
+        }
+      ],
+      "retrieved_ids": [
+        "9c28251b-9c32-895b-e127-cf98b83cdad8",
+        "fe148e71-753e-fcf0-6836-3a2c29e7e01f",
+        "2d2fd8eb-879d-05c1-00e2-055c979c659e",
+        "cfde18ef-66ab-9088-1676-d94106c0af5e",
+        "38ad16b0-8f93-16c2-c523-6b011ec004bf"
+      ],
+      "relevant_retrieved": [
+        "9c28251b-9c32-895b-e127-cf98b83cdad8"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 84,
+      "query": "Tell me about the Welfare Services for Women scheme and its eligibility.",
+      "expected_names": [
+        "Welfare Services for Women"
+      ],
+      "expected_ids": [
+        "a9b1cc9d-0618-3864-54a3-eff75c096c62"
+      ],
+      "retrieved": [
+        {
+          "id": "a9b1cc9d-0618-3864-54a3-eff75c096c62",
+          "name": "Welfare Services for Women",
+          "similarity": 0.7745
+        },
+        {
+          "id": "8b180120-6744-6ac7-2bbd-f1e6cc341812",
+          "name": "Financial Assistance To Dependent Children Of Widows And Destitute Women",
+          "similarity": 0.666
+        },
+        {
+          "id": "491dd447-6d94-8fc2-09f2-f3a01595fab6",
+          "name": "Welfare Services for Other Socially Disabled Persons (Senior Citizens & Destitute)",
+          "similarity": 0.6616
+        },
+        {
+          "id": "26ad1a80-e404-b807-c8ab-b7ff3dced876",
+          "name": "Procedure for Admission to Government Women Welfare and Rehabilitation Centre and Women's Home",
+          "similarity": 0.65
+        },
+        {
+          "id": "2716ff41-e549-9d39-a421-06c4bcd9a8e6",
+          "name": "Scheme For Welfare Of Children In Need Of Care And Protection",
+          "similarity": 0.6496
+        }
+      ],
+      "retrieved_ids": [
+        "a9b1cc9d-0618-3864-54a3-eff75c096c62",
+        "8b180120-6744-6ac7-2bbd-f1e6cc341812",
+        "491dd447-6d94-8fc2-09f2-f3a01595fab6",
+        "26ad1a80-e404-b807-c8ab-b7ff3dced876",
+        "2716ff41-e549-9d39-a421-06c4bcd9a8e6"
+      ],
+      "relevant_retrieved": [
+        "a9b1cc9d-0618-3864-54a3-eff75c096c62"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 85,
+      "query": "Tell me about the Boneej Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Boneej Scheme"
+      ],
+      "expected_ids": [
+        "4b327420-dd14-c046-0613-c779ebd7c2e3"
+      ],
+      "retrieved": [
+        {
+          "id": "4b327420-dd14-c046-0613-c779ebd7c2e3",
+          "name": "Boneej Scheme",
+          "similarity": 0.6717
+        },
+        {
+          "id": "beb73ab4-7acd-d6ba-5e7a-f58dcb257e7f",
+          "name": "Shaktidoot Scheme",
+          "similarity": 0.5432
+        },
+        {
+          "id": "4048faf0-7bf1-d22f-2336-e88d7903946b",
+          "name": "Higher Education Assistance Scheme",
+          "similarity": 0.5302
+        },
+        {
+          "id": "9b8bab9f-746c-bde1-cc0c-f16baf6e715d",
+          "name": "NAMO Shree Scheme",
+          "similarity": 0.5195
+        },
+        {
+          "id": "95a20f80-3f22-1093-8515-00db34748638",
+          "name": "Sarvajan Pension Yojana",
+          "similarity": 0.5152
+        }
+      ],
+      "retrieved_ids": [
+        "4b327420-dd14-c046-0613-c779ebd7c2e3",
+        "beb73ab4-7acd-d6ba-5e7a-f58dcb257e7f",
+        "4048faf0-7bf1-d22f-2336-e88d7903946b",
+        "9b8bab9f-746c-bde1-cc0c-f16baf6e715d",
+        "95a20f80-3f22-1093-8515-00db34748638"
+      ],
+      "relevant_retrieved": [
+        "4b327420-dd14-c046-0613-c779ebd7c2e3"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 86,
+      "query": "Tell me about the Financial Assistance for Girl Child Attend Her Age of 18 scheme and its eligibility.",
+      "expected_names": [
+        "Financial Assistance for Girl Child Attend Her Age of 18"
+      ],
+      "expected_ids": [
+        "b85461a9-8014-352e-d7b7-4aa31b0b6163"
+      ],
+      "retrieved": [
+        {
+          "id": "b85461a9-8014-352e-d7b7-4aa31b0b6163",
+          "name": "Financial Assistance for Girl Child Attend Her Age of 18",
+          "similarity": 0.8384
+        },
+        {
+          "id": "a8c6929f-cf16-7c17-8b6e-cf8a13c5763f",
+          "name": "Grant of Financial Assistance to the Poor Parents Having Only One Girl Child Who is Studying 8th to 10th Standard",
+          "similarity": 0.7273
+        },
+        {
+          "id": "8b180120-6744-6ac7-2bbd-f1e6cc341812",
+          "name": "Financial Assistance To Dependent Children Of Widows And Destitute Women",
+          "similarity": 0.7077
+        },
+        {
+          "id": "eb6cb14d-1e98-fead-309a-1ca9d69bb022",
+          "name": "Educational Assistance to the Children of the Registered Worker Studying in 11th and 12th Standard",
+          "similarity": 0.6879
+        },
+        {
+          "id": "1ad142ce-eb69-2f99-440c-8f32558dc452",
+          "name": "Delhi Lakhpati Bitiya Scheme",
+          "similarity": 0.6825
+        }
+      ],
+      "retrieved_ids": [
+        "b85461a9-8014-352e-d7b7-4aa31b0b6163",
+        "a8c6929f-cf16-7c17-8b6e-cf8a13c5763f",
+        "8b180120-6744-6ac7-2bbd-f1e6cc341812",
+        "eb6cb14d-1e98-fead-309a-1ca9d69bb022",
+        "1ad142ce-eb69-2f99-440c-8f32558dc452"
+      ],
+      "relevant_retrieved": [
+        "b85461a9-8014-352e-d7b7-4aa31b0b6163"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 87,
+      "query": "Tell me about the Awareness Programme on Child/Human Trafficking, Family Planning, Legal Awareness, Health etc. scheme and its eligibility.",
+      "expected_names": [
+        "Awareness Programme on Child/Human Trafficking, Family Planning, Legal Awareness, Health etc."
+      ],
+      "expected_ids": [
+        "f79f3785-ca5a-4c80-4c1a-ddc5cb29022b"
+      ],
+      "retrieved": [
+        {
+          "id": "f79f3785-ca5a-4c80-4c1a-ddc5cb29022b",
+          "name": "Awareness Programme on Child/Human Trafficking, Family Planning, Legal Awareness, Health etc.",
+          "similarity": 0.6907
+        },
+        {
+          "id": "525695ac-c688-83bb-87d7-b48bcff75f5e",
+          "name": "Organization of Multi-Purpose Camps/ Public Awareness Camps/ Medical Camps/Legal Service Camps",
+          "similarity": 0.5699
+        },
+        {
+          "id": "1680d11e-9460-b6a0-d2a3-45dd51dc3a4b",
+          "name": "Welfare Services for Children",
+          "similarity": 0.5597
+        },
+        {
+          "id": "04484e07-b836-485d-e3f0-c057a9cd9121",
+          "name": "National AIDS Control Programme - Uttarakhand",
+          "similarity": 0.5453
+        },
+        {
+          "id": "2716ff41-e549-9d39-a421-06c4bcd9a8e6",
+          "name": "Scheme For Welfare Of Children In Need Of Care And Protection",
+          "similarity": 0.5424
+        }
+      ],
+      "retrieved_ids": [
+        "f79f3785-ca5a-4c80-4c1a-ddc5cb29022b",
+        "525695ac-c688-83bb-87d7-b48bcff75f5e",
+        "1680d11e-9460-b6a0-d2a3-45dd51dc3a4b",
+        "04484e07-b836-485d-e3f0-c057a9cd9121",
+        "2716ff41-e549-9d39-a421-06c4bcd9a8e6"
+      ],
+      "relevant_retrieved": [
+        "f79f3785-ca5a-4c80-4c1a-ddc5cb29022b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 88,
+      "query": "Tell me about the Scheme For Award Of Senior/Junior Fellowships To Outstanding Persons In The Fields Of Culture scheme and its eligibility.",
+      "expected_names": [
+        "Scheme For Award Of Senior/Junior Fellowships To Outstanding Persons In The Fields Of Culture"
+      ],
+      "expected_ids": [
+        "a8328154-ad99-51d4-294f-8d192794cc0d"
+      ],
+      "retrieved": [
+        {
+          "id": "a8328154-ad99-51d4-294f-8d192794cc0d",
+          "name": "Scheme For Award Of Senior/Junior Fellowships To Outstanding Persons In The Fields Of Culture",
+          "similarity": 0.8641
+        },
+        {
+          "id": "4e0b74c1-3eff-c57e-dfa6-ffa6cb303e96",
+          "name": "Scheme for Awarding Fellowships for Undergraduate and Postgraduate Students",
+          "similarity": 0.6785
+        },
+        {
+          "id": "f82b15c9-80bd-5508-6f17-a665f8aab776",
+          "name": "Fellowship Scholarship Scheme",
+          "similarity": 0.6195
+        },
+        {
+          "id": "69137193-3d20-bf46-d2c0-645854a5c278",
+          "name": "Award of Fellowship to Most Eminent Artist",
+          "similarity": 0.6074
+        },
+        {
+          "id": "99fd4a41-7795-f570-f05b-997e42c99909",
+          "name": "Scheme To Provide Grant To The Institution(s)/Individual(s) For Long Term Project In The Field Of Art And Culture",
+          "similarity": 0.5978
+        }
+      ],
+      "retrieved_ids": [
+        "a8328154-ad99-51d4-294f-8d192794cc0d",
+        "4e0b74c1-3eff-c57e-dfa6-ffa6cb303e96",
+        "f82b15c9-80bd-5508-6f17-a665f8aab776",
+        "69137193-3d20-bf46-d2c0-645854a5c278",
+        "99fd4a41-7795-f570-f05b-997e42c99909"
+      ],
+      "relevant_retrieved": [
+        "a8328154-ad99-51d4-294f-8d192794cc0d"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 89,
+      "query": "Tell me about the Mukhyamantri Gyansetu Merit Scholarship Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Mukhyamantri Gyansetu Merit Scholarship Yojana"
+      ],
+      "expected_ids": [
+        "46f937d9-297a-b846-979e-de1d8e32a236"
+      ],
+      "retrieved": [
+        {
+          "id": "46f937d9-297a-b846-979e-de1d8e32a236",
+          "name": "Mukhyamantri Gyansetu Merit Scholarship Yojana",
+          "similarity": 0.8465
+        },
+        {
+          "id": "25cf85a0-c383-6686-245a-389fc6ff78b8",
+          "name": "Mukhyamantri Atyant Pichhda Varg Medhavriti Yojana",
+          "similarity": 0.76
+        },
+        {
+          "id": "262306d4-65fe-3583-a974-bd30ccb0c97b",
+          "name": "Mukhya Mantri Vidyarthi Kalyan Yojana",
+          "similarity": 0.7531
+        },
+        {
+          "id": "f681c5c3-298e-b600-1589-17b16b49eb08",
+          "name": "Mukhyamantri Vidyarthi Pratibha Yojna",
+          "similarity": 0.7383
+        },
+        {
+          "id": "bc090bb0-00ef-9b8d-8068-0bbf3d6af355",
+          "name": "Mukhyamantri Medhavi Vidhyarti Yojana",
+          "similarity": 0.7236
+        }
+      ],
+      "retrieved_ids": [
+        "46f937d9-297a-b846-979e-de1d8e32a236",
+        "25cf85a0-c383-6686-245a-389fc6ff78b8",
+        "262306d4-65fe-3583-a974-bd30ccb0c97b",
+        "f681c5c3-298e-b600-1589-17b16b49eb08",
+        "bc090bb0-00ef-9b8d-8068-0bbf3d6af355"
+      ],
+      "relevant_retrieved": [
+        "46f937d9-297a-b846-979e-de1d8e32a236"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 90,
+      "query": "Tell me about the Assistance for Installation of Sprinkler / Drip Micro Irrigation Systems scheme and its eligibility.",
+      "expected_names": [
+        "Assistance for Installation of Sprinkler / Drip Micro Irrigation Systems"
+      ],
+      "expected_ids": [
+        "21b82588-3633-b794-c512-634dd8150113"
+      ],
+      "retrieved": [
+        {
+          "id": "21b82588-3633-b794-c512-634dd8150113",
+          "name": "Assistance for Installation of Sprinkler / Drip Micro Irrigation Systems",
+          "similarity": 0.7911
+        },
+        {
+          "id": "29376133-4e01-84cc-9118-1b74c0a98de4",
+          "name": "Drip Irrigation Sprinkler",
+          "similarity": 0.7283
+        },
+        {
+          "id": "0c7110f6-c655-e4f2-0138-7d406007dca2",
+          "name": "Assistance to Co-operative Irrigation Societies M. N. R.-10 (General Area)",
+          "similarity": 0.6558
+        },
+        {
+          "id": "0f98f958-d8aa-6821-322d-5cb8fd95c282",
+          "name": "Fawara Sanyantra",
+          "similarity": 0.6324
+        },
+        {
+          "id": "ee0ea133-22f0-1bc2-22a4-568e04a232ff",
+          "name": "Assistance to Co-operative Irrigation Societies (Trible Area)",
+          "similarity": 0.6075
+        }
+      ],
+      "retrieved_ids": [
+        "21b82588-3633-b794-c512-634dd8150113",
+        "29376133-4e01-84cc-9118-1b74c0a98de4",
+        "0c7110f6-c655-e4f2-0138-7d406007dca2",
+        "0f98f958-d8aa-6821-322d-5cb8fd95c282",
+        "ee0ea133-22f0-1bc2-22a4-568e04a232ff"
+      ],
+      "relevant_retrieved": [
+        "21b82588-3633-b794-c512-634dd8150113"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 91,
+      "query": "Tell me about the Primary Cooperative Agriculture and Rural Development Bank: For Power Tiller scheme and its eligibility.",
+      "expected_names": [
+        "Primary Cooperative Agriculture and Rural Development Bank: For Power Tiller"
+      ],
+      "expected_ids": [
+        "31c74505-29b6-659c-4c11-209c8016142b"
+      ],
+      "retrieved": [
+        {
+          "id": "31c74505-29b6-659c-4c11-209c8016142b",
+          "name": "Primary Cooperative Agriculture and Rural Development Bank: For Power Tiller",
+          "similarity": 0.8396
+        },
+        {
+          "id": "2782ae76-7690-7e60-7a7f-16b4d4ed7024",
+          "name": "Primary Cooperative Agriculture and Rural Development Bank: For Animal Husbandry",
+          "similarity": 0.721
+        },
+        {
+          "id": "ed9cda32-e0fb-ef89-d60c-4180d01daa8f",
+          "name": "Primary Cooperative Agriculture and Rural Development Bank: For Handloom and Other Non Farm Sector Activities",
+          "similarity": 0.7094
+        },
+        {
+          "id": "39477b2a-69d7-a20f-8302-bbab29c1029d",
+          "name": "Primary Cooperative Agriculture and Rural Development Bank: For Sericulture In Irrigated Area",
+          "similarity": 0.6939
+        },
+        {
+          "id": "df8ecaf1-4de7-6776-b10f-2714d6ec0483",
+          "name": "Primary Cooperative Agriculture and Rural Development Bank: For Plantation (Tea)",
+          "similarity": 0.6901
+        }
+      ],
+      "retrieved_ids": [
+        "31c74505-29b6-659c-4c11-209c8016142b",
+        "2782ae76-7690-7e60-7a7f-16b4d4ed7024",
+        "ed9cda32-e0fb-ef89-d60c-4180d01daa8f",
+        "39477b2a-69d7-a20f-8302-bbab29c1029d",
+        "df8ecaf1-4de7-6776-b10f-2714d6ec0483"
+      ],
+      "relevant_retrieved": [
+        "31c74505-29b6-659c-4c11-209c8016142b"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 92,
+      "query": "Tell me about the Coffee Development Programme in North Eastern Region: Quality Upgradation / Certification: Drying Yards scheme and its eligibility.",
+      "expected_names": [
+        "Coffee Development Programme in North Eastern Region: Quality Upgradation / Certification: Drying Yards"
+      ],
+      "expected_ids": [
+        "14635166-87ce-346e-2093-c43cab7a5015"
+      ],
+      "retrieved": [
+        {
+          "id": "14635166-87ce-346e-2093-c43cab7a5015",
+          "name": "Coffee Development Programme in North Eastern Region: Quality Upgradation / Certification: Drying Yards",
+          "similarity": 0.8723
+        },
+        {
+          "id": "6ec9f50a-b447-b066-0ef9-15a2a42db85d",
+          "name": "Coffee Development Programme in North Eastern Region: Quality Upgradation / Certification: Support for Eco-Certification / Organic Certification",
+          "similarity": 0.801
+        },
+        {
+          "id": "1c72470f-30a7-696c-2f57-fb9b22d9847e",
+          "name": "Coffee Development Programme in North Eastern Region: Quality Upgradation / Certification: Supply of Baby Pulpers",
+          "similarity": 0.7843
+        },
+        {
+          "id": "fcba90b5-0a60-74e8-f0da-49600f8c1b64",
+          "name": "Coffee Development Programme in North Eastern Region: Water Augmentation",
+          "similarity": 0.756
+        },
+        {
+          "id": "0e186f40-bf74-f56a-f4e7-657e9164887b",
+          "name": "Development Support for Coffee in Traditional Areas: Eco-certification of Coffee",
+          "similarity": 0.7437
+        }
+      ],
+      "retrieved_ids": [
+        "14635166-87ce-346e-2093-c43cab7a5015",
+        "6ec9f50a-b447-b066-0ef9-15a2a42db85d",
+        "1c72470f-30a7-696c-2f57-fb9b22d9847e",
+        "fcba90b5-0a60-74e8-f0da-49600f8c1b64",
+        "0e186f40-bf74-f56a-f4e7-657e9164887b"
+      ],
+      "relevant_retrieved": [
+        "14635166-87ce-346e-2093-c43cab7a5015"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 93,
+      "query": "Tell me about the Dr. Ambedkar Medhavi Chhatravriti Yojna to Other Backward Classes Students scheme and its eligibility.",
+      "expected_names": [
+        "Dr. Ambedkar Medhavi Chhatravriti Yojna to Other Backward Classes Students"
+      ],
+      "expected_ids": [
+        "466b8eb9-014c-8b74-2cf2-238de6f6a042"
+      ],
+      "retrieved": [
+        {
+          "id": "466b8eb9-014c-8b74-2cf2-238de6f6a042",
+          "name": "Dr. Ambedkar Medhavi Chhatravriti Yojna to Other Backward Classes Students",
+          "similarity": 0.865
+        },
+        {
+          "id": "4e25240c-750f-0c60-94ab-b8cfa72d219d",
+          "name": "Dr. Ambedkar Medhavi Chhatravriti Yojna to Scheduled Caste Students",
+          "similarity": 0.7816
+        },
+        {
+          "id": "af688ee2-644e-4241-face-0c12ac71b9fe",
+          "name": "Dr. Ambedkar Medhavi Chattar Sansodhit Yojna",
+          "similarity": 0.7333
+        },
+        {
+          "id": "25cf85a0-c383-6686-245a-389fc6ff78b8",
+          "name": "Mukhyamantri Atyant Pichhda Varg Medhavriti Yojana",
+          "similarity": 0.6752
+        },
+        {
+          "id": "f681c5c3-298e-b600-1589-17b16b49eb08",
+          "name": "Mukhyamantri Vidyarthi Pratibha Yojna",
+          "similarity": 0.6688
+        }
+      ],
+      "retrieved_ids": [
+        "466b8eb9-014c-8b74-2cf2-238de6f6a042",
+        "4e25240c-750f-0c60-94ab-b8cfa72d219d",
+        "af688ee2-644e-4241-face-0c12ac71b9fe",
+        "25cf85a0-c383-6686-245a-389fc6ff78b8",
+        "f681c5c3-298e-b600-1589-17b16b49eb08"
+      ],
+      "relevant_retrieved": [
+        "466b8eb9-014c-8b74-2cf2-238de6f6a042"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 94,
+      "query": "Tell me about the Dr. Bhimrao Ambedkar Kamdhenu Yojana scheme and its eligibility.",
+      "expected_names": [
+        "Dr. Bhimrao Ambedkar Kamdhenu Yojana"
+      ],
+      "expected_ids": [
+        "99acc84b-e1da-26e8-c483-cc73506bf76d"
+      ],
+      "retrieved": [
+        {
+          "id": "99acc84b-e1da-26e8-c483-cc73506bf76d",
+          "name": "Dr. Bhimrao Ambedkar Kamdhenu Yojana",
+          "similarity": 0.7735
+        },
+        {
+          "id": "38c43c17-ca04-2409-55b2-c7793e0a9a44",
+          "name": "Dr. Bhimrao Ambedkar Aarthik Kalyan Yojana",
+          "similarity": 0.7149
+        },
+        {
+          "id": "9efd5ff6-ccb0-9d99-740d-410a58d05d96",
+          "name": "Mukhyamantri Yuva Udyami Yojana",
+          "similarity": 0.6912
+        },
+        {
+          "id": "f6c5ebbf-73e9-a1aa-6013-7f0007b6e32c",
+          "name": "Mukhyamantri Mahila Udyami Yojana",
+          "similarity": 0.6854
+        },
+        {
+          "id": "1cadab18-a650-081b-d539-4433d881513f",
+          "name": "Kumar Rajratna Bhimrao Ambedkar Medical Assistance Scheme",
+          "similarity": 0.6841
+        }
+      ],
+      "retrieved_ids": [
+        "99acc84b-e1da-26e8-c483-cc73506bf76d",
+        "38c43c17-ca04-2409-55b2-c7793e0a9a44",
+        "9efd5ff6-ccb0-9d99-740d-410a58d05d96",
+        "f6c5ebbf-73e9-a1aa-6013-7f0007b6e32c",
+        "1cadab18-a650-081b-d539-4433d881513f"
+      ],
+      "relevant_retrieved": [
+        "99acc84b-e1da-26e8-c483-cc73506bf76d"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 95,
+      "query": "Tell me about the Craftsman Training Scheme - Maharashtra scheme and its eligibility.",
+      "expected_names": [
+        "Craftsman Training Scheme - Maharashtra"
+      ],
+      "expected_ids": [
+        "1ddd46ea-d8d6-851a-8fca-e8d19aab4f8e"
+      ],
+      "retrieved": [
+        {
+          "id": "1ddd46ea-d8d6-851a-8fca-e8d19aab4f8e",
+          "name": "Craftsman Training Scheme - Maharashtra",
+          "similarity": 0.8203
+        },
+        {
+          "id": "a3c383a6-67db-844b-216e-a9fdd6d36f3d",
+          "name": "Craftsmen Training Scheme",
+          "similarity": 0.705
+        },
+        {
+          "id": "bc1cfff7-4dfa-fc41-4bcf-d457443261db",
+          "name": "Mukhyamantri Apprenticeship Yojana",
+          "similarity": 0.656
+        },
+        {
+          "id": "c843121a-15ee-b1a0-b271-de060a12ecfc",
+          "name": "Karkhandar Scheme For Development Of Craft Sector",
+          "similarity": 0.6469
+        },
+        {
+          "id": "ba3ee5d6-8a80-343c-ed15-88ef44c9c78d",
+          "name": "Leather Training Scheme - Rajasthan",
+          "similarity": 0.6218
+        }
+      ],
+      "retrieved_ids": [
+        "1ddd46ea-d8d6-851a-8fca-e8d19aab4f8e",
+        "a3c383a6-67db-844b-216e-a9fdd6d36f3d",
+        "bc1cfff7-4dfa-fc41-4bcf-d457443261db",
+        "c843121a-15ee-b1a0-b271-de060a12ecfc",
+        "ba3ee5d6-8a80-343c-ed15-88ef44c9c78d"
+      ],
+      "relevant_retrieved": [
+        "1ddd46ea-d8d6-851a-8fca-e8d19aab4f8e"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 96,
+      "query": "Tell me about the High Altitude Guide Course scheme and its eligibility.",
+      "expected_names": [
+        "High Altitude Guide Course"
+      ],
+      "expected_ids": [
+        "9e3855d9-2cce-a231-bf52-121eb34ced56"
+      ],
+      "retrieved": [
+        {
+          "id": "9e3855d9-2cce-a231-bf52-121eb34ced56",
+          "name": "High Altitude Guide Course",
+          "similarity": 0.7346
+        },
+        {
+          "id": "7a3d9e28-1024-87b9-97ff-33218ec3b8f3",
+          "name": "Low Altitude Guide Course",
+          "similarity": 0.6992
+        },
+        {
+          "id": "02c8cf17-c5aa-4bbb-8a0f-2fedcff9cbf9",
+          "name": "Special Basic Mountaineering Course",
+          "similarity": 0.5748
+        },
+        {
+          "id": "5bd457d9-a7b9-566c-fc6a-f0c0181db349",
+          "name": "Super-100 Programme - Uttarakhand",
+          "similarity": 0.4666
+        },
+        {
+          "id": "582c768e-7355-dfd3-9495-68c7a930adc7",
+          "name": "Basic Kayaking Course",
+          "similarity": 0.4616
+        }
+      ],
+      "retrieved_ids": [
+        "9e3855d9-2cce-a231-bf52-121eb34ced56",
+        "7a3d9e28-1024-87b9-97ff-33218ec3b8f3",
+        "02c8cf17-c5aa-4bbb-8a0f-2fedcff9cbf9",
+        "5bd457d9-a7b9-566c-fc6a-f0c0181db349",
+        "582c768e-7355-dfd3-9495-68c7a930adc7"
+      ],
+      "relevant_retrieved": [
+        "9e3855d9-2cce-a231-bf52-121eb34ced56"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 97,
+      "query": "Tell me about the The West Bengal Incentive Scheme: Waiver of Electricity Duty scheme and its eligibility.",
+      "expected_names": [
+        "The West Bengal Incentive Scheme: Waiver of Electricity Duty"
+      ],
+      "expected_ids": [
+        "d4584bcc-6ba2-ec2e-9a1f-c00d4955b534"
+      ],
+      "retrieved": [
+        {
+          "id": "d4584bcc-6ba2-ec2e-9a1f-c00d4955b534",
+          "name": "The West Bengal Incentive Scheme: Waiver of Electricity Duty",
+          "similarity": 0.8616
+        },
+        {
+          "id": "749b9b7f-7ebf-9d9d-63fe-de6f0679a555",
+          "name": "West Bengal Textile Incentive Scheme: Waiver of Electricity Duty",
+          "similarity": 0.8499
+        },
+        {
+          "id": "010b9354-75ab-151a-0b00-c71d338ec984",
+          "name": "Incentive Scheme for MSMEs in Powerloom Sector: Waiver of Electricity Duty",
+          "similarity": 0.7967
+        },
+        {
+          "id": "1ffdc090-81fb-8d8d-afa5-9008ee7ebfdc",
+          "name": "West Bengal Textile Incentive Scheme: Power Subsidy",
+          "similarity": 0.7965
+        },
+        {
+          "id": "eb199f52-b14f-b6c8-398c-ad8299ef596a",
+          "name": "West Bengal Textile Incentive Scheme: Incentive for Energy Efficiency",
+          "similarity": 0.7526
+        }
+      ],
+      "retrieved_ids": [
+        "d4584bcc-6ba2-ec2e-9a1f-c00d4955b534",
+        "749b9b7f-7ebf-9d9d-63fe-de6f0679a555",
+        "010b9354-75ab-151a-0b00-c71d338ec984",
+        "1ffdc090-81fb-8d8d-afa5-9008ee7ebfdc",
+        "eb199f52-b14f-b6c8-398c-ad8299ef596a"
+      ],
+      "relevant_retrieved": [
+        "d4584bcc-6ba2-ec2e-9a1f-c00d4955b534"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 98,
+      "query": "Tell me about the Krshak Prashikshan Tatha Bhraman Karyakram scheme and its eligibility.",
+      "expected_names": [
+        "Krshak Prashikshan Tatha Bhraman Karyakram"
+      ],
+      "expected_ids": [
+        "36a477db-ebd5-3892-3c44-8051fa689bc0"
+      ],
+      "retrieved": [
+        {
+          "id": "36a477db-ebd5-3892-3c44-8051fa689bc0",
+          "name": "Krshak Prashikshan Tatha Bhraman Karyakram",
+          "similarity": 0.6542
+        },
+        {
+          "id": "5b31a0c9-9c6a-a92c-0784-3e9957fbb056",
+          "name": "KCR Nutrition Kit",
+          "similarity": 0.5871
+        },
+        {
+          "id": "1c45e13a-38b1-0192-b18a-77da78d08323",
+          "name": "Prak Pariksha Prashikshan Kendra",
+          "similarity": 0.5805
+        },
+        {
+          "id": "4591b4c4-1a91-53c5-1ae9-74f9796c05bb",
+          "name": "Mukhyamantri Yuva Karya Prashikshan Yojana",
+          "similarity": 0.5774
+        },
+        {
+          "id": "a5da846f-007e-c51a-b20a-e39d32624a31",
+          "name": "Pradhan Mantri Uchchatar Shiksha Protsahan Yojana - Special Scholarship Scheme for Jammu & Kashmir and Ladakh",
+          "similarity": 0.5758
+        }
+      ],
+      "retrieved_ids": [
+        "36a477db-ebd5-3892-3c44-8051fa689bc0",
+        "5b31a0c9-9c6a-a92c-0784-3e9957fbb056",
+        "1c45e13a-38b1-0192-b18a-77da78d08323",
+        "4591b4c4-1a91-53c5-1ae9-74f9796c05bb",
+        "a5da846f-007e-c51a-b20a-e39d32624a31"
+      ],
+      "relevant_retrieved": [
+        "36a477db-ebd5-3892-3c44-8051fa689bc0"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 99,
+      "query": "Tell me about the Registration & Stamp Duty Subsidy Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Registration & Stamp Duty Subsidy Scheme"
+      ],
+      "expected_ids": [
+        "20de4140-2b61-6578-7245-ee3199a4f470"
+      ],
+      "retrieved": [
+        {
+          "id": "20de4140-2b61-6578-7245-ee3199a4f470",
+          "name": "Registration & Stamp Duty Subsidy Scheme",
+          "similarity": 0.6937
+        },
+        {
+          "id": "e51e8c1d-1786-e9e0-4c61-afae6ea659e9",
+          "name": "Stamp Duty Exemption for Property Registration",
+          "similarity": 0.6841
+        },
+        {
+          "id": "b534b7ee-95c8-fc39-9a52-72feeb60e02e",
+          "name": "Incentive Scheme for MSMEs in Powerloom Sector: Subsidy on Stamp Duty and Registration Fees",
+          "similarity": 0.6667
+        },
+        {
+          "id": "f97a9695-45c7-3cbc-780f-17f976b661db",
+          "name": "Registration for Crop Procurement",
+          "similarity": 0.6497
+        },
+        {
+          "id": "5c34c46c-2852-6012-a429-baf589a28c02",
+          "name": "West Bengal Textile Incentive Scheme: Reimbursement of Stamp Duty and Registration Fee",
+          "similarity": 0.6241
+        }
+      ],
+      "retrieved_ids": [
+        "20de4140-2b61-6578-7245-ee3199a4f470",
+        "e51e8c1d-1786-e9e0-4c61-afae6ea659e9",
+        "b534b7ee-95c8-fc39-9a52-72feeb60e02e",
+        "f97a9695-45c7-3cbc-780f-17f976b661db",
+        "5c34c46c-2852-6012-a429-baf589a28c02"
+      ],
+      "relevant_retrieved": [
+        "20de4140-2b61-6578-7245-ee3199a4f470"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    },
+    {
+      "query_id": 100,
+      "query": "Tell me about the Goa Mediclaim Scheme scheme and its eligibility.",
+      "expected_names": [
+        "Goa Mediclaim Scheme"
+      ],
+      "expected_ids": [
+        "253bfd27-63eb-8a2c-aa16-1d0cade20c71"
+      ],
+      "retrieved": [
+        {
+          "id": "253bfd27-63eb-8a2c-aa16-1d0cade20c71",
+          "name": "Goa Mediclaim Scheme",
+          "similarity": 0.7323
+        },
+        {
+          "id": "ae2038d9-e97f-e266-8033-272daeab8947",
+          "name": "Scheme for Persons with Benchmark Disability Requiring High Support",
+          "similarity": 0.6354
+        },
+        {
+          "id": "2716ff41-e549-9d39-a421-06c4bcd9a8e6",
+          "name": "Scheme For Welfare Of Children In Need Of Care And Protection",
+          "similarity": 0.6108
+        },
+        {
+          "id": "7745eb4a-292d-e0cb-d859-ecdf7c7ba883",
+          "name": "Government of Goa State Scholarship to NDA Cadets",
+          "similarity": 0.6044
+        },
+        {
+          "id": "d672fbb0-0cc6-b528-d97e-19309fca71ae",
+          "name": "Deen Dayal Swasthya Seva Yojana",
+          "similarity": 0.6038
+        }
+      ],
+      "retrieved_ids": [
+        "253bfd27-63eb-8a2c-aa16-1d0cade20c71",
+        "ae2038d9-e97f-e266-8033-272daeab8947",
+        "2716ff41-e549-9d39-a421-06c4bcd9a8e6",
+        "7745eb4a-292d-e0cb-d859-ecdf7c7ba883",
+        "d672fbb0-0cc6-b528-d97e-19309fca71ae"
+      ],
+      "relevant_retrieved": [
+        "253bfd27-63eb-8a2c-aa16-1d0cade20c71"
+      ],
+      "n_relevant": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "rank_of_first": 1,
+      "is_hit": true
+    }
+  ]
+}
