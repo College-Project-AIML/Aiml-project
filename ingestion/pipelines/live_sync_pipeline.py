@@ -29,6 +29,7 @@ import os
 from datetime import datetime, timezone
 
 from ingestion.dedup.dedup_engine import DedupEngine
+from ingestion.enrichment.myscheme_detail import enrich_schemes
 from ingestion.normalizers.scheme_normalizer import SchemeNormalizer
 from ingestion.sync import change_detector as cd
 from ingestion.sync.fingerprint import fingerprint_record
@@ -153,12 +154,34 @@ class LiveSyncPipeline:
         raise ValueError(f"unknown source: {name}")
 
     def _apply_changes(self, conn, source: str, records: list, stats: dict) -> None:
-        """Classify every record, upsert changed ones, record updates + snapshots."""
+        """Classify every record, enrich NEW/UPDATED in batches, upsert and save snapshots incrementally."""
         cur = conn.cursor()
         try:
-            pending_new = []   # (scheme_id, record)
-            pending_updated = []  # (scheme_id, record, changed_fields)
-            to_upsert = []
+            BATCH_SIZE = 100  # Process in batches to save progress incrementally
+
+            # Phase 1: Pre-load existing snapshots for this source in ONE query to avoid thousands of network roundtrips
+            cur.execute(
+                "SELECT snap.scheme_id, snap.fingerprint, snap.snapshot, sch.status "
+                "FROM scheme_snapshots snap "
+                "LEFT JOIN schemes sch ON sch.id = snap.scheme_id "
+                "WHERE snap.source = %s",
+                (source,),
+            )
+            existing_snapshots = {}
+            for r in cur.fetchall():
+                snap_val = r[2]
+                if isinstance(snap_val, str):
+                    try:
+                        snap_val = json.loads(snap_val)
+                    except Exception:
+                        snap_val = None
+                existing_snapshots[r[0]] = {
+                    "fingerprint": r[1],
+                    "snapshot": snap_val,
+                    "status": r[3],
+                }
+
+            classification = []  # list of (scheme_id, record, change_type, previous)
             seen_scheme_ids = set()
 
             for record in records:
@@ -166,61 +189,132 @@ class LiveSyncPipeline:
                 seen_scheme_ids.add(scheme_id)
                 fingerprint = fingerprint_record(record)
 
-                previous = _load_snapshot(cur, scheme_id)
+                previous = existing_snapshots.get(scheme_id)
                 change = cd.classify(fingerprint, previous["fingerprint"] if previous else None)
 
-                if change == cd.NEW:
-                    stats["new"] += 1
-                    pending_new.append((scheme_id, record))
-                    to_upsert.append(record)
-                elif change == cd.UPDATED:
+                classification.append((scheme_id, record, change, previous))
+
+            # Separate NEW/UPDATED from UNCHANGED
+            needs_upsert = [(sid, rec, ch, prev) for sid, rec, ch, prev in classification if ch in (cd.NEW, cd.UPDATED)]
+            unchanged = [(sid, rec, ch, prev) for sid, rec, ch, prev in classification if ch not in (cd.NEW, cd.UPDATED)]
+
+            # Handle UNCHANGED records immediately
+            unchanged_ids = []
+            for scheme_id, record, change, previous in unchanged:
+                if previous and previous.get("status") == "INACTIVE":
                     stats["updated"] += 1
-                    old_record = _previous_semantic_record(cur, scheme_id, previous)
-                    changed = cd.diff_fields(old_record, record) if old_record else None
-                    pending_updated.append((scheme_id, record, changed))
-                    to_upsert.append(record)
                 else:
-                    # UNCHANGED: reactivate if the scheme was marked INACTIVE.
-                    if previous and previous.get("status") == "INACTIVE":
-                        stats["updated"] += 1
-                        pending_updated.append(
-                            (scheme_id, record, {"status": ["INACTIVE", "ACTIVE"]})
-                        )
-                        to_upsert.append(record)
-                    else:
-                        stats["unchanged"] += 1
-                        # Still refresh fetched_at / clear any stale miss count.
-                        _refresh_snapshot(cur, scheme_id)
+                    stats["unchanged"] += 1
+                    unchanged_ids.append(scheme_id)
 
-            # 1. Upsert changed scheme rows first (scheme_updates has an FK).
-            if to_upsert:
-                self._upsert_schemes(to_upsert)
+            if unchanged_ids:
+                placeholders = ','.join(['%s'] * len(unchanged_ids))
+                cur.execute(
+                    f"UPDATE scheme_snapshots SET fetched_at = CURRENT_TIMESTAMP, miss_count = 0 WHERE scheme_id IN ({placeholders})",
+                    unchanged_ids,
+                )
+                conn.commit()
 
-            # 2. Emit updates + refresh snapshots — only for schemes that are
-            #    actually present in the DB (a failed insert must not produce
-            #    FK-violating update rows and kill the whole run).
-            event_ids = [sid for sid, _ in pending_new] + [sid for sid, *_ in pending_updated]
-            existing_ids = set(_existing_scheme_ids(cur, event_ids))
+            # Phase 2: Process NEW/UPDATED records in batches
+            if needs_upsert:
+                do_enrich = os.getenv("ENRICH_DETAILS", "false").lower() in ("true", "1")
+                logger.info("[%s] processing %d NEW/UPDATED records in batches of %d...", source, len(needs_upsert), BATCH_SIZE)
+                
+                for batch_start in range(0, len(needs_upsert), BATCH_SIZE):
+                    batch = needs_upsert[batch_start:batch_start + BATCH_SIZE]
+                    batch_num = batch_start // BATCH_SIZE + 1
+                    total_batches = (len(needs_upsert) + BATCH_SIZE - 1) // BATCH_SIZE
+                    
+                    logger.info("[%s] processing batch %d/%d (%d records)", source, batch_num, total_batches, len(batch))
+                    
+                    try:
+                        batch_records = [rec for _, rec, _, _ in batch]
+                        if source == "myscheme" and do_enrich:
+                            try:
+                                enriched_records = enrich_schemes(batch_records, rate_limit=0.2)
+                            except Exception as e:
+                                logger.warning("[%s] enrichment failed, using raw records: %s", source, e)
+                                enriched_records = batch_records
+                        else:
+                            enriched_records = batch_records
+                        
+                        batch_classification = []
+                        for (sid, rec, ch, prev), er in zip(batch, enriched_records):
+                            batch_classification.append((sid, er, ch, prev))
+                        
+                        # Upsert this batch immediately
+                        self._upsert_batch(conn, cur, source, batch_classification, stats); logger.info(f"[{source}] upserted batch {batch_num}")
+                        conn.commit()
+                        logger.info("[%s] batch %d/%d committed (%d new, %d updated)", 
+                                   source, batch_num, total_batches, 
+                                   sum(1 for _, _, ch, _ in batch_classification if ch == cd.NEW),
+                                   sum(1 for _, _, ch, _ in batch_classification if ch == cd.UPDATED))
+                        
+                    except Exception as exc:  # noqa: BLE001
+                        stats["errors"] += len(batch)
+                        logger.exception("Batch %d/%d failed for %s, continuing with next batch", batch_num, total_batches, source)
+                        conn.rollback()
+                        continue
 
-            for scheme_id, record in pending_new:
-                if scheme_id not in existing_ids:
-                    stats["errors"] += 1
-                    continue
-                _emit_update(cur, scheme_id, cd.NEW, None)
-                _upsert_snapshot(cur, scheme_id, fingerprint_record(record), record, source)
-            for scheme_id, record, changed in pending_updated:
-                if scheme_id not in existing_ids:
-                    stats["errors"] += 1
-                    continue
-                _emit_update(cur, scheme_id, cd.UPDATED, changed)
-                _upsert_snapshot(cur, scheme_id, fingerprint_record(record), record, source)
-            conn.commit()
+            # Phase 3: Handle UNCHANGED reactivation (INACTIVE -> ACTIVE)
+            reactivated = []
+            for scheme_id, record, change, previous in unchanged:
+                if previous and previous.get("status") == "INACTIVE":
+                    stats["updated"] += 1
+                    reactivated.append((scheme_id, record, {"status": ["INACTIVE", "ACTIVE"]}))
 
-            # 3. CLOSED detection — scoped to this source's tracked schemes.
+            if reactivated:
+                self._upsert_batch(conn, cur, source, reactivated, stats)
+                conn.commit()
+
+            # Phase 4: CLOSED detection (once at the end for all seen schemes)
             stats["closed"] = self._detect_closed(cur, source, seen_scheme_ids)
             conn.commit()
+
         finally:
             cur.close()
+
+    def _upsert_batch(self, conn, cur, source: str, batch_classification: list, stats: dict) -> None:
+        
+        """Upsert a single batch of records and save snapshots."""
+        pending_new = []
+        pending_updated = []
+        to_upsert = []
+
+        for scheme_id, record, change, previous in batch_classification:
+            if change == cd.NEW:
+                stats["new"] += 1
+                pending_new.append((scheme_id, record))
+                to_upsert.append(record)
+            elif change == cd.UPDATED:
+                stats["updated"] += 1
+                old_record = _previous_semantic_record(cur, scheme_id, previous)
+                changed = cd.diff_fields(old_record, record) if old_record else None
+                pending_updated.append((scheme_id, record, changed))
+                to_upsert.append(record)
+
+        # Upsert this batch
+        if to_upsert:
+            
+            self._upsert_schemes(to_upsert)
+            
+
+        # Emit updates + save snapshots for this batch
+        event_ids = [sid for sid, _ in pending_new] + [sid for sid, *_ in pending_updated]
+        existing_ids = set(_existing_scheme_ids(cur, event_ids))
+
+        for scheme_id, record in pending_new:
+            if scheme_id not in existing_ids:
+                stats["errors"] += 1
+                continue
+            _emit_update(cur, scheme_id, cd.NEW, None)
+            _upsert_snapshot(cur, scheme_id, fingerprint_record(record), record, source)
+        for scheme_id, record, changed in pending_updated:
+            if scheme_id not in existing_ids:
+                stats["errors"] += 1
+                continue
+            _emit_update(cur, scheme_id, cd.UPDATED, changed)
+            _upsert_snapshot(cur, scheme_id, fingerprint_record(record), record, source)
 
     def _upsert_schemes(self, records: list) -> None:
         """Delegate to the existing PostgresLoader (idempotent ON CONFLICT upsert)."""
@@ -234,13 +328,26 @@ class LiveSyncPipeline:
 
     def _detect_closed(self, cur, source: str, seen_scheme_ids: set) -> int:
         """Mark schemes of this source missing N consecutive runs as INACTIVE."""
-        cur.execute(
-            "SELECT snap.scheme_id, snap.miss_count, sch.status "
-            "FROM scheme_snapshots snap "
-            "LEFT JOIN schemes sch ON sch.id = snap.scheme_id "
-            "WHERE snap.source = %s AND snap.scheme_id != ALL(%s::uuid[])",
-            (source, list(seen_scheme_ids)),
-        )
+        if not seen_scheme_ids:
+            # No schemes seen this run, mark all as missed
+            cur.execute(
+                "SELECT snap.scheme_id, snap.miss_count, sch.status "
+                "FROM scheme_snapshots snap "
+                "LEFT JOIN schemes sch ON sch.id = snap.scheme_id "
+                "WHERE snap.source = %s",
+                (source,),
+            )
+        else:
+            # Use proper UUID array casting
+            seen_list = list(seen_scheme_ids)
+            placeholders = ','.join(['%s'] * len(seen_list))
+            cur.execute(
+                f"SELECT snap.scheme_id, snap.miss_count, sch.status "
+                f"FROM scheme_snapshots snap "
+                f"LEFT JOIN schemes sch ON sch.id = snap.scheme_id "
+                f"WHERE snap.source = %s AND snap.scheme_id NOT IN ({placeholders})",
+                (source, *seen_list),
+            )
         rows = cur.fetchall()
         closed = 0
         for scheme_id, miss_count, status in rows:
@@ -304,7 +411,12 @@ def _existing_scheme_ids(cur, scheme_ids):
     """Return the set of scheme ids (as strings) present in the schemes table."""
     if not scheme_ids:
         return set()
-    cur.execute("SELECT id FROM schemes WHERE id = ANY(%s::uuid[])", (list(scheme_ids),))
+    scheme_list = list(scheme_ids)
+    placeholders = ','.join(['%s'] * len(scheme_list))
+    cur.execute(
+        f"SELECT id FROM schemes WHERE id IN ({placeholders})",
+        scheme_list,
+    )
     return {str(row[0]) for row in cur.fetchall()}
 
 

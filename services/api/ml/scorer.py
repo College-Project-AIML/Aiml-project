@@ -71,6 +71,9 @@ def _load_ml_model():
 
     model_path = os.getenv("RANKER_MODEL_PATH", "models/ranker.json")
 
+    if not model_path:
+        return
+
     # Resolve relative paths from the project root
     if not os.path.isabs(model_path):
         # Walk up from this file to find the project root (where .env lives)

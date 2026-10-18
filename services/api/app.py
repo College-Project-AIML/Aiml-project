@@ -41,6 +41,7 @@ from services.api.routes.categories import router as categories_router
 from services.api.routes.eligibility import router as eligibility_router
 from services.api.routes.updates import router as updates_router
 from services.api.routes.stats import router as stats_router
+from services.api.routes.events import router as events_router
 
 
 @asynccontextmanager
@@ -82,6 +83,7 @@ app.include_router(categories_router, prefix="/api/v1")
 app.include_router(eligibility_router, prefix="/api/v1")
 app.include_router(updates_router, prefix="/api/v1")
 app.include_router(stats_router, prefix="/api/v1")
+app.include_router(events_router, prefix="/api/v1")
 from services.api.routes.auth import router as auth_router
 app.include_router(auth_router, prefix='/api/v1')
 from services.api.routes.chatbot import router as chatbot_router

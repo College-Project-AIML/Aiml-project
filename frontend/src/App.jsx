@@ -32,16 +32,20 @@ function RequireOnboarding({ children }) {
 
 // ── Auth0 Callback Handler (only renders if Auth0 is configured) ────────────
 function Auth0CallbackHandler() {
-  const { isAuthenticated, user: auth0User } = useAuth0()
+  const { isAuthenticated, user: auth0User, isLoading } = useAuth0()
   const { loginWithAuth0User, user } = useAuth()
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isAuthenticated && auth0User && !user) {
-      loginWithAuth0User(auth0User)
-      navigate('/onboarding')
+    if (!isLoading && isAuthenticated && auth0User && !user) {
+      const loggedIn = loginWithAuth0User(auth0User)
+      if (loggedIn && loggedIn.profile) {
+        navigate('/dashboard')
+      } else {
+        navigate('/onboarding')
+      }
     }
-  }, [isAuthenticated, auth0User, user, loginWithAuth0User, navigate])
+  }, [isLoading, isAuthenticated, auth0User, user, loginWithAuth0User, navigate])
 
   return null
 }

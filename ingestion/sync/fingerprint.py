@@ -28,6 +28,10 @@ SEMANTIC_FIELDS = [
     "status",
     "tags",
     "confidence_score",
+    "benefits",
+    "documents",
+    "eligibility_rules",
+    "provider_id",
 ]
 
 
@@ -41,8 +45,14 @@ def fingerprint_record(normalized: Dict) -> str:
     them.
     """
     canonical = {field: normalized.get(field) for field in SEMANTIC_FIELDS}
+    # Use JSON serialization for complex types (dicts, nested lists) to ensure
+    # stable ordering. For simple lists (tags), sort them.
     canonical = {
-        key: (sorted(value) if isinstance(value, list) else value)
+        key: (
+            sorted(value) if isinstance(value, list) and value and not isinstance(value[0], dict)
+            else json.dumps(value, sort_keys=True, default=str) if isinstance(value, (dict, list)) and value
+            else value
+        )
         for key, value in canonical.items()
     }
     payload = json.dumps(canonical, sort_keys=True, default=str)

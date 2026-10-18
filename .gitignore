@@ -30,3 +30,4 @@ out/
 # IDEs
 .vscode/
 .idea/
+.neon

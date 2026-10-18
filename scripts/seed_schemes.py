@@ -33,6 +33,9 @@ DB_CONFIG = {
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
+if not DATABASE_URL and not DB_CONFIG["password"]:
+    raise ValueError("Neither DATABASE_URL nor POSTGRES_PASSWORD is set")
+
 
 def get_conn():
     if DATABASE_URL:
