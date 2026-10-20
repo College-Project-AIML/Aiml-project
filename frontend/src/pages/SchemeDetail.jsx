@@ -4,6 +4,7 @@ import { getScheme } from '../api/api'
 import { timeAgo, formatValue } from '../utils'
 import { useAuth } from '../context/AuthContext'
 import { getApplications, trackApplication } from '../utils/applicationTracker'
+import { eventTracker } from '../utils/eventTracker'
 
 const styles = {
   content: {
@@ -253,8 +254,23 @@ function SchemeDetail() {
     load()
   }, [id, user])
 
+  // Track scheme view
+  useEffect(() => {
+    if (scheme && !loading) {
+      const startTime = Date.now()
+      eventTracker.view(scheme.id, { source: 'detail' })
+      return () => {
+        const dwellMs = Date.now() - startTime
+        if (dwellMs > 1000) { // Only track if viewed for more than 1 second
+          eventTracker.view(scheme.id, { source: 'detail', dwell_ms: dwellMs })
+        }
+      }
+    }
+  }, [scheme, loading])
+
   const handleTrackApplication = () => {
     if (!user) return
+    eventTracker.applyStart(scheme.id, { source: 'detail' })
     trackApplication(user.user_id || user.email, scheme)
     setIsTracked(true)
   }

@@ -140,7 +140,6 @@ def get_recommended_schemes(req: RecommendedRequest):
     }
 
     with get_db() as cur:
-        # Fetch active schemes with their eligibility rules
         conditions = ["s.status = 'ACTIVE'"]
         params: list = []
 
@@ -148,45 +147,30 @@ def get_recommended_schemes(req: RecommendedRequest):
             conditions.append("c.name ILIKE %s")
             params.append(f"%{req.category}%")
 
+        if req.state:
+            st = req.state.upper()
+            conditions.append("(s.state_code IS NULL OR s.state_code IN ('', 'IN') OR s.state_code = %s OR (e.states IS NOT NULL AND %s = ANY(e.states)))")
+            params.extend([st, st])
+
         where = " AND ".join(conditions)
 
         cur.execute(f"""
             SELECT s.id, s.name, s.description, s.eligibility_text,
                    s.state_code, s.status, s.source, s.link,
                    s.tags, s.confidence_score,
-                   c.name as category_name, p.name as provider_name
+                   c.name as category_name, p.name as provider_name,
+                   e.min_age, e.max_age, e.max_income,
+                   e.gender, e.caste, e.states, e.education_level
             FROM schemes s
             LEFT JOIN categories c ON s.category_id = c.id
             LEFT JOIN providers p ON s.provider_id = p.id
+            LEFT JOIN eligibility_rules e ON e.scheme_id = s.id
             WHERE {where}
         """, params)
-        scheme_rows = cur.fetchall()
+        rows = cur.fetchall()
 
-        # Fetch eligibility rules for each scheme
-        scheme_ids = [str(row["id"]) for row in scheme_rows]
-        rules_map = {}
-        if scheme_ids:
-            placeholders = ", ".join(["%s"] * len(scheme_ids))
-            cur.execute(f"""
-                SELECT scheme_id, min_age, max_age, max_income,
-                       gender, caste, states, education_level
-                FROM eligibility_rules
-                WHERE scheme_id IN ({placeholders})
-            """, scheme_ids)
-            for r in cur.fetchall():
-                rules_map[str(r["scheme_id"])] = {
-                    "min_age": r["min_age"],
-                    "max_age": r["max_age"],
-                    "max_income": float(r["max_income"]) if r["max_income"] else None,
-                    "gender": r["gender"],
-                    "caste": r["caste"],
-                    "states": r["states"],
-                    "education_level": r["education_level"],
-                }
-
-    # Build list with rules attached
     schemes_with_rules = []
-    for row in scheme_rows:
+    for row in rows:
         sid = str(row["id"])
         scheme_dict = {
             "id": sid,
@@ -202,9 +186,20 @@ def get_recommended_schemes(req: RecommendedRequest):
             "category_name": row["category_name"],
             "provider_name": row["provider_name"],
         }
+        rules = None
+        if any(row.get(k) is not None for k in ["min_age", "max_age", "max_income", "gender", "caste", "states", "education_level"]):
+            rules = {
+                "min_age": row["min_age"],
+                "max_age": row["max_age"],
+                "max_income": float(row["max_income"]) if row["max_income"] else None,
+                "gender": row["gender"],
+                "caste": row["caste"],
+                "states": row["states"],
+                "education_level": row["education_level"],
+            }
         schemes_with_rules.append({
             "scheme": scheme_dict,
-            "rules": rules_map.get(sid),
+            "rules": rules,
         })
 
     # Rank by personalized relevance

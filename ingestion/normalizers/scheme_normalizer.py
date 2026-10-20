@@ -146,12 +146,21 @@ class SchemeNormalizer:
             "eligibility_text": self._normalize_text(raw.get("eligibility")),
             "state_code": self._normalize_state(raw.get("state")),
             "link": self._normalize_link(raw.get("link")),
+            "slug": self._normalize_text(raw.get("slug")),
             "tags": self._generate_tags(raw),
             "confidence_score": self._source_confidence(raw.get("source")),
             "version": "v1",
             "ingested_at": datetime.utcnow().isoformat(),
             "status": "ACTIVE"
         }
+
+        extras = raw.get("raw_extras", {}) or {}
+        normalized["benefits"] = self._normalize_benefits(extras.get("benefits"))
+        normalized["documents"] = self._normalize_documents(extras.get("documents"))
+        normalized["eligibility_rules"] = self._normalize_eligibility_rules(
+            raw.get("eligibility"), normalized["state_code"]
+        )
+        normalized["deadline"] = extras.get("deadline")
 
         return normalized
 
@@ -241,6 +250,173 @@ class SchemeNormalizer:
         if "karnataka.gov.in" in source:
             return 0.95
         return 0.6
+
+    # -----------------------------
+    # Related Data Normalizers
+    # -----------------------------
+
+    def _normalize_benefits(self, raw_benefits):
+        """Convert raw benefits data into structured benefit records."""
+        if not raw_benefits:
+            return []
+        
+        benefits = []
+        if isinstance(raw_benefits, list):
+            for b in raw_benefits:
+                if isinstance(b, dict):
+                    benefits.append({
+                        "benefit_type": b.get("type") or b.get("benefit_type") or "financial",
+                        "description": self._normalize_text(b.get("description") or b.get("details")),
+                        "amount": self._parse_amount(b.get("amount") or b.get("value")),
+                        "frequency": b.get("frequency") or b.get("period") or "annual"
+                    })
+                elif isinstance(b, str):
+                    benefits.append({
+                        "benefit_type": "financial",
+                        "description": self._normalize_text(b),
+                        "amount": None,
+                        "frequency": "annual"
+                    })
+        elif isinstance(raw_benefits, dict):
+            benefits.append({
+                "benefit_type": raw_benefits.get("type", "financial"),
+                "description": self._normalize_text(raw_benefits.get("description")),
+                "amount": self._parse_amount(raw_benefits.get("amount")),
+                "frequency": raw_benefits.get("frequency", "annual")
+            })
+        elif isinstance(raw_benefits, str):
+            benefits.append({
+                "benefit_type": "financial",
+                "description": self._normalize_text(raw_benefits),
+                "amount": None,
+                "frequency": "annual"
+            })
+        
+        return benefits
+
+    def _normalize_documents(self, raw_documents):
+        """Convert raw documents data into structured document records."""
+        if not raw_documents:
+            return []
+        
+        documents = []
+        if isinstance(raw_documents, list):
+            for d in raw_documents:
+                if isinstance(d, dict):
+                    documents.append({
+                        "document_name": d.get("name") or d.get("document_name") or d.get("document"),
+                        "is_mandatory": d.get("mandatory", d.get("is_mandatory", True))
+                    })
+                elif isinstance(d, str):
+                    documents.append({
+                        "document_name": d,
+                        "is_mandatory": True
+                    })
+        elif isinstance(raw_documents, str):
+            documents.append({
+                "document_name": raw_documents,
+                "is_mandatory": True
+            })
+        
+        return [d for d in documents if d.get("document_name")]
+
+    def _normalize_eligibility_rules(self, eligibility_text, state_code):
+        """Extract structured eligibility rules from eligibility text."""
+        if not eligibility_text:
+            return None
+        
+        rules = {
+            "min_age": None,
+            "max_age": None,
+            "max_income": None,
+            "gender": None,
+            "caste": None,
+            "states": [state_code] if state_code and state_code != "IN" else None,
+            "education_level": None
+        }
+        
+        text = eligibility_text.lower()
+        
+        # Extract age
+        import re
+        age_matches = re.findall(r'age[:\s]*(\d+)[\s\-]*(\d+)?', text)
+        if age_matches:
+            rules["min_age"] = int(age_matches[0][0])
+            if age_matches[0][1]:
+                rules["max_age"] = int(age_matches[0][1])
+        
+        # Extract income (look for lakhs, rupees, etc.)
+        income_matches = re.findall(r'(?:income|earning)[^\d]*(\d+(?:\.\d+)?)\s*(?:lakh|lac|crore)?', text)
+        if income_matches:
+            val = float(income_matches[0])
+            if 'lakh' in text or 'lac' in text:
+                val *= 100000
+            elif 'crore' in text:
+                val *= 10000000
+            rules["max_income"] = val
+        
+        # Extract gender
+        if 'girl' in text or 'women' in text or 'female' in text:
+            rules["gender"] = ["female"]
+        elif 'boy' in text or 'male' in text:
+            rules["gender"] = ["male"]
+        
+        # Extract caste
+        caste_keywords = ['sc', 'st', 'obc', 'general', 'minority', 'tribal', 'scheduled caste', 'scheduled tribe']
+        found_castes = [c for c in caste_keywords if c in text]
+        if found_castes:
+            # Normalize caste names
+            caste_map = {
+                'sc': 'SC', 'scheduled caste': 'SC',
+                'st': 'ST', 'scheduled tribe': 'ST',
+                'obc': 'OBC',
+                'general': 'general',
+                'minority': 'minority',
+                'tribal': 'ST'
+            }
+            rules["caste"] = [caste_map.get(c, c.upper()) for c in found_castes]
+        
+        # Extract education level
+        edu_keywords = {
+            '10th': '10th_pass', 'class 10': '10th_pass', 'matric': '10th_pass', 'ssc': '10th_pass',
+            '12th': '12th_pass', 'class 12': '12th_pass', 'puc': '12th_pass', 'hsc': '12th_pass',
+            'graduate': 'graduate', 'graduation': 'graduate', 'degree': 'graduate',
+            'post graduate': 'post_graduate', 'postgraduate': 'post_graduate', 'masters': 'post_graduate', 'phd': 'post_graduate',
+            'diploma': 'diploma', 'iti': 'diploma'
+        }
+        for keyword, level in edu_keywords.items():
+            if keyword in text:
+                rules["education_level"] = level
+                break
+        
+        # Only return if we extracted something meaningful
+        if any(v is not None for v in rules.values() if v not in ([], None)):
+            return rules
+        return None
+
+    def _parse_amount(self, value):
+        """Parse amount from various formats."""
+        if value is None:
+            return None
+        if isinstance(value, (int, float)):
+            return float(value)
+        if isinstance(value, str):
+            # Remove currency symbols, commas
+            cleaned = re.sub(r'[₹$,\s]', '', value)
+            # Handle lakhs/crores
+            if 'lakh' in cleaned.lower() or 'lac' in cleaned.lower():
+                num = re.search(r'(\d+(?:\.\d+)?)', cleaned)
+                if num:
+                    return float(num.group(1)) * 100000
+            elif 'crore' in cleaned.lower():
+                num = re.search(r'(\d+(?:\.\d+)?)', cleaned)
+                if num:
+                    return float(num.group(1)) * 10000000
+            # Plain number
+            num = re.search(r'(\d+(?:\.\d+)?)', cleaned)
+            if num:
+                return float(num.group(1))
+        return None
 
     # -----------------------------
     # Utilities

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
@@ -7,6 +7,7 @@ import { getStats, getSchemes, getRecommendedSchemes, getUpdates } from '../api/
 import { getApplications, removeApplication, updateApplicationProgress } from '../utils/applicationTracker'
 import { timeAgo } from '../utils'
 import SuvidhaMark from '../components/SuvidhaMark'
+import { eventTracker } from '../utils/eventTracker'
 import '../dashboard.css'
 
 // ── Framer-motion helpers ───────────────────────────────────────────────────
@@ -710,6 +711,7 @@ export default function Dashboard() {
                                         className="db-scheme-row"
                                         whileHover={{ x: 4, backgroundColor: 'rgba(38,48,79,0.5)' }}
                                         transition={{ duration: 0.15 }}
+                                        onClick={() => eventTracker.click(scheme?.id, { position: i, source: 'recommended' })}
                                     >
                                         <div className="db-scheme-rank">
                                             <span style={{ fontSize: '14px', fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</span>
@@ -796,6 +798,7 @@ export default function Dashboard() {
                                     className="db-scheme-row"
                                     whileHover={{ x: 4, backgroundColor: 'rgba(38,48,79,0.5)' }}
                                     transition={{ duration: 0.15 }}
+                                    onClick={() => eventTracker.click(scheme?.id, { position: i, source: hasResults ? 'matched' : 'browse' })}
                                 >
                                     <div className="db-scheme-rank">{String(i + 1).padStart(2, '0')}</div>
                                     <div className="db-scheme-info">

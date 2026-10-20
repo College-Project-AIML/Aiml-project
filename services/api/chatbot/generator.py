@@ -94,11 +94,29 @@ def generate_scheme_answer(query: str, schemes: list[dict]) -> str:
         response.raise_for_status()
         data = response.json()
         answer = data.get("response", "").strip()
-        
-        return answer.strip()
-    except requests.exceptions.RequestException:
-        return ("I'm currently unable to generate a response because the local AI model "
-                "is unavailable or timed out. Please try again later.")
+        if answer:
+            return answer.strip()
+        pass
+
+    # Grounded fallback when local Ollama is offline
+    lines = ["Based on your question, these government schemes may be relevant:"]
+    for s in schemes[:3]:
+        name = s.get("name", "Scheme")
+        desc = s.get("description", "")
+        elig = s.get("eligibility_text", "")
+        lines.append(f"\n{name}")
+        if desc:
+            short_desc = desc.split(".")[0].strip()
+            if len(short_desc) > 140:
+                short_desc = short_desc[:137] + "..."
+            lines.append(f"• {short_desc}.")
+        if elig and elig != "N/A":
+            short_elig = elig.split("\n")[0].strip().lstrip("-*• ")
+            if len(short_elig) > 140:
+                short_elig = short_elig[:137] + "..."
+            lines.append(f"• Eligibility: {short_elig}")
+
+    return "\n".join(lines)
 
 
 def warm_generator() -> None:

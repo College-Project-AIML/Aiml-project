@@ -87,6 +87,7 @@ ALL_INDIA_STATES = {"all", "all india", "all-india", "national", "india", "in", 
 
 
 def parse_schemes(payload) -> List[Dict]:
+    
     """Convert a MyScheme API payload into raw records for the normalizer."""
     items = payload if isinstance(payload, list) else _extract_items(payload)
     records: List[Dict] = []
@@ -100,6 +101,7 @@ def parse_schemes(payload) -> List[Dict]:
 
 
 def _extract_items(payload: Dict) -> List[Dict]:
+    
     for key in ("data", "results", "schemes", "items", "records", "hits"):
         value = payload.get(key)
         if isinstance(value, list):
@@ -112,6 +114,7 @@ def _extract_items(payload: Dict) -> List[Dict]:
 
 
 def _first(item: Dict, variants) -> object:
+    
     for key in variants:
         value = item.get(key)
         if value not in (None, "", [], {}):
@@ -155,6 +158,7 @@ def _normalize_state(raw_state) -> str:
 
 
 def _to_raw_record(item: Dict) -> Dict:
+    
     # Discovered shape wraps the camelCase payload under `fields` (search hits).
     if isinstance(item.get("fields"), dict):
         item = item["fields"]
@@ -190,6 +194,7 @@ def _to_raw_record(item: Dict) -> Dict:
         "eligibility": _first(item, FIELD_VARIANTS["eligibility"]),
         "state": _normalize_state(_first(item, FIELD_VARIANTS["state"])),
         "link": f"{SCHEME_LINK_BASE}/{slug}" if slug else None,
+        "slug": slug,
         "tags": tags,
         "raw_extras": extras,
     }

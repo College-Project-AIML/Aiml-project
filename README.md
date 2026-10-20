@@ -301,112 +301,263 @@ This repository is designed for:
 
 ## How to Run the Project (Step-by-Step)
 
-### Option 1: Docker Compose (Full Stack - Recommended)
+You can run the project in two main ways:
+- **Option 1: Local Development Mode (Recommended)** — Run the FastAPI backend and React frontend locally, connecting either to **Neon Cloud PostgreSQL (serverless)** or **Local Docker PostgreSQL**.
+- **Option 2: Docker Compose (Full Stack)** — Run everything (PostgreSQL, FastAPI Backend, React Frontend) in containerized services.
 
-Run all services (PostgreSQL, FastAPI Backend, React Frontend) in containerized environment:
+---
 
-#### 1. Setup Environment Variables
-```bash
-cp .env.example .env
+### Prerequisites
+
+| Tool | Version / Requirement | Notes |
+| :--- | :--- | :--- |
+| **Python** | `3.10` – `3.13` | *Python 3.14+ has breaking C-API changes for PyO3 wheels.* |
+| **Node.js & npm** | `v18.0.0+` & `npm 9+` | For React Vite frontend |
+| **Git** | Any modern version | Source control |
+| **Docker** *(Optional)* | Docker Desktop | Only required if running PostgreSQL locally or full-stack containers |
+| **Neon CLI** *(Optional)* | Installed via `npm i -g neon` | If using Neon Cloud Postgres branch management |
+
+---
+
+### Database Setup: Choose Option A or B
+
+#### Option A: Neon Cloud PostgreSQL (Serverless — No Docker required)
+The project is configured to work out-of-the-box with **Neon Serverless Postgres**:
+- Project: `aiml-schemes` (`jolly-resonance-61500227`)
+- Branch: `production` (`br-empty-moon-b46kpd2l`)
+
+Your `.env` file receives the cloud `DATABASE_URL` directly:
+```env
+DATABASE_URL=postgresql://neondb_owner:npg_WmHT3hrlks1p@ep-aged-term-b4z9d879-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
 ```
 
-#### 2. Start Containers
+#### Option B: Local PostgreSQL (via Docker)
+If you prefer running a local database instead of cloud Neon:
+- Run: `docker compose up -d postgres`
+- Database runs on: `localhost:5433`, User: `admin`, Password: `securepassword`, Database: `aiml_core`
+- Point `.env` to: `DATABASE_URL=postgresql://admin:securepassword@localhost:5433/aiml_core`
+
+---
+
+### Option 1: Local Development Guide
+
+#### 🍎 macOS & Linux Instructions
+
+##### 1. Setup Environment Configuration
 ```bash
+# In the project root directory
+cp .env.example .env
+```
+*(If using Neon Cloud, ensure your `.env` contains the Neon `DATABASE_URL`, or run `neon link -y`)*
+
+##### 2. Start Database (Skip if using Neon Cloud)
+```bash
+docker compose up -d postgres
+```
+
+##### 3. Create Python Virtual Environment & Install Dependencies
+```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Upgrade pip & install backend packages
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+##### 4. Initialize Database Schema & Seed Data
+```bash
+# Ensure venv is active: source venv/bin/activate
+
+# 1. Apply user events migration
+psql "$DATABASE_URL" -f services/api/migrations/001_user_events.sql
+# (Or if using local docker: docker exec -i aiml_postgres psql -U admin -d aiml_core < services/api/migrations/001_user_events.sql)
+
+# 2. Stamp Alembic migration baseline
+alembic stamp head
+
+# 3. Seed initial 25+ government schemes with eligibility rules & benefits
+python -m scripts.seed_schemes
+```
+
+##### 5. Start the FastAPI Backend Server
+```bash
+# Ensure venv is active: source venv/bin/activate
+uvicorn services.api.app:app --reload --port 8000
+```
+- API Root: [http://localhost:8000](http://localhost:8000)
+- Interactive Swagger API Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
+- OpenAPI JSON: [http://localhost:8000/openapi.json](http://localhost:8000/openapi.json)
+
+##### 6. Start the React Frontend Development Server (Open a New Terminal Window)
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install Node modules
+npm install
+
+# Start Vite dev server
+npm run dev
+```
+- Web Application: [http://localhost:5173](http://localhost:5173)
+
+---
+
+#### 🪟 Windows Instructions
+
+##### 1. Setup Environment Configuration
+
+**PowerShell:**
+```powershell
+Copy-Item .env.example .env
+```
+
+**Command Prompt (cmd):**
+```cmd
+copy .env.example .env
+```
+*(If using Neon Cloud, ensure your `.env` contains the Neon `DATABASE_URL`, or run `neon link -y`)*
+
+##### 2. Start Database (Skip if using Neon Cloud)
+```cmd
+docker compose up -d postgres
+```
+
+##### 3. Create Python Virtual Environment & Install Dependencies
+
+**PowerShell:**
+```powershell
+# Create virtual environment
+python -m venv venv
+
+# If execution policy blocks scripts, run:
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Activate virtual environment
+.\venv\Scripts\Activate.ps1
+
+# Upgrade pip & install backend packages
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+**Command Prompt (cmd):**
+```cmd
+:: Create virtual environment
+python -m venv venv
+
+:: Activate virtual environment
+venv\Scripts\activate.bat
+
+:: Upgrade pip & install backend packages
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+##### 4. Initialize Database Schema & Seed Data
+```cmd
+:: Ensure virtual environment is activated
+
+:: 1. Stamp Alembic migration baseline
+alembic stamp head
+
+:: 2. Seed initial 25+ government schemes with eligibility rules & benefits
+python -m scripts.seed_schemes
+```
+
+##### 5. Start the FastAPI Backend Server
+```cmd
+:: Ensure virtual environment is activated
+python -m uvicorn services.api.app:app --reload --port 8000
+```
+- API Root: [http://localhost:8000](http://localhost:8000)
+- Interactive Swagger API Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
+
+##### 6. Start the React Frontend Development Server (Open a New Terminal / Command Prompt)
+```cmd
+cd frontend
+npm install
+npm run dev
+```
+- Web Application: [http://localhost:5173](http://localhost:5173)
+
+---
+
+### Option 2: Docker Compose (Full Stack — Containerized)
+
+To build and spin up the complete architecture (PostgreSQL, FastAPI Backend, and React Frontend) with a single command:
+
+#### macOS / Linux:
+```bash
+cp .env.example .env
 docker compose up --build -d
 ```
 
-#### 3. Access Services
+#### Windows:
+```cmd
+copy .env.example .env
+docker compose up --build -d
+```
+
+#### Services Port Mapping:
 - **Frontend App**: [http://localhost:3000](http://localhost:3000)
 - **FastAPI Documentation**: [http://localhost:8000/docs](http://localhost:8000/docs)
-- **PostgreSQL Database**: `localhost:5433` (`aiml_core` database)
+- **PostgreSQL Database**: `localhost:5433` (Database: `aiml_core`, User: `admin`)
 
-#### 4. Stop Containers
+#### Stopping Containers:
 ```bash
 docker compose down
 ```
 
 ---
 
-### Option 2: Local Development Mode
+### Advanced / Pipeline Commands
 
-Run database in Docker container while executing Backend API and Frontend natively for development.
+#### Run Near-Real-Time Scheme Sync Pipeline Manually
+Polls official government portals (MyScheme & Karnataka SSP), fingerprints changes, and writes updates to the database:
 
-> **Note on Python Version:** Requires **Python 3.10 – 3.13**. (Python 3.14+ contains breaking C-API changes for Rust/PyO3 wheels like `pydantic-core`. Use Option 1 Docker Compose if running on Python 3.14).
-
-#### Step 1: Clone Repository & Create Environment File
+**macOS / Linux:**
 ```bash
-cp .env.example .env
-```
-
-#### Step 2: Start PostgreSQL Database Container
-```bash
-docker compose up -d postgres
-```
-
-#### Step 3: Setup Python Virtual Environment & Install Backend Dependencies
-```bash
-python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+python -m ingestion.pipelines.live_sync_pipeline
 ```
 
-#### Step 4: Run Database Migrations & Seed Data
-```bash
-# Stamp Alembic migration baseline
-venv/bin/alembic stamp head
-
-# Seed initial government schemes dataset
-venv/bin/python -m scripts.seed_schemes
+**Windows:**
+```cmd
+venv\Scripts\activate
+python -m ingestion.pipelines.live_sync_pipeline
 ```
 
-#### Step 5: Start FastAPI Backend API Server
-```bash
-venv/bin/python -m uvicorn services.api.app:app --reload --port 8000
-```
-Backend API will be live at [http://localhost:8000](http://localhost:8000) (Interactive Swagger Docs: [http://localhost:8000/docs](http://localhost:8000/docs)).
+#### Train the Real ML Ranking Model
+Trains the LightGBM / XGBoost interaction ranking model using recorded user telemetry and profile snapshots:
 
-#### Step 6: Start Frontend Development Server (New Terminal)
+**macOS / Linux:**
 ```bash
-cd frontend
-npm install
-npm run dev
+source venv/bin/activate
+python -m services.api.ml.train_real
 ```
-Frontend Web Application will be live at [http://localhost:5173](http://localhost:5173) (or [http://localhost:3000](http://localhost:3000)).
 
-#### Optional: Run Scheme Live Sync Pipeline Manually
-```bash
-venv/bin/python -m ingestion.pipelines.live_sync_pipeline
+**Windows:**
+```cmd
+venv\Scripts\activate
+python -m services.api.ml.train_real
 ```
 
 ---
 
-## Near-Real-Time Scheme Updates (docs/next.md)
+### Summary of Service Ports
 
-The project includes a live-sync engine that polls government portals, detects
-changes, and surfaces them to users:
-
-- **Connectors** — `ingestion/sources/myscheme/` (configurable internal JSON API,
-  endpoint set via `MYSCHEME_API_URL`) and `ingestion/sources/karnataka_ssp/`
-  (public landing pages only, read-only & polite).
-- **Sync engine** — `ingestion/sync/` (fingerprinting, change detection, APScheduler)
-  orchestrated by `ingestion/pipelines/live_sync_pipeline.py`.
-- **Tables** — `scheme_snapshots` and `scheme_updates` (alembic revision
-  `b2a9f3c1d4e7`).
-- **API & UI** — `GET /api/v1/updates`, a “Recently updated” sort, NEW/UPDATED
-  badges, and a “What changed” panel on scheme detail.
-
-Run one sync pass manually:
-
-```bash
-venv/bin/python -m ingestion.pipelines.live_sync_pipeline
-```
-
-Scheduled runs are opt-in via `LIVE_SYNC_ENABLED=true` (see `.env.example`).
-
-> **Note on migrations:** a fresh DB built from `schemas/postgres.sql` already
-> contains the new tables (the file is mounted as the docker init script), so run
-> `venv/bin/alembic stamp head` after the initial `docker compose up`; use
-> `venv/bin/alembic upgrade head` on an existing DB that predates them.
+| Service | Local Dev URL / Port | Docker Compose URL / Port |
+| :--- | :--- | :--- |
+| **Frontend UI** | `http://localhost:5173` | `http://localhost:3000` |
+| **Backend API** | `http://localhost:8000` | `http://localhost:8000` |
+| **Swagger Docs** | `http://localhost:8000/docs` | `http://localhost:8000/docs` |
+| **Local PostgreSQL** | `localhost:5433` | `localhost:5433` |
+| **Neon PostgreSQL** | Cloud Endpoint (`5432`) | Cloud Endpoint (`5432`) |
 
 ---
 

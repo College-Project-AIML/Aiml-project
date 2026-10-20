@@ -48,43 +48,15 @@ export function AuthProvider({ children }) {
         setUser(updated)
     }
 
-    const loginWithGoogle = useCallback(async (googleCredential) => {
-        try {
-            const res = await fetch('/api/v1/auth/google/verify', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ credential: googleCredential }),
-            })
-
-            if (!res.ok) {
-                const err = await res.json().catch(() => ({}))
-                throw new Error(err.detail || 'OAuth verification failed')
-            }
-
-            const data = await res.json()
-            // data: { access_token, user_id, name, email, avatar_url }
-            localStorage.setItem(TOKEN_KEY, data.access_token)
-
-            const userData = {
-                name: data.name,
-                email: data.email,
-                avatar_url: data.avatar_url || null,
-                user_id: data.user_id,
-                oauth: true,
-                profile: null,
-                eligibilityResults: null,
-            }
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(userData))
-            setUser(userData)
-            setToken(data.access_token)
-            return userData
-        } catch (err) {
-            console.error('Google OAuth error:', err)
-            throw err
-        }
-    }, [])
-
     const loginWithAuth0User = useCallback((auth0UserData) => {
+        let existing = null
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY)
+            existing = stored ? JSON.parse(stored) : null
+        } catch {
+            existing = null
+        }
+
         const userData = {
             name: auth0UserData.name || auth0UserData.nickname || auth0UserData.email,
             email: auth0UserData.email,
@@ -92,8 +64,8 @@ export function AuthProvider({ children }) {
             user_id: auth0UserData.sub,
             oauth: true,
             auth0: true,
-            profile: null,
-            eligibilityResults: null,
+            profile: existing?.profile || null,
+            eligibilityResults: existing?.eligibilityResults || null,
         }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(userData))
         setUser(userData)
@@ -101,7 +73,7 @@ export function AuthProvider({ children }) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, token, signIn, signOut, updateEligibility, updateProfileAndEligibility, updateDisplayName, loginWithGoogle, loginWithAuth0User }}>
+        <AuthContext.Provider value={{ user, token, signIn, signOut, updateEligibility, updateProfileAndEligibility, updateDisplayName, loginWithAuth0User }}>
             {children}
         </AuthContext.Provider>
     )
