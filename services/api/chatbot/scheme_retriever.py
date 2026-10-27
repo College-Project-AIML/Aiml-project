@@ -108,7 +108,12 @@ def find_matching_schemes(
     """
     if not _index_cache:
         if not os.path.exists(INDEX_PATH):
-            raise RuntimeError(f"Embedding index not found at {INDEX_PATH}. Please run build_scheme_embedding_index.py first.")
+            try:
+                built = build_scheme_embedding_index(cur)
+                if built == 0 or not os.path.exists(INDEX_PATH):
+                    return []
+            except Exception:
+                return []
         data = np.load(INDEX_PATH)
         _index_cache["embeddings"] = data["embeddings"]
         _index_cache["scheme_ids"] = data["scheme_ids"]

@@ -25,7 +25,7 @@ def create_access_token(user_id: str) -> str:
     
     return jwt.encode(payload, secret_key, algorithm=algorithm)
 
-async def get_current_user(token: str = Depends(oauth2_scheme)) -> str:
+async def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
     secret_key = os.getenv("SECRET_KEY", "CHANGE_ME")
     algorithm = os.getenv("JWT_ALGORITHM", "HS256")
     try:
@@ -33,7 +33,10 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> str:
         user_id = payload.get("sub")
         if user_id is None:
             raise HTTPException(status_code=401, detail="Invalid token")
-        return user_id
+        payload["user_id"] = str(user_id)
+        return payload
+    except HTTPException:
+        raise
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid token")
 

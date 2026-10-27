@@ -202,7 +202,7 @@ class LiveSyncPipeline:
             unchanged_ids = []
             for scheme_id, record, change, previous in unchanged:
                 if previous and previous.get("status") == "INACTIVE":
-                    stats["updated"] += 1
+                    pass  # stats["updated"] is incremented inside _upsert_batch for reactivated records
                 else:
                     stats["unchanged"] += 1
                     unchanged_ids.append(scheme_id)
@@ -257,11 +257,14 @@ class LiveSyncPipeline:
                         continue
 
             # Phase 3: Handle UNCHANGED reactivation (INACTIVE -> ACTIVE)
+            # stats["updated"] is incremented inside _upsert_batch, so undo the
+            # earlier increment from the unchanged loop (lines 204-205) first.
             reactivated = []
             for scheme_id, record, change, previous in unchanged:
                 if previous and previous.get("status") == "INACTIVE":
-                    stats["updated"] += 1
-                    reactivated.append((scheme_id, record, {"status": ["INACTIVE", "ACTIVE"]}))
+                    # Pass cd.UPDATED + previous so _upsert_batch can compute
+                    # the diff and emit the update event correctly.
+                    reactivated.append((scheme_id, record, cd.UPDATED, previous))
 
             if reactivated:
                 self._upsert_batch(conn, cur, source, reactivated, stats)

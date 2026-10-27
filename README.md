@@ -372,9 +372,8 @@ pip install -r requirements.txt
 ```bash
 # Ensure venv is active: source venv/bin/activate
 
-# 1. Apply user events migration
-psql "$DATABASE_URL" -f services/api/migrations/001_user_events.sql
-# (Or if using local docker: docker exec -i aiml_postgres psql -U admin -d aiml_core < services/api/migrations/001_user_events.sql)
+# 1. Apply full PostgreSQL schema (or handled automatically if using Docker Compose)
+# psql "$DATABASE_URL" -f schemas/postgres.sql
 
 # 2. Stamp Alembic migration baseline
 alembic stamp head

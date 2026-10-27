@@ -29,8 +29,16 @@ class EventTracker {
   }
 
   getAuthToken() {
-    // Get token from localStorage or your auth context
-    return localStorage.getItem('access_token') || localStorage.getItem('token');
+    const suvidhaToken = localStorage.getItem('suvidha-token');
+    if (suvidhaToken) return suvidhaToken;
+    const token = localStorage.getItem('access_token') || localStorage.getItem('token');
+    if (token) return token;
+    try {
+      const user = JSON.parse(localStorage.getItem('suvidha-user') || '{}');
+      return user?.token || user?.access_token || null;
+    } catch {
+      return null;
+    }
   }
 
   async sendBatch() {
