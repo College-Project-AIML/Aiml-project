@@ -1,0 +1,53 @@
+# Git & OS
+.git
+.gitignore
+.DS_Store
+Thumbs.db
+
+# Virtual environments & Python cache
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Local Environment Secrets (CRITICAL for security)
+.env
+.env.*
+!.env.example
+
+# Frontend (Frontend is built in its own Dockerfile)
+frontend/
+node_modules/
+
+# Logs & temp files
+*.log
+api.log
+bulk_enrich.log
+sync.log
+enrich_all.log
+dbg.txt
+output.txt
+temp_*
+
+# Data directories (large local files and database volume mounts)
+data/postgres/
+data/mongo/
+data/qdrant/
+data/raw/
+data/sync_logs/
+data/dump/
+data/enriched_cache/
+
+# IDE & Editor configs
+.vscode/
+.idea/
+.neon/
+.freebuff/
+
+# Documentation & Research
+docs/
+research_paper.md
+paper.md
+backend_workflow.png

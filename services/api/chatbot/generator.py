@@ -96,6 +96,7 @@ def generate_scheme_answer(query: str, schemes: list[dict]) -> str:
         answer = data.get("response", "").strip()
         if answer:
             return answer.strip()
+    except requests.exceptions.RequestException:
         pass
 
     # Grounded fallback when local Ollama is offline

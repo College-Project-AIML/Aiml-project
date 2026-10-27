@@ -34,14 +34,22 @@ class BatchEventRequest(BaseModel):
     events: List[EventRequest]
 
 
+def _extract_user_id(current_user: Any) -> Optional[str]:
+    if isinstance(current_user, dict):
+        return current_user.get("user_id") or current_user.get("sub")
+    if isinstance(current_user, str):
+        return current_user
+    return str(current_user) if current_user else None
+
+
 @router.post("", status_code=201)
 async def track_event(
     event: EventRequest,
     request: Request,
-    current_user: dict = Depends(get_current_user),
+    current_user: Any = Depends(get_current_user),
 ):
     """Record a single user interaction event."""
-    user_id = current_user.get("user_id") or current_user.get("sub")
+    user_id = _extract_user_id(current_user)
     if not user_id:
         raise HTTPException(status_code=401, detail="User not authenticated")
 
@@ -69,10 +77,10 @@ async def track_event(
 async def track_events_batch(
     batch: BatchEventRequest,
     request: Request,
-    current_user: dict = Depends(get_current_user),
+    current_user: Any = Depends(get_current_user),
 ):
     """Record multiple events in one request (for buffering)."""
-    user_id = current_user.get("user_id") or current_user.get("sub")
+    user_id = _extract_user_id(current_user)
     if not user_id:
         raise HTTPException(status_code=401, detail="User not authenticated")
 
@@ -98,10 +106,10 @@ async def track_events_batch(
 
 @router.get("/my-stats")
 async def get_my_interaction_stats(
-    current_user: dict = Depends(get_current_user),
+    current_user: Any = Depends(get_current_user),
 ):
     """Get current user's interaction statistics."""
-    user_id = current_user.get("user_id") or current_user.get("sub")
+    user_id = _extract_user_id(current_user)
     if not user_id:
         raise HTTPException(status_code=401, detail="User not authenticated")
 
@@ -145,11 +153,11 @@ async def get_training_data(
     limit: int = 10000,
     offset: int = 0,
     label: Optional[int] = None,
-    current_user: dict = Depends(get_current_user),
+    current_user: Any = Depends(get_current_user),
 ):
     """Export training data for ML model (admin only)."""
     # Check admin role
-    roles = current_user.get("https://aiml-project/roles", [])
+    roles = current_user.get("https://aiml-project/roles", []) if isinstance(current_user, dict) else []
     if "admin" not in roles and "ml_engineer" not in roles:
         raise HTTPException(status_code=403, detail="Admin access required")
 
@@ -170,10 +178,10 @@ async def get_training_data(
 
 @router.post("/refresh-training-view")
 async def refresh_training_view(
-    current_user: dict = Depends(get_current_user),
+    current_user: Any = Depends(get_current_user),
 ):
     """Refresh the ML training materialized view (admin only)."""
-    roles = current_user.get("https://aiml-project/roles", [])
+    roles = current_user.get("https://aiml-project/roles", []) if isinstance(current_user, dict) else []
     if "admin" not in roles:
         raise HTTPException(status_code=403, detail="Admin access required")
 
