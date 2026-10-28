@@ -20,6 +20,10 @@ logger = logging.getLogger(__name__)
 
 def _warm_chatbot_models():
     """Warm local chatbot dependencies off the API startup path."""
+    if os.getenv("WARM_MODELS_ON_STARTUP", "false").strip().lower() != "true":
+        logger.info("WARM_MODELS_ON_STARTUP is false — skipping heavy chatbot model preload.")
+        return
+
     try:
         from services.api.chatbot.scheme_retriever import warm_scheme_retriever
         warm_scheme_retriever()

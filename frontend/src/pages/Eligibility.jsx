@@ -144,6 +144,7 @@ function Eligibility() {
   const [results, setResults] = useState(null)
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(null)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -153,6 +154,8 @@ function Eligibility() {
     e.preventDefault()
     setLoading(true)
     setSubmitted(true)
+    setError(null)
+    setResults(null)
     try {
       const profile = {}
       if (form.age) profile.age = parseInt(form.age)
@@ -165,6 +168,11 @@ function Eligibility() {
       setResults(data)
     } catch (err) {
       console.error('Eligibility check failed:', err)
+      setError(
+        err.response?.data?.detail ||
+        err.message ||
+        'Unable to connect to the backend server. The free cloud instance may be waking up from sleep. Please try again in a few seconds.'
+      )
     } finally {
       setLoading(false)
     }
@@ -283,7 +291,22 @@ function Eligibility() {
             ) : loading ? (
               <div className="loading" style={{ minHeight: '300px' }}>
                 <div className="spinner" />
-                Finding matching schemes...
+                Finding matching schemes using AI ranker...
+              </div>
+            ) : error ? (
+              <div style={styles.emptyResults}>
+                <div style={styles.emptyIcon}>⚠️</div>
+                <div style={{ ...styles.emptyTitle, color: '#fca5a5' }}>Request Failed</div>
+                <div style={styles.emptyText}>
+                  {error}
+                </div>
+                <button
+                  onClick={handleSubmit}
+                  className="btn btn-accent"
+                  style={{ marginTop: '16px' }}
+                >
+                  Try Again
+                </button>
               </div>
             ) : results && results.matches.length > 0 ? (
               <>

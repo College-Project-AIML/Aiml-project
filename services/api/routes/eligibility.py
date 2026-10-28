@@ -10,7 +10,7 @@ from services.api.ml.ranker import rank_schemes
 
 router = APIRouter(tags=["Eligibility"])
 
-MAX_ELIGIBILITY_RESULTS = 200
+MAX_ELIGIBILITY_RESULTS = 50
 MIN_RELEVANCE_SCORE = 0.40
 
 
@@ -63,7 +63,7 @@ def check_eligibility(req: EligibilityCheckRequest):
 
     with get_db() as cur:
         cur.execute(f"""
-            SELECT s.id, s.name, s.description, s.eligibility_text,
+            SELECT s.id, s.name, s.description,
                    s.state_code, s.status, s.source, s.link,
                    s.tags, s.confidence_score,
                    c.name as category_name, p.name as provider_name,
@@ -74,7 +74,7 @@ def check_eligibility(req: EligibilityCheckRequest):
             LEFT JOIN eligibility_rules e ON e.scheme_id = s.id
             WHERE s.status = 'ACTIVE' AND ({where})
             ORDER BY s.confidence_score DESC NULLS LAST
-            LIMIT 500
+            LIMIT 120
         """, params)
         rows = cur.fetchall()
 
@@ -96,7 +96,6 @@ def check_eligibility(req: EligibilityCheckRequest):
             "id": sid,
             "name": row["name"],
             "description": row["description"],
-            "eligibility_text": row["eligibility_text"],
             "state_code": row["state_code"],
             "status": row["status"],
             "source": row["source"],
@@ -125,7 +124,7 @@ def check_eligibility(req: EligibilityCheckRequest):
             "rules": rules,
         })
 
-    # Rank every eligible active scheme using vectorized inference
+    # Rank candidate active schemes using vectorized inference
     ranked = rank_schemes(profile, schemes_with_rules, limit=None)
     ranked = [item for item in ranked if item["relevance_score"] >= MIN_RELEVANCE_SCORE]
     ranked = ranked[:MAX_ELIGIBILITY_RESULTS]
@@ -147,7 +146,6 @@ def check_eligibility(req: EligibilityCheckRequest):
                 "id": item["id"],
                 "name": item["name"],
                 "description": item["description"],
-                "eligibility_text": item["eligibility_text"],
                 "state_code": item["state_code"],
                 "status": item["status"],
                 "source": item["source"],
