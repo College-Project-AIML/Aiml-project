@@ -5,7 +5,8 @@
  * Sends to /api/v1/events endpoint (batched for performance)
  */
 
-const EVENT_ENDPOINT = '/api/v1/events';
+const API_HOST = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace(/\/+$/, '') : '';
+const EVENT_ENDPOINT = `${API_HOST}/api/v1/events`;
 const BATCH_SIZE = 10;
 const BATCH_INTERVAL_MS = 2000;
 const SESSION_KEY = 'aiml_session_id';
