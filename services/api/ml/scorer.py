@@ -143,6 +143,43 @@ def score_ml(features: dict[str, float]) -> Optional[float]:
     return max(0.0, min(1.0, raw))
 
 
+def score_batch(features_list: list[dict[str, float]]) -> list[float]:
+    """
+    Score a batch of feature dicts simultaneously using vectorized inference.
+    Takes milliseconds instead of seconds for thousands of schemes.
+    """
+    if not features_list:
+        return []
+
+    if _model is None:
+        _load_ml_model()
+
+    if _model is None:
+        return [score_heuristic(f) for f in features_list]
+
+    try:
+        import numpy as np
+        X = np.array([[f.get(name, 0.0) for name in FEATURE_NAMES] for f in features_list], dtype=np.float32)
+
+        if _model_type == "xgboost":
+            import xgboost as xgb  # type: ignore
+            dmatrix = xgb.DMatrix(X, feature_names=FEATURE_NAMES)
+            raw_scores = _model.predict(dmatrix)
+        else:
+            raw_scores = _model.predict(X)
+
+        results = []
+        import math
+        for raw in raw_scores:
+            val = float(raw)
+            if val < 0 or val > 1:
+                val = 1.0 / (1.0 + math.exp(-max(-709.0, min(709.0, val))))
+            results.append(max(0.0, min(1.0, val)))
+        return results
+    except Exception:
+        return [score_heuristic(f) for f in features_list]
+
+
 def score(features: dict[str, float]) -> float:
     """
     Main scoring entry point.  Uses ML model if available, else heuristic.

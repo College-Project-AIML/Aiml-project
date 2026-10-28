@@ -4,7 +4,7 @@ const API_HOST = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.rep
 
 const API = axios.create({
   baseURL: `${API_HOST}/api/v1`,
-  timeout: 10000,
+  timeout: 30000,
 })
 
 export async function getSchemes({ page = 1, limit = 20, category, state, status, sort } = {}) {

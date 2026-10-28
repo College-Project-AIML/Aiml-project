@@ -14,7 +14,7 @@ from __future__ import annotations
 from typing import Optional
 
 from services.api.ml.features import extract_features
-from services.api.ml.scorer import score
+from services.api.ml.scorer import score, score_batch
 
 
 def rank_schemes(
@@ -41,18 +41,23 @@ def rank_schemes(
     list[dict] — schemes sorted by relevance_score descending, with
     'relevance_score' and 'match_details' added to each scheme dict.
     """
-    scored = []
+    if not schemes_with_rules:
+        return []
 
+    features_list = []
+    metadata = []
     for item in schemes_with_rules:
         scheme = item.get("scheme", item)
         rules = item.get("rules")
+        feats = extract_features(profile, rules, scheme)
+        features_list.append(feats)
+        metadata.append((scheme, rules, feats))
 
-        features = extract_features(profile, rules, scheme)
-        relevance = score(features)
+    scores = score_batch(features_list)
 
-        # Build match details for the UI
-        match_details = _build_match_details(features, rules)
-
+    scored = []
+    for (scheme, rules, feats), relevance in zip(metadata, scores):
+        match_details = _build_match_details(feats, rules)
         scored.append({
             **scheme,
             "relevance_score": round(relevance, 4),

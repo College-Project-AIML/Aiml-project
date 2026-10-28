@@ -11,7 +11,7 @@ from services.api.ml.ranker import rank_schemes
 router = APIRouter(tags=["Eligibility"])
 
 MAX_ELIGIBILITY_RESULTS = 200
-MIN_RELEVANCE_SCORE = 0.78
+MIN_RELEVANCE_SCORE = 0.40
 
 
 @router.post("/eligibility-check")
@@ -63,40 +63,20 @@ def check_eligibility(req: EligibilityCheckRequest):
 
     with get_db() as cur:
         cur.execute(f"""
-            SELECT DISTINCT s.id, s.name, s.description, s.eligibility_text,
+            SELECT s.id, s.name, s.description, s.eligibility_text,
                    s.state_code, s.status, s.source, s.link,
                    s.tags, s.confidence_score,
-                   c.name as category_name, p.name as provider_name
+                   c.name as category_name, p.name as provider_name,
+                   e.min_age, e.max_age, e.max_income, e.gender, e.caste, e.states, e.education_level
             FROM schemes s
             LEFT JOIN categories c ON s.category_id = c.id
             LEFT JOIN providers p ON s.provider_id = p.id
             LEFT JOIN eligibility_rules e ON e.scheme_id = s.id
             WHERE s.status = 'ACTIVE' AND ({where})
+            ORDER BY s.confidence_score DESC NULLS LAST
+            LIMIT 500
         """, params)
         rows = cur.fetchall()
-
-    # Collect scheme IDs to fetch eligibility rules
-    scheme_ids = [str(row["id"]) for row in rows]
-    rules_map = {}
-    if scheme_ids:
-        placeholders = ", ".join(["%s"] * len(scheme_ids))
-        with get_db() as cur2:
-            cur2.execute(f"""
-                SELECT scheme_id, min_age, max_age, max_income,
-                       gender, caste, states, education_level
-                FROM eligibility_rules
-                WHERE scheme_id IN ({placeholders})
-            """, scheme_ids)
-            for r in cur2.fetchall():
-                rules_map[str(r["scheme_id"])] = {
-                    "min_age": r["min_age"],
-                    "max_age": r["max_age"],
-                    "max_income": float(r["max_income"]) if r["max_income"] else None,
-                    "gender": r["gender"],
-                    "caste": r["caste"],
-                    "states": r["states"],
-                    "education_level": r["education_level"],
-                }
 
     # Build user profile dict
     profile = {
@@ -126,14 +106,26 @@ def check_eligibility(req: EligibilityCheckRequest):
             "category_name": row["category_name"],
             "provider_name": row["provider_name"],
         }
+        rules = None
+        if (row.get("min_age") is not None or row.get("max_age") is not None or
+            row.get("max_income") is not None or row.get("gender") is not None or
+            row.get("caste") is not None or row.get("states") is not None or
+            row.get("education_level") is not None):
+            rules = {
+                "min_age": row["min_age"],
+                "max_age": row["max_age"],
+                "max_income": float(row["max_income"]) if row["max_income"] else None,
+                "gender": row["gender"],
+                "caste": row["caste"],
+                "states": row["states"],
+                "education_level": row["education_level"],
+            }
         schemes_with_rules.append({
             "scheme": scheme_dict,
-            "rules": rules_map.get(sid),
+            "rules": rules,
         })
 
-    # Rank every eligible active scheme before selecting strong matches.
-    # This returns a variable number of results based on the profile, capped
-    # only to keep the response and UI usable with a large scheme database.
+    # Rank every eligible active scheme using vectorized inference
     ranked = rank_schemes(profile, schemes_with_rules, limit=None)
     ranked = [item for item in ranked if item["relevance_score"] >= MIN_RELEVANCE_SCORE]
     ranked = ranked[:MAX_ELIGIBILITY_RESULTS]
